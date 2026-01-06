@@ -1,0 +1,296 @@
+{
+      "seo": {
+            "home": {
+                  "title": "Codeprops | Leading Software Development Company & Web Solutions",
+                  "description": "Premium software development company & web development company. We deliver custom software solutions, scalable web applications, and high-performance digital systems."
+            },
+            "about": {
+                  "title": "About Codeprops | Engineering Excellence & Technical Architecture",
+                  "description": "Discover the technical philosophy behind Codeprops. We are a software engineering services provider focused on quality, scalability, and modern web technologies."
+            },
+            "services": {
+                  "title": "Software Engineering Services | Custom Web & App Development",
+                  "description": "Comprehensive digital solutions including web development, business automation, and enterprise software engineering. Scalable systems built with Next.js & Laravel."
+            },
+            "portfolio": {
+                  "title": "Software Development Portfolio | Case Studies | Codeprops",
+                  "description": "Explore our portfolio of high-performance web applications and custom software solutions. Real-world examples of digital transformation and business automation."
+            },
+            "blog": {
+                  "title": "Software Engineering Insights | Web Development Blog | Codeprops",
+                  "description": "Technical insights on modern web technologies, cloud infrastructure, and software architecture. Authority-driven content for senior engineers and strategists."
+            },
+            "contact": {
+                  "title": "Contact Our Software Development Team | Codeprops",
+                  "description": "Ready to build? Partner with a senior software engineering team for your next custom software or web development project. Engineered for growth."
+            }
+      },
+      "nav": {
+            "home": "Home",
+            "about": "About Us",
+            "services": "Capabilities",
+            "portfolio": "Portfolio",
+            "blog": "Insights",
+            "contact": "Contact"
+      },
+      "hero": {
+            "title": "Engineering Elite Digital Solutions",
+            "company": "Codeprops",
+            "subtitle": "High-Performance Software for Global Enterprises",
+            "description": "As a premier software development company, we architect scalable systems and custom web applications. Our engineering services bridge the gap between complex business logic and intuitive digital experiences.",
+            "cta": "Launch Your Project",
+            "ctaSecondary": "Examine Our Work"
+      },
+      "about": {
+            "title": "Architecting the Future",
+            "subtitle": "Precision Engineering. Scalable Results.",
+            "description": "Codeprops is a specialized software engineering firm. We go beyond 'coding' to provide strategic technical architecture. Our philosophy is rooted in performance, security, and the long-term maintainability of digital infrastructure.",
+            "stats": {
+                  "projects": "Engagements Completed",
+                  "clients": "Trusting Partners",
+                  "years": "Industry Leadership",
+                  "team": "Engineering Specialists"
+            }
+      },
+      "services": {
+            "title": "Strategic Capabilities",
+            "subtitle": "Full-Lifecycle Software Engineering",
+            "web": {
+                  "title": "Custom Web Development",
+                  "description": "Developing high-performance, SEO-optimized web applications using Next.js, React, and modular architecture."
+            },
+            "custom": {
+                  "title": "Custom Software Solutions",
+                  "description": "End-to-end software engineering services for complex business automation and unique enterprise challenges."
+            },
+            "ecommerce": {
+                  "title": "Scalable E-Commerce",
+                  "description": "Building conversion-optimized, high-load e-commerce platforms with seamless payment and logistics integration."
+            },
+            "cloud": {
+                  "title": "Cloud & API Integration",
+                  "description": "Architecting resilient API ecosystems and cloud-ready systems to ensure data continuity across your organization."
+            },
+            "performance": {
+                  "title": "Performance Optimization",
+                  "description": "Technically auditing and re-engineering legacy systems for maximum speed, security, and organic search visibility."
+            },
+            "faq": {
+                  "title": "Technical FAQ",
+                  "subtitle": "Expert Answers to Architectural Questions",
+                  "questions": [
+                        {
+                              "q": "How does Server-Side Rendering (SSR) affect our SEO rankings?",
+                              "a": "SSR ensures that search engine crawlers receive fully rendered HTML on the first request. This dramatically improves indexation speed and ranking potential compared to traditional Single Page Applications (SPAs) that rely on client-side JS."
+                        },
+                        {
+                              "q": "What is the primary benefit of a Headless Commerce architecture?",
+                              "a": "Headless architecture decouples the frontend from the backend, allowing for extreme performance optimization and a custom user experience without being restricted by the platform's native template engine."
+                        },
+                        {
+                              "q": "How do you ensure system scalability for high-load events?",
+                              "a": "We utilize microservices, containerization (Kubernetes), and event-driven architectures to ensure that individual system components can scale independently based on real-time demand."
+                        },
+                        {
+                              "q": "Why focus on Core Web Vitals for business applications?",
+                              "a": "Google uses Core Web Vitals as a ranking signal. High scores in Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS) directly correlate to better user retention and higher search visibility."
+                        }
+                  ]
+            }
+      },
+      "methodology": {
+            "title": "Our Engineering Lifecycle",
+            "subtitle": "A Defined Path to Technical Authority",
+            "steps": [
+                  {
+                        "title": "Discovery",
+                        "description": "Rigorous technical discovery to align architecture with business objectives."
+                  },
+                  {
+                        "title": "Architecture",
+                        "description": "Laying the foundation with scalable system design and data modeling."
+                  },
+                  {
+                        "title": "Engineering",
+                        "description": "Developing secure, low-latency codebases using modern engineering standards."
+                  },
+                  {
+                        "title": "Validation",
+                        "description": "Extreme testing and performance tuning before global deployment."
+                  }
+            ]
+      },
+      "pricing": {
+            "title": "Strategic Engagement Models",
+            "subtitle": "Transparent Value for Every Scale",
+            "badge": "Elite Tier",
+            "cta": "Secure Your Plan",
+            "priceSuffix": "/engagement",
+            "plans": [
+                  {
+                        "name": "Accelerator",
+                        "price": "1,500",
+                        "description": "Essential architecture for startups and focused MVP development.",
+                        "features": [
+                              "Modular Web Application",
+                              "SEO-Focused Architecture",
+                              "30-Day Engineering Support",
+                              "Scalable Infrastructure"
+                        ]
+                  },
+                  {
+                        "name": "Authority",
+                        "price": "3,499",
+                        "description": "Full-scale engineering for growing enterprises and complex integrations.",
+                        "features": [
+                              "Web & Mobile Synergy",
+                              "Advanced API Integrations",
+                              "High-Load Optimization",
+                              "Engineering Retainer"
+                        ]
+                  },
+                  {
+                        "name": "Enterprise",
+                        "price": "Consultation",
+                        "description": "Bespoke engineering teams for global organizations and ultra-complex systems.",
+                        "features": [
+                              "Dedicated Cloud Architect",
+                              "AI/ML Implementation",
+                              "Legacy System Migration",
+                              "24/7 Priority Ops"
+                        ]
+                  }
+            ]
+      },
+      "testimonials": {
+            "title": "Partner Reflections",
+            "subtitle": "Validating Exceptional Engineering",
+            "items": [
+                  {
+                        "name": "Alexander Sterling",
+                        "role": "CTO at Nexus Platforms",
+                        "content": "Codeprops didn't just build our app; they fixed our architecture. Their engineering discipline is a rare find in the agency world."
+                  },
+                  {
+                        "name": "Dr. Elena Vance",
+                        "role": "Director of Technology, Flow Systems",
+                        "content": "The performance gains we saw after their re-engineering were staggering. They are true technical partners."
+                  }
+            ]
+      },
+      "blog": {
+            "title": "Technical Authority",
+            "subtitle": "Expertise Shared by Our Lead Engineers",
+            "viewAll": "Explore All Insights",
+            "readMore": "Continue Reading",
+            "category": "Engineering",
+            "posts": [
+                  {
+                        "slug": "architecture-low-latency",
+                        "title": "Architecting for Low Latency: A Guide for Global Systems",
+                        "excerpt": "Exploring the next generation of scalable systems and high-performance engineering patterns for global digital presence.",
+                        "date": "Jan 06, 2026",
+                        "author": "Marcus Thorne, Principal Architect"
+                  },
+                  {
+                        "slug": "technical-seo-infrastructure",
+                        "title": "Why Technical SEO starts at the Infrastructure Layer",
+                        "excerpt": "Moving beyond meta tags: how server-side rendering and edge computing define your organic search authority.",
+                        "date": "Jan 04, 2026",
+                        "author": "Elena Vance, Technical Strategist"
+                  },
+                  {
+                        "slug": "legacy-architecture-cost",
+                        "title": "The Economic Cost of Legacy Architecture in Modern Business",
+                        "excerpt": "A deep dive into how technical debt and outdated systems drain enterprise resources and stall innovation.",
+                        "date": "Jan 02, 2026",
+                        "author": "Alexander Sterling, CTO"
+                  }
+            ]
+      },
+      "portfolio": {
+            "title": "Engineering Case Studies",
+            "subtitle": "Architectural Success Stories & Digital Transformations",
+            "viewProject": "Examine Case Study",
+            "projects": [
+                  {
+                        "slug": "nexus-logistics",
+                        "title": "Nexus Logistics: Global Supply Chain Cloud Migration",
+                        "category": "Enterprise Software",
+                        "description": "Transforming a fragmented legacy infrastructure into a unified, cloud-native logistics orchestrator.",
+                        "problem": "Nexus struggled with high latency and data silos across 14 international hubs, leading to significant delays in real-time tracking and prohibitive maintenance costs.",
+                        "solution": "We re-architected their entire core using a microservices pattern on AWS, implementing a real-time event-driven gateway that synchronized global data in under 100ms.",
+                        "result": "300% increase in system throughput, 45% reduction in operational overhead, and 99.99% availability achieved within 6 months.",
+                        "tech": [
+                              "Next.js",
+                              "Go",
+                              "AWS",
+                              "Kubernetes",
+                              "PostgreSQL"
+                        ]
+                  },
+                  {
+                        "slug": "aura-fashion",
+                        "title": "Aura Fashion: High-Load E-Commerce Re-Engineering",
+                        "category": "E-Commerce",
+                        "description": "Scaling a luxury fashion brand for global black-friday traffic without downtime.",
+                        "problem": "Previous platform crashes during peak sales and poor mobile performance resulted in a 25% cart abandonment rate.",
+                        "solution": "Implementation of a headless commerce architecture using Next.js and a customized Shopify backend, focused on extreme image optimization and sub-second page loads.",
+                        "result": "65% improvement in conversion rate, 80% faster mobile load times, and zero downtime during record-breaking traffic spikes.",
+                        "tech": [
+                              "Next.js",
+                              "Headless Shopify",
+                              "Framer Motion",
+                              "Redis"
+                        ]
+                  },
+                  {
+                        "slug": "finnode-api",
+                        "title": "FinNode: Secure Open Banking API Ecosystem",
+                        "category": "FinTech",
+                        "description": "Building a resilient and compliant gateway for financial data exchange.",
+                        "problem": "Need for a highly secure, PCI-compliant infrastructure to handle sensitive banking data while providing easy integration for third-party developers.",
+                        "solution": "Engineered a hardened API gateway with multi-factor authentication, automated threat detection, and real-time auditing logs.",
+                        "result": "Successful compliance certification, 10M+ secure monthly transactions, and adopted by 50+ institutional partners.",
+                        "tech": [
+                              "Next.js",
+                              "Laravel",
+                              "Docker",
+                              "Secure Gateway",
+                              "Audit Logs"
+                        ]
+                  }
+            ]
+      },
+      "contact": {
+            "title": "Engineer Your Growth",
+            "subtitle": "Consult with our Senior Engineering Team",
+            "form": {
+                  "name": "Full Name",
+                  "email": "Business Email",
+                  "message": "Technical Challenges / Project Scope",
+                  "send": "Initiate Consultation"
+            },
+            "info": {
+                  "email": "solutions@codeprops.com",
+                  "phone": "+1 (800) CODE-PRO",
+                  "address": "Global Elite Tech Center, Silicon Valley / Istanbul"
+            }
+      },
+      "cta": {
+            "title": "Ready to re-engineer your digital presence?",
+            "description": "Partner with a software engineering firm that understands scalability, security, and performance architecture.",
+            "button": "Contact Our Strategists"
+      },
+      "footer": {
+            "tagline": "Engineering Excellence. Scalable Reality.",
+            "copyright": "All Rights Reserved.",
+            "company": "Capabilities",
+            "legal": "Governance",
+            "links": {
+                  "privacy": "Data Privacy",
+                  "terms": "Usage Governance",
+                  "sitemap": "Infrastructure Map"
+            }
+      }
+}
