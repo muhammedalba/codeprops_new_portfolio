@@ -10,7 +10,7 @@ export default function CinematicMesh() {
       <div
         className="absolute w-[120vw] h-[100vh] rounded-[100%] blur-[120px] opacity-[0.12] animate-[drift_25s_ease-in-out_infinite]"
         style={{
-          background: 'radial-gradient(ellipse at center, hsl(var(--primary)) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, hsl(var(--primary)) 0%, transparent 80%)',
           top: '-20%',
           left: '-10%',
         }}
@@ -20,7 +20,7 @@ export default function CinematicMesh() {
       <div
         className="absolute w-[100vw] h-[80vh] rounded-[100%] blur-[100px] opacity-[0.08] animate-[drift-reverse_20s_ease-in-out_infinite_2s]"
         style={{
-          background: 'radial-gradient(ellipse at center, hsl(var(--accent-secondary)) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, hsl(var(--accent-secondary)) 0%, transparent 100%)',
           bottom: '-10%',
           right: '-5%',
         }}
@@ -44,7 +44,7 @@ export default function CinematicMesh() {
           backgroundImage: `linear-gradient(to right, hsl(var(--foreground)/0.1) 1px, transparent 1px), 
                            linear-gradient(to bottom, hsl(var(--foreground)/0.1) 1px, transparent 1px)`,
           backgroundSize: '80px 80px',
-          maskImage: 'radial-gradient(circle at center, black, transparent 80%)',
+          maskImage: 'radial-gradient(circle at center, black, transparent 90%)',
         }}
       />
     </div>

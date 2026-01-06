@@ -65,7 +65,6 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
       <CinematicMesh />
       {shouldRenderHeavy && (
         <> <CinematicMesh />
-
           <InteractiveParticles />
           <TechSculpture />
         </>
@@ -88,10 +87,10 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
                 {hero.title}
               </span>
             </h1>
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-heading font-bold leading-[1] tracking-tighter opacity-0 animate-[fade-up_0.8s_ease-out_0.4s_forwards]">
-              <span className="block text-foreground relative">
-                {hero.company}
-                <span className="absolute -right-8 top-2 text-xl font-mono text-primary/30 opacity-0 animate-[fade-in_1s_ease-out_1.5s_forwards]">®</span>
+            <h1 className="text-3xl md:text-7xl lg:text-8xl font-heading font-bold leading-[1] tracking-tighter opacity-0 animate-[fade-up_0.8s_ease-out_0.4s_forwards]">
+              <span className="block text-[#555b6c] relative">
+                {/* {hero.company} */} code props
+                <span className="absolute -right-3 top-1 text-xl font-mono text-primary/30 opacity-0 animate-[fade-in_1s_ease-out_1.5s_forwards]">®</span>
               </span>
             </h1>
           </div>
@@ -122,7 +121,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
 
             <Link 
               href={`/${locale}/portfolio`}
-              className="group text-sm font-bold tracking-widest uppercase flex items-center gap-4 hover:text-primary transition-all"
+              className="group bg-[#dadfebfc] text-primary px-2 py-1 rounded-full  text-sm font-bold tracking-widest uppercase flex items-center gap-4 hover:text-primary/80 transition-all"
             >
               <div className="relative w-12 h-12 rounded-full border border-border flex items-center justify-center overflow-hidden transition-colors group-hover:border-primary">
                 <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
@@ -141,7 +140,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent pointer-events-none z-20" />
-    </section>
+      <div className="absolute bottom-0 left-0 right-0 h-16  bg-gradient-to-t from-background to-transparent pointer-events-none z-20" />
+    </section>  
   );
 }

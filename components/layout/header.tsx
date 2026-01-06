@@ -52,7 +52,7 @@ export function Header({ locale, translations }: HeaderProps) {
       <header 
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled 
-            ? 'border-b bg-background/80 backdrop-blur-md py-2' 
+            ? 'border-b  bg-background/80 backdrop-blur-md py-2' 
             : 'bg-transparent py-4'
         }`}
       >
@@ -61,20 +61,21 @@ export function Header({ locale, translations }: HeaderProps) {
             <div className="flex items-center gap-8">
               {/* Logo */}
               <Link href={`/${locale}`} className="flex items-center space-x-2">
-                <span className="text-2xl font-heading font-bold gradient-primary bg-clip-text text-transparent">
+                <span className="text-2xl font-heading font-bold bg-clip-text ">
                   Codeprops
                 </span>
               </Link>
 
               {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center space-x-8">
+              <nav className="hidden md:flex items-center ">
                 {navigation.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`text-sm font-semibold tracking-wide transition-colors hover:text-primary ${
-                      pathname === item.href
-                        ? 'text-foreground'
+                    className={`text-sm mx-2 md:mx-3 lg:mx-4 md:text-base font-semibold tracking-wide transition-colors hover:text-primary ${
+                      pathname?.replace(/\/$/, '') === item.href
+
+                        ? 'text-primary border-b-2 border-primary'
                         : 'text-muted-foreground'
                     }`}
                   >
@@ -87,12 +88,12 @@ export function Header({ locale, translations }: HeaderProps) {
             {/* Right Side - Actions */}
             <div className="flex items-center space-x-4">
               {/* Desktop Language Switcher (Optional, since we have drawer) */}
-              <div className="hidden lg:flex items-center space-x-3 pr-4 border-r">
+              <div className="hidden lg:flex items-center pr-4 border-r">
                 {locales.map((loc) => (
                   <Link
                     key={loc}
                     href={pathname?.replace(`/${locale}`, `/${loc}`) || `/${loc}`}
-                    className={`text-xs font-mono font-bold transition-colors hover:text-primary uppercase ${
+                    className={`text-xs mx-2 font-mono font-bold transition-colors hover:text-primary uppercase ${
                       locale === loc ? 'text-primary' : 'text-muted-foreground/60'
                     }`}
                   >
@@ -107,7 +108,7 @@ export function Header({ locale, translations }: HeaderProps) {
                   <LayoutGrid className="h-5 w-5" />
                 </Button>
                 
-                <Button className="hidden md:flex h-10 px-6 rounded-full" asChild>
+                <Button className="hidden md:flex h-10 px-6 rounded-full border border-primary" asChild>
                   <Link href={`/${locale}/contact`}>{translations.nav.contact}</Link>
                 </Button>
 
