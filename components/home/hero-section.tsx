@@ -2,8 +2,13 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { CinematicMesh } from '@/components/animations/cinematic-mesh';
 import { useEffect, useState } from 'react';
+
+// Defer heavy components using dynamic import (No SSR)
+const CinematicMesh = dynamic(
+  () => import('@/components/animations/cinematic-mesh'),
+  { ssr: false }
+);
 
 // Defer heavy components using dynamic import (No SSR)
 const InteractiveParticles = dynamic(
@@ -59,7 +64,8 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background pt-16">
       <CinematicMesh />
       {shouldRenderHeavy && (
-        <>
+        <> <CinematicMesh />
+
           <InteractiveParticles />
           <TechSculpture />
         </>
@@ -77,8 +83,10 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
 
           <div className="mb-6">
             {/* Pure CSS Fade/Up for Headlines */}
-            <h1 className="text-base md:text-lg font-mono font-medium text-foreground/60 mb-3 tracking-wide uppercase opacity-0 animate-[fade-up_0.8s_ease-out_0.3s_forwards]">
-              {hero.title}
+            <h1 className="text-base md:text-lg font-mono font-medium text-foreground/60 mb-3 tracking-wide uppercase ">
+              <span className="block text-foreground relative opacity-0 animate-[fade-up_0.8s_ease-out_0.3s_forwards]">
+                {hero.title}
+              </span>
             </h1>
             <h1 className="text-5xl md:text-7xl lg:text-9xl font-heading font-bold leading-[1] tracking-tighter opacity-0 animate-[fade-up_0.8s_ease-out_0.4s_forwards]">
               <span className="block text-foreground relative">
