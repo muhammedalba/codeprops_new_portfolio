@@ -67,7 +67,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background pt-16">
+    <section className="relative min-h-screen flex items-start md:items-center overflow-hidden bg-background md:pt-16">
       <CinematicMesh />
       {shouldRenderHeavy && (
         <>
@@ -78,7 +78,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
         </>
       )}
 
-      <div className="container relative z-10 mx-auto px-6 lg:px-12">
+      <div className="container relative mt-28 z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-4xl">
           {/* Static HTML for Brand Tag - Zero JS blocking */}
           <div className="flex items-center gap-3 mb-8 opacity-0 animate-[fade-up_0.8s_ease-out_0.2s_forwards]">

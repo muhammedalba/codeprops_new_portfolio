@@ -109,7 +109,7 @@ export function HomeClient({
                   <div className="absolute top-36 right-63 w-32 h-32 bg-primary/25 blur-3xl rounded-full  group-hover:bg-primary/35 group-hover:w-44 transition-opacity  duration-500" />
 
                   <div
-                    className={`w-14 h-14  mx-auto rounded-xl bg-primary/15 flex items-center justify-center mb-8 group-hover:bg-primary/75 text-foreground  group-hover:text-primary-foreground group-hover:rounded-full  transition-all duration-500`}
+                    className={`w-14 h-14  mx-auto rounded-xl bg-primary/15 flex items-center justify-center mb-8 group-hover:bg-primary/75 text-foreground  group-hover:text-primary-foreground group-hover:rounded-full transition-all duration-1000`}
                   >
                     <Icon className="w-7 h-7 " />
                   </div>
