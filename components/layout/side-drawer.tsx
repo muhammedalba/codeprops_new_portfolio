@@ -1,10 +1,18 @@
-'use client';
+"use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
-import Link from 'next/link';
-import { Locale, localeNames } from '@/lib/i18n';
-import { ThemeToggle } from './theme-toggle';
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  X,
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
+import Link from "next/link";
+import { Locale, localeNames } from "@/lib/i18n";
+import { ThemeToggle } from "./theme-toggle";
 
 interface SideDrawerProps {
   isOpen: boolean;
@@ -25,21 +33,23 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
             onClick={onClose}
             className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-sm md:hidden"
           />
-          
+
           {/* Drawer Content */}
           <motion.div
-            initial={{ x: '100%' }}
+            initial={{ x: "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed top-0 right-0 z-[70] h-full w-[300px] sm:w-[400px] bg-background border-l shadow-2xl overflow-y-auto"
           >
             <div className="p-8 flex flex-col h-full">
               <div className="flex justify-between items-center mb-12">
-                <span className="text-xl font-heading font-bold gradient-primary bg-clip-text text-transparent">
-                  Codeprops
+                <span className="text-xl font-heading font-bold bg-clip-text ">
+                  Code<span className="text-primary">Props</span>
                 </span>
                 <button
+                name="close button"
+                  title="close button"
                   onClick={onClose}
                   className="p-2 hover:bg-muted rounded-full transition-colors"
                 >
@@ -54,7 +64,9 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                     About Us
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    We are a senior engineering collective dedicated to building elite digital experiences that redefine technical excellence.
+                    We are a senior engineering collective dedicated to building
+                    elite digital experiences that redefine technical
+                    excellence.
                   </p>
                 </div>
 
@@ -67,7 +79,10 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                       <Mail className="h-5 w-5 text-primary/60 mt-0.5" />
                       <div>
                         <p className="text-xs text-muted-foreground">Email</p>
-                        <a href="mailto:info@codeprops.com" className="font-medium hover:text-primary transition-colors">
+                        <a
+                          href="mailto:info@codeprops.com"
+                          className="font-medium hover:text-primary transition-colors"
+                        >
                           info@codeprops.com
                         </a>
                       </div>
@@ -76,7 +91,10 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                       <Phone className="h-5 w-5 text-primary/60 mt-0.5" />
                       <div>
                         <p className="text-xs text-muted-foreground">Phone</p>
-                        <a href="tel:+15551234567" className="font-medium hover:text-primary transition-colors">
+                        <a
+                          href="tel:+15551234567"
+                          className="font-medium hover:text-primary transition-colors"
+                        >
                           +1 (555) 123-4567
                         </a>
                       </div>
@@ -84,7 +102,9 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                     <li className="flex items-start gap-3">
                       <MapPin className="h-5 w-5 text-primary/60 mt-0.5" />
                       <div>
-                        <p className="text-xs text-muted-foreground">Location</p>
+                        <p className="text-xs text-muted-foreground">
+                          Location
+                        </p>
                         <p className="font-medium">
                           Elite Tech Center, Istanbul, TR
                         </p>
@@ -103,9 +123,9 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                         key={key}
                         href={`/${key}`}
                         className={`text-center py-2 rounded-lg text-sm font-medium border transition-all ${
-                          locale === key 
-                          ? 'border-primary bg-primary/5 text-primary' 
-                          : 'border-border hover:border-primary/40'
+                          locale === key
+                            ? "border-primary bg-primary/5 text-primary"
+                            : "border-border hover:border-primary/40"
                         }`}
                       >
                         {name}
@@ -128,13 +148,22 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
               {/* Socials & Legal */}
               <div className="pt-8 border-t space-y-6">
                 <div className="flex gap-4">
-                  <a href="#" className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all">
+                  <a
+                    href="#"
+                    className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
+                  >
                     <Twitter className="h-5 w-5" />
                   </a>
-                  <a href="#" className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all">
+                  <a
+                    href="#"
+                    className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
+                  >
                     <Linkedin className="h-5 w-5" />
                   </a>
-                  <a href="#" className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all">
+                  <a
+                    href="#"
+                    className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
+                  >
                     <Github className="h-5 w-5" />
                   </a>
                 </div>

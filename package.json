@@ -1,8 +1,8 @@
 {
-      "name": "codeprops",
+      "name": "codeProps",
       "version": "1.0.0",
       "private": true,
-      "description": "Codeprops - High-performance multilingual static website",
+      "description": "CodeProps - High-performance multilingual static website",
       "scripts": {
             "dev": "next dev",
             "build": "next build",

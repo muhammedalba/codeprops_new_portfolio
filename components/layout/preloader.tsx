@@ -92,7 +92,7 @@ export function Preloader() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
                 className="text-2xl md:text-3xl font-heading font-bold tracking-widest uppercase text-foreground"
               >
-                Codeprops
+                 Code<span className="text-primary">Props</span>
               </motion.h2>
             </div>
 

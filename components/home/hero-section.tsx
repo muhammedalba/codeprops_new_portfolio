@@ -1,23 +1,26 @@
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 // Defer heavy components using dynamic import (No SSR)
 const CinematicMesh = dynamic(
-  () => import('@/components/animations/cinematic-mesh'),
+  () => import("@/components/animations/cinematic-mesh"),
   { ssr: false }
 );
 
 // Defer heavy components using dynamic import (No SSR)
 const InteractiveParticles = dynamic(
-  () => import('@/components/animations/interactive-particles'),
+  () => import("@/components/animations/interactive-particles"),
   { ssr: false }
 );
 
 const TechSculpture = dynamic(
-  () => import('@/components/animations/tech-sculpture').then(m => m.TechSculpture),
+  () =>
+    import("@/components/animations/tech-sculpture").then(
+      (m) => m.TechSculpture
+    ),
   { ssr: false }
 );
 
@@ -49,10 +52,13 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
       return timer;
     };
 
-    if ('requestIdleCallback' in window) {
-      const idleId = window.requestIdleCallback(() => {
-        setShouldRenderHeavy(true);
-      }, { timeout: 3000 });
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(
+        () => {
+          setShouldRenderHeavy(true);
+        },
+        { timeout: 3000 }
+      );
       return () => window.cancelIdleCallback(idleId);
     } else {
       const timer = deferEffect();
@@ -64,7 +70,9 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background pt-16">
       <CinematicMesh />
       {shouldRenderHeavy && (
-        <> <CinematicMesh />
+        <>
+          {" "}
+          <CinematicMesh />
           <InteractiveParticles />
           <TechSculpture />
         </>
@@ -89,8 +97,11 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
             </h1>
             <h1 className="text-3xl md:text-7xl lg:text-8xl font-heading font-bold leading-[1] tracking-tighter opacity-0 animate-[fade-up_0.8s_ease-out_0.4s_forwards]">
               <span className="block text-[#555b6c] relative">
-                {/* {hero.company} */} code props
-                <span className="absolute -right-3 top-1 text-xl font-mono text-primary/30 opacity-0 animate-[fade-in_1s_ease-out_1.5s_forwards]">®</span>
+                {/* {hero.company} */} 
+                Code<span className="text-primary">Props</span>
+                <span className="absolute start-3 top-1 text-xl font-mono text-primary/30 opacity-0 animate-[fade-in_1s_ease-out_1.5s_forwards]">
+                  ®
+                </span>
               </span>
             </h1>
           </div>
@@ -106,7 +117,10 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 opacity-0 animate-[fade-up_0.8s_ease-out_0.7s_forwards]">
-            <Link href={`/${locale}/contact`} className="relative group overflow-hidden rounded-full">
+            <Link
+              href={`/${locale}/contact`}
+              className="relative group overflow-hidden rounded-full"
+            >
               <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
               <Button
                 size="lg"
@@ -119,7 +133,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
               </Button>
             </Link>
 
-            <Link 
+            <Link
               href={`/${locale}/portfolio`}
               className="group bg-[#dadfebfc] text-primary px-2 py-1 rounded-full  text-sm font-bold tracking-widest uppercase flex items-center gap-4 hover:text-primary/80 transition-all"
             >
@@ -132,7 +146,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-4 opacity-0 animate-[fade-in_1s_ease-out_2s_forwards]">
+        <div className="absolute bottom-10 end-6 lg:end-12 flex items-center gap-4 opacity-0 animate-[fade-in_1s_ease-out_2s_forwards]">
           <div className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent" />
           <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-muted-foreground vertical-text">
             Scroll to Explore
@@ -141,6 +155,6 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-16  bg-gradient-to-t from-background to-transparent pointer-events-none z-20" />
-    </section>  
+    </section>
   );
 }

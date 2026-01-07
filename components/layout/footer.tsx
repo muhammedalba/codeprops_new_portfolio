@@ -53,13 +53,14 @@ export function Footer({ locale, translations }: FooterProps) {
   return (
     <footer className="border-t bg-muted/50">
       <Container>
-        <div className="py-12 md:py-16">
+        <div className="py-12 md:pt-16 md:pb-2">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="space-y-4">
               <Link href={`/${locale}`} className="inline-block">
-                <span className="text-2xl font-heading font-bold gradient-primary bg-clip-text text-transparent">
-                  Codeprops
+                <span className="text-2xl font-bold">
+                  {/* <span className="text-2xl font-bold gradient-primary bg-clip-text text-transparent"></span> */}
+                  Code<span className="text-primary">Props</span>
                 </span>
               </Link>
               <p className="text-sm text-muted-foreground">
@@ -136,7 +137,7 @@ export function Footer({ locale, translations }: FooterProps) {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-12 pt-8 border-t">
+          <div className="mt-12 pt-2 border-t">
             <p className="text-center text-sm text-muted-foreground">
               © {currentYear} Codeprops. {translations.footer.copyright}
             </p>

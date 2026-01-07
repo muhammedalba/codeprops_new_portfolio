@@ -62,9 +62,10 @@ export function Header({ locale, translations }: HeaderProps) {
               {/* Logo */}
               <Link href={`/${locale}`} className="flex items-center space-x-2">
                 <span className="text-2xl font-heading font-bold bg-clip-text ">
-                  Codeprops
+                   Code<span className="text-primary">Props</span>
                 </span>
               </Link>
+              
 
               {/* Desktop Navigation */}
               <nav className="hidden md:flex items-center ">
