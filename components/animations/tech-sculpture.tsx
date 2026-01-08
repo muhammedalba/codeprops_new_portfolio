@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 export function TechSculpture() {
   return (
     <div className="absolute inset-x-0 inset-y-0 pointer-events-none flex items-center justify-center lg:justify-end lg:pr-[8%] overflow-hidden">
-      <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] flex items-center justify-center opacity-30 lg:opacity-100 transition-opacity duration-1000">
+      <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] flex items-center justify-center opacity-50  transition-opacity duration-1000">
         {/* Layered Technical Rings - Representing Stack Layers */}
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-[20%] border border-primary/10"
+            className="absolute rounded-[20%] border border-primary/15"
             style={{
               width: `${100 - i * 18}%`,
               height: `${100 - i * 18}%`,

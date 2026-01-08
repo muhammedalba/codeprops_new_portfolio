@@ -44,7 +44,7 @@ export function HomeClient({
       {/* About Section - Premium Agency Style */}
       <section className="py-24 bg-muted/50 relative overflow-hidden">
         {/* Subtle Background Text */}
-        <div className="absolute top-10 left-10 text-[10vw] font-bold text-foreground/[0.03] select-none pointer-events-none uppercase">
+        <div className="absolute top-10 left-10 text-[10vw] font-bold text-foreground/[0.06] select-none pointer-events-none uppercase">
           Agency
         </div>
 
@@ -130,7 +130,7 @@ export function HomeClient({
                   </Link>
 
                   {/* Diagonal Decoration */}
-                  <div className="absolute bottom-4 right-4 text-[4rem] font-bold text-foreground/[0.02] select-none pointer-events-none">
+                  <div className="absolute bottom-4 right-4 text-[4rem] font-bold text-foreground/[0.07] select-none pointer-events-none">
                     0{i + 1}
                   </div>
                 </div>

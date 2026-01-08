@@ -52,7 +52,7 @@ export function Header({ locale, translations }: HeaderProps) {
       <header 
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled 
-            ? 'border-b  bg-background/80 backdrop-blur-md py-2' 
+            ? 'border-b  bg-background/70 backdrop-blur-md py-2' 
             : 'bg-transparent py-4'
         }`}
       >
@@ -68,14 +68,13 @@ export function Header({ locale, translations }: HeaderProps) {
               
 
               {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center ">
+              <nav className="hidden lg:flex items-center ">
                 {navigation.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`text-sm mx-2 md:mx-3 lg:mx-4 md:text-base font-semibold tracking-wide transition-colors hover:text-primary ${
+                    className={`text-sm mx-1 md:mx-3 lg:mx-4 md:text-base font-semibold tracking-wide transition-colors hover:text-primary ${
                       pathname?.replace(/\/$/, '') === item.href
-
                         ? 'text-primary border-b-2 border-primary'
                         : 'text-muted-foreground'
                     }`}
@@ -89,13 +88,13 @@ export function Header({ locale, translations }: HeaderProps) {
             {/* Right Side - Actions */}
             <div className="flex items-center space-x-4">
               {/* Desktop Language Switcher (Optional, since we have drawer) */}
-              <div className="hidden lg:flex items-center pr-4 border-r">
+              <div className="flex items-center pr-4 border-r">
                 {locales.map((loc) => (
                   <Link
                     key={loc}
                     href={pathname?.replace(`/${locale}`, `/${loc}`) || `/${loc}`}
-                    className={`text-xs mx-2 font-mono font-bold transition-colors hover:text-primary uppercase ${
-                      locale === loc ? 'text-primary' : 'text-muted-foreground/60'
+                    className={`text-xs  mx-2 font-mono font-bold transition-colors hover:text-primary hover:underline  uppercase ${
+                      locale === loc ? 'hidden' : 'text-muted-foreground/60'
                     }`}
                   >
                     {loc}

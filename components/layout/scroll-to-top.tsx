@@ -56,7 +56,7 @@ export function ScrollToTop() {
               <circle
                 cx="28"
                 cy="28"
-                r="26"
+                r="25"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -66,7 +66,7 @@ export function ScrollToTop() {
               <motion.circle
                 cx="28"
                 cy="28"
-                r="26"
+                r="25"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
