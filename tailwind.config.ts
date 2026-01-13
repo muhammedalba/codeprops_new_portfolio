@@ -73,7 +73,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
+        sans: ["var(--font-heading)"],
         heading: ["var(--font-heading)"],
       },
       animation: {

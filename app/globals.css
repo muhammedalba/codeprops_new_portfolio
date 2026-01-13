@@ -5,9 +5,7 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-     /* --foreground: 224 71% 4%; */
-     
-    --foreground: 225 12% 30%;
+    --foreground: 224 71% 4%;
     --card: 0 0% 100%;
     --card-foreground: 224 71% 4%;
     --popover: 0 0% 100%;
@@ -138,7 +136,6 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-    
   }
 
   .container-query {
@@ -179,7 +176,6 @@
 
   .glass {
     background: rgba(255, 255, 255, 0.1);
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
@@ -209,6 +205,16 @@
 
     to {
       opacity: 1;
+    }
+  }
+
+  @keyframes reveal-up {
+    from {
+      transform: translateY(100%);
+    }
+
+    to {
+      transform: translateY(0);
     }
   }
 

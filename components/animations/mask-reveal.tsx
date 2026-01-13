@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 interface MaskRevealProps {
   children: React.ReactNode;
   delay?: number;
@@ -11,18 +9,14 @@ interface MaskRevealProps {
 export function MaskReveal({ children, delay = 0, className = "" }: MaskRevealProps) {
   return (
     <div className={`overflow-hidden ${className}`}>
-      <motion.div
-        initial={{ y: '100%' }}
-        whileInView={{ y: 0 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 1,
-          delay: delay,
-          ease: [0.16, 1, 0.3, 1], // Quintic ease-out
-        }}
+      <div 
+        className="animate-[reveal-up_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards] translate-y-full opacity-0 [animation-delay:var(--delay)]"
+        style={{ '--delay': `${delay}s` } as React.CSSProperties}
       >
-        {children}
-      </motion.div>
+        <div className="opacity-100">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

@@ -27,6 +27,9 @@ export async function generateMetadata({
   });
 }
 
+import { PageHeader } from '@/components/ui/page-header';
+import { SectionBadge } from '@/components/ui/section_badge';
+
 export default async function PortfolioPage({
   params,
 }: {
@@ -36,46 +39,42 @@ export default async function PortfolioPage({
   const t = getMessages(locale as Locale);
 
   return (
-    <div className="pt-32">
-      <Container className="pb-24">
-        <div className="max-w-4xl mb-20 text-center mx-auto">
-          <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 tracking-tighter">
-            {t.portfolio.title}
-          </h1>
-          <p className="text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            {t.portfolio.subtitle}
-          </p>
-        </div>
+    <div>
+      <PageHeader 
+        title={t.portfolio.title}
+        description={t.portfolio.subtitle}
+      />
 
-        <div className="grid gap-24">
+      <Container className="pb-24">
+        <div className="grid gap-32">
           {t.portfolio.projects.map((project: any, i: number) => (
             <div key={project.slug} className="group overflow-hidden">
-               <div className="grid lg:grid-cols-2 gap-12 items-center">
+               <div className="grid lg:grid-cols-2 gap-16 items-center">
                   <div className={`order-2 ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-                     <div className="flex items-center gap-3 mb-6">
-                        <span className="px-4 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest">
+                     <div className="flex items-center gap-4 mb-8">
+                        <SectionBadge variant="outline" className="mb-0">
                            {project.category}
-                        </span>
-                        <div className="h-px w-12 bg-border" />
-                        <span className="text-xs font-mono text-muted-foreground">0{i+1}</span>
+                        </SectionBadge>
+                        <div className="h-px w-12 bg-border/50" />
+                        <span className="text-sm font-mono text-muted-foreground/60">PRJ-0{i+1}</span>
                      </div>
-                     <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 group-hover:text-primary transition-colors leading-tight">
+                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-8 group-hover:text-primary transition-colors leading-[1.1]">
                         {project.title}
                      </h2>
-                     <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+                     <p className="text-xl text-muted-foreground leading-relaxed mb-10">
                         {project.description}
                      </p>
                      
-                     <div className="grid sm:grid-cols-2 gap-6 mb-10">
-                        <div className="p-4 rounded-2xl bg-muted/30 border border-border/50">
-                           <h4 className="text-xs font-mono uppercase text-primary mb-2">Technical Result</h4>
-                           <p className="text-sm font-bold">{project.result}</p>
+                     <div className="grid sm:grid-cols-2 gap-6 mb-12">
+                        <div className="p-6 rounded-[2rem] bg-muted/30 border border-border/50 backdrop-blur-sm">
+                           <h4 className="text-xs font-mono font-bold uppercase text-primary mb-3 tracking-widest">Technical Result</h4>
+                           <p className="text-base font-bold text-foreground/90">{project.result}</p>
                         </div>
-                        <div className="p-4 rounded-2xl bg-muted/30 border border-border/50">
-                           <h4 className="text-xs font-mono uppercase text-primary mb-2">Stack</h4>
+                        <div className="p-6 rounded-[2rem] bg-muted/30 border border-border/50 backdrop-blur-sm">
+                           <h4 className="text-xs font-mono font-bold uppercase text-primary mb-3 tracking-widest">Stack</h4>
                            <div className="flex flex-wrap gap-2">
                               {project.tech.map((t: string) => (
-                                 <span key={t} className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-background border border-border">
+                                 <span key={t} className="text-[10px] font-bold px-3 py-1 rounded-full bg-background border border-border shadow-sm">
                                     {t}
                                  </span>
                               ))}
@@ -85,20 +84,26 @@ export default async function PortfolioPage({
 
                      <Link 
                         href={`/${locale}/portfolio/${project.slug}`}
-                        className="inline-flex items-center gap-2 text-lg font-bold group/link"
+                        className="inline-flex items-center gap-4 text-xl font-bold group/link"
                      >
-                        {t.portfolio.viewProject}
-                        <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover/link:bg-primary group-hover/link:border-primary transition-all">
-                           <ArrowUpRight className="w-5 h-5 group-hover/link:text-primary-foreground" />
+                        <span className="relative">
+                          {t.portfolio.viewProject}
+                          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover/link:w-full transition-all duration-500" />
+                        </span>
+                        <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover/link:bg-primary group-hover/link:border-primary transition-all duration-500 overflow-hidden">
+                           <ArrowUpRight className="w-6 h-6 group-hover/link:text-primary-foreground translate-y-0 translate-x-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
                         </div>
                      </Link>
                   </div>
                   
-                  <div className={`order-1 ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} aspect-[4/3] rounded-[3rem] bg-muted relative overflow-hidden group/img`}>
+                  <div className={`order-1 ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} aspect-[1.1/1] rounded-[4rem] bg-muted/50 border border-border/50 relative overflow-hidden group/img shadow-2xl transition-transform duration-700 hover:scale-[1.02]`}>
                      <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-700" />
-                     <div className="absolute inset-0 flex items-center justify-center text-8xl font-black text-foreground/[0.03] select-none uppercase tracking-tighter">
-                        Solution
+                     <div className="absolute inset-0 flex items-center justify-center text-[15vw] font-black text-foreground/[0.02] select-none uppercase tracking-tighter rotate-12">
+                        {project.slug.split('-')[0]}
                      </div>
+                     {/* Decorative Elements */}
+                     <div className="absolute top-12 right-12 w-24 h-24 bg-primary/10 blur-3xl rounded-full" />
+                     <div className="absolute bottom-12 left-12 w-32 h-32 bg-primary/5 blur-3xl rounded-full" />
                   </div>
                </div>
             </div>

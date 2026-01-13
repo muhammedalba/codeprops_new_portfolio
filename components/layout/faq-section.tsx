@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/section-header';
+import { GlassCard } from '@/components/ui/glass-card';
 
 interface FAQItem {
   q: string;
@@ -21,20 +23,17 @@ export function FAQSection({ title, subtitle, questions }: FAQSectionProps) {
   return (
     <section className="py-24">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-16 text-center">
-          <h2 className="text-sm font-mono font-bold tracking-[0.4em] uppercase text-primary mb-4">
-            {title}
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-heading font-bold">
-            {subtitle}
-          </h3>
-        </div>
+        <SectionHeader 
+          badge={title}
+          title={subtitle}
+        />
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {questions.map((item, i) => (
-            <div 
+            <GlassCard 
               key={i}
-              className="rounded-[2rem] border border-border bg-muted/20 overflow-hidden"
+              hoverEffect={false}
+              className={`p-0 rounded-[2.5rem] overflow-hidden border-border/50 ${openIndex === i ? 'border-primary/30' : ''}`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -66,7 +65,7 @@ export function FAQSection({ title, subtitle, questions }: FAQSectionProps) {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </GlassCard>
           ))}
         </div>
       </div>

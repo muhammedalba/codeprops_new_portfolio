@@ -28,6 +28,10 @@ export async function generateMetadata({
 
 import { MiniContact } from '@/components/contact/mini-contact';
 
+import { PageHeader } from '@/components/ui/page-header';
+import { GlassCard } from '@/components/ui/glass-card';
+import { GlowEffect } from '@/components/ui/glow-effect';
+
 export default async function ServicesPage({
   params,
 }: {
@@ -45,7 +49,7 @@ export default async function ServicesPage({
   ];
 
   return (
-    <div className="pt-32">
+    <div>
       {/* FAQ Schema */}
       <script
         type="application/ld+json"
@@ -54,39 +58,38 @@ export default async function ServicesPage({
         }}
       />
 
-      <Container className="pb-24">
-        <div className="max-w-4xl mb-20">
-          <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 tracking-tighter">
-            {t.services.title}
-          </h1>
-          <p className="text-2xl text-muted-foreground leading-relaxed">
-            {t.services.subtitle}
-          </p>
-        </div>
+      <PageHeader 
+        title={t.services.title}
+        description={t.services.subtitle}
+      />
 
-        <div className="grid gap-8 mb-32">
+      <Container className="pb-24">
+        <div className="grid gap-12 mb-32">
           {servicesList.map((service, i) => (
-            <div 
+            <GlassCard 
               key={service.key}
-              className="group relative p-8 md:p-12 rounded-[3rem] border border-border bg-muted/20 hover:bg-muted/30 transition-all duration-500"
+              className="group p-8 md:p-12 rounded-[3.5rem] overflow-hidden"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <GlowEffect size="lg" className="top-0 right-0 opacity-10 group-hover:opacity-20" />
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-12">
                 <div className="max-w-2xl">
-                  <span className="text-primary font-mono text-sm mb-4 block">0{i+1}. Capabilities</span>
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 group-hover:text-primary transition-colors">
+                  <span className="text-primary font-mono text-sm mb-6 block tracking-[0.3em] uppercase">
+                    0{i+1}. Professional Capability
+                  </span>
+                  <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 group-hover:text-primary transition-colors leading-tight">
                     {service.title}
                   </h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-xl text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
                 </div>
                 <div className="shrink-0">
-                  <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500">
-                    <ArrowUpRight className="w-6 h-6 group-hover:text-primary-foreground" />
+                  <div className="w-20 h-20 rounded-full border border-border/50 bg-background/50 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-700 shadow-xl">
+                    <ArrowUpRight className="w-8 h-8 group-hover:text-primary-foreground transition-colors" />
                   </div>
                 </div>
               </div>
-            </div>
+            </GlassCard>
           ))}
         </div>
 
