@@ -1,6 +1,6 @@
 'use client';
 
-export default function CinematicMesh() {
+export function CinematicMesh() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Base Deep Background */}

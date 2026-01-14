@@ -93,6 +93,11 @@
     direction: rtl;
   }
 
+  [lang="ar"] {
+    --font-heading: var(--font-arabic) !important;
+    font-family: var(--font-arabic), serif !important;
+  }
+
   [dir="ltr"] {
     direction: ltr;
   }
@@ -240,6 +245,28 @@
     50% {
       transform: translate(-40px, -30px);
     }
+  }
+
+  /* Seamless Infinite Marquee */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee-container {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--duration, 40s) linear infinite;
+  }
+
+  /* Mask to fade edges smoothly */
+  .mask-fade {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   }
 
   .vertical-text {

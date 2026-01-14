@@ -6,7 +6,7 @@ import { loadSlim } from "@tsparticles/slim";
 import { type ISourceOptions } from "@tsparticles/engine";
 import { useTheme } from "next-themes";
 
-export default function InteractiveParticles() {
+export function InteractiveParticles() {
   const [init, setInit] = useState(false);
   const { theme, resolvedTheme } = useTheme();
 

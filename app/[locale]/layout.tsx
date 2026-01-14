@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Amiri } from "next/font/google";
 import "../globals.css";
 import { cn } from "@/lib/utils";
 import { Locale, getDirection, locales } from "@/lib/i18n";
@@ -15,10 +15,16 @@ const fontHeading = Outfit({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
-  weight: ["400", "700"], // Combined weights into one family
+  weight: ["400", "700"],
 });
 
-// Generate static params for all locales
+const fontArabic = Amiri({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+  weight: ["400", "700"],
+  display: "swap",
+});
+
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -74,7 +80,9 @@ export default function LocaleLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased flex flex-col",
-          fontHeading.variable
+          fontHeading.variable,
+          fontArabic.variable,
+          typedLocale === 'ar' && "font-arabic"
         )}
       >
         <ThemeProvider

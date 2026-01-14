@@ -4,25 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-// Defer heavy components using dynamic import (No SSR)
-const CinematicMesh = dynamic(
-  () => import("@/components/animations/cinematic-mesh"),
-  { ssr: false }
-);
-
-// Defer heavy components using dynamic import (No SSR)
-const InteractiveParticles = dynamic(
-  () => import("@/components/animations/interactive-particles"),
-  { ssr: false }
-);
-
-const TechSculpture = dynamic(
-  () =>
-    import("@/components/animations/tech-sculpture").then(
-      (m) => m.TechSculpture
-    ),
-  { ssr: false }
-);
+import { HeroBackground } from "@/components/layout/hero-background";
 
 interface HeroSectionProps {
   locale: string;
@@ -40,45 +22,12 @@ interface HeroSectionProps {
 
 export function HeroSection({ locale, translations }: HeroSectionProps) {
   const { hero } = translations;
-  const [shouldRenderHeavy, setShouldRenderHeavy] = useState(false);
-
-  useEffect(() => {
-    // Crucial: Use requestIdleCallback to delay heavy effects until the browser is free
-    // Falling back to a long timeout if requestIdleCallback is not supported
-    const deferEffect = () => {
-      const timer = setTimeout(() => {
-        setShouldRenderHeavy(true);
-      }, 2000);
-      return timer;
-    };
-
-    if ("requestIdleCallback" in window) {
-      const idleId = window.requestIdleCallback(
-        () => {
-          setShouldRenderHeavy(true);
-        },
-        { timeout: 3000 }
-      );
-      return () => window.cancelIdleCallback(idleId);
-    } else {
-      const timer = deferEffect();
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   return (
     <section className="relative min-h-screen flex items-start md:items-center overflow-hidden bg-background md:pt-16">
-      <CinematicMesh />
-      {shouldRenderHeavy && (
-        <>
-          {" "}
-          <CinematicMesh />
-          <InteractiveParticles />
-          <TechSculpture />
-        </>
-      )}
+      <HeroBackground type="home" />
 
-      <div className="container relative mt-28 z-10 mx-auto px-6 lg:px-12">
+      <div className="container relative mt-16 z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-4xl">
           {/* Static HTML for Brand Tag - Zero JS blocking */}
           <div className="flex items-center gap-3 mb-8 opacity-0 animate-[fade-up_0.8s_ease-out_0.2s_forwards]">

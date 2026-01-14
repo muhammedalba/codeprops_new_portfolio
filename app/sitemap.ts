@@ -1,5 +1,6 @@
 import { locales, defaultLocale } from '@/lib/i18n';
 import { getMessages } from '@/lib/translations';
+import { serviceSlugs } from '@/lib/services';
 import type { MetadataRoute } from 'next'
 
 // Required for static export
@@ -16,13 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/portfolio',
     '/blog',
     '/contact',
-    // Individual services
-    '/services/web',
-    '/services/custom',
-    '/services/ecommerce',
-    '/services/cloud',
-    '/services/performance',
   ];
+
+  // Dynamically add service pages
+  serviceSlugs.forEach(slug => {
+    pages.push(`/services/${slug}`);
+  });
 
   const sitemap: MetadataRoute.Sitemap = [];
 

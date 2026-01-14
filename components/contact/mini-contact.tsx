@@ -11,8 +11,20 @@ interface MiniContactProps {
     form: {
       name: string;
       email: string;
+      subject: string;
+      projectType: string;
+      projectTypes: {
+        web: string;
+        mobile: string;
+        cloud: string;
+        consulting: string;
+        other: string;
+      };
       message: string;
       send: string;
+      success_title: string;
+      success_message: string;
+      error: string;
     };
   };
 }

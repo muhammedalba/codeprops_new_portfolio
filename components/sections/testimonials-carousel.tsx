@@ -33,13 +33,17 @@ export function TestimonialsCarousel({
   const cardWidthRef = useRef(0);
   const totalWidthOfOneSetRef = useRef(0);
   const isInitialized = useRef(false);
+  const isRTL = useRef(false);
 
   // لضمان عدم حدوث فراغات، نقوم بتكرار المصفوفة عدة مرات
-  // 6 مرات كافية جداً لتغطية أي شاشة مهما كان عدد التقييمات قليلاً
   const loopItems = [...testimonials, ...testimonials, ...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   const measure = useCallback(() => {
     if (!trackRef.current) return;
+    
+    // اكتشاف الاتجاه (RTL vs LTR)
+    isRTL.current = window.getComputedStyle(trackRef.current).direction === 'rtl';
+
     const firstCard = trackRef.current.querySelector('article');
     if (!firstCard) return;
 
@@ -50,15 +54,18 @@ export function TestimonialsCarousel({
     totalWidthOfOneSetRef.current = cardWidthRef.current * testimonials.length;
     
     if (!isInitialized.current) {
-      // نبدأ من نقطة مدروسة في المنتصف لتجنب أي حواف
-      scrollPosRef.current = -totalWidthOfOneSetRef.current * 2;
+      // في LTR نتحرك لليسار بسالب، في RTL نتحرك لليسار (مادياً) ولكن المرجعية تختلف
+      // لتجنب القفزات، نبدأ من موضع يعادل مجموعتين
+      scrollPosRef.current = isRTL.current 
+        ? totalWidthOfOneSetRef.current * 2 
+        : -totalWidthOfOneSetRef.current * 2;
+        
       trackRef.current.style.transform = `translate3d(${scrollPosRef.current}px, 0, 0)`;
       isInitialized.current = true;
     }
   }, [testimonials.length]);
 
   useEffect(() => {
-    // القياس الأولي بعد رندر البطاقات
     const timer = setTimeout(measure, 200);
     window.addEventListener('resize', measure);
     return () => {
@@ -78,13 +85,22 @@ export function TestimonialsCarousel({
     const delta = timestamp - lastTimestampRef.current;
     lastTimestampRef.current = timestamp;
 
-    // التحريك المستمر لليسار
-    scrollPosRef.current -= (autoScrollSpeed * delta) / 1000;
+    // سرعة التحريك
+    const step = (autoScrollSpeed * delta) / 1000;
 
-    // نظام الـ Reset الصامت:
-    // إذا تجاوزنا المجموعة الثانية، نعود للخلف بمقدار مجموعة واحدة لإيجاد استمرارية
-    if (Math.abs(scrollPosRef.current) >= totalWidthOfOneSetRef.current * 3) {
-      scrollPosRef.current += totalWidthOfOneSetRef.current;
+    if (isRTL.current) {
+      // في RTL، التحرك "لليسار" يعني زيادة الـ X (لأن نقطة الصفر على اليمين)
+      // ولكن لكي يبدو التحريك مستمراً بنفس الاتجاه البصري:
+      scrollPosRef.current += step;
+      if (scrollPosRef.current >= totalWidthOfOneSetRef.current * 3) {
+        scrollPosRef.current -= totalWidthOfOneSetRef.current;
+      }
+    } else {
+      // في LTR، التحرك لليسار يعني تقليل الـ X
+      scrollPosRef.current -= step;
+      if (Math.abs(scrollPosRef.current) >= totalWidthOfOneSetRef.current * 3) {
+        scrollPosRef.current += totalWidthOfOneSetRef.current;
+      }
     }
 
     trackRef.current.style.transform = `translate3d(${scrollPosRef.current}px, 0, 0)`;
@@ -102,14 +118,12 @@ export function TestimonialsCarousel({
     if (!trackRef.current || !isInitialized.current) return;
     setIsPaused(true);
     
-    // التحريك لليسار (التالي)
-    scrollPosRef.current -= cardWidthRef.current;
+    // "التالي" بصرياً هو دائماً لليسار
+    scrollPosRef.current += isRTL.current ? cardWidthRef.current : -cardWidthRef.current;
 
-    // تطبيق الانتقال السلس
     trackRef.current.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
     trackRef.current.style.transform = `translate3d(${scrollPosRef.current}px, 0, 0)`;
 
-    // العودة للوضع الطبيعي بعد الانتهاء
     setTimeout(() => {
       if (trackRef.current) trackRef.current.style.transition = 'none';
       setIsPaused(false);
@@ -120,8 +134,8 @@ export function TestimonialsCarousel({
     if (!trackRef.current || !isInitialized.current) return;
     setIsPaused(true);
 
-    // التحريك لليمين (السابق)
-    scrollPosRef.current += cardWidthRef.current;
+    // "السابق" بصرياً هو دائماً لليمين
+    scrollPosRef.current += isRTL.current ? -cardWidthRef.current : cardWidthRef.current;
 
     trackRef.current.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
     trackRef.current.style.transform = `translate3d(${scrollPosRef.current}px, 0, 0)`;
@@ -147,7 +161,7 @@ export function TestimonialsCarousel({
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* حواف مظللة للتلاشي */}
+        {/* حواف مظللة للتلاشي - تدعم الاتجاهين */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
@@ -164,16 +178,16 @@ export function TestimonialsCarousel({
           ))}
         </div>
 
-        {/* أزرار التحكم - اتجاهات ثابتة */}
+        {/* أزرار التحكم - أماكن ثابتة بصرياً (يسار ويمين الشاشة) */}
         <button
-          onClick={movePrev}
+          onClick={isRTL.current ? moveNext : movePrev}
           className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 flex items-center justify-center rounded-full bg-background/90 backdrop-blur-md border border-border/50 text-foreground shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group-hover:opacity-100 md:opacity-0"
           aria-label="Previous"
         >
           <ChevronLeft className="w-8 h-8" />
         </button>
         <button
-          onClick={moveNext}
+          onClick={isRTL.current ? movePrev : moveNext}
           className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 flex items-center justify-center rounded-full bg-background/90 backdrop-blur-md border border-border/50 text-foreground shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group-hover:opacity-100 md:opacity-0"
           aria-label="Next"
         >

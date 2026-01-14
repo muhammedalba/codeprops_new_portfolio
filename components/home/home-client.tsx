@@ -6,6 +6,8 @@ import { HeroSection } from "@/components/home/hero-section";
 import { WaveDivider } from "@/components/layout/wave-divider";
 import { SectionHeader } from "@/components/ui/section-header";
 import { AboutSection } from "@/components/sections/about-section";
+import { SectionReveal } from "@/components/animations/section-reveal";
+import Link from "next/link";
 
 // Dynamic imports for sections below the fold to improve LCP and initial load performance
 const ServicesSection = dynamic(() => import("@/components/sections/services-section").then(m => m.ServicesSection));
@@ -14,6 +16,8 @@ const PricingCard = dynamic(() => import("@/components/sections/pricing-card").t
 const TestimonialsCarousel = dynamic(() => import("@/components/sections/testimonials-carousel").then(m => m.TestimonialsCarousel));
 const BlogCard = dynamic(() => import("@/components/sections/blog-card").then(m => m.BlogCard));
 const MiniContact = dynamic(() => import("@/components/contact/mini-contact").then(m => m.MiniContact));
+const TechStackMarquee = dynamic(() => import("@/components/home/tech-stack-marquee").then(m => m.TechStackMarquee), { ssr: false });
+
 const Button = dynamic(() => import("@/components/ui/button").then(m => m.Button));
 
 interface HomeClientProps {
@@ -25,118 +29,124 @@ export function HomeClient({
   locale: typedLocale,
   translations: t,
 }: HomeClientProps) {
+  const latestPosts = t.blog.posts.slice(0, 3);
+  const latestProjects = t.portfolio.projects.slice(0, 3);
+
   return (
-    <main className="w-full">
-      {/* 🚀 LCP Element: Keep Hero static for max speed */}
+    <main className="w-full bg-background">
+      {/* 🚀 Hero Section */}
       <HeroSection locale={typedLocale} translations={t} />
 
-      <WaveDivider />
+      {/* Tech Stack Marquee (Premium UX) - Lazy Loaded */}
+      <TechStackMarquee />
 
-      {/* About Section - Crucial for SEO (Keyword Context) */}
-      <AboutSection 
-        id="about-section"
-        badge="Our Essence"
-        title={t.about.title}
-        subtitle={t.about.subtitle}
-        description={t.about.description}
-      />
+      {/* About Section - Redesigned for Impact */}
+      <SectionReveal>
+        <AboutSection 
+          id="about-section"
+          badge={typedLocale === 'ar' ? "جوهر عملنا" : "Our Engineering Essence"}
+          title={t.about.title}
+          subtitle={t.about.subtitle}
+          description={t.about.description}
+        />
+      </SectionReveal>
 
-      <WaveDivider flip />
-
-      {/* Services Grid */}
-      <ServicesSection 
-        id="services-section"
-        badge="Expertise"
-        title={t.services.title}
-        description={t.services.subtitle}
-        translations={t.services}
-        locale={typedLocale}
-      />
+      {/* Services Preview - Using Premium Cards */}
+      <SectionReveal>
+        <ServicesSection 
+          id="services-section"
+          badge={typedLocale === 'ar' ? "خبراتنا" : "Core Expertise"}
+          title={t.services.title}
+          description={t.services.subtitle}
+          translations={t.services}
+          locale={typedLocale}
+        />
+      </SectionReveal>
 
       {/* Methodology Section */}
-      <MethodologySection 
-        id="methodology-section"
-        badge="Methodology"
-        title="A structured path to digital dominance."
-        steps={t.methodology.steps}
-      />
+      <SectionReveal>
+        <MethodologySection 
+          id="methodology-section"
+          badge={typedLocale === 'ar' ? "منهجيتنا" : "The Engineering Engine"}
+          title={typedLocale === 'ar' ? "مسار مهيكل للتميز الرقمي" : "A structured path to digital dominance."}
+          steps={t.methodology.steps}
+        />
+      </SectionReveal>
 
       {/* Pricing Section */}
-      <section className="py-24 relative overflow-hidden" aria-labelledby="pricing-title">
-        <div className="container mx-auto px-6">
-          <SectionHeader 
-            id="pricing-title"
-            badge={t.pricing.title}
-            title={t.pricing.subtitle}
-          />
+      <SectionReveal>
+        <section className="py-24 relative overflow-hidden">
+          <div className="container mx-auto px-6">
+            <SectionHeader 
+              id="pricing-title"
+              badge={t.pricing.title}
+              title={t.pricing.subtitle}
+            />
 
-          <div className="grid md:grid-cols-3 gap-8 items-stretch pt-12">
-            {t.pricing.plans.map((plan: any, i: number) => (
-              <PricingCard
-                key={i}
-                plan={plan}
-                isFeatured={i === 1}
-                badge={t.pricing.badge}
-                priceSuffix={t.pricing.priceSuffix}
-                ctaText={t.pricing.cta}
-              />
-            ))}
+            <div className="grid md:grid-cols-3 gap-8 items-stretch pt-12">
+              {t.pricing.plans.map((plan: any, i: number) => (
+                <PricingCard
+                  key={i}
+                  plan={plan}
+                  isFeatured={i === 1}
+                  badge={t.pricing.badge}
+                  priceSuffix={t.pricing.priceSuffix}
+                  ctaText={t.pricing.cta}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionReveal>
 
       {/* Testimonials */}
-      <TestimonialsCarousel
-        testimonials={t.testimonials.items.map((item: any) => ({
-          quote: item.content,
-          name: item.name,
-          role: item.role,
-          company: item.role.split(' at ')[1] || item.role.split(', ')[1] || 'Company',
-        }))}
-        title={t.testimonials.title}
-        subtitle={t.testimonials.subtitle}
-        autoScrollSpeed={30}
-      />
+      <SectionReveal>
+         <TestimonialsCarousel
+           testimonials={t.testimonials.items.map((item: any) => ({
+             quote: item.content,
+             name: item.name,
+             role: item.role,
+             company: item.role.split(' at ')[1] || item.role.split(', ')[1] || 'Company',
+           }))}
+           title={t.testimonials.title}
+           subtitle={t.testimonials.subtitle}
+           autoScrollSpeed={30}
+         />
+      </SectionReveal>
 
-      {/* Blog/News Section */}
-      <section className="py-24" aria-labelledby="blog-title">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <SectionHeader 
-              id="blog-title"
-              badge={t.blog.title}
-              title={t.blog.subtitle}
-              align="left"
-              className="mb-0"
-            />
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 h-14 font-bold border-primary/20 hover:bg-primary/5"
-            >
-              {t.blog.viewAll}
-            </Button>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <BlogCard
-                key={item}
-                category={t.blog.category}
-                date="January 06, 2026"
-                readMoreText={t.blog.readMore}
-                title={
-                  item === 1
-                    ? "Evolution of Enterprise Architecture in 2026"
-                    : item === 2
-                    ? "Mastering Micro-frontends Patterns"
-                    : "AI-Driven Development Flow"
-                }
+      {/* Blog/News Section - data driven */}
+      <SectionReveal>
+        <section className="py-24 bg-muted/30">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+              <SectionHeader 
+                badge={t.blog.title}
+                title={t.blog.subtitle}
+                align="left"
+                className="mb-0"
               />
-            ))}
+              <Link href={`/${typedLocale}/blog`}>
+                <Button variant="outline" size="lg" className="rounded-full px-8 h-14 font-bold border-primary/20 hover:bg-primary/5">
+                  {t.blog.viewAll}
+                </Button>
+              </Link>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {latestPosts.map((post: any) => (
+                <BlogCard
+                  key={post.slug}
+                  category={t.blog.category}
+                  date={post.date}
+                  readMoreText={t.blog.readMore}
+                  title={post.title}
+                  href={`/${typedLocale}/blog/${post.slug}`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionReveal>
 
       {/* Final CTA */}
       <MiniContact translations={t.contact} />
