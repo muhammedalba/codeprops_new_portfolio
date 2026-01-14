@@ -30,7 +30,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
       <div className="container relative mt-16 z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-4xl">
           {/* Static HTML for Brand Tag - Zero JS blocking */}
-          <div className="flex items-center gap-3 mb-8 opacity-0 animate-[fade-up_0.8s_ease-out_0.2s_forwards]">
+          <div className="flex items-center gap-3 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="w-12 h-[1px] bg-primary/40" />
             <span className="text-xs font-mono font-medium tracking-[0.2em] uppercase text-primary">
               Engineering Excellence
@@ -38,34 +38,34 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
           </div>
 
           <div className="mb-6">
-            {/* Pure CSS Fade/Up for Headlines */}
+            {/* Pure CSS Fade/Up for Headlines - Optimized for LCP (Reduced Delays) */}
             <h1 className="text-base md:text-lg font-mono font-medium text-foreground/60 mb-3 tracking-wide uppercase ">
-              <span className="block text-foreground relative opacity-0 animate-[fade-up_0.8s_ease-out_0.3s_forwards]">
+              <span className="block text-foreground relative animate-in fade-in slide-in-from-bottom-4 duration-700">
                 {hero.title}
               </span>
             </h1>
-            <h1 className="text-3xl md:text-7xl lg:text-8xl font-heading font-bold leading-[1] tracking-tighter opacity-0 animate-[fade-up_0.8s_ease-out_0.4s_forwards]">
+            <h1 className="text-3xl md:text-7xl lg:text-8xl font-heading font-bold leading-[1] tracking-tighter animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
               <span className="block text-[#555b6c] relative">
                 {/* {hero.company} */} 
                 Code<span className="text-primary">Props</span>
-                <span className="absolute start-3 top-1 text-xl font-mono text-primary/30 opacity-0 animate-[fade-in_1s_ease-out_1.5s_forwards]">
+                <span className="absolute start-3 top-1 text-xl font-mono text-primary/30 animate-in fade-in zoom-in duration-700 delay-500">
                   ®
                 </span>
               </span>
             </h1>
           </div>
 
-          <div className="mb-10 max-w-3xl opacity-0 animate-[fade-up_0.8s_ease-out_0.5s_forwards]">
+          <div className="mb-10 max-w-3xl animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-backwards">
             <p className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium text-foreground/80 leading-tight">
               {hero.subtitle}
             </p>
           </div>
 
-          <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 max-w-2xl leading-relaxed opacity-0 animate-[fade-up_0.8s_ease-out_0.6s_forwards]">
+          <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-backwards">
             {hero.description}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 opacity-0 animate-[fade-up_0.8s_ease-out_0.7s_forwards]">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-backwards">
             <Link
               href={`/${locale}/contact`}
               className="relative group overflow-hidden rounded-full"
@@ -95,7 +95,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
           </div>
         </div>
 
-        <div className="absolute bottom-10 end-6 lg:end-12 flex items-center gap-4 opacity-0 animate-[fade-in_1s_ease-out_2s_forwards]">
+        <div className="absolute bottom-10 end-6 lg:end-12 flex items-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-1000 fill-mode-backwards">
           <div className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent" />
           <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-muted-foreground vertical-text">
             Scroll to Explore
