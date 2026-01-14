@@ -26,6 +26,11 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
+  // CRITICAL: Allow local development origins
+  allowedDevOrigins: [
+    'http://localhost:3000',
+    'http://172.20.10.5:3000'
+  ],
 };
 
 export default nextConfig;

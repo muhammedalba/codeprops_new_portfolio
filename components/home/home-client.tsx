@@ -6,10 +6,11 @@ import { HeroSection } from "@/components/home/hero-section";
 import { WaveDivider } from "@/components/layout/wave-divider";
 import { SectionHeader } from "@/components/ui/section-header";
 import { AboutSection } from "@/components/sections/about-section";
-import { SectionReveal } from "@/components/animations/section-reveal";
+// import { SectionReveal } from "@/components/animations/section-reveal";
 import Link from "next/link";
 
 // Dynamic imports for sections below the fold to improve LCP and initial load performance
+const SectionReveal = dynamic(() => import("@/components/animations/section-reveal").then(m => m.SectionReveal));
 const ServicesSection = dynamic(() => import("@/components/sections/services-section").then(m => m.ServicesSection));
 const MethodologySection = dynamic(() => import("@/components/sections/methodology-section").then(m => m.MethodologySection));
 const PricingCard = dynamic(() => import("@/components/sections/pricing-card").then(m => m.PricingCard));
@@ -42,6 +43,8 @@ export function HomeClient({
 
       {/* About Section - Redesigned for Impact */}
       <SectionReveal>
+        {/* Divider */}
+      <WaveDivider />
         <AboutSection 
           id="about-section"
           badge={typedLocale === 'ar' ? "جوهر عملنا" : "Our Engineering Essence"}
@@ -49,6 +52,7 @@ export function HomeClient({
           subtitle={t.about.subtitle}
           description={t.about.description}
         />
+          <WaveDivider flip={true} />
       </SectionReveal>
 
       {/* Services Preview - Using Premium Cards */}

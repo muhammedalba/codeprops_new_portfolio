@@ -26,7 +26,8 @@ export function SectionHeader({
   };
 
   return (
-    <div id={id} className={cn("flex flex-col mb-16", alignmentClasses[align], className)}>
+    <div id={id} className={cn("relative flex flex-col mb-16", alignmentClasses[align], className)}>
+       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
       {badge && (
         <span className="text-sm font-mono font-bold tracking-[0.4em] uppercase text-primary mb-4">
           {badge}

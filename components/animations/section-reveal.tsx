@@ -12,6 +12,7 @@ interface SectionRevealProps {
 export function SectionReveal({ children, className, delay = 0 }: SectionRevealProps) {
   return (
     <motion.div
+     style={{ willChange: 'transform, opacity' }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}

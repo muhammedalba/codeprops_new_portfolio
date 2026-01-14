@@ -22,7 +22,7 @@ export function TestimonialCard({ testimonial, className = '' }: TestimonialCard
       aria-label={`Testimonial from ${testimonial.name}`}
     >
       {/* Hover Accent */}
-<div className="absolute bottom-1 right-5 w-32 h-32 bg-primary/20 rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
       <GlassCard className="h-full group">
         {/* Decorative Quote Icon */}
         <Quote 

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Linkedin, Github, Twitter, ExternalLink, Clock, Globe } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
-import { cn } from "@/lib/utils";
+
 
 interface ContactInfoProps {
   info: {

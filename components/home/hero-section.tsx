@@ -1,9 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-
 import { HeroBackground } from "@/components/layout/hero-background";
 
 interface HeroSectionProps {
