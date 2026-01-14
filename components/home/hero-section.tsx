@@ -30,7 +30,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
       <div className="container relative mt-16 z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-4xl">
           {/* Static HTML for Brand Tag - Zero JS blocking */}
-          <div className="flex items-center gap-3 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="flex items-center gap-3 mb-8">
             <div className="w-12 h-[1px] bg-primary/40" />
             <span className="text-xs font-mono font-medium tracking-[0.2em] uppercase text-primary">
               Engineering Excellence
@@ -40,7 +40,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
           <div className="mb-6">
             {/* Pure CSS Fade/Up for Headlines - Optimized for LCP (Reduced Delays) */}
             <h1 className="text-base md:text-lg font-mono font-medium text-foreground/60 mb-3 tracking-wide uppercase ">
-              <span className="block text-foreground relative animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <span className="block text-foreground relative">
                 {hero.title}
               </span>
             </h1>
