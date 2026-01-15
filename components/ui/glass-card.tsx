@@ -1,5 +1,7 @@
-import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
+'use client';
+
+import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
 
 interface GlassCardProps {
   children: ReactNode;
@@ -7,33 +9,50 @@ interface GlassCardProps {
   glow?: boolean;
   glowColor?: string;
   hoverEffect?: boolean;
+  href?: string;
+  target?: '_self' | '_blank';
 }
 
 export function GlassCard({
   children,
   className,
   glow = false,
-  glowColor = "bg-primary/20",
+  glowColor = 'bg-primary/20',
   hoverEffect = true,
+  href,
+  target = '_self',
 }: GlassCardProps) {
+  const Wrapper = href ? 'a' : 'div';
+const isLowEnd =
+  typeof navigator !== 'undefined' &&
+  ((navigator as any).deviceMemory <= 4 ||
+    navigator.hardwareConcurrency <= 4);
+
   return (
-    <div
+    <Wrapper
+      {...(href && { href, target })}
       className={cn(
-        "relative p-8 rounded-[2.5rem] border border-border bg-background/40 backdrop-blur-xl transition-all duration-500",
-        hoverEffect && "hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/10 hover:scale-[1.02]",
+        'group relative block rounded-[2.5rem] border border-border bg-background/40 p-8 ',
+        'transition-[transform,box-shadow,border-color] duration-300',
+        isLowEnd && 'backdrop-blur-xl',
+        hoverEffect &&
+          'hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/10 hover:scale-[1.02]',
         className
       )}
     >
+      {/* Glow layer */}
       {glow && (
         <div
+          aria-hidden
           className={cn(
-            "absolute -z-10 blur-3xl rounded-full transition-opacity duration-500",
-            glowColor,
-            "top-1/4 right-1/4 w-1/2 h-1/2 opacity-50 group-hover:opacity-100"
+            'pointer-events-none absolute -z-10 top-1/4 right-1/4 h-1/2 w-1/2 rounded-full blur-3xl',
+            'opacity-40 transition-opacity duration-500 group-hover:opacity-80',
+            glowColor
           )}
         />
       )}
+
       {children}
-    </div>
+    </Wrapper>
   );
 }

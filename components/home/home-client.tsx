@@ -6,7 +6,6 @@ import { HeroSection } from "@/components/home/hero-section";
 import { WaveDivider } from "@/components/layout/wave-divider";
 import { SectionHeader } from "@/components/ui/section-header";
 import { AboutSection } from "@/components/sections/about-section";
-// import { SectionReveal } from "@/components/animations/section-reveal";
 import Link from "next/link";
 
 // Dynamic imports for sections below the fold to improve LCP and initial load performance
@@ -17,7 +16,7 @@ const PricingCard = dynamic(() => import("@/components/sections/pricing-card").t
 const TestimonialsCarousel = dynamic(() => import("@/components/sections/testimonials-carousel").then(m => m.TestimonialsCarousel));
 const BlogCard = dynamic(() => import("@/components/sections/blog-card").then(m => m.BlogCard));
 const MiniContact = dynamic(() => import("@/components/contact/mini-contact").then(m => m.MiniContact));
-const TechStackMarquee = dynamic(() => import("@/components/home/tech-stack-marquee").then(m => m.TechStackMarquee), { ssr: false });
+// const TechStackMarquee = dynamic(() => import("@/components/home/tech-stack-marquee").then(m => m.TechStackMarquee), { ssr: false });
 
 const Button = dynamic(() => import("@/components/ui/button").then(m => m.Button));
 
@@ -39,12 +38,12 @@ export function HomeClient({
       <HeroSection locale={typedLocale} translations={t} />
 
       {/* Tech Stack Marquee (Premium UX) - Lazy Loaded */}
-      <TechStackMarquee />
+      {/* <TechStackMarquee /> */}
 
       {/* About Section - Redesigned for Impact */}
       <SectionReveal>
         {/* Divider */}
-      <WaveDivider />
+        <WaveDivider />
         <AboutSection 
           id="about-section"
           badge={typedLocale === 'ar' ? "جوهر عملنا" : "Our Engineering Essence"}

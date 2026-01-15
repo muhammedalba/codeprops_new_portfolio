@@ -10,7 +10,7 @@ export function TechSculpture() {
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-[20%] border border-primary/15"
+            className="absolute rounded-[20%] border border-primary/20"
             style={{
               width: `${100 - i * 18}%`,
               height: `${100 - i * 18}%`,
@@ -66,7 +66,7 @@ export function TechSculpture() {
           return (
             <motion.div
               key={`stream-${i}`}
-              className="absolute w-1.5 h-1.5 rounded-full bg-primary/30"
+              className="absolute w-1.5 h-1.5 rounded-full bg-primary"
               style={{
                 top: `${Math.sin(angle) * dist + (300)}px`,
                 left: `${Math.cos(angle) * dist + (300)}px`,

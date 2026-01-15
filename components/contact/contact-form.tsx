@@ -3,19 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  CheckCircle2, 
-  Loader2, 
-  Send, 
-  User, 
-  Mail, 
-  MessageSquare, 
-  ChevronRight, 
-  ChevronLeft, 
-  Sparkles,
-  Zap,
-  Monitor,
-  Cloud,
-  Layers
+  CheckCircle2, Loader2, Send, User, Mail, MessageSquare, ChevronRight, ChevronLeft,
+  Sparkles, Zap, Monitor, Cloud, Layers
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -49,7 +38,7 @@ interface ContactFormProps {
 export function ContactForm({ translations }: ContactFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [step, setStep] = useState(1);
-  
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     mode: "onBlur",
@@ -65,7 +54,7 @@ export function ContactForm({ translations }: ContactFormProps) {
   const onSubmit = async (data: ContactFormData) => {
     setStatus("loading");
     try {
-      await new Promise((r) => setTimeout(r, 2000));
+      await new Promise(r => setTimeout(r, 2000));
       setStatus("success");
       form.reset();
     } catch {
@@ -81,6 +70,10 @@ export function ContactForm({ translations }: ContactFormProps) {
     { id: "other", icon: Sparkles, label: translations.projectTypes.other },
   ];
 
+  const MotionInput = motion(Input);
+  const MotionTextarea = motion(Textarea);
+
+  // Success Screen
   if (status === "success") {
     return (
       <motion.div
@@ -119,7 +112,7 @@ export function ContactForm({ translations }: ContactFormProps) {
     <div className="relative">
       {/* Step Indicator */}
       <div className="flex gap-2 mb-12">
-        {[1, 2].map((i) => (
+        {[1, 2].map(i => (
           <div 
             key={i} 
             className={cn(
@@ -131,7 +124,9 @@ export function ContactForm({ translations }: ContactFormProps) {
       </div>
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="relative space-y-10">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
+        {/* Background Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
+
         <AnimatePresence mode="wait">
           {step === 1 ? (
             <motion.div
@@ -142,41 +137,46 @@ export function ContactForm({ translations }: ContactFormProps) {
               className="space-y-8"
             >
               <div className="grid md:grid-cols-2 gap-8">
+                {/* Name */}
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground mb-1">
                     <User size={14} className="text-primary" />
                     <span>{translations.name}</span>
                   </div>
-                  <Input
+                  <MotionInput
                     {...form.register("name")}
                     placeholder="E.g. Elon Musk"
-                    className="h-16 rounded-2xl bg-background/40 border-border/50 focus:border-primary/50 text-lg transition-all"
+                    className="h-16 rounded-2xl bg-background/40 border-border/50 text-lg transition-all"
+                    whileFocus={{ scale: 1.02, boxShadow: "0 0 15px rgba(79,70,229,0.3)" }}
                   />
                   {form.formState.errors.name && <p className="text-xs text-destructive">{form.formState.errors.name.message}</p>}
                 </div>
 
+                {/* Email */}
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground mb-1">
                     <Mail size={14} className="text-primary" />
                     <span>{translations.email}</span>
                   </div>
-                  <Input
+                  <MotionInput
                     type="email"
                     {...form.register("email")}
                     placeholder="elon@mars.com"
-                    className="h-16 rounded-2xl bg-background/40 border-border/50 focus:border-primary/50 text-lg transition-all"
+                    className="h-16 rounded-2xl bg-background/40 border-border/50 text-lg transition-all"
+                    whileFocus={{ scale: 1.02, boxShadow: "0 0 15px rgba(79,70,229,0.3)" }}
                   />
                   {form.formState.errors.email && <p className="text-xs text-destructive">{form.formState.errors.email.message}</p>}
                 </div>
               </div>
 
+              {/* Project Type */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground mb-1">
                   <MessageSquare size={14} className="text-primary" />
-                  <span>Choose Your Frontier</span>
+                  <span>{translations.projectType}</span>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                  {projectTypes.map((type) => {
+                  {projectTypes.map(type => {
                     const Icon = type.icon;
                     const isSelected = form.watch("projectType") === type.id;
                     return (
@@ -194,7 +194,7 @@ export function ContactForm({ translations }: ContactFormProps) {
                         <Icon size={20} className={cn("transition-transform group-hover:scale-110", isSelected ? "text-white" : "text-primary")} />
                         <span className="text-[10px] font-bold uppercase tracking-tighter">{type.label}</span>
                       </button>
-                    )
+                    );
                   })}
                 </div>
                 {form.formState.errors.projectType && <p className="text-xs text-destructive">{form.formState.errors.projectType.message}</p>}
@@ -203,7 +203,7 @@ export function ContactForm({ translations }: ContactFormProps) {
               <Button
                 type="button"
                 onClick={async () => {
-                  const isValid = await form.trigger(["name", "email", "projectType"]);
+                  const isValid = await form.trigger(["name","email","projectType"]);
                   if (isValid) setStep(2);
                 }}
                 className="w-full h-20 rounded-2xl text-xl font-bold gap-3 group"
@@ -220,28 +220,34 @@ export function ContactForm({ translations }: ContactFormProps) {
               exit={{ opacity: 0, x: -20 }}
               className="space-y-8"
             >
+              {/* Subject */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground mb-1">
                   <Sparkles size={14} className="text-primary" />
                   <span>{translations.subject}</span>
                 </div>
-                <Input
+                <MotionInput
                   {...form.register("subject")}
                   placeholder="Technical Architecture Revamp"
-                  className="h-16 rounded-2xl bg-background/40 border-border/50 focus:border-primary/50 text-lg transition-all"
+                  className="h-16 rounded-2xl bg-background/40 border-border/50 text-lg transition-all"
+                  whileFocus={{ scale: 1.02, boxShadow: "0 0 15px rgba(79,70,229,0.3)" }}
                 />
+                {form.formState.errors.subject && <p className="text-xs text-destructive">{form.formState.errors.subject.message}</p>}
               </div>
 
+              {/* Message */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground mb-1">
                   <Layers size={14} className="text-primary" />
                   <span>{translations.message}</span>
                 </div>
-                <Textarea
+                <MotionTextarea
                   {...form.register("message")}
                   placeholder="Describe your technical landscape and desired outcomes..."
-                  className="min-h-[200px] rounded-2xl bg-background/40 border-border/50 focus:border-primary/50 transition-all resize-none p-6 text-lg"
+                  className="min-h-[200px] rounded-2xl bg-background/40 border-border/50 resize-none p-6 text-lg transition-all"
+                  whileFocus={{ scale: 1.01, boxShadow: "0 0 15px rgba(79,70,229,0.2)" }}
                 />
+                {form.formState.errors.message && <p className="text-xs text-destructive">{form.formState.errors.message.message}</p>}
               </div>
 
               <div className="flex gap-4">

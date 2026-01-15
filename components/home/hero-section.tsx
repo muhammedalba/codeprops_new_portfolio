@@ -21,7 +21,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
   const { hero } = translations;
 
   return (
-    <section className="relative min-h-screen flex items-start md:items-center overflow-hidden bg-background md:pt-16">
+    <section className=" md:min-h-screen flex items-start md:items-center overflow-hidden bg-background mt-12">
       <HeroBackground type="home" />
 
       <div className="container relative mt-16 z-10 mx-auto px-6 lg:px-12">
@@ -45,7 +45,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
               <span className="block text-[#555b6c] relative">
                 {/* {hero.company} */} 
                 Code<span className="text-primary">Props</span>
-                <span className="absolute start-3 top-1 text-xl font-mono text-primary/30 animate-in fade-in zoom-in duration-700 delay-500">
+                <span className="absolute top-1 text-xl font-mono text-primary/30 animate-in fade-in zoom-in duration-700 delay-500">
                   ®
                 </span>
               </span>
@@ -58,7 +58,7 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
             </p>
           </div>
 
-          <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-backwards">
+          <p className="text-md md:text-xl text-muted-foreground/80 mb-12 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-backwards">
             {hero.description}
           </p>
 
@@ -98,9 +98,9 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
             Scroll to Explore
           </span>
         </div>
+      <div className="absolute bottom-0 left-0 right-0 h-16  bg-gradient-to-t from-background to-transparent pointer-events-none z-20" />
       </div>
-{/* 
-      <div className="absolute bottom-0 left-0 right-0 h-16  bg-gradient-to-t from-background to-transparent pointer-events-none z-20" /> */}
+
     </section>
   );
 }

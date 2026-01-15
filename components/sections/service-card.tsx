@@ -22,13 +22,14 @@ export function ServiceCard({
   className,
 }: ServiceCardProps) {
   return (
-    <GlassCard
+    <GlassCard 
+      href={href}
       className={cn( 
         " relative group text-center cursor-pointer overflow-hidden flex flex-col h-full",
         className
       )}
     >
-      <div className="absolute bottom-1 left-1 w-20 h-20 bg-primary blur-[80px] rounded-full pointer-events-none" />
+      <div  className="absolute bottom-1 left-1 w-20 h-20 bg-primary blur-[80px] rounded-full pointer-events-none" />
       <GlowEffect 
         size="sm" 
         className="top-36 right-0 opacity-20 group-hover:opacity-40 group-hover:w-44 transition-all duration-700" 
@@ -47,8 +48,8 @@ export function ServiceCard({
         {description}
       </p>
 
-      <Link
-        href={href}
+      <div
+        // href={href}
         className="flex items-center justify-center gap-2 text-sm font-bold tracking-widest uppercase group/link transition-colors"
       >
         <span className="relative">
@@ -56,7 +57,7 @@ export function ServiceCard({
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover/link:w-full transition-all duration-300" />
         </span>
         <ArrowUpRight className="w-4 h-4 translate-y-px group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" />
-      </Link>
+      </div>
 
       {/* Numerical Badge / Decoration */}
       <div className="absolute bottom-4 right-6 text-[5rem] font-black text-foreground/[0.03] select-none pointer-events-none group-hover:text-primary/5 transition-colors">
