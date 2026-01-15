@@ -99,8 +99,8 @@ export function HeroSection({ locale, translations }: HeroSectionProps) {
           </span>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-16  bg-gradient-to-t from-background to-transparent pointer-events-none z-20" />
+{/* 
+      <div className="absolute bottom-0 left-0 right-0 h-16  bg-gradient-to-t from-background to-transparent pointer-events-none z-20" /> */}
     </section>
   );
 }

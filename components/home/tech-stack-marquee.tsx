@@ -37,7 +37,7 @@ export function TechStackMarquee() {
   const marqueeContent = [...TECH_STACK, ...TECH_STACK]; // duplicate for seamless loop
 
   return (
-    <section className="py-5 mt-6 border-y border-border/50 bg-muted/10 relative overflow-hidden">
+    <section className="py-5 my-6 border-y border-border/50 bg-muted/10 relative overflow-hidden">
       <div className="marquee-mask overflow-hidden relative">
         <div
           ref={containerRef}
