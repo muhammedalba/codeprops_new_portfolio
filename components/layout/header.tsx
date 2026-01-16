@@ -50,14 +50,14 @@ export function Header({ locale, translations }: HeaderProps) {
   return (
     <>
       <header 
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        className={`sticky h-[var(--header-height)] top-0 z-50  flex items-center w-full transition-all duration-300 ${
           isScrolled 
             ? 'border-b  bg-background/70 backdrop-blur-md py-2' 
             : 'bg-transparent py-4'
         }`}
       >
         <Container>
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex w-full  items-center justify-between">
             <div className="flex items-center gap-8">
               {/* Logo */}
               <Link href={`/${locale}`} className="flex items-center space-x-2">

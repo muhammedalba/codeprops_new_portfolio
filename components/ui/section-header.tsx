@@ -19,6 +19,7 @@ export function SectionHeader({
   className,
   titleClassName,
 }: SectionHeaderProps) {
+  
   const alignmentClasses = {
     left: "text-left items-start",
     center: "text-center items-center",

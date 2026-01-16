@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 import { Container } from "@/components/layout/container";
 import { cn } from "@/lib/utils";
 
@@ -10,78 +9,105 @@ interface SmartNavProps {
 }
 
 export function SmartNav({ sections }: SmartNavProps) {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
   const [isSticky, setIsSticky] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
+  const stickyRef = useRef<HTMLDivElement | null>(null);
+  const sectionObserverRef = useRef<IntersectionObserver | null>(null);
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 500);
+    // ----------------------------
+    // Sticky Nav Observer
+    // ----------------------------
+    const sentinel = document.createElement("div");
+    sentinel.style.position = "absolute";
+    sentinel.style.top = "500px";
+    sentinel.style.width = "1px";
+    sentinel.style.height = "1px";
+    sentinel.setAttribute("aria-hidden", "true");
+    document.body.prepend(sentinel);
 
-      // Simple intersection logic for active section
-      const scrollPos = window.scrollY + 200;
-      for (const section of sections) {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(section.id);
-          }
-        }
-      }
+    const stickyObserver = new IntersectionObserver(
+      ([entry]) => {
+        // يظهر فقط بعد تجاوز النقطة
+        setIsSticky(entry.boundingClientRect.top < 0);
+      },
+      { threshold: 0 }
+    );
+
+    stickyObserver.observe(sentinel);
+
+    return () => {
+      stickyObserver.disconnect();
+      sentinel.remove();
     };
+  }, []);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  useEffect(() => {
+    // ----------------------------
+    // Active Section Observer
+    // ----------------------------
+    sectionObserverRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-200px 0px -60% 0px", // تحكم في متى يصبح القسم "نشط"
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((section) => {
+      const el = document.getElementById(section.id);
+      if (el) sectionObserverRef.current!.observe(el);
+    });
+
+    return () => sectionObserverRef.current?.disconnect();
   }, [sections]);
 
   const scrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const top = element.offsetTop - 100;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.offsetTop - 100;
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[100]"
-        style={{ scaleX }}
-      />
-      
-      <div className={cn(
-        "sticky top-20 left-0 right-0 z-50 transition-all duration-300",
-        isSticky ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
-      )}>
-        <div className="bg-background/80 backdrop-blur-xl border-b border-border/50 py-4 shadow-xl shadow-black/5">
-          <Container>
-            <div className="flex items-center justify-between text-sm font-bold uppercase tracking-[0.2em]">
-              <div className="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth">
-                {sections.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => scrollTo(s.id)}
-                    className={cn(
-                      "transition-colors whitespace-nowrap",
-                      activeSection === s.id ? "text-primary" : "text-muted-foreground hover:text-foreground"
-                    )}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
+    <div
+      ref={stickyRef}
+      className={cn(
+        "fixed top-[var(--header-height)] left-0 right-0 z-50 transition-all duration-300 border-b bg-background/70 backdrop-blur-md",
+        isSticky
+          ? "translate-y-0 opacity-100"
+          : "-translate-y-full opacity-0 pointer-events-none"
+      )}
+    >
+      <div className="py-2">
+        <Container>
+          <div className="flex items-center justify-between text-sm font-bold uppercase tracking-[0.2em]">
+            <div className="flex gap-8 overflow-hidden no-scrollbar scroll-smooth">
+              {sections.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => scrollTo(s.id)}
+                  className={cn(
+                    "transition-colors whitespace-nowrap",
+                    activeSection === s.id
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {s.label}
+                </button>
+              ))}
             </div>
-          </Container>
-        </div>
+          </div>
+        </Container>
       </div>
-    </>
+    </div>
   );
 }
