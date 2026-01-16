@@ -21,8 +21,8 @@ const fontHeading = Outfit({
 const fontArabic = Amiri({
   subsets: ["arabic"],
   variable: "--font-arabic",
-  weight: ["400", "700"],
   display: "swap",
+  weight: ["400", "700"],
 });
 
 export async function generateStaticParams() {

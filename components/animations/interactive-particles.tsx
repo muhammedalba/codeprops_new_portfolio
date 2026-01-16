@@ -22,72 +22,100 @@ export function InteractiveParticles() {
   const particlesColor = useMemo(() => {
     const currentTheme = resolvedTheme || theme;
     
-    return currentTheme === "dark" ? "#3b82f6" : "#2563eb";
+     return currentTheme === "dark" ? "#3b82f6" : "#2563eb";
   }, [theme, resolvedTheme]);
 
-  const options: ISourceOptions = useMemo(
-    () => ({
-      fpsLimit: 60,
-      fullScreen: { enable: false },
-      detectRetina: true, // Let engine handle pixel density
+const options: ISourceOptions = useMemo(
+  () => ({
+    fpsLimit: 60,
+    fullScreen: { enable: false },
+    detectRetina: false,
 
-      interactivity: {
-        events: {
-          onHover: {
-            enable: true,
-            mode: ["grab", "repulse"],
-          },
-          // Disable resize listener if it causes thrashing, but usually safe in standard libs
-          resize: {
-            enable: true,
-            delay: 0.5
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: ["grab", "repulse"],
+        },
+        resize: {
+          enable: true,
+        },
+      },
+      modes: {
+        grab: {
+          distance: 180,
+          links: {
+            opacity: 0.25,
           },
         },
-        modes: {
-          grab: {
-            distance: 180,
-            links: { opacity: 0.25 },
-          },
-          repulse: {
-            distance: 120,
-            duration: 0.4,
-          },
+        repulse: {
+          distance: 120,
+          duration: 0.4,
+
+
+
+
+
+
+        },
+      },
+    },
+
+    particles: {
+      color: { value: particlesColor },
+
+      links: {
+        enable: true,
+        color: particlesColor,
+        distance: 150,
+        opacity: 0.15,
+        width: 1,
+      },
+
+      move: {
+        enable: true,
+        speed: 0.6,
+        outModes: { default: "bounce" },
+
+        parallax: {
+          enable: true,
+          force: 20,
+          smooth: 10,
+
+
         },
       },
 
-      particles: {
-        color: { value: particlesColor },
-        links: {
+      number: {
+        density: {
           enable: true,
-          color: particlesColor,
-          distance: 150,
-          opacity: 0.15,
-          width: 1,
+          area: 800,
+
+
+
+
+
+
         },
-        move: {
-          enable: true,
-          speed: 0.6,
-          outModes: { default: "bounce" },
-          parallax: {
-            enable: true,
-            force: 20,
-            smooth: 10,
-          },
-        },
-        number: {
-          density: {
-            enable: true,
-            area: 800,
-          },
-          value: 50, // Static safe value to prevent hydration mismatch & layout thrashing
-        },
-        opacity: { value: 0.2 },
-        size: { value: { min: 1, max: 2 } },
-        shape: { type: "circle" },
+        value:
+          typeof window !== "undefined" && window.innerWidth < 768
+            ? 30
+            : 70,
       },
-    }),
-    [particlesColor]
-  );
+
+      opacity: {
+        value: 0.2,
+      },
+
+      size: {
+        value: { min: 1, max: 2 },
+      },
+
+      shape: { type: "circle" },
+    },
+  }),
+  [particlesColor]
+);
 
 
   if (!init) return null;
