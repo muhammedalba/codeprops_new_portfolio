@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Locale, locales } from '@/lib/i18n';
-import { getMessages } from '@/lib/translations';
+import { getPageMessages } from '@/lib/translations';
 import { generatePageMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import { PortfolioProjectClient } from '@/components/portfolio/portfolio-project-client';
@@ -10,8 +10,8 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const paths: { locale: string; slug: string }[] = [];
   
-  locales.forEach((locale) => {
-    const t = getMessages(locale as Locale);
+  for (const locale of locales) {
+    const t = await getPageMessages(locale as Locale, "portfolio");
     if (t.portfolio && t.portfolio.projects) {
       t.portfolio.projects.forEach((project: any) => {
         paths.push({
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
         });
       });
     }
-  });
+  }
 
   return paths;
 }
@@ -31,7 +31,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const t = getMessages(locale as Locale);
+  const t = await getPageMessages(locale as Locale, "portfolio");
   const project = t.portfolio.projects.find((p: any) => p.slug === slug);
 
   if (!project) return {};
@@ -51,7 +51,7 @@ export default async function ProjectDetailPage({
 }) {
   const { locale, slug } = await params;
   const typedLocale = locale as Locale;
-  const t = getMessages(typedLocale);
+  const t = await getPageMessages(typedLocale, "portfolio");
   const project = t.portfolio.projects.find((p: any) => p.slug === slug);
 
   if (!project) notFound();

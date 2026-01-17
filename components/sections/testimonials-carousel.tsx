@@ -36,7 +36,7 @@ function TestimonialsCarouselComponent({
   const isRTL = useRef(false);
 
   // To ensure no gaps, we repeat the array 3 times instead of 6 (which was overkill)
-  const loopItems = useMemo(() => [...testimonials, ...testimonials, ...testimonials], [testimonials]);
+  const loopItems = useMemo(() => [...testimonials,...testimonials,...testimonials,...testimonials,...testimonials, ...testimonials, ...testimonials], [testimonials]);
 
   const measure = useCallback(() => {
     if (!trackRef.current) return;

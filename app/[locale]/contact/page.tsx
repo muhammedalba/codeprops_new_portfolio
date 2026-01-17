@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Locale, locales } from '@/lib/i18n';
-import { getMessages } from '@/lib/translations';
+import { getPageMessages } from '@/lib/translations';
 import { generateFAQSchema, generatePageMetadata } from '@/lib/seo';
 import { ContactClient } from '@/components/contact/contact-client';
 
@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getMessages(locale as Locale);
+  const t = await getPageMessages(locale as Locale, "contact");
   
   return generatePageMetadata({
     locale: locale as Locale,
@@ -31,7 +31,7 @@ export default async function ContactPage({
 }) {
   const { locale } = await params;
   const typedLocale = locale as Locale;
-  const t = getMessages(typedLocale);
+  const t = await getPageMessages(typedLocale, "contact");
 
   return <><script
   type="application/ld+json"

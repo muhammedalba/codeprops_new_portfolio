@@ -1,0 +1,61 @@
+{
+      "contact": {
+            "title": "Engineer Your Growth",
+            "subtitle": "Partner with our senior engineering team to design, build, and scale your next digital breakthrough.",
+            "badge": "Get in Touch",
+            "hero": {
+                  "title": "Let's Build Something Exceptional",
+                  "description": "Ready to transform your technical challenges into competitive advantages? Our strategists and architects are one message away."
+            },
+            "form": {
+                  "name": "Full Name",
+                  "email": "Business Email",
+                  "subject": "Subject",
+                  "projectType": "Service Interest",
+                  "projectTypes": {
+                        "web": "Web Development",
+                        "mobile": "Mobile Applications",
+                        "cloud": "Cloud Solutions",
+                        "consulting": "Technical Consulting",
+                        "other": "Other"
+                  },
+                  "message": "Technical Challenges / Project Scope",
+                  "send": "Request Consultation",
+                  "success_title": "Consultation Initialized",
+                  "success_message": "Our engineering team will review your scope and reach out within 24 hours.",
+                  "error": "An engineering error occurred. Please try again."
+            },
+            "info": {
+                  "email": "solutions@codeprops.com",
+                  "phone": "+1 (800) CODE-PRO",
+                  "address": "Global Elite Tech Center, Silicon Valley / Istanbul",
+                  "social": {
+                        "linkedin": "LinkedIn",
+                        "github": "GitHub",
+                        "twitter": "Twitter"
+                  }
+            },
+            "faq": {
+                  "title": "Quick Answers",
+                  "questions": [
+                        {
+                              "q": "What is your typical response time?",
+                              "a": "Our engineering team typically reviews all technical inquiries and responds within 12-24 business hours."
+                        },
+                        {
+                              "q": "Do you offer free consultations?",
+                              "a": "Yes, we provide an initial 30-minute architectural strategy session to discuss your project scope and technical feasibility."
+                        },
+                        {
+                              "q": "Can you work with existing codebases?",
+                              "a": "Absolutely. We specialize in scaling, refactoring, and modernizing existing enterprise applications and legacy systems."
+                        }
+                  ]
+            },
+            "cta": {
+                  "title": "Ready to Architect the Future?",
+                  "description": "Don't settle for off-the-shelf. Let's design a custom solution that pushes boundaries.",
+                  "button": "Start Your Project"
+            }
+      }
+}

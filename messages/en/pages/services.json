@@ -1,0 +1,114 @@
+{
+      "services": {
+            "title": "Strategic Capabilities",
+            "subtitle": "Full-Lifecycle Software Engineering",
+            "hero_title": "Architecting the <span class='text-primary italic'>Digital Frontier</span>",
+            "hero_description": "We design and build resilient, high-performance systems that empower global enterprises to lead through technical authority.",
+            "capabilities_grid": {
+                  "badge": "Technical Mastery",
+                  "custom_card_title": "Beyond Standard Solutions?",
+                  "custom_card_description": "Need a specialized engineering team for a high-complexity challenge? We architect custom engagement models.",
+                  "custom_card_button": "Request Technical Blueprint"
+            },
+            "web": {
+                  "title": "Custom Web Development",
+                  "description": "Creating high-performance, SEO-friendly web applications using Next.js, React, and modular architectures.",
+                  "features": [
+                        "SSR/ISR Architecture",
+                        "Performance First",
+                        "SEO Infrastructure",
+                        "Micro-frontend Ready"
+                  ],
+                  "details": "We don’t just build websites; we engineer digital platforms that convert. By leveraging Next.js and React, we ensure your users experience zero friction."
+            },
+            "custom": {
+                  "title": "Custom Software Solutions",
+                  "description": "End-to-end software engineering for complex automation and unique enterprise challenges.",
+                  "features": [
+                        "Automation Workflows",
+                        "Legacy Modernization",
+                        "Internal Tools",
+                        "System Architecture"
+                  ],
+                  "details": "Every business has unique challenges. Our engineers dive deep into your operational bottlenecks to build software that scales with your growth."
+            },
+            "ecommerce": {
+                  "title": "Scalable E-Commerce",
+                  "description": "Building high-converting, high-load e-commerce platforms with seamless payment and logistics integration.",
+                  "features": [
+                        "Headless Solutions",
+                        "Omnichannel Ready",
+                        "Fast Checkout",
+                        "Logistics API"
+                  ],
+                  "details": "High-load commerce requires extreme engineering. We build headless commerce systems that offer ultimate flexibility and performance."
+            },
+            "cloud": {
+                  "title": "Cloud & API Integration",
+                  "description": "Designing resilient API ecosystems and cloud-ready systems to ensure data continuity across your organization.",
+                  "features": [
+                        "Serverless Systems",
+                        "Kubernetes Scaling",
+                        "API-First Design",
+                        "Cloud Migration"
+                  ],
+                  "details": "Infrastructure should be invisible. We architect cloud-native systems on AWS and Azure that scale automatically and never go down."
+            },
+            "performance": {
+                  "title": "Performance Optimization",
+                  "description": "Technical audits and re-engineering legacy systems for maximum speed, security, and search visibility.",
+                  "features": [
+                        "Codebase Audits",
+                        "Core Web Vitals",
+                        "Security Hardening",
+                        "Database Tuning"
+                  ],
+                  "details": "Performance is a feature. We perform deep technical audits to pinpoint bottlenecks and re-engineer systems for peak efficiency."
+            },
+            "process": {
+                  "title": "Our Engineering Loop",
+                  "subtitle": "A disciplined, engineering-centric approach to turning complex requirements into resilient digital infrastructure.",
+                  "steps": [
+                        {
+                              "title": "Architect",
+                              "description": "Designing high-level system blueprints and data models."
+                        },
+                        {
+                              "title": "Build",
+                              "description": "Developing secure, modular code following clean-room standards."
+                        },
+                        {
+                              "title": "Scale",
+                              "description": "Deploying to cloud-native environments ready for millions."
+                        },
+                        {
+                              "title": "Maintain",
+                              "description": "Proactive monitoring and performance tuning 24/7."
+                        }
+                  ]
+            },
+            "instant_cta": "Get Strategy Session",
+            "faq": {
+                  "title": "Technical FAQ",
+                  "subtitle": "Expert Answers to Common Architecture Questions",
+                  "questions": [
+                        {
+                              "q": "How does Server-Side Rendering (SSR) affect SEO rankings?",
+                              "a": "SSR ensures search engines receive fully rendered HTML on first request, significantly improving indexing speed and ranking potential compared to client-side SPAs."
+                        },
+                        {
+                              "q": "What is the main benefit of Headless Commerce?",
+                              "a": "Headless architecture separates frontend from backend, allowing optimal performance and a tailored user experience without platform template restrictions."
+                        },
+                        {
+                              "q": "How do you ensure scalability under high load?",
+                              "a": "We use microservices, containerization (Kubernetes), and event-driven architectures, enabling components to scale independently based on real-time demand."
+                        },
+                        {
+                              "q": "Why are Core Web Vitals important for business apps?",
+                              "a": "Google considers Core Web Vitals as ranking signals. High LCP and CLS scores improve user retention and increase search visibility."
+                        }
+                  ]
+            }
+      }
+}

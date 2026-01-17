@@ -1,0 +1,26 @@
+{
+      "nav": {
+            "home": "Start",
+            "about": "Über Uns",
+            "services": "Leistungen",
+            "portfolio": "Portfolio",
+            "blog": "Insights",
+            "contact": "Kontakt"
+      },
+      "cta": {
+            "title": "Bereit, Ihre digitale Präsenz neu zu gestalten?",
+            "description": "Partnern Sie mit einem Unternehmen, das Skalierbarkeit, Sicherheit und Performance versteht.",
+            "button": "Unsere Strategen kontaktieren"
+      },
+      "footer": {
+            "tagline": "Engineering-Exzellenz. Scalable Reality.",
+            "copyright": "Alle Rechte vorbehalten.",
+            "company": "Leistungen",
+            "legal": "Governance",
+            "links": {
+                  "privacy": "Datenschutz",
+                  "terms": "Nutzungsbedingungen",
+                  "sitemap": "Infrastruktur-Map"
+            }
+      }
+}

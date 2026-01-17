@@ -1,0 +1,26 @@
+{
+      "home": {
+            "title": "Codeprops | Führendes Softwareentwicklungsunternehmen & Weblösungen",
+            "description": "Codeprops ist Ihr Premium-Partner für Softwareentwicklung und Weblösungen. Wir liefern maßgeschneiderte Webanwendungen, skalierbare Systeme und digitale Hochleistungslösungen für Unternehmen jeder Größe."
+      },
+      "about": {
+            "title": "Über Codeprops | Exzellentes Engineering & Moderne Architektur",
+            "description": "Erfahren Sie mehr über die Philosophie von Codeprops. Wir bieten Software-Engineering auf höchstem Niveau mit Fokus auf Qualität, Skalierbarkeit und modernste Webtechnologien."
+      },
+      "services": {
+            "title": "Software-Engineering Services | Webentwicklung & Maßgeschneiderte Lösungen",
+            "description": "Umfassende digitale Lösungen: Webentwicklung, Prozessautomatisierung, Mobile Apps und Enterprise Software. Skalierbare Systeme auf Basis modernster Frameworks wie Next.js, Laravel und React."
+      },
+      "portfolio": {
+            "title": "Software-Portfolio | Case Studies | Codeprops",
+            "description": "Entdecken Sie unsere Projekte: Hochleistungs-Webanwendungen, maßgeschneiderte Softwarelösungen und erfolgreiche digitale Transformationen."
+      },
+      "blog": {
+            "title": "Software-Engineering Insights | Webentwicklung Blog | Codeprops",
+            "description": "Technische Einblicke in moderne Webtechnologien, Cloud-Architektur, UI/UX Design und Softwareentwicklung. Für CTOs, Entwickler und Entscheidungsträger."
+      },
+      "contact": {
+            "title": "Kontaktieren Sie unser Engineering-Team | Codeprops",
+            "description": "Bereit für Ihr digitales Projekt? Arbeiten Sie mit einem erfahrenen Senior-Engineering-Team für Webentwicklung, mobile Apps, Bots oder maßgeschneiderte Softwarelösungen zusammen."
+      }
+}

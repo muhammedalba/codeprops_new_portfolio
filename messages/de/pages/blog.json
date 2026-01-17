@@ -1,0 +1,98 @@
+{
+      "blog": {
+            "title": "Technische Autorität",
+            "breadcrumb": "Insights",
+            "subtitle": "Insights direkt von unseren Senior-Engineers",
+            "viewAll": "Alle Insights ansehen",
+            "readMore": "Weiterlesen",
+            "category": "Engineering",
+            "newsletter": {
+                  "title": "Immer einen Schritt voraus",
+                  "description": "Erhalten Sie zweimal im Monat tiefgehende technische Insights und Engineering-Durchbrüche.",
+                  "placeholder": "Geben Sie Ihre Geschäfts-E-Mail ein",
+                  "button": "Insights abonnieren"
+            },
+            "posts": [
+                  {
+                        "slug": "architecture-low-latency",
+                        "title": "Architektur mit niedriger Latenz: Leitfaden für globale Systeme",
+                        "excerpt": "Entdecken Sie moderne, skalierbare Systeme und Hochleistungs-Engineering für globale digitale Präsenz.",
+                        "date": "06. Jan. 2026",
+                        "author": "Marcus Thorne",
+                        "datePublished": "2026-01-06",
+                        "dateModified": "2026-01-06",
+                        "image": "/images/blog/architecture-low-latency.jpg",
+                        "tags": [
+                              "Architektur",
+                              "Performance",
+                              "Cloud"
+                        ]
+                  },
+                  {
+                        "slug": "technical-seo-infrastructure",
+                        "title": "Technisches SEO beginnt auf Infrastrukturebene",
+                        "excerpt": "Beyond Meta-Tags: Wie SSR und Edge Computing Ihre organische Suchautorität stärken.",
+                        "date": "04. Jan. 2026",
+                        "author": "Elena Vance",
+                        "datePublished": "2026-01-04",
+                        "dateModified": "2026-01-04",
+                        "image": "/images/blog/technical-seo-infrastructure.jpg",
+                        "tags": [
+                              "SEO",
+                              "Next.js",
+                              "Vitals"
+                        ]
+                  },
+                  {
+                        "slug": "legacy-architecture-cost",
+                        "title": "Kosten veralteter Architektur in modernen Unternehmen",
+                        "excerpt": "Analyse, wie technische Schulden und alte Systeme Ressourcen binden und Innovation hemmen.",
+                        "date": "02. Jan. 2026",
+                        "author": "Alexander Sterling",
+                        "datePublished": "2026-01-02",
+                        "dateModified": "2026-01-02",
+                        "image": "/images/blog/legacy-architecture-cost.jpg",
+                        "tags": [
+                              "Business",
+                              "Strategie",
+                              "Tech Debt"
+                        ]
+                  }
+            ],
+            "post": {
+                  "back": "Zurück zu Engineering Insights",
+                  "principal_architect": "Hauptarchitekt",
+                  "read_time": "6 min Lesezeit",
+                  "category": "Engineering",
+                  "content_maps": "Inhaltsverzeichnis",
+                  "join_discussion": "Diskussion beitreten",
+                  "discussion_desc": "Unsere Ingenieure sind in den Kommentaren aktiv. Technische Fragen sind willkommen.",
+                  "view_community": "Community-Insights ansehen",
+                  "share": "Artikel teilen",
+                  "audit_title": "Benötigen Sie eine technische Überprüfung?",
+                  "audit_desc": "Unsere Architekten können Ihr aktuelles System auf Leistungsengpässe überprüfen.",
+                  "audit_button": "Audit buchen",
+                  "technical_clusters": "Technische Cluster",
+                  "recommended": "Empfohlen für Sie",
+                  "view_all": "Alle Insights ansehen",
+                  "prev_insight": "Vorheriger Einblick",
+                  "next_insight": "Nächster Einblick",
+                  "demo": {
+                        "intro_p1": "Wir leben in einer Ära, in der digitale Geschwindigkeit eine wettbewerbsrelevante Notwendigkeit ist. Dieser technische Deep-Dive erforscht die grundlegenden Muster, die von erstklassigen Engineering-Teams verwendet werden, um globale Antwortzeiten im Sub-Sekunden-Bereich zu erreichen.",
+                        "intro_p2": "Moderne Systeme erfordern einen ganzheitlichen Ansatz, der bei der Protokollauswahl beginnt und bei der strategischen globalen Verteilung von Rechenzentren endet.",
+                        "challenges_p1": "Die größte Herausforderung liegt in der Datenverteilung über Kontinente hinweg bei gleichzeitiger Wahrung der Konsistenz. Durch den Einsatz von Edge Computing können wir die Verarbeitung näher an den Endbenutzer bringen.",
+                        "insight_text": "Der Übergang von zentralisierten Architekturen zu ereignisgesteuerten verteilten Modellen reduziert die globale Latenz bei Systemen auf Unternehmensebene typischerweise um bis zu 70%.",
+                        "conclusion_p1": "Investitionen in die technische Infrastruktur sind letztlich Investitionen in die Benutzererfahrung. Ein gut gestaltetes architektonisches Fundament spart langfristig Kosten und garantiert nahtlose Skalierbarkeit.",
+                        "prev_post_title": "Grundlagen der technischen SEO",
+                        "next_post_title": "Migration von Altsystemen",
+                        "recommended_post_title": "So skalieren Sie PostgreSQL auf 10 Mio. Anfragen..."
+                  },
+                  "headings": {
+                        "intro": "Einführung",
+                        "challenges": "Moderne technische Herausforderungen",
+                        "insight": "Technischer Einblick",
+                        "conclusion": "Strategisches Fazit"
+                  }
+            }
+      }
+}

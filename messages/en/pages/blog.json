@@ -1,0 +1,98 @@
+{
+      "blog": {
+            "title": "Technical Authority",
+            "breadcrumb": "Insights",
+            "subtitle": "Insights from Our Lead Engineers",
+            "viewAll": "Explore All Insights",
+            "readMore": "Continue Reading",
+            "category": "Engineering",
+            "newsletter": {
+                  "title": "Stay Ahead of the Curve",
+                  "description": "Get deep technical insights and engineering breakthroughs delivered twice a month.",
+                  "placeholder": "Enter your engineering email",
+                  "button": "Subscribe to Insights"
+            },
+            "posts": [
+                  {
+                        "slug": "architecture-low-latency",
+                        "title": "Architecting for Low Latency: A Guide for Global Systems",
+                        "excerpt": "Next-generation scalable systems and high-performance engineering patterns for global digital operations.",
+                        "date": "Jan 06, 2026",
+                        "author": "Marcus Thorne",
+                        "datePublished": "2026-01-06",
+                        "dateModified": "2026-01-06",
+                        "image": "/images/blog/architecture-low-latency.jpg",
+                        "tags": [
+                              "Architecture",
+                              "Performance",
+                              "Cloud"
+                        ]
+                  },
+                  {
+                        "slug": "technical-seo-infrastructure",
+                        "title": "Why Technical SEO Starts at the Infrastructure Layer",
+                        "excerpt": "Beyond meta tags: leveraging server-side rendering and edge computing to boost organic search authority.",
+                        "date": "Jan 04, 2026",
+                        "author": "Elena Vance",
+                        "datePublished": "2026-01-04",
+                        "dateModified": "2026-01-04",
+                        "image": "/images/blog/technical-seo-infrastructure.jpg",
+                        "tags": [
+                              "SEO",
+                              "Next.js",
+                              "Vitals"
+                        ]
+                  },
+                  {
+                        "slug": "legacy-architecture-cost",
+                        "title": "Economic Impact of Legacy Architecture in Modern Business",
+                        "excerpt": "A deep dive into how outdated systems and technical debt drain enterprise resources and hinder innovation.",
+                        "date": "Jan 02, 2026",
+                        "author": "Alexander Sterling",
+                        "datePublished": "2026-01-02",
+                        "dateModified": "2026-01-02",
+                        "image": "/images/blog/legacy-architecture-cost.jpg",
+                        "tags": [
+                              "Business",
+                              "Strategy",
+                              "Tech Debt"
+                        ]
+                  }
+            ],
+            "post": {
+                  "back": "Back to Engineering Insights",
+                  "principal_architect": "Principal Architect",
+                  "read_time": "6 min read",
+                  "category": "Engineering",
+                  "content_maps": "Content Maps",
+                  "join_discussion": "Join Discussion",
+                  "discussion_desc": "Our engineers are active in the comments. Technical queries are welcome.",
+                  "view_community": "View Community Insights",
+                  "share": "Share Article",
+                  "audit_title": "Need a Technical Review?",
+                  "audit_desc": "Our architects can audit your current system for performance bottlenecks.",
+                  "audit_button": "Book Audit",
+                  "technical_clusters": "Technical Clusters",
+                  "recommended": "Recommended for You",
+                  "view_all": "View All Insights",
+                  "prev_insight": "Previous Insight",
+                  "next_insight": "Next Insight",
+                  "demo": {
+                        "intro_p1": "In an era where digital speed is a competitive necessity, architecting systems for low latency is no longer optional. This technical deep-dive explores the fundamental patterns used by world-class engineering teams to achieve sub-second global response times.",
+                        "intro_p2": "Modern systems require a holistic approach starting from protocol selection and ending with strategic global data center distribution.",
+                        "challenges_p1": "The primary challenge lies in data distribution across continents while maintaining consistency. By leveraging Edge Computing and strategically placed points of presence, we can bring compute closer to the end-user.",
+                        "insight_text": "Transitioning from centralized architectures to event-driven distributed models typically reduces global latency by up to 70% for enterprise-scale systems.",
+                        "conclusion_p1": "Investing in technical infrastructure is ultimately an investment in user experience. A well-designed architectural foundation saves costs in the long run and guarantees seamless scalability.",
+                        "prev_post_title": "Technical SEO Foundations",
+                        "next_post_title": "Legacy Systems Migration",
+                        "recommended_post_title": "How to scale PostgreSQL to 10M requests..."
+                  },
+                  "headings": {
+                        "intro": "Introduction",
+                        "challenges": "Modern Engineering Challenges",
+                        "insight": "Engineering Insight",
+                        "conclusion": "Strategic Conclusion"
+                  }
+            }
+      }
+}

@@ -1,0 +1,90 @@
+{
+      "hero": {
+            "title": "Engineering Elite Digital Solutions",
+            "company": "Codeprops",
+            "subtitle": "High-Performance Software for Global Enterprises",
+            "description": "As a leading software development company, we design scalable systems and custom web applications. Our engineering services combine complex business logic with intuitive digital experiences.",
+            "cta": "Launch Your Project",
+            "ctaSecondary": "View Our Work"
+      },
+      "methodology": {
+            "title": "Our Engineering Lifecycle",
+            "subtitle": "A Defined Path to Technical Excellence",
+            "steps": [
+                  {
+                        "title": "Discovery",
+                        "description": "Thorough technical analysis to align architecture with business goals."
+                  },
+                  {
+                        "title": "Architecture",
+                        "description": "Designing scalable systems with robust data modeling and structure."
+                  },
+                  {
+                        "title": "Engineering",
+                        "description": "Developing secure, high-performance code following modern engineering standards."
+                  },
+                  {
+                        "title": "Validation",
+                        "description": "Rigorous testing and performance tuning before global deployment."
+                  }
+            ]
+      },
+      "pricing": {
+            "title": "Engagement Models",
+            "subtitle": "Transparent Value at Every Scale",
+            "badge": "Elite Tier",
+            "cta": "Secure Your Plan",
+            "priceSuffix": "/engagement",
+            "plans": [
+                  {
+                        "name": "Accelerator",
+                        "price": "!!!!",
+                        "description": "Core architecture for startups and MVP development.",
+                        "features": [
+                              "Modular Web Application",
+                              "SEO-Optimized Architecture",
+                              "30-Day Engineering Support",
+                              "Scalable Infrastructure"
+                        ]
+                  },
+                  {
+                        "name": "Authority",
+                        "price": "!!!!",
+                        "description": "Full-scale engineering for growing enterprises and complex integrations.",
+                        "features": [
+                              "Web & Mobile Synergy",
+                              "Advanced API Integrations",
+                              "High-Load Optimization",
+                              "Dedicated Engineering Support"
+                        ]
+                  },
+                  {
+                        "name": "Enterprise",
+                        "price": "!!!!",
+                        "description": "Custom engineering teams for global organizations and complex systems.",
+                        "features": [
+                              "Dedicated Cloud Architect",
+                              "AI/ML Implementation",
+                              "Legacy System Migration",
+                              "24/7 Priority Support"
+                        ]
+                  }
+            ]
+      },
+      "testimonials": {
+            "title": "Partner Feedback",
+            "subtitle": "Validating Exceptional Engineering",
+            "items": [
+                  {
+                        "name": "Alexander Sterling",
+                        "role": "CTO at Nexus Platforms",
+                        "content": "Codeprops didn't just build our app—they transformed our architecture. Their engineering discipline is rare."
+                  },
+                  {
+                        "name": "Dr. Elena Vance",
+                        "role": "Director of Technology, Flow Systems",
+                        "content": "The performance improvements after re-engineering were remarkable. They are true technical partners."
+                  }
+            ]
+      }
+}

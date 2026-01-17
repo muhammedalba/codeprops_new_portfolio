@@ -1,0 +1,90 @@
+{
+      "hero": {
+            "title": "Exklusive Digitale Lösungen Entwickeln",
+            "company": "Codeprops",
+            "subtitle": "Hochleistungssoftware für Unternehmen weltweit",
+            "description": "Als führendes Softwareunternehmen entwickeln wir skalierbare Webanwendungen, individuelle Softwarelösungen und mobile Apps. Unsere Services verbinden komplexe Geschäftslogik mit intuitiven Benutzererlebnissen.",
+            "cta": "Projekt Starten",
+            "ctaSecondary": "Referenzen Ansehen"
+      },
+      "methodology": {
+            "title": "Unser Engineering-Lebenszyklus",
+            "subtitle": "Strukturierter Weg zur technischen Exzellenz",
+            "steps": [
+                  {
+                        "title": "Discovery",
+                        "description": "Detaillierte Analyse zur optimalen Abstimmung der Architektur auf Geschäftsziele."
+                  },
+                  {
+                        "title": "Architektur",
+                        "description": "Aufbau skalierbarer Systeme mit durchdachter Datenmodellierung."
+                  },
+                  {
+                        "title": "Engineering",
+                        "description": "Entwicklung sicherer, performanter Software nach modernen Standards."
+                  },
+                  {
+                        "title": "Validierung",
+                        "description": "Intensive Tests und Performance-Tuning vor globalem Rollout."
+                  }
+            ]
+      },
+      "pricing": {
+            "title": "Unsere Engagement-Modelle",
+            "subtitle": "Transparente Preisgestaltung für jedes Projekt",
+            "badge": "Elite Tier",
+            "cta": "Plan Sichern",
+            "priceSuffix": "/Projekt",
+            "plans": [
+                  {
+                        "name": "Accelerator",
+                        "price": "!!!!",
+                        "description": "Basisarchitektur für Startups and MVP-Entwicklung.",
+                        "features": [
+                              "Modulare Webanwendung",
+                              "SEO-optimierte Struktur",
+                              "30 Tage Engineering-Support",
+                              "Skalierbare Infrastruktur"
+                        ]
+                  },
+                  {
+                        "name": "Authority",
+                        "price": "!!!!",
+                        "description": "Komplettes Engineering für wachsende Unternehmen und komplexe Integrationen.",
+                        "features": [
+                              "Web- & Mobile-Synergie",
+                              "Erweiterte API-Integrationen",
+                              "High-Load-Optimierung",
+                              "Dediziertes Engineering-Team"
+                        ]
+                  },
+                  {
+                        "name": "Enterprise",
+                        "price": "!!!!",
+                        "description": "Maßgeschneiderte Teams für globale Unternehmen und hochkomplexe Systeme.",
+                        "features": [
+                              "Dedizierter Cloud-Architekt",
+                              "KI/ML Implementierung",
+                              "Legacy-System-Migration",
+                              "24/7 Prioritäts-Support"
+                        ]
+                  }
+            ]
+      },
+      "testimonials": {
+            "title": "Partnerstimmen",
+            "subtitle": "Nachweis unserer Engineering-Exzellenz",
+            "items": [
+                  {
+                        "name": "Alexander Sterling",
+                        "role": "CTO bei Nexus Platforms",
+                        "content": "Codeprops hat nicht nur unsere App entwickelt, sondern unsere gesamte Architektur transformiert. Diese Expertise ist selten."
+                  },
+                  {
+                        "name": "Dr. Elena Vance",
+                        "role": "Technologie-Direktorin, Flow Systems",
+                        "content": "Die Performancegewinne nach dem Re-Engineering waren beeindruckend. Ein echter technischer Partner."
+                  }
+            ]
+      }
+}

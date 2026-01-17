@@ -1,12 +1,12 @@
-import { locales, defaultLocale } from '@/lib/i18n';
-import { getMessages } from '@/lib/translations';
+import { locales, defaultLocale, Locale } from '@/lib/i18n';
+import { getPageMessages } from '@/lib/translations';
 import { serviceSlugs } from '@/lib/services';
 import type { MetadataRoute } from 'next'
 
 // Required for static export
 export const dynamic = 'force-static'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   
   // Base pages
@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sitemap: MetadataRoute.Sitemap = [];
 
   // Generate entries for each locale and page
-  locales.forEach((locale) => {
+  for (const locale of locales) {
     // Standard pages
     pages.forEach((page) => {
       sitemap.push({
@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
 
     // Portfolio projects
-    const t = getMessages(locale);
+    const t = await getPageMessages(locale as Locale, "portfolio");
     if (t.portfolio && t.portfolio.projects) {
       t.portfolio.projects.forEach((project: any) => {
         const path = `/portfolio/${project.slug}`;
@@ -61,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         });
       });
     }
-  });
+  }
 
   return sitemap;
 }

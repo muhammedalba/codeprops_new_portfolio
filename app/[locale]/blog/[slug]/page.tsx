@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Locale, locales } from '@/lib/i18n';
-import { getMessages } from '@/lib/translations';
+import { getPageMessages } from '@/lib/translations';
 import { generatePageMetadata } from '@/lib/seo';
 import { BlogPostClient } from '@/components/blog/blog-post-client';
 import { notFound } from 'next/navigation';
@@ -8,14 +8,17 @@ import { notFound } from 'next/navigation';
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const params: any[] = [];
-  locales.forEach((locale) => {
-    const t = getMessages(locale as Locale);
-    t.blog.posts.forEach((post: any) => {
-      params.push({ locale, slug: post.slug });
-    });
-  });
-  return params;
+  const paths: any[] = [];
+  
+  for (const locale of locales) {
+    const t = await getPageMessages(locale as Locale, "blog");
+    if (t.blog && t.blog.posts) {
+      t.blog.posts.forEach((post: any) => {
+        paths.push({ locale, slug: post.slug });
+      });
+    }
+  }
+  return paths;
 }
 
 export async function generateMetadata({
@@ -24,7 +27,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const t = getMessages(locale as Locale);
+  const t = await getPageMessages(locale as Locale, "blog");
   const post = t.blog.posts.find((p: any) => p.slug === slug);
 
   if (!post) return {};
@@ -47,7 +50,7 @@ export default async function BlogPostPage({
 }) {
   const { locale, slug } = await params;
   const typedLocale = locale as Locale;
-  const t = getMessages(typedLocale);
+  const t = await getPageMessages(typedLocale, "blog");
   
   const post = t.blog.posts.find((p: any) => p.slug === slug);
   if (!post) notFound();

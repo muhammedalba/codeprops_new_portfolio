@@ -4,7 +4,7 @@ import "../globals.css";
 import { cn } from "@/lib/utils";
 import { Locale, getDirection, locales } from "@/lib/i18n";
 import { generatePageMetadata, generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
-import { getMessages } from "@/lib/translations";
+import { getPageMessages } from "@/lib/translations";
 import { use } from "react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -36,7 +36,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const typedLocale = locale as Locale;
-  const messages = getMessages(typedLocale);
+  const messages = await getPageMessages(typedLocale, "home");
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   
   return {
@@ -59,7 +59,7 @@ export default async   function LocaleLayout({
   const { locale } = await params;
   const typedLocale = locale as Locale;
   const direction = getDirection(typedLocale);
-  const messages = getMessages(typedLocale);
+  const messages = await getPageMessages(typedLocale, "home");
 
   return (
     <html lang={typedLocale} dir={direction} suppressHydrationWarning>

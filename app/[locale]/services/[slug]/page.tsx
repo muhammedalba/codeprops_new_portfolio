@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Locale, locales } from '@/lib/i18n';
-import { getMessages } from '@/lib/translations';
+import { getPageMessages } from '@/lib/translations';
 import { generatePageMetadata, generateFAQSchema, generateBreadcrumbSchema } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import { ServiceDetailClient } from '@/components/services/service-detail-client';
@@ -29,7 +29,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const t = getMessages(locale as Locale);
+  const t = await getPageMessages(locale as Locale, "services");
   const service = (t.services as any)[slug];
 
   if (!service) return {};
@@ -49,7 +49,7 @@ export default async function ServiceDetailPage({
 }) {
   const { locale, slug } = await params;
   const typedLocale = locale as Locale;
-  const t = getMessages(typedLocale);
+  const t = await getPageMessages(typedLocale, "services");
   const serviceData = (t.services as any)[slug];
 const serviceTypeMap: Record<string, string> = {
   web: "Web Application Development",

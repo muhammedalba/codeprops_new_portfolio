@@ -1,0 +1,114 @@
+{
+      "services": {
+            "title": "Unsere Kernkompetenzen",
+            "subtitle": "Full-Lifecycle Software Engineering",
+            "hero_title": "Architektur der <span class='text-primary italic'>Digitalen Zukunft</span>",
+            "hero_description": "Wir entwerfen und bauen resiliente Hochleistungssysteme, die globale Unternehmen durch technische Autorität stärken.",
+            "capabilities_grid": {
+                  "badge": "Technische Meisterschaft",
+                  "custom_card_title": "Jenseits von Standardlösungen?",
+                  "custom_card_description": "Benötigen Sie ein spezialisiertes Engineering-Team für eine hochkomplexe Herausforderung? Wir entwerfen maßgeschneiderte Kooperationsmodelle.",
+                  "custom_card_button": "Technischen Blueprint anfordern"
+            },
+            "web": {
+                  "title": "Maßgeschneiderte Webentwicklung",
+                  "description": "Erstellung von hochperformanten, SEO-freundlichen Webanwendungen mit Next.js, React und modularen Architekturen.",
+                  "features": [
+                        "SSR/ISR Architektur",
+                        "Performance Fokus",
+                        "SEO Infrastruktur",
+                        "Micro-frontend Ready"
+                  ],
+                  "details": "Wir bauen nicht nur Websites; wir entwickeln digitale Plattformen, die konvertieren. Mit Next.js und React sorgen wir für ein reibungsloses Nutzererlebnis."
+            },
+            "custom": {
+                  "title": "Individuelle Softwarelösungen",
+                  "description": "End-to-End-Softwareentwicklung für komplexe Automatisierung und einzigartige unternehmensweite Herausforderungen.",
+                  "features": [
+                        "Automatisierung",
+                        "Legacy Modernisierung",
+                        "Interne Tools",
+                        "Systemarchitektur"
+                  ],
+                  "details": "Jedes Unternehmen hat einzigartige Herausforderungen. Unsere Ingenieure analysieren Ihre operativen Engpässe, um Software zu entwickeln, die mit Ihnen wächst."
+            },
+            "ecommerce": {
+                  "title": "Skalierbarer E-Commerce",
+                  "description": "Aufbau von hochkonvertierenden, hochbelastbaren E-Commerce-Plattformen mit nahtloser Zahlungs- und Logistikintegration.",
+                  "features": [
+                        "Headless Lösungen",
+                        "Omnichannel Ready",
+                        "Fast Checkout",
+                        "Logistik API"
+                  ],
+                  "details": "Hochleistungshandel erfordert präzises Engineering. Wir bauen Headless-Commerce-Systeme für ultimative Flexibilität und Performance."
+            },
+            "cloud": {
+                  "title": "Cloud- & API-Integration",
+                  "description": "Entwurf robuster API-Ökosysteme und cloud-fähiger Systeme zur Sicherstellung der Datenkontinuität in Ihrem Unternehmen.",
+                  "features": [
+                        "Serverless Systeme",
+                        "Kubernetes Skalierung",
+                        "API-First Design",
+                        "Cloud Migration"
+                  ],
+                  "details": "Infrastruktur sollte unsichtbar sein. Wir entwerfen cloud-native Systeme auf AWS und Azure, die automatisch skalieren und nie ausfallen."
+            },
+            "performance": {
+                  "title": "Performance-Optimierung",
+                  "description": "Technische Audits und Re-Engineering von Altsystemen für maximale Geschwindigkeit, Sicherheit und Suchsichtbarkeit.",
+                  "features": [
+                        "Codebase Audits",
+                        "Core Web Vitals",
+                        "Security Hardening",
+                        "Datenbank-Tuning"
+                  ],
+                  "details": "Performance ist ein Feature. Wir führen tiefgehende technische Audits durch, um Engpässe zu identifizieren und Systeme neu zu gestalten."
+            },
+            "process": {
+                  "title": "Unser Engineering-Prozess",
+                  "subtitle": "Ein disziplinierter, engineering-zentrierter Ansatz, um komplexe Anforderungen in eine resiliente digitale Infrastruktur zu verwandeln.",
+                  "steps": [
+                        {
+                              "title": "Architektur",
+                              "description": "Entwurf von High-Level-Systemplänen und Datenmodellen."
+                        },
+                        {
+                              "title": "Entwicklung",
+                              "description": "Programmierung von sicherem, modularem Code nach höchsten Standards."
+                        },
+                        {
+                              "title": "Skalierung",
+                              "description": "Deployment in Cloud-native Umgebungen für Millionen von Nutzern."
+                        },
+                        {
+                              "title": "Wartung",
+                              "description": "Proaktives Monitoring und Performance-Tuning rund um die Uhr."
+                        }
+                  ]
+            },
+            "instant_cta": "Strategie-Sitzung buchen",
+            "faq": {
+                  "title": "Technische FAQ",
+                  "subtitle": "Expertenantworten zu Architektur & Software",
+                  "questions": [
+                        {
+                              "q": "Wie beeinflusst Server-Side Rendering (SSR) unser SEO-Ranking?",
+                              "a": "SSR sorgt dafür, dass Suchmaschinen-Crawler beim ersten Request vollständig gerendertes HTML erhalten, was die Indexierungsgeschwindigkeit und das Ranking gegenüber klassischen SPAs deutlich verbessert."
+                        },
+                        {
+                              "q": "Was ist der Vorteil einer Headless-Commerce-Architektur?",
+                              "a": "Headless trennt Frontend und Backend, ermöglicht höchste Performance und ein maßgeschneidertes Nutzererlebnis ohne Einschränkungen durch die Template-Engine der Plattform."
+                        },
+                        {
+                              "q": "Wie gewährleisten Sie Skalierbarkeit bei hoher Last?",
+                              "a": "Wir setzen Microservices, Containerisierung (Kubernetes) und ereignisgesteuerte Architekturen ein, sodass Systemkomponenten bei Bedarf unabhängig skaliert werden können."
+                        },
+                        {
+                              "q": "Warum ist Core Web Vitals für Business-Apps wichtig?",
+                              "a": "Google nutzt Core Web Vitals als Rankingfaktor. Hohe Werte bei LCP und CLS steigern Nutzerbindung und Sichtbarkeit in Suchmaschinen."
+                        }
+                  ]
+            }
+      }
+}

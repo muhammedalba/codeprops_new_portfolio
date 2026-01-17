@@ -1,0 +1,73 @@
+{
+      "portfolio": {
+            "title": "Engineering Case Studies",
+            "subtitle": "A showcase of high-performance architecture and digital transformation across diverse industries.",
+            "viewProject": "View Architecture",
+            "filter": "Filter by Industry",
+            "all": "All Systems",
+            "details": {
+                  "back": "Back to Engineering Portfolio",
+                  "live_integration": "Live Integration",
+                  "uptime": "Uptime Efficiency",
+                  "tech_stack": "Tech Stack",
+                  "focus_layers": "Focus Layers",
+                  "request_solution": "Request Similar Solution",
+                  "consultation": "Lead Engineer Consultation",
+                  "next_case": "Next Case Study",
+                  "explore_all": "Explore All Works",
+                  "performance_matrix": "Performance Matrix",
+                  "security_pass": "Security Audit PASS",
+                  "architecture_preview": "Architecture Preview",
+                  "challenge": "The Challenge",
+                  "solution": "Our Engineering Solution",
+                  "results": "Technical & Business Results"
+            },
+            "projects": [
+                  {
+                        "slug": "nexus-logistics",
+                        "title": "Nexus Logistics: Global Supply Chain Cloud Migration",
+                        "category": "Enterprise",
+                        "description": "Transforming fragmented legacy infrastructure into a unified, cloud-native logistics orchestrator.",
+                        "problem": "Fragmented legacy infrastructure causing bottlenecks and frequent downtime.",
+                        "solution": "Implemented a cloud-native AWS architecture with Go-based microservices for real-time tracking.",
+                        "result": "300% throughput increase & 99.99% uptime.",
+                        "tech": [
+                              "Next.js",
+                              "Go",
+                              "AWS",
+                              "K8s"
+                        ]
+                  },
+                  {
+                        "slug": "aura-fashion",
+                        "title": "Aura Fashion: High-Load E-Commerce Re-Engineering",
+                        "category": "E-Commerce",
+                        "description": "Scaling a luxury fashion brand for peak traffic without downtime.",
+                        "problem": "Server crashes during high-traffic events like Black Friday, leading to lost sales.",
+                        "solution": "Re-engineered with Next.js and Redis caching to handle 100x traffic spikes seamlessly.",
+                        "result": "65% higher conversion & zero peak-time lag.",
+                        "tech": [
+                              "Next.js",
+                              "Shopify",
+                              "Redis",
+                              "Framer"
+                        ]
+                  },
+                  {
+                        "slug": "finnode-api",
+                        "title": "FinNode: Secure Open Banking API Ecosystem",
+                        "category": "FinTech",
+                        "description": "Building a resilient, compliant gateway for secure financial data exchange.",
+                        "problem": "Lack of a secure, compliant environment for financial data exchange with third-party providers.",
+                        "solution": "Created a robust Laravel-based API ecosystem with multi-factor authentication and full audit logging.",
+                        "result": "10M+ monthly transactions & PCI-Compliance.",
+                        "tech": [
+                              "Laravel",
+                              "Docker",
+                              "MFA",
+                              "Audit Logs"
+                        ]
+                  }
+            ]
+      }
+}

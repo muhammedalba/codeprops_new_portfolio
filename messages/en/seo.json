@@ -1,0 +1,26 @@
+{
+      "home": {
+            "title": "Codeprops | Leading Software Development & Web Solutions",
+            "description": "Codeprops delivers premium software development and web solutions. We provide custom software, scalable web applications, and high-performance digital systems for enterprises of all sizes."
+      },
+      "about": {
+            "title": "About Codeprops | Engineering Excellence & Modern Architecture",
+            "description": "Discover the philosophy behind Codeprops. We provide expert software engineering with a focus on quality, scalability, and cutting-edge web technologies."
+      },
+      "services": {
+            "title": "Software Engineering Services | Custom Web & App Development",
+            "description": "Comprehensive digital solutions including web development, business automation, mobile apps, and enterprise software. Scalable systems built with Next.js, Laravel, and React."
+      },
+      "portfolio": {
+            "title": "Software Development Portfolio | Case Studies | Codeprops",
+            "description": "Explore our portfolio of high-performance web applications and custom software solutions. Real-world examples of digital transformation and business automation success."
+      },
+      "blog": {
+            "title": "Software Engineering Insights | Web Development Blog | Codeprops",
+            "description": "Technical insights into modern web technologies, cloud infrastructure, UX/UI, and software architecture. Expertise-driven content for engineers and decision-makers."
+      },
+      "contact": {
+            "title": "Contact Our Software Development Team | Codeprops",
+            "description": "Ready to build? Collaborate with a senior software engineering team for your next custom software, web, or mobile project. Engineered for growth."
+      }
+}

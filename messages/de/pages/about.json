@@ -1,0 +1,142 @@
+{
+      "about": {
+            "title": "Die Zukunft der digitalen Architektur",
+            "subtitle": "Präzises Engineering. Skalierbare Ergebnisse.",
+            "description": "Codeprops ist ein spezialisiertes Software-Engineering-Unternehmen. Wir gehen über die reine Programmierung hinaus und bieten strategische technische Architektur. Unsere Philosophie legt Wert auf Performance, Sicherheit und langfristige Wartbarkeit.",
+            "badge": "Über CodeProps",
+            "intro": {
+                  "title": "Die Kunst, Visionen in digitale Realität zu verwandeln",
+                  "subtitle": "Engineering-Exzellenz in jeder Codezeile.",
+                  "content": "Wir bei CodeProps glauben, dass Software mehr als nur funktional sein sollte; sie sollte ein strategischer Vermögenswert sein. Unser Team aus Elite-Ingenieuren und Architekten arbeitet an der Schnittstelle von Innovation und Zuverlässigkeit."
+            },
+            "mission": {
+                  "title": "Unsere Mission",
+                  "text": "Weltweite Unternehmen durch die Architektur robuster digitaler Ökosysteme zu befähigen, die komplexe Herausforderungen lösen und nachhaltiges Wachstum fördern."
+            },
+            "vision": {
+                  "title": "Unsere Vision",
+                  "text": "Der definierende globale Standard für Hochleistungs-Software-Engineering zu sein, bei dem jedes von uns geschaffene digitale Erlebnis neue Maßstäbe setzt."
+            },
+            "values": {
+                  "title": "Engineering-Philosophie",
+                  "items": [
+                        {
+                              "title": "Absolute Integrität",
+                              "description": "Wir wahren höchste Transparenz- und Ethikstandards bei jeder architektonischen Entscheidung."
+                        },
+                        {
+                              "title": "Unermüdliche Innovation",
+                              "description": "Stagnation ist unser Feind. Wir entwickeln unser Stack ständig weiter, um neueste Durchbrüche zu nutzen."
+                        },
+                        {
+                              "title": "Performance First",
+                              "description": "Jede Millisekunde zählt. Wir optimieren auf Geschwindigkeit, Skalierung und nahtlose Kontinuität."
+                        },
+                        {
+                              "title": "Kundenzentrierte Exzellenz",
+                              "description": "Ihre Ziele sind unsere technischen Baupläne. Wir liefern Lösungen, die wirklich etwas bewegen."
+                        }
+                  ]
+            },
+            "timeline": {
+                  "title": "Weg zur Exzellenz",
+                  "subtitle": "Eine chronologische Reise der technischen Evolution und Wirkung.",
+                  "items": [
+                        {
+                              "year": "2015",
+                              "title": "Gründung",
+                              "description": "CodeProps wurde mit der Mission gegründet, Engineering-Standards neu zu definieren."
+                        },
+                        {
+                              "year": "2018",
+                              "title": "Skalierung",
+                              "description": "Ausbau der globalen Reichweite und Bereitstellung von High-Load-Systemen."
+                        },
+                        {
+                              "year": "2021",
+                              "title": "Cloud-Pionier",
+                              "description": "Ausgezeichnet für Exzellenz in Serverless- und Cloud-native Architekturen."
+                        },
+                        {
+                              "year": "2024",
+                              "title": "Nächster Horizont",
+                              "description": "Wegweisend in der Integration von KI-gesteuertem Engineering und Performance."
+                        }
+                  ]
+            },
+            "tech_stack": {
+                  "title": "Technische Autorität",
+                  "subtitle": "Das branchenführende Toolset, das wir beherrschen, um die Zukunft zu bauen.",
+                  "categories": [
+                        {
+                              "name": "Frontend",
+                              "tech": [
+                                    "Next.js",
+                                    "React",
+                                    "TypeScript",
+                                    "Tailwind"
+                              ]
+                        },
+                        {
+                              "name": "Backend",
+                              "tech": [
+                                    "Node.js",
+                                    "Go",
+                                    "Python",
+                                    "PHP/Laravel"
+                              ]
+                        },
+                        {
+                              "name": "Infrastructure",
+                              "tech": [
+                                    "AWS",
+                                    "Kubernetes",
+                                    "Docker",
+                                    "Terraform"
+                              ]
+                        },
+                        {
+                              "name": "Data",
+                              "tech": [
+                                    "PostgreSQL",
+                                    "Redis",
+                                    "Elasticsearch",
+                                    "MongoDB"
+                              ]
+                        }
+                  ]
+            },
+            "stats": {
+                  "projects": "Abgeschlossene Projekte",
+                  "clients": "Zufriedene Partner",
+                  "years": "Jahre Erfahrung",
+                  "team": "Engineering-Spezialisten",
+                  "projects_count": "300",
+                  "clients_count": "200",
+                  "years_count": "10",
+                  "team_count": "25"
+            },
+            "services_overview": {
+                  "title": "Strategische Fähigkeiten",
+                  "description": "Ein kurzer Blick darauf, wie wir Unternehmen durch Technologie transformieren.",
+                  "items": [
+                        {
+                              "title": "Enterprise Web-Systeme",
+                              "description": "Skalierbare, hochkomplexe Webanwendungen für höchste Ansprüche."
+                        },
+                        {
+                              "title": "Mobile Excellence",
+                              "description": "Direkte, leistungsstarke mobile Erlebnisse für iOS und Android."
+                        },
+                        {
+                              "title": "Cloud-Infrastruktur",
+                              "description": "Architektur resilienter Clouds, die niemals schlafen."
+                        },
+                        {
+                              "title": "UI/UX-Strategie",
+                              "description": "Design von Interfaces, die sich wie die Zukunft anfühlen."
+                        }
+                  ]
+            }
+      }
+}

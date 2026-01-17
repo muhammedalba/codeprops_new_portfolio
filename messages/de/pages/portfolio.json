@@ -1,0 +1,73 @@
+{
+      "portfolio": {
+            "title": "Engineering Case Studies",
+            "subtitle": "Ein Showcase für Hochleistungs-Architektur und digitale Transformation in verschiedenen Branchen.",
+            "viewProject": "Architektur ansehen",
+            "filter": "Nach Branche filtern",
+            "all": "Alle Systeme",
+            "details": {
+                  "back": "Zurück zum Engineering Portfolio",
+                  "live_integration": "Live-Integration",
+                  "uptime": "Uptime-Effizienz",
+                  "tech_stack": "Tech Stack",
+                  "focus_layers": "Fokusschichten",
+                  "request_solution": "Ähnliche Lösung anfordern",
+                  "consultation": "Lead Engineer Beratung",
+                  "next_case": "Nächste Fallstudie",
+                  "explore_all": "Alle Arbeiten ansehen",
+                  "performance_matrix": "Performance-Matrix",
+                  "security_pass": "Sicherheitsaudit BESTANDEN",
+                  "architecture_preview": "Architektur-Vorschau",
+                  "challenge": "Die Herausforderung",
+                  "solution": "Unsere Engineering-Lösung",
+                  "results": "Technische & geschäftliche Ergebnisse"
+            },
+            "projects": [
+                  {
+                        "slug": "nexus-logistics",
+                        "title": "Nexus Logistics: Globale Supply-Chain Cloud-Migration",
+                        "category": "Enterprise",
+                        "description": "Transformation einer fragmentierten Legacy-Infrastruktur in einen cloud-nativen Logistik-Orchestrator.",
+                        "problem": "Fragmentierte Legacy-Infrastruktur verursachte Engpässe und häufige Ausfallzeiten.",
+                        "solution": "Einführung einer cloud-nativen AWS-Architektur mit Go-basierten Microservices für Echtzeit-Tracking.",
+                        "result": "300% mehr Durchsatz & 99,99% Uptime.",
+                        "tech": [
+                              "Next.js",
+                              "Go",
+                              "AWS",
+                              "K8s"
+                        ]
+                  },
+                  {
+                        "slug": "aura-fashion",
+                        "title": "Aura Fashion: High-Load E-Commerce Re-Engineering",
+                        "category": "E-Commerce",
+                        "description": "Skalierung einer Luxusmodemarke für Spitzenlasten ohne Ausfallzeiten.",
+                        "problem": "Serverabstürze bei hohem Besucheraufkommen wie am Black Friday führten zu Umsatzeinbußen.",
+                        "solution": "Neugestaltung mit Next.js und Redis-Caching, um 100-fache Verkehrsspitzen nahtlos zu bewältigen.",
+                        "result": "65% höhere Conversion & null Verzögerung.",
+                        "tech": [
+                              "Next.js",
+                              "Shopify",
+                              "Redis",
+                              "Framer"
+                        ]
+                  },
+                  {
+                        "slug": "finnode-api",
+                        "title": "FinNode: Sicheres Open Banking API-Ökosystem",
+                        "category": "FinTech",
+                        "description": "Aufbau eines resilienten, konformen Gateways für den sicheren Austausch von Finanzdaten.",
+                        "problem": "Fehlen einer sicheren, konformen Umgebung für den Austausch von Finanzdaten mit Drittanbietern.",
+                        "solution": "Entwicklung eines robusten Laravel-basierten API-Ökosystems mit Multi-Faktor-Authentifizierung und vollständiger Protokollierung.",
+                        "result": "10M+ monatliche Transaktionen & PCI-Konformität.",
+                        "tech": [
+                              "Laravel",
+                              "Docker",
+                              "MFA",
+                              "Audit Logs"
+                        ]
+                  }
+            ]
+      }
+}

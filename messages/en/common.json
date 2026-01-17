@@ -1,0 +1,26 @@
+{
+      "nav": {
+            "home": "Home",
+            "about": "About",
+            "services": "Capabilities",
+            "portfolio": "Portfolio",
+            "blog": "Insights",
+            "contact": "Contact"
+      },
+      "cta": {
+            "title": "Ready to Re-Engineer Your Digital Presence?",
+            "description": "Partner with a software engineering firm that understands scalability, security, and performance architecture.",
+            "button": "Contact Our Strategists"
+      },
+      "footer": {
+            "tagline": "Engineering Excellence. Scalable Reality.",
+            "copyright": "All Rights Reserved.",
+            "company": "Capabilities",
+            "legal": "Governance",
+            "links": {
+                  "privacy": "Data Privacy",
+                  "terms": "Terms of Use",
+                  "sitemap": "Infrastructure Map"
+            }
+      }
+}
