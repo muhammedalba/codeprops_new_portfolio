@@ -2,8 +2,9 @@ import React, { memo } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { HeroBackground } from "@/components/layout/hero-background";
+import dynamic from "next/dynamic";
 
+const HeroBackground = dynamic(() => import("@/components/layout/hero-background").then(m => m.HeroBackground));
 interface HeroSectionProps {
   locale: string;
   translations: {

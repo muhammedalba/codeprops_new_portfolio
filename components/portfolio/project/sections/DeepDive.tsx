@@ -9,7 +9,6 @@ interface DeepDiveProps {
 }
 
 export default function DeepDive({ project, t }: DeepDiveProps) {
-  console.log(project);
   return (
     <div className="space-y-32">
       {/* Visual Showcase Placeholder */}

@@ -1,12 +1,18 @@
+"use client";
+
 import React from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
-import { HeroBackground } from "@/components/layout/hero-background";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { Icons } from "@/components/ui/icons";
 import Link from "next/link";
 
+const HeroBackground = dynamic(() => import("@/components/layout/hero-background").then((mod) => mod.HeroBackground), {
+  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
+  ssr: false
+});
 interface HeroSectionProps {
   locale: string;
   post: any;

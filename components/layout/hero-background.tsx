@@ -1,19 +1,9 @@
 'use client';
 
-import React, { memo, useEffect, useState, useRef, useMemo } from 'react';
+import { memo, useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
 
-// --- Types ---
-type AnimationType = 'home' | 'about' | 'services' | 'contact' | 'portfolio';
-
-interface HeroBackgroundProps {
-  type: AnimationType;
-  showHeavyDelay?: number;
-}
-
-// --- Dynamic Imports (Animations) ---
-// We keep these outside to avoid re-creating the dynamic loader
 const CinematicMesh = dynamic(() => import('@/components/animations/cinematic-mesh').then(m => m.CinematicMesh), { ssr: false });
 const InteractiveParticles = dynamic(() => import('@/components/animations/interactive-particles').then(m => m.InteractiveParticles), { ssr: false });
 const TechSculpture = dynamic(() => import('@/components/animations/tech-sculpture').then(m => m.TechSculpture), { ssr: false });
@@ -22,75 +12,21 @@ const AnimatedGradientMesh = dynamic(() => import('@/components/animations/anima
 const ArchitecturalLines = dynamic(() => import('@/components/animations/architectural-lines').then(m => m.ArchitecturalLines), { ssr: false });
 const ConnectivityOrb = dynamic(() => import('@/components/animations/connectivity-orb').then(m => m.ConnectivityOrb), { ssr: false });
 
-// --- Helper Components ---
-const FadeIn = memo(function FadeIn({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5, ease: 'easeOut' }}
-    >
-      {children}
-    </motion.div>
-  );
-});
+type AnimationType = 'home' | 'about' | 'services' | 'contact' | 'portfolio';
 
-// --- Custom Hooks ---
-
-/**
- * Hook to detect low-end devices based on concurrency and memory.
- */
-function useIsLowEndDevice() {
-  const [isLowEnd, setIsLowEnd] = useState(false);
-
-  useEffect(() => {
-    if (typeof navigator === 'undefined') return;
-    const hc = (navigator as any).hardwareConcurrency ?? 8;
-    const dm = (navigator as any).deviceMemory ?? 8;
-    if (hc <= 4 || dm <= 4) {
-      setIsLowEnd(true);
-    }
-  }, []);
-
-  return isLowEnd;
+interface HeroBackgroundProps {
+  type: AnimationType;
+  showHeavyDelay?: number;
 }
 
-// --- Main Component ---
-
-export const HeroBackground = memo(function HeroBackground({
-  type,
-  showHeavyDelay = 1500,
-}: HeroBackgroundProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef as any, { once: true });
-  const reduceMotion = useReducedMotion();
-  const isLowEndDevice = useIsLowEndDevice();
-  
+function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackgroundProps) {
   const [showHeavy, setShowHeavy] = useState(false);
 
   useEffect(() => {
-    if (!isInView || reduceMotion || isLowEndDevice || showHeavy) return;
+    const timer = setTimeout(() => setShowHeavy(true), showHeavyDelay);
+    return () => clearTimeout(timer);
+  }, [showHeavyDelay]);
 
-    let idleHandle: number | null = null;
-    let timeoutHandle: number | null = null;
-
-    const triggerShow = () => setShowHeavy(true);
-
-    if ('requestIdleCallback' in window) {
-      idleHandle = (window as any).requestIdleCallback(() => {
-        timeoutHandle = (window as any).setTimeout(triggerShow, showHeavyDelay);
-      });
-    } else {
-      timeoutHandle = (window as any).setTimeout(triggerShow, showHeavyDelay + 500);
-    }
-
-    return () => {
-      if (idleHandle !== null) (window as any).cancelIdleCallback(idleHandle);
-      if (timeoutHandle !== null) window.clearTimeout(timeoutHandle);
-    };
-  }, [isInView, reduceMotion, isLowEndDevice, showHeavyDelay, showHeavy]);
-
-  // animations map
   const renderAnimation = () => {
     switch (type) {
       case 'home':
@@ -98,10 +34,10 @@ export const HeroBackground = memo(function HeroBackground({
           <>
             <CinematicMesh />
             {showHeavy && (
-              <FadeIn>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <InteractiveParticles />
                 <TechSculpture />
-              </FadeIn>
+              </motion.div>
             )}
           </>
         );
@@ -110,9 +46,9 @@ export const HeroBackground = memo(function HeroBackground({
           <>
             <AnimatedGradientMesh />
             {showHeavy && (
-              <FadeIn>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <GeometricFocal />
-              </FadeIn>
+              </motion.div>
             )}
           </>
         );
@@ -121,9 +57,9 @@ export const HeroBackground = memo(function HeroBackground({
           <>
             <CinematicMesh />
             {showHeavy && (
-              <FadeIn>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <ArchitecturalLines />
-              </FadeIn>
+              </motion.div>
             )}
           </>
         );
@@ -132,9 +68,9 @@ export const HeroBackground = memo(function HeroBackground({
           <>
             <CinematicMesh />
             {showHeavy && (
-              <FadeIn>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <ConnectivityOrb />
-              </FadeIn>
+              </motion.div>
             )}
           </>
         );
@@ -143,9 +79,9 @@ export const HeroBackground = memo(function HeroBackground({
           <>
             <CinematicMesh />
             {showHeavy && (
-              <FadeIn>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <ArchitecturalLines />
-              </FadeIn>
+              </motion.div>
             )}
           </>
         );
@@ -155,15 +91,10 @@ export const HeroBackground = memo(function HeroBackground({
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
-      aria-hidden="true"
-    >
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       {renderAnimation()}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
     </div>
   );
-});
-
-export default HeroBackground;
+}
+export const HeroBackground = memo(HeroBackgroundComponent);
