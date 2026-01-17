@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
@@ -10,7 +11,7 @@ interface SectionHeaderProps {
   titleClassName?: string;
 }
 
-export function SectionHeader({
+function SectionHeaderComponent({
   id,
   badge,
   title,
@@ -54,3 +55,5 @@ export function SectionHeader({
     </div>
   );
 }
+
+export const SectionHeader = memo(SectionHeaderComponent);

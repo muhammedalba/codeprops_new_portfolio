@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo } from "react";
 
 const TECH_STACK = [
   "Next.js",
@@ -15,7 +15,7 @@ const TECH_STACK = [
   "TailwindCSS"
 ];
 
-export function TechStackMarquee() {
+function TechStackMarqueeComponent() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -82,3 +82,5 @@ export function TechStackMarquee() {
     </section>
   );
 }
+
+export const TechStackMarquee = memo(TechStackMarqueeComponent);

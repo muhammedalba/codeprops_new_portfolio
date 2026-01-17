@@ -1,5 +1,4 @@
-"use client";
-
+import React from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { ArrowLeft, ChevronRight } from "lucide-react";
@@ -11,7 +10,7 @@ interface ArticleContentProps {
   t: any;
 }
 
-export default function ArticleContent({ locale, post, t }: ArticleContentProps) {
+function ArticleContentComponent({ locale, post, t }: ArticleContentProps) {
   return (
     <article className="prose prose-invert prose-primary max-w-none">
       <div id="intro" className="scroll-mt-40">
@@ -94,3 +93,5 @@ async function syncGlobalNode(data, edgeId) {
     </article>
   );
 }
+
+export default React.memo(ArticleContentComponent);

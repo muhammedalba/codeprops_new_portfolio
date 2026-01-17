@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import { Container } from '@/components/layout/container';
 import { ContactForm } from '@/components/contact/contact-form/contact-form';
 import { SectionHeader } from '@/components/ui/section-header';
@@ -29,7 +30,7 @@ interface MiniContactProps {
   };
 }
 
-export function MiniContact({ translations }: MiniContactProps) {
+function MiniContactComponent({ translations }: MiniContactProps) {
   return (
     <section className="py-24 border-t border-border bg-muted/5 relative overflow-hidden">
       <GlowEffect color="bg-primary/5" size="xl" className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-4xl" />
@@ -55,3 +56,5 @@ export function MiniContact({ translations }: MiniContactProps) {
     </section>
   );
 }
+
+export const MiniContact = memo(MiniContactComponent);

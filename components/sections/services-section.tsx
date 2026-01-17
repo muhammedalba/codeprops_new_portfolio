@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { Globe2, Code2, Smartphone, Cpu, Check } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ServiceCard } from "@/components/sections/service-card";
@@ -12,7 +13,7 @@ interface ServicesSectionProps {
   locale: string;
 }
 
-export function ServicesSection({
+function ServicesSectionComponent({
   id,
   badge,
   title,
@@ -60,3 +61,5 @@ export function ServicesSection({
     </section>
   );
 }
+
+export const ServicesSection = memo(ServicesSectionComponent);

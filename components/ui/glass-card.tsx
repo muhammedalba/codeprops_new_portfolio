@@ -1,7 +1,7 @@
 'use client';
 
+import React, { memo, useState, useEffect, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { ReactNode } from 'react';
 
 interface GlassCardProps {
   children: ReactNode;
@@ -13,7 +13,7 @@ interface GlassCardProps {
   target?: '_self' | '_blank';
 }
 
-export function GlassCard({
+function GlassCardComponent({
   children,
   className,
   glow = false,
@@ -22,11 +22,18 @@ export function GlassCard({
   href,
   target = '_self',
 }: GlassCardProps) {
+  const [isLowEnd, setIsLowEnd] = useState(false);
+
+  useEffect(() => {
+    if (typeof navigator === 'undefined') return;
+    const memory = (navigator as any).deviceMemory || 8;
+    const concurrency = navigator.hardwareConcurrency || 8;
+    if (memory <= 4 || concurrency <= 4) {
+      setIsLowEnd(true);
+    }
+  }, []);
+
   const Wrapper = href ? 'a' : 'div';
-const isLowEnd =
-  typeof navigator !== 'undefined' &&
-  ((navigator as any).deviceMemory <= 4 ||
-    navigator.hardwareConcurrency <= 4);
 
   return (
     <Wrapper
@@ -34,7 +41,7 @@ const isLowEnd =
       className={cn(
         'group relative block rounded-[2.5rem] border border-border bg-background/40 p-8 ',
         'transition-[transform,box-shadow,border-color] duration-300',
-        isLowEnd && 'backdrop-blur-xl',
+        !isLowEnd && 'backdrop-blur-xl', // Apply backdrop blur only if NOT low end
         hoverEffect &&
           'hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/10 hover:scale-[1.02]',
         className
@@ -56,3 +63,5 @@ const isLowEnd =
     </Wrapper>
   );
 }
+
+export const GlassCard = memo(GlassCardComponent);

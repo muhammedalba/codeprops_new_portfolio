@@ -1,8 +1,18 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 
-export function ArchitecturalLines() {
+function ArchitecturalLinesComponent() {
+  // Stable random-like values for dots to prevent hydration mismatch
+  const dots = React.useMemo(() => [...Array(15)].map((_, i) => ({
+    id: i,
+    left: `${(i * 7.3) % 100}%`,
+    top: `${(i * 13.7) % 100}%`,
+    duration: 5 + (i % 5),
+    delay: i * 0.3
+  })), []);
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Moving Vertical Lines */}
@@ -13,7 +23,7 @@ export function ArchitecturalLines() {
           style={{ left: `${20 * i + 10}%` }}
           animate={{
             opacity: [0.1, 0.3, 0.1],
-            x: [0, 50, 0],
+            x: [0, 20, 0], // Reduced distance for subtle feel
           }}
           transition={{
             duration: 10 + i * 2,
@@ -31,7 +41,7 @@ export function ArchitecturalLines() {
           style={{ top: `${20 * i + 15}%` }}
           animate={{
             opacity: [0.1, 0.3, 0.1],
-            y: [0, 30, 0],
+            y: [0, 15, 0], // Reduced distance
           }}
           transition={{
             duration: 8 + i * 2,
@@ -43,7 +53,7 @@ export function ArchitecturalLines() {
 
       {/* Blueprint Square */}
       <motion.div
-        className="absolute right-[10%] top-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/10"
+        className="absolute right-[10%] top-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/10 hidden lg:block"
         initial={{ opacity: 0, rotate: 45 }}
         animate={{ opacity: 1, rotate: 10 }}
         transition={{ duration: 1.5, ease: 'easeOut' }}
@@ -58,26 +68,28 @@ export function ArchitecturalLines() {
         <div className="absolute left-1/2 top-0 w-px h-full bg-primary/10" />
       </motion.div>
 
-      {/* Floating Tech Dots */}
-      {[...Array(15)].map((_, i) => (
+      {/* Floating Tech Dots - Optimized with stable values */}
+      {dots.map((dot) => (
         <motion.div
-          key={i}
+          key={dot.id}
           className="absolute w-1 h-1 bg-primary/30 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: dot.left,
+            top: dot.top,
           }}
           animate={{
-            y: [0, -40, 0],
-            opacity: [0, 0.5, 0],
+            y: [0, -20, 0],
+            opacity: [0, 0.4, 0],
           }}
           transition={{
-            duration: 5 + Math.random() * 5,
+            duration: dot.duration,
             repeat: Infinity,
-            delay: Math.random() * 5,
+            delay: dot.delay,
           }}
         />
       ))}
     </div>
   );
 }
+
+export const ArchitecturalLines = React.memo(ArchitecturalLinesComponent);

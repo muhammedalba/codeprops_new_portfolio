@@ -1,7 +1,7 @@
+import React, { memo } from 'react';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Container } from '@/components/layout/container';
 import MethodologyVisual from './MethodologyVisual.client';
-
 
 interface Step {
   title: string;
@@ -15,7 +15,7 @@ interface MethodologySectionProps {
   steps: Step[];
 }
 
-export function MethodologySection({
+function MethodologySectionComponent({
   id,
   badge,
   title,
@@ -69,3 +69,5 @@ export function MethodologySection({
     </section>
   );
 }
+
+export const MethodologySection = memo(MethodologySectionComponent);

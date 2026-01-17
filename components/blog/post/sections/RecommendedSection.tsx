@@ -1,5 +1,4 @@
-"use client";
-
+import React from "react";
 import { Container } from "@/components/layout/container";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Clock } from "lucide-react";
@@ -10,7 +9,7 @@ interface RecommendedSectionProps {
   t: any;
 }
 
-export default function RecommendedSection({ locale, t }: RecommendedSectionProps) {
+function RecommendedSectionComponent({ locale, t }: RecommendedSectionProps) {
   return (
     <section className="py-24 bg-muted/20 border-t border-border/50">
       <Container>
@@ -33,3 +32,5 @@ export default function RecommendedSection({ locale, t }: RecommendedSectionProp
     </section>
   );
 }
+
+export default React.memo(RecommendedSectionComponent);

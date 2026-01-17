@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo, memo } from 'react';
 import { TestimonialCard, type Testimonial } from './testimonial-card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/section-header';
@@ -13,7 +13,7 @@ interface TestimonialsCarouselProps {
   className?: string;
 }
 
-export function TestimonialsCarousel({
+function TestimonialsCarouselComponent({
   testimonials,
   title,
   subtitle,
@@ -35,8 +35,8 @@ export function TestimonialsCarousel({
   const isInitialized = useRef(false);
   const isRTL = useRef(false);
 
-  // لضمان عدم حدوث فراغات، نقوم بتكرار المصفوفة عدة مرات
-  const loopItems = [...testimonials, ...testimonials, ...testimonials, ...testimonials, ...testimonials, ...testimonials];
+  // To ensure no gaps, we repeat the array 3 times instead of 6 (which was overkill)
+  const loopItems = useMemo(() => [...testimonials, ...testimonials, ...testimonials], [testimonials]);
 
   const measure = useCallback(() => {
     if (!trackRef.current) return;
@@ -170,7 +170,7 @@ export function TestimonialsCarousel({
           className="flex gap-6 will-change-transform"
           // style={{ transform: 'translate3d(0, 0, 0)' }}
         >
-          {loopItems.map((item, idx) => (
+          {loopItems.map((item: Testimonial, idx: number) => (
             <TestimonialCard 
               key={`${item.name}-${idx}`} 
               testimonial={item} 
@@ -197,3 +197,5 @@ export function TestimonialsCarousel({
     </section>
   );
 }
+
+export const TestimonialsCarousel = memo(TestimonialsCarouselComponent);

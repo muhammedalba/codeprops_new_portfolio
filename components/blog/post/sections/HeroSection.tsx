@@ -1,5 +1,4 @@
-"use client";
-
+import React from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { HeroBackground } from "@/components/layout/hero-background";
@@ -14,7 +13,7 @@ interface HeroSectionProps {
   translations: any;
 }
 
-export default function HeroSection({ locale, post, translations }: HeroSectionProps) {
+function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) {
   return (
     <section className="relative pt-40 pb-20 overflow-hidden">
       <HeroBackground type="about" />
@@ -78,3 +77,5 @@ export default function HeroSection({ locale, post, translations }: HeroSectionP
     </section>
   );
 }
+
+export default React.memo(HeroSectionComponent);

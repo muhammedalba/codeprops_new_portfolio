@@ -1,5 +1,4 @@
-"use client";
-
+import React from "react";
 import { Icons } from "@/components/ui/icons";
 import { GlassCard } from "@/components/ui/glass-card";
 import { ArrowLeft, Link as LinkIcon } from "lucide-react";
@@ -11,7 +10,7 @@ interface SidebarActionsProps {
   t: any;
 }
 
-export default function SidebarActions({ locale, tags, t }: SidebarActionsProps) {
+function SidebarActionsComponent({ locale, tags, t }: SidebarActionsProps) {
   return (
     <aside className="space-y-12 sticky top-32">
       <div className="space-y-6">
@@ -51,3 +50,5 @@ export default function SidebarActions({ locale, tags, t }: SidebarActionsProps)
     </aside>
   );
 }
+
+export default React.memo(SidebarActionsComponent);

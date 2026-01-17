@@ -1,5 +1,6 @@
 "use client";
 
+import React, { memo, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { Locale } from "@/lib/i18n";
 import { HeroSection } from "@/components/home/hero-section";
@@ -16,7 +17,6 @@ const PricingCard = dynamic(() => import("@/components/sections/pricing-card").t
 const TestimonialsCarousel = dynamic(() => import("@/components/sections/testimonials-carousel").then(m => m.TestimonialsCarousel));
 const BlogCard = dynamic(() => import("@/components/sections/blog-card").then(m => m.BlogCard));
 const MiniContact = dynamic(() => import("@/components/contact/sections/mini-contact").then(m => m.MiniContact));
-// const TechStackMarquee = dynamic(() => import("@/components/home/tech-stack-marquee").then(m => m.TechStackMarquee), { ssr: false });
 
 const Button = dynamic(() => import("@/components/ui/button").then(m => m.Button));
 
@@ -25,20 +25,16 @@ interface HomeClientProps {
   translations: any;
 }
 
-export function HomeClient({
+function HomeClientComponent({
   locale: typedLocale,
   translations: t,
 }: HomeClientProps) {
-  const latestPosts = t.blog.posts.slice(0, 3);
-  const latestProjects = t.portfolio.projects.slice(0, 3);
+  const latestPosts = useMemo(() => t.blog.posts.slice(0, 3), [t.blog.posts]);
 
   return (
     <main className="w-full bg-background">
       {/* 🚀 Hero Section */}
       <HeroSection locale={typedLocale} translations={t} />
-
-      {/* Tech Stack Marquee (Premium UX) - Lazy Loaded */}
-      {/* <TechStackMarquee /> */}
 
       {/* About Section - Redesigned for Impact */}
       <SectionReveal>
@@ -156,3 +152,5 @@ export function HomeClient({
     </main>
   );
 }
+
+export const HomeClient = memo(HomeClientComponent);

@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Container } from "@/components/layout/container";
 
@@ -9,7 +10,7 @@ interface AboutSectionProps {
   badge?: string;
 }
 
-export function AboutSection({ id, title, subtitle, description, badge = "Our Essence" }: AboutSectionProps) {
+function AboutSectionComponent({ id, title, subtitle, description, badge = "Our Essence" }: AboutSectionProps) {
   return (
     <section id={id} className="py-12 bg-muted/50 relative overflow-hidden">
       {/* Subtle Background Text */}
@@ -38,3 +39,5 @@ export function AboutSection({ id, title, subtitle, description, badge = "Our Es
     </section>
   );
 }
+
+export const AboutSection = memo(AboutSectionComponent);

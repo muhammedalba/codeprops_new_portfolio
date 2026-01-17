@@ -1,10 +1,10 @@
 'use client';
 
+import React, { memo, useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { useRef } from 'react';
 import { cn } from '@/lib/utils';
 
-export default function MethodologyVisual() {
+function MethodologyVisualComponent() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   const reduceMotion = useReducedMotion();
@@ -72,3 +72,6 @@ export default function MethodologyVisual() {
     </div>
   );
 }
+
+export const MethodologyVisual = memo(MethodologyVisualComponent);
+export default MethodologyVisual;

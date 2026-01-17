@@ -1,7 +1,7 @@
 "use client";
 
+import React, { memo, ReactNode } from "react";
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
 
 interface SectionRevealProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface SectionRevealProps {
   delay?: number;
 }
 
-export function SectionReveal({ children, className, delay = 0 }: SectionRevealProps) {
+function SectionRevealComponent({ children, className, delay = 0 }: SectionRevealProps) {
   return (
     <motion.div
      style={{ willChange: 'transform, opacity' }}
@@ -27,3 +27,5 @@ export function SectionReveal({ children, className, delay = 0 }: SectionRevealP
     </motion.div>
   );
 }
+
+export const SectionReveal = memo(SectionRevealComponent);

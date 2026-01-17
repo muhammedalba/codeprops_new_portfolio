@@ -1,5 +1,5 @@
+import React, { memo, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
 
 interface SectionBadgeProps {
   children: ReactNode;
@@ -7,7 +7,7 @@ interface SectionBadgeProps {
   variant?: "primary" | "outline";
 }
 
-export function SectionBadge({
+function SectionBadgeComponent({
   children,
   className,
   variant = "primary",
@@ -29,3 +29,5 @@ export function SectionBadge({
     </div>
   );
 }
+
+export const SectionBadge = memo(SectionBadgeComponent);

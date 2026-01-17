@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -20,7 +21,7 @@ interface PricingCardProps {
   className?: string;
 }
 
-export function PricingCard({
+function PricingCardComponent({
   plan,
   isFeatured = false,
   badge,
@@ -106,3 +107,5 @@ export function PricingCard({
     </GlassCard>
   );
 }
+
+export const PricingCard = memo(PricingCardComponent);

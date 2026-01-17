@@ -1,5 +1,4 @@
-"use client";
-
+import React from "react";
 import { cn } from "@/lib/utils";
 import { MessageSquare } from "lucide-react";
 
@@ -14,7 +13,7 @@ interface TableOfContentsProps {
   t: any;
 }
 
-export default function TableOfContents({ toc, activeSection, t }: TableOfContentsProps) {
+function TableOfContentsComponent({ toc, activeSection, t }: TableOfContentsProps) {
   return (
     <aside className="hidden lg:block sticky top-32 space-y-10">
       <div className="space-y-6">
@@ -50,3 +49,5 @@ export default function TableOfContents({ toc, activeSection, t }: TableOfConten
     </aside>
   );
 }
+
+export default React.memo(TableOfContentsComponent);
