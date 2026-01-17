@@ -1,0 +1,24 @@
+{
+      "privacy": {
+            "title": "Datenschutzerklärung",
+            "lastUpdated": "Zuletzt aktualisiert: 17. Januar 2026",
+            "content": {
+                  "introduction": {
+                        "title": "1. Einleitung",
+                        "text": "Bei Codeprops respektieren wir Ihre Privatsphäre und verpflichten uns zum Schutz Ihrer personenbezogenen Daten. Diese Datenschutzerklärung informiert Sie darüber, wie wir mit Ihren personenbezogenen Daten umgehen, wenn Sie unsere Website besuchen, und klärt Sie über Ihre Datenschutzrechte und den gesetzlichen Schutz auf."
+                  },
+                  "dataCollection": {
+                        "title": "2. Die von uns erhobenen Daten",
+                        "text": "Wir können verschiedene Arten von personenbezogenen Daten über Sie erheben, nutzen, speichern und übertragen, die wir wie folgt zusammengefasst haben: Identitätsdaten, Kontaktdaten, technische Daten, Nutzungsdaten sowie Marketing- und Kommunikationsdaten."
+                  },
+                  "dataUsage": {
+                        "title": "3. Wie wir Ihre Daten verwenden",
+                        "text": "Wir werden Ihre personenbezogenen Daten nur dann verwenden, wenn das Gesetz es uns erlaubt. Am häufigsten werden wir Ihre personenbezogenen Daten verwenden, um unsere Dienstleistungen zu erbringen, unsere Beziehung zu Ihnen zu verwalten und unsere Website zu verbessern."
+                  },
+                  "dataSecurity": {
+                        "title": "4. Datensicherheit",
+                        "text": "Wir haben angemessene Sicherheitsmaßnahmen getroffen, um zu verhindern, dass Ihre personenbezogenen Daten versehentlich verloren gehen, unbefugt verwendet oder aufgerufen, verändert oder offengelegt werden."
+                  }
+            }
+      }
+}

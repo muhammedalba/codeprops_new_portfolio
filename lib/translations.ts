@@ -1,6 +1,6 @@
 import { Locale } from './i18n';
 
-export type PageKey = "home" | "about" | "services" | "blog" | "portfolio" | "contact";
+export type PageKey = "home" | "about" | "services" | "blog" | "portfolio" | "contact" | "privacy" | "terms";
 
 /**
  * Loads common, seo, and page-specific translations dynamically.
@@ -20,7 +20,7 @@ export async function getPageMessages(locale: Locale, page: PageKey) {
       about: ["contact"],
       services: ["contact"],
       portfolio: ["contact"],
-    };
+    };  
 
     const dependencies = dependencyMap[page] || [];
     dependencies.forEach(dep => {
@@ -37,9 +37,14 @@ export async function getPageMessages(locale: Locale, page: PageKey) {
     };
 
     // Merge dependencies
-    deps.forEach(dep => {
-      Object.assign(result, dep.default);
-    });
+  deps.forEach(dep => {
+  Object.entries(dep.default).forEach(([key, value]) => {
+    if (!(key in result)) {
+      result[key] = value;
+    }
+  });
+});
+
 
     return result;
   } catch (error) {
@@ -48,7 +53,8 @@ export async function getPageMessages(locale: Locale, page: PageKey) {
     try {
       const fbCommon = await import(`@/messages/en/common.json`);
       const fbSeo = await import(`@/messages/en/seo.json`);
-      const fbPage = await import(`@/messages/en/pages/${page}.json`);
+      const safePage = page ?? "home";
+const fbPage = await import(`@/messages/en/pages/${safePage}.json`);
       
       return {
         ...fbCommon.default,

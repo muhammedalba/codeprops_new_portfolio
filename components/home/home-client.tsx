@@ -85,6 +85,7 @@ function HomeClientComponent({
             <div className="grid md:grid-cols-3 gap-8 items-stretch pt-12">
               {t.pricing.plans.map((plan: any, i: number) => (
                 <PricingCard
+                  locale={typedLocale}
                   key={i}
                   plan={plan}
                   isFeatured={i === 1}

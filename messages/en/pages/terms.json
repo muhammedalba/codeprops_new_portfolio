@@ -1,0 +1,24 @@
+{
+      "terms": {
+            "title": "Terms of Service",
+            "lastUpdated": "Last Updated: January 17, 2026",
+            "content": {
+                  "acceptance": {
+                        "title": "1. Acceptance of Terms",
+                        "text": "By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement."
+                  },
+                  "services": {
+                        "title": "2. Provision of Services",
+                        "text": "Codeprops provides software engineering and consulting services. We reserve the right to modify or discontinue any service with or without notice."
+                  },
+                  "intellectualProperty": {
+                        "title": "3. Intellectual Property",
+                        "text": "All content on this website, including text, graphics, logos, and software, is the property of Codeprops and is protected by international copyright laws."
+                  },
+                  "liability": {
+                        "title": "4. Limitation of Liability",
+                        "text": "Codeprops shall not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your use of or inability to use the service."
+                  }
+            }
+      }
+}

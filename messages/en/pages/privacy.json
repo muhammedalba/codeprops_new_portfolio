@@ -1,0 +1,24 @@
+{
+      "privacy": {
+            "title": "Privacy Policy",
+            "lastUpdated": "Last Updated: January 17, 2026",
+            "content": {
+                  "introduction": {
+                        "title": "1. Introduction",
+                        "text": "At Codeprops, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you."
+                  },
+                  "dataCollection": {
+                        "title": "2. The Data We Collect",
+                        "text": "We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows: Identity Data, Contact Data, Technical Data, Usage Data, and Marketing and Communications Data."
+                  },
+                  "dataUsage": {
+                        "title": "3. How We Use Your Data",
+                        "text": "We will only use your personal data when the law allows us to. Most commonly, we will use your personal data to provide our services, manage our relationship with you, and improve our website."
+                  },
+                  "dataSecurity": {
+                        "title": "4. Data Security",
+                        "text": "We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed."
+                  }
+            }
+      }
+}

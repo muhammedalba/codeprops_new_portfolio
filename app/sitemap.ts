@@ -17,6 +17,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/portfolio',
     '/blog',
     '/contact',
+    '/privacy',
+    '/terms',
   ];
 
   // Dynamically add service pages
@@ -30,23 +32,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     // Standard pages
     pages.forEach((page) => {
+      const isLegal = ['/privacy', '/terms'].includes(page);
       sitemap.push({
         url: `${baseUrl}/${locale}${page}`,
         lastModified: new Date(),
         changeFrequency: page === '' || page === '/blog' ? 'weekly' : 'monthly',
-        priority: page === '' ? 1.0 : page === '/contact' ? 0.9 : 0.8,
+        priority: page === '' ? 1.0 : isLegal ? 0.3 : 0.8,
         alternates: {
-          languages: Object.fromEntries(
-            locales.map((loc) => [loc, `${baseUrl}/${loc}${page}`])
-          ),
+          languages: {
+            'en': `${baseUrl}/en${page}`,
+            'de': `${baseUrl}/de${page}`,
+            'ar': `${baseUrl}/ar${page}`,
+            'x-default': `${baseUrl}/${defaultLocale}${page}`,
+          },
         },
       });
     });
 
     // Portfolio projects
-    const t = await getPageMessages(locale as Locale, "portfolio");
-    if (t.portfolio && t.portfolio.projects) {
-      t.portfolio.projects.forEach((project: any) => {
+    const tp = await getPageMessages(locale as Locale, "portfolio");
+    if (tp.portfolio && tp.portfolio.projects) {
+      tp.portfolio.projects.forEach((project: any) => {
         const path = `/portfolio/${project.slug}`;
         sitemap.push({
           url: `${baseUrl}/${locale}${path}`,
@@ -54,9 +60,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           changeFrequency: 'monthly',
           priority: 0.7,
           alternates: {
-            languages: Object.fromEntries(
-              locales.map((loc) => [loc, `${baseUrl}/${loc}${path}`])
-            ),
+            languages: {
+              'en': `${baseUrl}/en${path}`,
+              'de': `${baseUrl}/de${path}`,
+              'ar': `${baseUrl}/ar${path}`,
+              'x-default': `${baseUrl}/${defaultLocale}${path}`,
+            },
+          },
+        });
+      });
+    }
+
+    // Blog posts
+    const tb = await getPageMessages(locale as Locale, "blog");
+    if (tb.blog && tb.blog.posts) {
+      tb.blog.posts.forEach((post: any) => {
+        const path = `/blog/${post.slug}`;
+        sitemap.push({
+          url: `${baseUrl}/${locale}${path}`,
+          lastModified: post.dateModified ? new Date(post.dateModified) : new Date(),
+          changeFrequency: 'weekly',
+          priority: 0.6,
+          alternates: {
+            languages: {
+              'en': `${baseUrl}/en${path}`,
+              'de': `${baseUrl}/de${path}`,
+              'ar': `${baseUrl}/ar${path}`,
+              'x-default': `${baseUrl}/${defaultLocale}${path}`,
+            },
           },
         });
       });

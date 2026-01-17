@@ -1,0 +1,24 @@
+{
+      "terms": {
+            "title": "Nutzungsbedingungen",
+            "lastUpdated": "Zuletzt aktualisiert: 17. Januar 2026",
+            "content": {
+                  "acceptance": {
+                        "title": "1. Akzeptanz der Bedingungen",
+                        "text": "Durch den Zugriff auf und die Nutzung dieser Website akzeptieren Sie die Bedingungen dieser Vereinbarung und erklären sich damit einverstanden, an diese gebunden zu sein."
+                  },
+                  "services": {
+                        "title": "2. Erbringung von Dienstleistungen",
+                        "text": "Codeprops bietet Dienstleistungen im Bereich Software-Engineering und Beratung an. Wir behalten uns das Recht vor, Dienstleistungen mit oder ohne Vorankündigung zu ändern oder einzustellen."
+                  },
+                  "intellectualProperty": {
+                        "title": "3. Geistiges Eigentum",
+                        "text": "Alle Inhalte auf dieser Website, einschließlich Texte, Grafiken, Logos und Software, sind Eigentum von Codeprops und durch internationale Urheberrechtsgesetze geschützt."
+                  },
+                  "liability": {
+                        "title": "4. Haftungsbeschränkung",
+                        "text": "Codeprops haftet nicht für indirekte, zufällige, besondere, Folgeschäden oder Strafschadenersatz, die sich aus Ihrer Nutzung oder Unfähigkeit zur Nutzung des Dienstes ergeben."
+                  }
+            }
+      }
+}

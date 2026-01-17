@@ -47,7 +47,7 @@ export function ScrollToTop() {
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="relative w-14 h-14 rounded-full bg-background/80 backdrop-blur-xl border border-border flex items-center justify-center text-foreground hover:text-primary transition-colors duration-300 shadow-2xl shadow-primary/5 active:scale-90"
+            className="relative w-14 h-14 rounded-full bg-background/80 backdrop-blur-xl flex items-center justify-center text-foreground hover:text-primary transition-colors duration-300 shadow-2xl shadow-primary/5 active:scale-90"
           >
             {/* Progress Circle */}
             <svg className="absolute inset-0 w-full h-full -rotate-90">

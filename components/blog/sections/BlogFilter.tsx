@@ -37,7 +37,7 @@ function BlogFilterComponent({
   );
 
   return (
-    <section className="sticky top-20 z-40 bg-background/80 backdrop-blur-xl border-y border-border/50 py-6">
+    <section className="sticky top-[var(--header-height)] z-40 bg-background/80 backdrop-blur-xl border-y border-border/50 py-6">
       <Container>
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex flex-wrap gap-2">

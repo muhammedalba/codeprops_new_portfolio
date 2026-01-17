@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlowEffect } from "@/components/ui/glow-effect";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface PricingPlan {
   name: string;
   price: string;
   description: string;
   features: string[];
+
 }
 
 interface PricingCardProps {
@@ -19,6 +21,7 @@ interface PricingCardProps {
   priceSuffix?: string;
   ctaText: string;
   className?: string;
+  locale: string;
 }
 
 function PricingCardComponent({
@@ -28,6 +31,7 @@ function PricingCardComponent({
   priceSuffix,
   ctaText,
   className,
+  locale,
 }: PricingCardProps) {
   const isContactUs = 
     plan.price === "Contact Us" || 
@@ -102,7 +106,7 @@ function PricingCardComponent({
             : "bg-foreground text-background hover:bg-foreground/90"
         )}
       >
-        {ctaText}
+        <Link href={`/${locale}/contact`}>{ctaText}</Link>
       </Button>
     </GlassCard>
   );
