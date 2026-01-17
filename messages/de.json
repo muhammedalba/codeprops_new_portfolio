@@ -186,10 +186,15 @@
     "subtitle": "Full-Lifecycle Software Engineering",
     "hero_title": "Architektur der <span class='text-primary italic'>Digitalen Zukunft</span>",
     "hero_description": "Wir entwerfen und bauen resiliente Hochleistungssysteme, die globale Unternehmen durch technische Autorität stärken.",
+    "capabilities_grid": {
+      "badge": "Technische Meisterschaft",
+      "custom_card_title": "Jenseits von Standardlösungen?",
+      "custom_card_description": "Benötigen Sie ein spezialisiertes Engineering-Team für eine hochkomplexe Herausforderung? Wir entwerfen maßgeschneiderte Kooperationsmodelle.",
+      "custom_card_button": "Technischen Blueprint anfordern"
+    },
     "web": {
       "title": "Maßgeschneiderte Webentwicklung",
       "description": "Erstellung von hochperformanten, SEO-freundlichen Webanwendungen mit Next.js, React und modularen Architekturen.",
-      "testimonial": "Ladezeiten unter einer Sekunde bereits im ersten Sprint erreicht.",
       "features": [
         "SSR/ISR Architektur",
         "Performance Fokus",
@@ -201,7 +206,6 @@
     "custom": {
       "title": "Individuelle Softwarelösungen",
       "description": "End-to-End-Softwareentwicklung für komplexe Automatisierung und einzigartige unternehmensweite Herausforderungen.",
-      "testimonial": "Unseren Backlog in skalierbare Geschäftslogik transformiert.",
       "features": [
         "Automatisierung",
         "Legacy Modernisierung",
@@ -213,7 +217,6 @@
     "ecommerce": {
       "title": "Skalierbarer E-Commerce",
       "description": "Aufbau von hochkonvertierenden, hochbelastbaren E-Commerce-Plattformen mit nahtloser Zahlungs- und Logistikintegration.",
-      "testimonial": "Über 200.000 Nutzer am Black Friday ohne Probleme bewältigt.",
       "features": [
         "Headless Lösungen",
         "Omnichannel Ready",
@@ -225,7 +228,6 @@
     "cloud": {
       "title": "Cloud- & API-Integration",
       "description": "Entwurf robuster API-Ökosysteme und cloud-fähiger Systeme zur Sicherstellung der Datenkontinuität in Ihrem Unternehmen.",
-      "testimonial": "Zero Downtime nach unserer Cloud-Migration erreicht.",
       "features": [
         "Serverless Systeme",
         "Kubernetes Skalierung",
@@ -237,7 +239,6 @@
     "performance": {
       "title": "Performance-Optimierung",
       "description": "Technische Audits und Re-Engineering von Altsystemen für maximale Geschwindigkeit, Sicherheit und Suchsichtbarkeit.",
-      "testimonial": "99+ Lighthouse-Score innerhalb von 4 Wochen erreicht.",
       "features": [
         "Codebase Audits",
         "Core Web Vitals",
@@ -248,6 +249,7 @@
     },
     "process": {
       "title": "Unser Engineering-Prozess",
+      "subtitle": "Ein disziplinierter, engineering-zentrierter Ansatz, um komplexe Anforderungen in eine resiliente digitale Infrastruktur zu verwandeln.",
       "steps": [
         {
           "title": "Architektur",
@@ -373,6 +375,7 @@
   },
   "blog": {
     "title": "Technische Autorität",
+    "breadcrumb": "Insights",
     "subtitle": "Insights direkt von unseren Senior-Engineers",
     "viewAll": "Alle Insights ansehen",
     "readMore": "Weiterlesen",
@@ -390,6 +393,9 @@
         "excerpt": "Entdecken Sie moderne, skalierbare Systeme und Hochleistungs-Engineering für globale digitale Präsenz.",
         "date": "06. Jan. 2026",
         "author": "Marcus Thorne",
+        "datePublished": "2026-01-06",
+        "dateModified": "2026-01-06",
+        "image": "/images/blog/architecture-low-latency.jpg",
         "tags": [
           "Architektur",
           "Performance",
@@ -402,6 +408,9 @@
         "excerpt": "Beyond Meta-Tags: Wie SSR und Edge Computing Ihre organische Suchautorität stärken.",
         "date": "04. Jan. 2026",
         "author": "Elena Vance",
+        "datePublished": "2026-01-04",
+        "dateModified": "2026-01-04",
+        "image": "/images/blog/technical-seo-infrastructure.jpg",
         "tags": [
           "SEO",
           "Next.js",
@@ -414,13 +423,51 @@
         "excerpt": "Analyse, wie technische Schulden und alte Systeme Ressourcen binden und Innovation hemmen.",
         "date": "02. Jan. 2026",
         "author": "Alexander Sterling",
+        "datePublished": "2026-01-02",
+        "dateModified": "2026-01-02",
+        "image": "/images/blog/legacy-architecture-cost.jpg",
         "tags": [
           "Business",
           "Strategie",
           "Tech Debt"
         ]
       }
-    ]
+    ],
+    "post": {
+      "back": "Zurück zu Engineering Insights",
+      "principal_architect": "Hauptarchitekt",
+      "read_time": "6 min Lesezeit",
+      "category": "Engineering",
+      "content_maps": "Inhaltsverzeichnis",
+      "join_discussion": "Diskussion beitreten",
+      "discussion_desc": "Unsere Ingenieure sind in den Kommentaren aktiv. Technische Fragen sind willkommen.",
+      "view_community": "Community-Insights ansehen",
+      "share": "Artikel teilen",
+      "audit_title": "Benötigen Sie eine technische Überprüfung?",
+      "audit_desc": "Unsere Architekten können Ihr aktuelles System auf Leistungsengpässe überprüfen.",
+      "audit_button": "Audit buchen",
+      "technical_clusters": "Technische Cluster",
+      "recommended": "Empfohlen für Sie",
+      "view_all": "Alle Insights ansehen",
+      "prev_insight": "Vorheriger Einblick",
+      "next_insight": "Nächster Einblick",
+      "demo": {
+        "intro_p1": "Wir leben in einer Ära, in der digitale Geschwindigkeit eine wettbewerbsrelevante Notwendigkeit ist. Dieser technische Deep-Dive erforscht die grundlegenden Muster, die von erstklassigen Engineering-Teams verwendet werden, um globale Antwortzeiten im Sub-Sekunden-Bereich zu erreichen.",
+        "intro_p2": "Moderne Systeme erfordern einen ganzheitlichen Ansatz, der bei der Protokollauswahl beginnt und bei der strategischen globalen Verteilung von Rechenzentren endet.",
+        "challenges_p1": "Die größte Herausforderung liegt in der Datenverteilung über Kontinente hinweg bei gleichzeitiger Wahrung der Konsistenz. Durch den Einsatz von Edge Computing können wir die Verarbeitung näher an den Endbenutzer bringen.",
+        "insight_text": "Der Übergang von zentralisierten Architekturen zu ereignisgesteuerten verteilten Modellen reduziert die globale Latenz bei Systemen auf Unternehmensebene typischerweise um bis zu 70%.",
+        "conclusion_p1": "Investitionen in die technische Infrastruktur sind letztlich Investitionen in die Benutzererfahrung. Ein gut gestaltetes architektonisches Fundament spart langfristig Kosten und garantiert nahtlose Skalierbarkeit.",
+        "prev_post_title": "Grundlagen der technischen SEO",
+        "next_post_title": "Migration von Altsystemen",
+        "recommended_post_title": "So skalieren Sie PostgreSQL auf 10 Mio. Anfragen..."
+      },
+      "headings": {
+        "intro": "Einführung",
+        "challenges": "Moderne technische Herausforderungen",
+        "insight": "Technischer Einblick",
+        "conclusion": "Strategisches Fazit"
+      }
+    }
   },
   "portfolio": {
     "title": "Engineering Case Studies",
@@ -428,12 +475,31 @@
     "viewProject": "Architektur ansehen",
     "filter": "Nach Branche filtern",
     "all": "Alle Systeme",
+    "details": {
+      "back": "Zurück zum Engineering Portfolio",
+      "live_integration": "Live-Integration",
+      "uptime": "Uptime-Effizienz",
+      "tech_stack": "Tech Stack",
+      "focus_layers": "Fokusschichten",
+      "request_solution": "Ähnliche Lösung anfordern",
+      "consultation": "Lead Engineer Beratung",
+      "next_case": "Nächste Fallstudie",
+      "explore_all": "Alle Arbeiten ansehen",
+      "performance_matrix": "Performance-Matrix",
+      "security_pass": "Sicherheitsaudit BESTANDEN",
+      "architecture_preview": "Architektur-Vorschau",
+      "challenge": "Die Herausforderung",
+      "solution": "Unsere Engineering-Lösung",
+      "results": "Technische & geschäftliche Ergebnisse"
+    },
     "projects": [
       {
         "slug": "nexus-logistics",
         "title": "Nexus Logistics: Globale Supply-Chain Cloud-Migration",
         "category": "Enterprise",
         "description": "Transformation einer fragmentierten Legacy-Infrastruktur in einen cloud-nativen Logistik-Orchestrator.",
+        "problem": "Fragmentierte Legacy-Infrastruktur verursachte Engpässe und häufige Ausfallzeiten.",
+        "solution": "Einführung einer cloud-nativen AWS-Architektur mit Go-basierten Microservices für Echtzeit-Tracking.",
         "result": "300% mehr Durchsatz & 99,99% Uptime.",
         "tech": [
           "Next.js",
@@ -447,6 +513,8 @@
         "title": "Aura Fashion: High-Load E-Commerce Re-Engineering",
         "category": "E-Commerce",
         "description": "Skalierung einer Luxusmodemarke für Spitzenlasten ohne Ausfallzeiten.",
+        "problem": "Serverabstürze bei hohem Besucheraufkommen wie am Black Friday führten zu Umsatzeinbußen.",
+        "solution": "Neugestaltung mit Next.js und Redis-Caching, um 100-fache Verkehrsspitzen nahtlos zu bewältigen.",
         "result": "65% höhere Conversion & null Verzögerung.",
         "tech": [
           "Next.js",
@@ -460,6 +528,8 @@
         "title": "FinNode: Sicheres Open Banking API-Ökosystem",
         "category": "FinTech",
         "description": "Aufbau eines resilienten, konformen Gateways für den sicheren Austausch von Finanzdaten.",
+        "problem": "Fehlen einer sicheren, konformen Umgebung für den Austausch von Finanzdaten mit Drittanbietern.",
+        "solution": "Entwicklung eines robusten Laravel-basierten API-Ökosystems mit Multi-Faktor-Authentifizierung und vollständiger Protokollierung.",
         "result": "10M+ monatliche Transaktionen & PCI-Konformität.",
         "tech": [
           "Laravel",

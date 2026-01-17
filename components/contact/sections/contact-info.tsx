@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter, ExternalLink, Clock, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, Clock, Globe } from "lucide-react";
+import { Icons } from "@/components/ui/icons";
 import { GlassCard } from "@/components/ui/glass-card";
 
 
@@ -44,9 +45,9 @@ export function ContactInfo({ info }: ContactInfoProps) {
   ];
 
   const socialIcons = [
-    { icon: Linkedin, label: info.social.linkedin, href: "#" },
-    { icon: Github, label: info.social.github, href: "#" },
-    { icon: Twitter, label: info.social.twitter, href: "#" }
+    { icon: Icons.linkedin, label: info.social.linkedin, href: "#" ,color: "blue"},
+    { icon: Icons.github, label: info.social.github, href: "#" ,color: "green"},
+    { icon: Icons.twitter, label: info.social.twitter, href: "#" ,color: "red"}
   ];
 
   return (
@@ -88,14 +89,14 @@ export function ContactInfo({ info }: ContactInfoProps) {
               <GlassCard className="p-6 md:p-8 flex items-center justify-between border-border/40 hover:border-primary/50 transition-all duration-300">
                 <div className="flex items-center gap-6">
                   <div className="w-14 h-14 rounded-2xl bg-muted/50 flex items-center justify-center text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
-                    <Icon size={24} />
+                    <Icon size={24} color={item.color} />
                   </div>
                   <div className="space-y-1">
                     <p className="text-xs font-mono font-bold uppercase tracking-widest text-primary/60">{item.label}</p>
                     <p className="text-xl font-bold tracking-tight">{item.value}</p>
                   </div>
                 </div>
-                <ExternalLink size={20} className="text-muted-foreground/30 group-hover:text-primary transition-colors translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 duration-500" />
+                <ExternalLink size={20} color={item.color} className="text-muted-foreground/30 group-hover:text-primary transition-colors translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 duration-500" />
               </GlassCard>
             </motion.a>
           );
@@ -114,7 +115,7 @@ export function ContactInfo({ info }: ContactInfoProps) {
                 whileHover={{ y: -5 }}
                 className="p-8 rounded-[2rem] bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-3 hover:bg-primary hover:text-primary-foreground group transition-all duration-500"
               >
-                <Icon size={28} className="group-hover:scale-110 transition-transform" />
+                <Icon color={social.color} size={28} className="group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">{social.label}</span>
               </motion.a>
             );

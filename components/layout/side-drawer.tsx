@@ -6,10 +6,8 @@ import {
   Mail,
   Phone,
   MapPin,
-  Github,
-  Linkedin,
-  Twitter,
 } from "lucide-react";
+import { Icons } from "@/components/ui/icons";
 import Link from "next/link";
 import { Locale, localeNames } from "@/lib/i18n";
 import { ThemeToggle } from "./theme-toggle";
@@ -92,10 +90,10 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                       <div>
                         <p className="text-xs text-muted-foreground">Phone</p>
                         <a
-                          href="tel:+15551234567"
+                          href="tel:+4917662025331"
                           className="font-medium hover:text-primary transition-colors"
                         >
-                          +1 (555) 123-4567
+                          +49 (176) 62025331
                         </a>
                       </div>
                     </li>
@@ -152,19 +150,19 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                     href="#"
                     className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
                   >
-                    <Twitter className="h-5 w-5" />
+                    <Icons.twitter className="h-5 w-5" />
                   </a>
                   <a
                     href="#"
                     className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
                   >
-                    <Linkedin className="h-5 w-5" />
+                    <Icons.linkedin className="h-5 w-5" />
                   </a>
                   <a
                     href="#"
                     className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
                   >
-                    <Github className="h-5 w-5" />
+                    <Icons.github className="h-5 w-5" />
                   </a>
                 </div>
                 <p className="text-xs text-muted-foreground">

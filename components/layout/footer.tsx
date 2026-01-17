@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Locale } from '@/lib/i18n';
 import { Container } from './container';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Icons } from '@/components/ui/icons';
 
 interface FooterProps {
   locale: Locale;
@@ -44,9 +44,9 @@ export function Footer({ locale, translations }: FooterProps) {
       { name: translations.footer.links.sitemap, href: '/sitemap.xml' },
     ],
     social: [
-      { name: 'Twitter', href: 'https://twitter.com/codeprops', icon: Twitter },
-      { name: 'GitHub', href: 'https://github.com/codeprops', icon: Github },
-      { name: 'LinkedIn', href: 'https://linkedin.com/company/codeprops', icon: Linkedin },
+      { name: 'Twitter', href: 'https://twitter.com/codeprops', icon: Icons.twitter },
+      { name: 'GitHub', href: 'https://github.com/codeprops', icon: Icons.github },
+      { name: 'LinkedIn', href: 'https://linkedin.com/company/codeprops', icon: Icons.linkedin },
     ],
   };
 

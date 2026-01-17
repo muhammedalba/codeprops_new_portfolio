@@ -15,7 +15,7 @@ const MethodologySection = dynamic(() => import("@/components/sections/methodolo
 const PricingCard = dynamic(() => import("@/components/sections/pricing-card").then(m => m.PricingCard));
 const TestimonialsCarousel = dynamic(() => import("@/components/sections/testimonials-carousel").then(m => m.TestimonialsCarousel));
 const BlogCard = dynamic(() => import("@/components/sections/blog-card").then(m => m.BlogCard));
-const MiniContact = dynamic(() => import("@/components/contact/mini-contact").then(m => m.MiniContact));
+const MiniContact = dynamic(() => import("@/components/contact/sections/mini-contact").then(m => m.MiniContact));
 // const TechStackMarquee = dynamic(() => import("@/components/home/tech-stack-marquee").then(m => m.TechStackMarquee), { ssr: false });
 
 const Button = dynamic(() => import("@/components/ui/button").then(m => m.Button));

@@ -5,20 +5,17 @@ import { useMemo } from "react";
 import { TimelineSection } from "./sections/timeline-section";
 import { ValuesSection } from "./sections/values-section";
 import { TechStackSection } from "./sections/tech-stack-section";
+import { HeroStats } from "./sections/hero-stats";
 
 /* ---------------------------------------------
  * Dynamic Components
  * --------------------------------------------*/
-const HeroStats = dynamic(
-  () => import("./hero-stats").then((mod) => mod.HeroStats),
-  { ssr: false }
-);
 const SmartNav = dynamic(
   () => import("@/components/services/smart-nav").then((m) => m.SmartNav),
   { ssr: false }
 );
 const ContactCTA = dynamic(
-  () => import("@/components/contact/contact-cta").then((m) => m.ContactCTA),
+  () => import("@/components/contact/sections/contact-cta").then((m) => m.ContactCTA),
   { ssr: false }
 );
 /* ---------------------------------------------
@@ -62,6 +59,7 @@ export function AboutClient({ locale, translations }: AboutClientProps) {
       />
       {/* CTA */}
       <ContactCTA
+        locale={locale}
         title={translations.contact.cta.title}
         description={translations.contact.cta.description}
         button={translations.contact.cta.button}

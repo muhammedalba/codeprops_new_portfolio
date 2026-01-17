@@ -38,7 +38,8 @@ export function TimelineSection({ timeline }: TimelineSectionProps) {
                 {/* Left */}
                 <div className="flex-1 w-full md:text-end md:px-16">
                   {i % 2 === 0 && (
-                    <div className="my-3 p-8 border border-border rounded-[2.5rem] md:p-0 md:border-0">
+                    <div className="relative my-3 p-8 border border-border rounded-[2.5rem] md:p-0 md:border-0">
+                       <div className="absolute w-24 h-24 top-1 right-0 bg-primary/20 rounded-full blur-[40px]" />
                       <span className="text-4xl font-mono font-bold text-primary/20">
                         {item.year}
                       </span>
@@ -60,7 +61,8 @@ export function TimelineSection({ timeline }: TimelineSectionProps) {
                 {/* Right */}
                 <div className="flex-1 w-full text-start md:px-16">
                   {i % 2 !== 0 && (
-                    <div className="my-3 p-8 border border-border rounded-[2.5rem] md:p-0 md:border-0">
+                    <div className="relative my-3 p-8 border border-border rounded-[2.5rem] md:p-0 md:border-0">
+                        <div className="absolute w-24 h-24 top-1 left-0 bg-primary/20 rounded-full blur-[40px]" />
                       <span className="text-4xl font-mono font-bold text-primary/20">
                         {item.year}
                       </span>

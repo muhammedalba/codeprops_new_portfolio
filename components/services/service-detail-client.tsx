@@ -6,9 +6,7 @@ import { Container } from "@/components/layout/container";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeader } from "@/components/ui/section-header";
-import { FAQSection } from "@/components/layout/faq-section";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { AnimatedStats } from "@/components/ui/animated-stats";
 import { RelatedServices } from "@/components/services/related-services";
 
 // Lazy load heavy animations
@@ -21,11 +19,18 @@ import {
   Zap, 
   Rocket,
   ShieldCheck,  
-  ChevronRight,
-  Plus
+  Plus,
+  Monitor,
+  Cpu,
+  ShoppingCart,
+  Cloud
 } from "lucide-react";
 import Link from "next/link";
 import { ServiceSlug, serviceIcons } from "@/lib/services";
+import { ContactCTA } from "../contact/sections/contact-cta";
+import { ContactFAQ } from "../contact/sections/contact-faq";
+import { ServiceCard } from "./service-card";
+import { useMemo } from "react";
 
 interface ServiceDetailClientProps {
   locale: string;
@@ -40,29 +45,30 @@ export function ServiceDetailClient({ locale, serviceKey, serviceData, translati
   const t = translations.services;
   const ServiceIcon = serviceIcons[serviceKey as ServiceSlug] || serviceIcons.web;
   const isRtl = locale === 'ar';
-
   // Prepare related services data
-  const allServices = [
-    { slug: 'web', title: t.web.title, description: t.web.description },
-    { slug: 'custom', title: t.custom.title, description: t.custom.description },
-    { slug: 'ecommerce', title: t.ecommerce.title, description: t.ecommerce.description },
-    { slug: 'cloud', title: t.cloud.title, description: t.cloud.description },
-    { slug: 'performance', title: t.performance.title, description: t.performance.description },
-  ];
+const allServices = useMemo(() => [
+    { slug: 'web', title: t.web.title, description: t.web.description , Icon: Monitor,},
+    { slug: 'custom', title: t.custom.title, description: t.custom.description , Icon: Cpu,},
+    { slug: 'ecommerce', title: t.ecommerce.title, description: t.ecommerce.description , Icon: ShoppingCart,},
+    { slug: 'cloud', title: t.cloud.title, description: t.cloud.description , Icon: Cloud,},
+    { slug: 'performance', title: t.performance.title, description: t.performance.description , Icon: Zap,},
+  ], [t]);
+
+
 
   return (
     <main className="flex flex-col bg-background min-h-screen">
       {/* Service Hero */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <HeroBackground type="services" showHeavyDelay={2000} />
-        <Container className="relative z-10">
+        <Container className="relative z-10 ">
           {/* Breadcrumbs */}
           <Breadcrumbs 
             items={[
               { label: isRtl ? 'الخدمات' : 'Services', href: `/${locale}/services` },
               { label: serviceData.title }
             ]}
-            className="mb-8"
+            className="mb-8 "
             locale={locale}
           />
           
@@ -197,45 +203,22 @@ export function ServiceDetailClient({ locale, serviceKey, serviceData, translati
 
           <div className="grid md:grid-cols-4 gap-8 pt-16">
             {t.process.steps.map((step: any, i: number) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="group p-8 rounded-[2.5rem] bg-background border border-border/50 hover:border-primary/30 transition-all duration-500 shadow-xl shadow-transparent hover:shadow-primary/5"
-              >
-                 <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center text-foreground font-black text-xl mb-8 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                    0{i + 1}
-                 </div>
-                 <h3 className="text-2xl font-bold mb-4 tracking-tight">{step.title}</h3>
-                 <p className="text-muted-foreground text-sm leading-relaxed">
-                    {step.description}
-                 </p>
-              </motion.div>
+               <ServiceCard
+                  key={i}
+                  index={i}
+                  title={step.title}
+                  description={step.description}
+                  icon={allServices[i].Icon}          
+                />
             ))}
           </div>
         </Container>
       </section>
 
-      {/* Stats Section */}
-      <AnimatedStats 
-        stats={[
-          { label: translations.about?.stats?.projects || "Projects", value: translations.about?.stats?.projects_count || "300+" },
-          { label: translations.about?.stats?.clients || "Clients", value: translations.about?.stats?.clients_count || "200+" },
-          { label: translations.about?.stats?.years || "Years", value: translations.about?.stats?.years_count || "10+" },
-          { label: translations.about?.stats?.team || "Team", value: translations.about?.stats?.team_count || "50+" },
-        ]}
-        className="py-12 bg-muted/10 my-12 border-none" 
-      />
 
       {/* FAQ Section */}
       <Container className="py-24">
-        <FAQSection 
-          title={t.faq.title}
-          subtitle={t.faq.subtitle}
-          questions={t.faq.questions}
-        />
+         <ContactFAQ title={t.faq.title} subtitle={t.faq.subtitle} questions={t.faq.questions} />
       </Container>
 
       {/* Related Services */}
@@ -245,24 +228,13 @@ export function ServiceDetailClient({ locale, serviceKey, serviceData, translati
         services={allServices}
       />
 
-      {/* Final CTA */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5 flex items-center justify-center">
-           <div className="w-[800px] h-[800px] rounded-full bg-primary/20 blur-[150px] animate-pulse" />
-        </div>
-        
-        <Container className="relative z-10 text-center space-y-12">
-           <h2 className="text-4xl md:text-7xl font-heading font-bold tracking-tighter">
-              {isRtl ? "هل أنت جاهز للتحول الرقمي؟" : "Ready to scale your vision?"}
-           </h2>
-           <Link href={`/${locale}/contact`}>
-              <button className="px-12 py-6 rounded-full bg-primary text-primary-foreground font-bold text-lg hover:scale-105 transition-all shadow-2xl shadow-primary/30 group">
-                 {isRtl ? "تحدث مع مهندس" : "Talk to a Lead Engineer"}
-                 <ChevronRight size={20} className="inline ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
-           </Link>
-        </Container>
-      </section>
+      {/* CTA Section */}
+           <ContactCTA 
+             locale={locale}
+             title={translations.contact.cta.title} 
+             description={translations.contact.cta.description} 
+             button={translations.contact.cta.button} 
+           />
     </main>
   );
 }

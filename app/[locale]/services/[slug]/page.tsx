@@ -51,6 +51,13 @@ export default async function ServiceDetailPage({
   const typedLocale = locale as Locale;
   const t = getMessages(typedLocale);
   const serviceData = (t.services as any)[slug];
+const serviceTypeMap: Record<string, string> = {
+  web: "Web Application Development",
+  custom: "Custom Software Development",
+  ecommerce: "Ecommerce Development Services",
+  cloud: "Cloud Infrastructure Services",
+  performance: "Website Performance Optimization",
+};
 
   if (!serviceData || !isValidServiceSlug(slug)) {
     notFound();
@@ -96,7 +103,7 @@ export default async function ServiceDetailPage({
               "url": `${baseUrl}/${locale}`
             },
             "areaServed": "Worldwide",
-            "serviceType": "Software Development"
+            "serviceType": serviceTypeMap[slug] ?? "Software Development"
           }),
         }}
       />

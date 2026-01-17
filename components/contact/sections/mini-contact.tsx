@@ -1,5 +1,5 @@
 import { Container } from '@/components/layout/container';
-import { ContactForm } from '@/components/contact/contact-form';
+import { ContactForm } from '@/components/contact/contact-form/contact-form';
 import { SectionHeader } from '@/components/ui/section-header';
 import { GlassCard } from '@/components/ui/glass-card';
 import { GlowEffect } from '@/components/ui/glow-effect';

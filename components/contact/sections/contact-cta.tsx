@@ -4,11 +4,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 interface ContactCTAProps {
   title: string;
   description: string;
   button: string;
+  locale?: string;
 }
 
 export function ContactCTA
@@ -16,6 +18,7 @@ export function ContactCTA
   title,
   description,
   button,
+  locale,
 }: ContactCTAProps) {
   const reduceMotion = useReducedMotion();
 
@@ -76,15 +79,15 @@ export function ContactCTA
               <Button
                 size="lg"
                 className="relative h-16 px-10 rounded-full text-lg font-semibold overflow-hidden group"
-                onClick={() =>
-                  window.scrollTo({ top: 0, behavior: "smooth" })
-                }
+               
               >
+                <Link href={`/${locale}/contact`}>
                 <span className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <span className="relative z-10 flex items-center gap-3">
                   {button}
-                  <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <ArrowUpRight className="transition-transform duration-300  group-hover:translate-x-1 group-hover:-translate-y-2" />
                 </span>
+                </Link>
               </Button>
             </motion.div>
           </div>

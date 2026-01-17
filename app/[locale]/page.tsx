@@ -1,6 +1,6 @@
 import { Locale, locales } from "@/lib/i18n";
 import { getMessages } from "@/lib/translations";
-import { generatePageMetadata } from "@/lib/seo";
+import { generatePageMetadata, generateWebSiteSchema } from "@/lib/seo";
 import { Metadata } from "next";
 import { HomeClient } from "@/components/home/home-client";
 
@@ -35,5 +35,14 @@ export default async function HomePage({
   const typedLocale = locale as Locale;
   const t = getMessages(typedLocale);
 
-  return <HomeClient locale={typedLocale} translations={t} />;
+  return<>
+         <script
+           type="application/ld+json"
+           dangerouslySetInnerHTML={{
+             __html: JSON.stringify(generateWebSiteSchema()),
+           }}
+         />
+  <HomeClient locale={typedLocale} translations={t} />
+  
+  </> 
 }

@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { SectionBadge } from "@/components/ui/section-badge";
-import { HeroBackground } from "@/components/layout/hero-background";
+// dinamic import 
+const HeroBackground = dynamic(() => import("@/components/layout/hero-background").then((mod) => mod.HeroBackground));
 
 interface ContactHeroProps {
   title: string;
@@ -13,6 +14,7 @@ interface ContactHeroProps {
 }
 
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import dynamic from "next/dynamic";
 
 export function ContactHero({ title, description, badge, locale }: ContactHeroProps) {
   return (

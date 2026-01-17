@@ -6,7 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-const HeroBackground = dynamic(() => import("../layout/hero-background").then((mod) => mod.HeroBackground), { ssr: false });
+const HeroBackground = dynamic(() => import("../../layout/hero-background").then((mod) => mod.HeroBackground), { ssr: false });
 
 interface HeroStatsProps {
   translations: any;

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Locale, locales } from '@/lib/i18n';
 import { getMessages } from '@/lib/translations';
-import { generatePageMetadata } from '@/lib/seo';
+import { generateFAQSchema, generatePageMetadata } from '@/lib/seo';
 import { ContactClient } from '@/components/contact/contact-client';
 
 export async function generateStaticParams() {
@@ -33,5 +33,13 @@ export default async function ContactPage({
   const typedLocale = locale as Locale;
   const t = getMessages(typedLocale);
 
-  return <ContactClient locale={typedLocale} translations={t} />;
+  return <><script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(generateFAQSchema(t.contact.faq.questions)),
+  }}
+/>
+
+  <ContactClient locale={typedLocale} translations={t} />
+  </> ;
 }

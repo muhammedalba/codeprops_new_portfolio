@@ -1,5 +1,4 @@
 import { LucideIcon, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlowEffect } from "@/components/ui/glow-effect";
 import { cn } from "@/lib/utils";
@@ -29,6 +28,15 @@ export function ServiceCard({
         className
       )}
     >
+       {/* Shine overlay (hover only, slower & smoother) */}
+          <div
+            className={cn(
+              "pointer-events-none absolute inset-0",
+              "translate-x-[-120%] group-hover:translate-x-[120%]",
+              "transition duration-2000 ease-in-out",
+              "bg-gradient-to-r from-transparent via-white/15 to-transparent"
+            )} 
+          />
       <div  className="absolute bottom-1 left-1 w-20 h-20 bg-primary blur-[80px] rounded-full pointer-events-none" />
       <GlowEffect 
         size="sm" 
@@ -49,13 +57,16 @@ export function ServiceCard({
       </p>
 
       <div
-        // href={href}
         className="flex items-center justify-center gap-2 text-sm font-bold tracking-widest uppercase group/link transition-colors"
       >
         <span className="relative">
-          Explore
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover/link:w-full transition-all duration-300" />
-        </span>
+              {href.includes("/ar/")
+                ? "استكشف الخدمة"
+                : href.includes("/de/")
+                ? "Service erkunden"
+                : "Explore Service"}
+                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover/link:w-full transition-all duration-300" />
+            </span>
         <ArrowUpRight className="w-4 h-4 translate-y-px group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" />
       </div>
 

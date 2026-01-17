@@ -3,27 +3,34 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { SectionHeader } from "@/components/ui/section-header";
-import { GlassCard } from "@/components/ui/glass-card";
-import { ArrowRight, Box, Cpu, Rocket, ShieldCheck } from "lucide-react";
-import { cn } from "@/lib/utils";
+
+import {  Box, Cpu, Rocket, ShieldCheck } from "lucide-react";
+
 
 interface ProcessLoopProps {
   title: string;
+  subtitle: string;
   steps: { title: string; description: string }[];
 }
 
-export function ProcessLoop({ title, steps }: ProcessLoopProps) {
-  const icons = [Cpu, Box, Rocket, ShieldCheck];
+export function ProcessLoop({ title, subtitle, steps }: ProcessLoopProps) {
+  // const icons = [Cpu, Box, Rocket, ShieldCheck];
+  const icons = [
+  { icon: Cpu, color: "red" },
+  { icon: Box, color: "blue" },
+  { icon: Rocket, color: "green" },
+  { icon: ShieldCheck, color: "yellow" }
+];
 
   return (
-    <section id="process" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="process" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background Decorative Element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] bg-primary/5 blur-[120px] rounded-full -z-10 rotate-12" />
+      <div className="absolute md:top-1/4 top-1 md:left-1 left-1/4  md:w-[1000px] w-1/2 md:h-[400px] h-full bg-primary/10 blur-2xl rounded-full -z-0 " />
       
-      <Container>
+      <Container className="relative z-10">
         <SectionHeader
           title={title}
-          description="A disciplined, engineering-centric approach to turning complex requirements into resilient digital infrastructure."
+          description={subtitle}
           align="center"
           className="mb-20"
         />
@@ -33,7 +40,8 @@ export function ProcessLoop({ title, steps }: ProcessLoopProps) {
           <div className="hidden md:block absolute top-[2.75rem] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-border to-transparent -z-10" />
 
           {steps.map((step, i) => {
-            const Icon = icons[i];
+            const Icon = icons[i].icon;
+            const color = icons[i].color;
             return (
               <motion.div
                 key={i}
@@ -44,7 +52,7 @@ export function ProcessLoop({ title, steps }: ProcessLoopProps) {
                 className="relative group flex flex-col items-center text-center"
               >
                 <div className="w-16 h-16 rounded-2xl bg-background border border-border flex items-center justify-center mb-8 group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.2)] transition-all duration-500 z-10">
-                  <Icon className="text-primary group-hover:scale-110 transition-transform" size={28} />
+                  <Icon color={color} className="group-hover:scale-110 transition-transform" size={28} />
                 </div>
                 
                 <div className="space-y-4">

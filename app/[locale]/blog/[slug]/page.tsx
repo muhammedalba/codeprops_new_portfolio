@@ -5,6 +5,8 @@ import { generatePageMetadata } from '@/lib/seo';
 import { BlogPostClient } from '@/components/blog/blog-post-client';
 import { notFound } from 'next/navigation';
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const params: any[] = [];
   locales.forEach((locale) => {
@@ -27,6 +29,9 @@ export async function generateMetadata({
 
   if (!post) return {};
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
+
   return generatePageMetadata({
     locale: locale as Locale,
     title: post.title,
@@ -45,10 +50,55 @@ export default async function BlogPostPage({
   const t = getMessages(typedLocale);
   
   const post = t.blog.posts.find((p: any) => p.slug === slug);
+  if (!post) notFound();
 
-  if (!post) {
-    notFound();
-  }
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const postUrl = `${baseUrl}/${locale}/blog/${slug}`;
 
-  return <BlogPostClient locale={typedLocale} post={post} translations={t} />;
+  return (
+    <>
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": `${baseUrl}/${locale}` },
+              { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${baseUrl}/${locale}/blog` },
+              { "@type": "ListItem", "position": 3, "name": post.title, "item": postUrl },
+            ]
+          }),
+        }}
+      />
+
+      {/* Article Schema */}
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.title,
+      "description": post.excerpt,
+      "author": { "@type": "Person", "name": post.author || "Codeprops" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Codeprops",
+        "logo": { "@type": "ImageObject", "url": `${baseUrl}/logo.png` }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": postUrl },
+      "image": post.image || `${baseUrl}/default-blog-image.jpg`,
+      "datePublished": post.datePublished,
+      "dateModified": post.dateModified || post.datePublished,
+      "inLanguage": typedLocale,
+    }),
+  }}
+/>
+
+
+      <BlogPostClient locale={typedLocale} post={post} translations={t} />
+    </>
+  );
 }

@@ -20,7 +20,7 @@ export function Breadcrumbs({ items, className = "", locale }: BreadcrumbsProps)
         className="text-muted-foreground hover:text-primary transition-colors"
         aria-label="Home"
       >
-        <Home size={16} />
+        <Home size={23} />
       </Link>
       
       {items.map((item, index) => (

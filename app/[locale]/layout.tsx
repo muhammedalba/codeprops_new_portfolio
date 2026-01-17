@@ -49,14 +49,14 @@ export async function generateMetadata({
   };
 }
 
-export default function LocaleLayout({
+export default async   function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = use(params);
+  const { locale } = await params;
   const typedLocale = locale as Locale;
   const direction = getDirection(typedLocale);
   const messages = getMessages(typedLocale);
@@ -70,12 +70,7 @@ export default function LocaleLayout({
             __html: JSON.stringify(generateOrganizationSchema()),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateWebSiteSchema()),
-          }}
-        />
+
       </head>
       <body
         className={cn(

@@ -28,6 +28,7 @@ export function generatePageMetadata({
         'en': `${baseUrl}/en${path}`,
         'de': `${baseUrl}/de${path}`,
         'ar': `${baseUrl}/ar${path}`,
+        'x-default': `${baseUrl}/en${path}`,
       },
     },
     openGraph: {
@@ -65,13 +66,15 @@ export function generateOrganizationSchema() {
     logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/logo.png`,
     description: 'Leading software development company delivering cutting-edge solutions',
     address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'US',
+      '@type': 'Organization',
+      '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/#organization`,
     },
     sameAs: [
       'https://twitter.com/codeprops',
       'https://linkedin.com/company/codeprops',
       'https://github.com/codeprops',
+      'https://www.facebook.com/codeprops',
+      'https://www.instagram.com/codeprops',
     ],
   };
 }

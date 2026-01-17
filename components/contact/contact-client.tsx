@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
-import { ContactHero } from "./contact-hero";
-import { ContactForm } from "./contact-form";
-import { ContactInfo } from "./contact-info";
+import { ContactHero } from "./sections/contact-hero";
+import { ContactForm } from "./contact-form/contact-form";
+import { ContactInfo } from "./sections/contact-info";
 import dynamic from "next/dynamic";
 
 // Dynamic imports for performance optimized rendering below the fold
-const ContactFAQ = dynamic(() => import("./contact-faq").then(mod => mod.ContactFAQ), { ssr: false });
-const ContactMap = dynamic(() => import("./contact-map").then(mod => mod.ContactMap), { ssr: false });
-const ContactCTA = dynamic(() => import("./contact-cta").then(mod => mod.ContactCTA), { ssr: false });
+const ContactFAQ = dynamic(() => import("./sections/contact-faq").then(mod => mod.ContactFAQ), { ssr: false });
+const ContactMap = dynamic(() => import("./sections/contact-map").then(mod => mod.ContactMap), { ssr: false });
+
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -43,7 +43,7 @@ export function ContactClient({ locale, translations }: ContactClientProps) {
         <div className="absolute top-1/2 left-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
         
         <Container>
-          <div className="grid lg:grid-cols-[1.2fr,1fr] gap-16 lg:gap-32 items-start relative">
+          <div className="grid lg:grid-cols-[1.2fr,1fr] gap-8 lg:gap-18 items-start relative">
             {/* Form Section */}
             <motion.div
               {...fadeIn}
@@ -73,18 +73,13 @@ export function ContactClient({ locale, translations }: ContactClientProps) {
         </Container>
       </section>
 
-      {/* 4. Interactive Map Section */}
-      <ContactMap />
+    
 
       {/* 5. FAQ / Quick Answers Section */}
-      <ContactFAQ title={t.faq.title} questions={t.faq.questions} />
+      <ContactFAQ title={t.faq.title} subtitle={t.faq.subtitle} questions={t.faq.questions} />
+  {/* 4. Interactive Map Section */}
+      <ContactMap />
 
-      {/* 9. CTA / Consultation Section */}
-      <ContactCTA 
-        title={t.cta.title} 
-        description={t.cta.description} 
-        button={t.cta.button} 
-      />
     </main>
   );
 }

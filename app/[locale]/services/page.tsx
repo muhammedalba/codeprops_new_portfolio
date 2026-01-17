@@ -3,7 +3,6 @@ import { Locale, locales } from '@/lib/i18n';
 import { getMessages } from '@/lib/translations';
 import { generatePageMetadata, generateFAQSchema } from '@/lib/seo';
 import { ServicesClient } from '@/components/services/services-client';
-import { MiniContact } from '@/components/contact/mini-contact';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -33,17 +32,21 @@ export default async function ServicesPage({
   const { locale } = await params;
   const typedLocale = locale as Locale;
   const t = getMessages(typedLocale);
+const faqQuestions = t.services.faq?.questions;
+
+
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateFAQSchema(t.services.faq.questions)),
-        }}
-      />
+     {faqQuestions?.length > 0 && (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(generateFAQSchema(faqQuestions)),
+    }}
+  />
+)}
       <ServicesClient locale={typedLocale} translations={t} />
-      <MiniContact translations={t.contact} />
     </>
   );
 }

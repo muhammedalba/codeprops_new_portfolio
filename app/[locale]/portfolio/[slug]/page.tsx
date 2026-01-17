@@ -56,5 +56,36 @@ export default async function ProjectDetailPage({
 
   if (!project) notFound();
 
-  return <PortfolioProjectClient locale={typedLocale} project={project} translations={t} />;
+  return <>
+  <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": project.title,
+      "description": project.description,
+      "url": `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/portfolio/${project.slug}`,
+    }),
+  }}
+/>
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}` },
+        { "@type": "ListItem", position: 2, name: "Portfolio", item: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/portfolio` },
+        { "@type": "ListItem", position: 3, name: project.title, item: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/portfolio/${project.slug}` },
+      ],
+    }),
+  }}
+/>
+
+
+  <PortfolioProjectClient locale={typedLocale} project={project} t={t.portfolio} />
+  
+  </>;
 }
