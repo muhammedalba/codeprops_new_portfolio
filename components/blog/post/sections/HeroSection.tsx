@@ -20,7 +20,7 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
       <Container className="relative z-10">
         <Breadcrumbs 
           items={[
-            { label: translations.blog.breadcrumb, href: `/${locale}/blog` },
+            { label: translations.breadcrumb, href: `/${locale}/blog` },
             { label: post.title }
           ]} 
           className="mb-8"
@@ -31,7 +31,7 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
           className="inline-flex items-center gap-2 text-sm font-bold text-primary mb-12 hover:gap-4 transition-all group"
         >
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-          {translations.blog.post.back}
+          {translations.post.back}
         </Link>
 
         <div className="grid lg:grid-cols-[1fr,400px] gap-12 items-end">
@@ -41,12 +41,12 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
             className="space-y-8"
           >
             <div className="flex flex-wrap items-center gap-4 text-xs font-mono font-bold uppercase tracking-widest text-primary">
-              <span className="px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">{translations.blog.category}</span>
+              <span className="px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">{translations.category}</span>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Calendar size={14} /> {post.date}
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Clock size={14} /> {translations.blog.post.read_time}
+                <Clock size={14} /> {translations.post.read_time}
               </div>
             </div>
 
@@ -65,7 +65,7 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
              </div>
              <div className="space-y-1">
                 <div className="text-xl font-bold">{post.author}</div>
-                <div className="text-xs text-primary font-mono font-bold uppercase tracking-widest">{translations.blog.post.principal_architect}</div>
+                <div className="text-xs text-primary font-mono font-bold uppercase tracking-widest">{translations.post.principal_architect}</div>
                 <div className="flex gap-3 pt-2">
                    <Icons.linkedin size={14} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
                    <Icons.twitter size={14} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
