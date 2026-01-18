@@ -31,6 +31,7 @@
                         "problem": "Fragmentierte Legacy-Infrastruktur verursachte Engpässe und häufige Ausfallzeiten.",
                         "solution": "Einführung einer cloud-nativen AWS-Architektur mit Go-basierten Microservices für Echtzeit-Tracking.",
                         "result": "300% mehr Durchsatz & 99,99% Uptime.",
+                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
                         "tech": [
                               "Next.js",
                               "Go",
@@ -46,6 +47,7 @@
                         "problem": "Serverabstürze bei hohem Besucheraufkommen wie am Black Friday führten zu Umsatzeinbußen.",
                         "solution": "Neugestaltung mit Next.js und Redis-Caching, um 100-fache Verkehrsspitzen nahtlos zu bewältigen.",
                         "result": "65% höhere Conversion & null Verzögerung.",
+                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
                         "tech": [
                               "Next.js",
                               "Shopify",
@@ -61,6 +63,7 @@
                         "problem": "Fehlen einer sicheren, konformen Umgebung für den Austausch von Finanzdaten mit Drittanbietern.",
                         "solution": "Entwicklung eines robusten Laravel-basierten API-Ökosystems mit Multi-Faktor-Authentifizierung und vollständiger Protokollierung.",
                         "result": "10M+ monatliche Transaktionen & PCI-Konformität.",
+                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
                         "tech": [
                               "Laravel",
                               "Docker",

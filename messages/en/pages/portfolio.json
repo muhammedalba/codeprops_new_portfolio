@@ -31,6 +31,7 @@
                         "problem": "Fragmented legacy infrastructure causing bottlenecks and frequent downtime.",
                         "solution": "Implemented a cloud-native AWS architecture with Go-based microservices for real-time tracking.",
                         "result": "300% throughput increase & 99.99% uptime.",
+                        "image": "projects/nexus-logistics/preview.png",
                         "tech": [
                               "Next.js",
                               "Go",
@@ -46,6 +47,7 @@
                         "problem": "Server crashes during high-traffic events like Black Friday, leading to lost sales.",
                         "solution": "Re-engineered with Next.js and Redis caching to handle 100x traffic spikes seamlessly.",
                         "result": "65% higher conversion & zero peak-time lag.",
+                        "image": "projects/aura-fashion/preview.png",
                         "tech": [
                               "Next.js",
                               "Shopify",
@@ -61,6 +63,7 @@
                         "problem": "Lack of a secure, compliant environment for financial data exchange with third-party providers.",
                         "solution": "Created a robust Laravel-based API ecosystem with multi-factor authentication and full audit logging.",
                         "result": "10M+ monthly transactions & PCI-Compliance.",
+                        "image": "projects/finnode-api/preview.png",
                         "tech": [
                               "Laravel",
                               "Docker",

@@ -31,6 +31,7 @@
                         "problem": "بنية تحتية قديمة ومشتتة تسبب اختناقات وفترات توقف متكررة.",
                         "solution": "تم تنفيذ معمارية AWS سحابية مع خدمات مصغرة تعتمد على Go لتتبع الشحنات في الوقت الفعلي.",
                         "result": "زيادة الإنتاجية بنسبة 300٪ وتوافر بنسبة 99.99٪.",
+                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
                         "tech": [
                               "Next.js",
                               "Go",
@@ -46,6 +47,7 @@
                         "problem": "تعطل الخوادم أثناء الأحداث الكبيرة مثل الجمعة السوداء، مما يؤدي إلى فقدان المبيعات.",
                         "solution": "إعادة هندسة الموقع باستخدام Next.js و Redis للتعامل مع ارتفاع الزيارات المفاجئ بسلاسة.",
                         "result": "زيادة التحويل بنسبة 65٪ وتأخير صفري في أوقات الذروة.",
+                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
                         "tech": [
                               "Next.js",
                               "Shopify",
@@ -61,6 +63,7 @@
                         "problem": "عدم وجود بيئة آمنة ومتوافقة لتبادل البيانات المالية مع مزودي الأطراف الثالثة.",
                         "solution": "إنشاء نظام API قوي يعتمد على Laravel مع مصادقة متعددة العوامل وسجلات تدقيق كاملة.",
                         "result": "أكثر من 10 ملايين معاملة شهرية مع الامتثال لـ PCI.",
+                       "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
                         "tech": [
                               "Laravel",
                               "Docker",

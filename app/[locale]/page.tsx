@@ -17,12 +17,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getPageMessages(locale as Locale, "home");
-  
+
   return generatePageMetadata({
     locale: locale as Locale,
     title: t.seo.home.title,
     description: t.seo.home.description,
-    path: '',
+    path: "",
   });
 }
 
@@ -35,15 +35,15 @@ export default async function HomePage({
   const typedLocale = locale as Locale;
   const t = await getPageMessages(typedLocale, "home");
 
-
-  return<>
-         <script
-           type="application/ld+json"
-           dangerouslySetInnerHTML={{
-             __html: JSON.stringify(generateWebSiteSchema()),
-           }}
-         />
-  <HomeClient locale={typedLocale} translations={t} />
-  
-  </> 
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateWebSiteSchema()),
+        }}
+      />
+      <HomeClient locale={typedLocale} translations={t} />
+    </>
+  );
 }

@@ -2,9 +2,9 @@ import React, { memo } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import dynamic from "next/dynamic";
+import { HeroBackground } from "../layout/hero-background";
 
-const HeroBackground = dynamic(() => import("@/components/layout/hero-background").then(m => m.HeroBackground));
+
 interface HeroSectionProps {
   locale: string;
   translations: {
@@ -24,7 +24,7 @@ function HeroSectionComponent({ locale, translations }: HeroSectionProps) {
 
   return (
     <section className="relative min-h-screen flex items-start md:items-center overflow-hidden bg-background md:pt-16">
-      <HeroBackground type="home" />
+      <HeroBackground type="home"  />
 
       <div className="container relative mt-16 z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-4xl">

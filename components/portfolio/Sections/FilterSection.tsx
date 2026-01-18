@@ -1,3 +1,4 @@
+'use client';
 import React, { useMemo } from "react";
 import { Container } from "@/components/layout/container";
 import { Filter } from "lucide-react";
@@ -50,11 +51,11 @@ export default function FilterSection({
 }: FilterSectionProps) {
   const categories = useMemo(() => {
     const set = new Set<string>();
-    projects.forEach((p) => set.add(p.category));
+    projects?.forEach((p) => set.add(p.category));
     return ["all", ...Array.from(set)];
   }, [projects]);
 
-  return (
+  return ( 
     <section className="sticky top-[var(--header-height)] z-40 bg-background/80 backdrop-blur-xl border-y border-border/50 py-5">
       <Container>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
