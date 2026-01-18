@@ -1,5 +1,5 @@
-"use client";
 
+"use client";
 import React, { memo, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { Locale } from "@/lib/i18n";
