@@ -1,6 +1,8 @@
 import React, { memo } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Container } from "@/components/layout/container";
+import { WaveDivider } from "../layout/wave-divider";
+import { SectionReveal } from "../animations/section-reveal";
 
 interface AboutSectionProps {
   id?: string;
@@ -11,8 +13,9 @@ interface AboutSectionProps {
 }
 
 function AboutSectionComponent({ id, title, subtitle, description, badge = "Our Essence" }: AboutSectionProps) {
-  return (
-    <section id={id} className="py-12 bg-muted/50 relative overflow-hidden">
+  return ( <SectionReveal>
+    <WaveDivider />
+  <section id={id} className="py-12 bg-muted/50 relative overflow-hidden">
       {/* Subtle Background Text */}
       <div className="absolute top-10 left-10 text-[10vw] font-bold text-foreground/[0.04] select-none pointer-events-none uppercase tracking-tighter">
         Agency
@@ -37,6 +40,9 @@ function AboutSectionComponent({ id, title, subtitle, description, badge = "Our 
         </div>
       </Container>
     </section>
+      <WaveDivider flip={true} />
+  </SectionReveal>
+    
   );
 }
 
