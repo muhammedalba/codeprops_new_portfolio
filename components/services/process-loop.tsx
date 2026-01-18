@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { SectionHeader } from "@/components/ui/section-header";
 
@@ -43,7 +43,7 @@ export function ProcessLoop({ title, subtitle, steps }: ProcessLoopProps) {
             const Icon = icons[i].icon;
             const color = icons[i].color;
             return (
-              <motion.div
+              <m.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ export function ProcessLoop({ title, subtitle, steps }: ProcessLoopProps) {
                 {i < steps.length - 1 && (
                   <div className="md:hidden w-px h-8 bg-border my-4" />
                 )}
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

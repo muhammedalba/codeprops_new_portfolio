@@ -4,7 +4,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { X } from 'lucide-react';
 import { locales, localeNames } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n';
 

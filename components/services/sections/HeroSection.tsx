@@ -1,6 +1,6 @@
 
 "use client";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import Link from "next/link";
@@ -28,7 +28,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
                     />
                   </div>
                   <div className="max-w-4xl mx-auto text-center">
-                    <motion.div
+                    <m.div
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8 }}
@@ -60,7 +60,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
                           Consult an Architect
                         </Link>
                       </div>
-                    </motion.div>
+                    </m.div>
                   </div>
                 </Container>
         

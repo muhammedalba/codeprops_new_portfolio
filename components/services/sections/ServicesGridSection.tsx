@@ -1,6 +1,6 @@
 "use client";
 import { useMemo } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { SectionHeader } from "@/components/ui/section-header";
 
@@ -49,7 +49,7 @@ const services = useMemo(() => [
             ))}
             
             {/* Custom Solution Card */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -68,7 +68,7 @@ const services = useMemo(() => [
                     </Link>
                  </div>
                </div>
-            </motion.div>
+            </m.div>
                
           </div>
         </Container>

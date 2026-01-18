@@ -61,7 +61,7 @@ export function Header({ locale, translations }: HeaderProps) {
   return (
     <>
       <header 
-        className={`sticky h-[var(--header-height)] top-0 z-50  flex items-center w-full transition-all duration-300  overflow-hidden ${
+        className={`sticky h-[var(--header-height)] top-0 z-50  flex items-center w-full transition-all duration-300 ${
           isScrolled 
             ? 'border-b  bg-background/70 backdrop-blur-md py-2' 
             : 'bg-transparent py-4'
