@@ -4,23 +4,30 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Locale, locales, localeNames } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Globe, LayoutGrid } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Menu, X, LayoutGrid } from 'lucide-react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Container } from './container';
-import { SideDrawer } from './side-drawer';
 import { ThemeToggle } from './theme-toggle';
+import dynamic from 'next/dynamic';
+
+// Dynamic imports for heavy interactive components that are initially hidden
+const SideDrawer = dynamic(() => import('./side-drawer').then(mod => mod.SideDrawer), {
+  ssr: false, // Client-side only interaction
+});
+
+const MobileMenu = dynamic(() => import('./mobile-menu'), {
+  ssr: false, // Client-side only interaction
+});
 
 interface HeaderProps {
   locale: Locale;
   translations: {
-    nav: {
       home: string;
       about: string;
       services: string;
       portfolio: string;
       blog: string;
       contact: string;
-    };
   };
 }
 
@@ -30,27 +37,31 @@ export function Header({ locale, translations }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  // Optimization: Memoize navigation items to prevent recreation on every render
+  const navigation = useMemo(() => [
+    { name: translations.home, href: `/${locale}` },
+    { name: translations.about, href: `/${locale}/about` },
+    { name: translations.services, href: `/${locale}/services` },
+    { name: translations.portfolio, href: `/${locale}/portfolio` },
+    { name: translations.blog, href: `/${locale}/blog` },
+    { name: translations.contact, href: `/${locale}/contact` },
+  ], [locale, translations]);
+
+  // Optimization: useCallback for scroll handler
+  const handleScroll = useCallback(() => {
+    // Debouncing could be added here if scroll performance is critical
+    setIsScrolled(window.scrollY > 20);
   }, []);
 
-  const navigation = [
-    { name: translations.nav.home, href: `/${locale}` },
-    { name: translations.nav.about, href: `/${locale}/about` },
-    { name: translations.nav.services, href: `/${locale}/services` },
-    { name: translations.nav.portfolio, href: `/${locale}/portfolio` },
-    { name: translations.nav.blog, href: `/${locale}/blog` },
-    { name: translations.nav.contact, href: `/${locale}/contact` },
-  ];
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   return (
     <>
       <header 
-        className={`sticky h-[var(--header-height)] top-0 z-50  flex items-center w-full transition-all duration-300 ${
+        className={`sticky h-[var(--header-height)] top-0 z-50  flex items-center w-full transition-all duration-300  overflow-hidden ${
           isScrolled 
             ? 'border-b  bg-background/70 backdrop-blur-md py-2' 
             : 'bg-transparent py-4'
@@ -61,12 +72,11 @@ export function Header({ locale, translations }: HeaderProps) {
             <div className="flex items-center gap-8">
               {/* Logo */}
               <Link href={`/${locale}`} className="flex items-center space-x-2">
-                <span className="text-2xl font-heading font-bold bg-clip-text ">
+                <span className="text-lg md:text-2xl font-heading font-bold bg-clip-text ">
                    Code<span className="text-primary">Props</span>
                 </span>
               </Link>
               
-
               {/* Desktop Navigation */}
               <nav className="hidden lg:flex items-center ">
                 {navigation.map((item) => (
@@ -109,12 +119,12 @@ export function Header({ locale, translations }: HeaderProps) {
                 </Button>
                 
                 <Button className="hidden md:flex h-10 px-6 rounded-full border border-primary" asChild>
-                  <Link href={`/${locale}/contact`}>{translations.nav.contact}</Link>
+                  <Link href={`/${locale}/contact`}>{translations.contact}</Link>
                 </Button>
 
                 {/* Mobile Menu Button */}
                 <button
-                  className="md:hidden p-2 text-foreground"
+                  className="lg:hidden p-2 text-foreground"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   aria-label="Toggle menu"
                 >
@@ -128,57 +138,28 @@ export function Header({ locale, translations }: HeaderProps) {
             </div>
           </div>
 
-          {/* Mobile Menu Overlay */}
-          {mobileMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 w-full bg-background border-b animate-in slide-in-from-top duration-300">
-              <div className="p-6 space-y-6">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block text-lg font-semibold hover:text-primary"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                
-                <div className="pt-6 border-t">
-                  <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
-                    Language
-                  </p>
-                  <div className="flex gap-4">
-                    {locales.map((loc) => (
-                      <Link
-                        key={loc}
-                        href={pathname?.replace(`/${locale}`, `/${loc}`) || `/${loc}`}
-                        className={`text-sm font-bold uppercase ${
-                          locale === loc ? 'text-primary' : 'text-muted-foreground'
-                        }`}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {localeNames[loc]}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                <Button className="w-full h-12 rounded-full" asChild>
-                  <Link href={`/${locale}/contact`} onClick={() => setMobileMenuOpen(false)}>
-                    {translations.nav.contact}
-                  </Link>
-                </Button>
-              </div>
-            </div>
+          {/* Lazy loaded Mobile Menu */}
+          {mobileMenuOpen && (    
+             <MobileMenu 
+                isOpen={mobileMenuOpen}
+                onClose={() => setMobileMenuOpen(false)}
+                navigation={navigation}
+                locale={locale}
+                translations={{ contact: translations.contact }}
+             />
           )}
         </Container>
       </header>
       
-      <SideDrawer 
-        isOpen={sideDrawerOpen} 
-        onClose={() => setSideDrawerOpen(false)} 
-        locale={locale} 
-      />
+      {/* Lazy loaded Side Drawer */}
+      {sideDrawerOpen && (
+        <SideDrawer 
+          isOpen={sideDrawerOpen} 
+          onClose={() => setSideDrawerOpen(false)} 
+          locale={locale} 
+        />
+      )}
     </>
   );
 }
+

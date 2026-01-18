@@ -1,10 +1,14 @@
 import { Metadata } from 'next';
-import { Locale } from '@/lib/i18n';
+import { Locale, locales } from '@/lib/i18n';
 import { getPageMessages } from '@/lib/translations';
 import { generatePageMetadata } from '@/lib/seo';
 import { Container } from '@/components/layout/container';
 import { SectionHeader } from '@/components/ui/section-header';
 
+
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 export async function generateMetadata({
   params,
 }: {

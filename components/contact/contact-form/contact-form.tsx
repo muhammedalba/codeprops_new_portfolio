@@ -4,12 +4,15 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import dynamic from "next/dynamic";
 
  import { contactSchema, ContactFormData } from "./schema";
 import { StepIndicator } from "./StepIndicator";
 import { StepOne } from "./StepOne";
-import { StepTwo } from "./StepTwo";
-import { SuccessScreen } from "./SuccessScreen";
+
+// Dynamic imports for hidden steps
+const StepTwo = dynamic(() => import("./StepTwo").then(mod => mod.StepTwo));
+const SuccessScreen = dynamic(() => import("./SuccessScreen").then(mod => mod.SuccessScreen));
 
 export function ContactForm({ translations }: any) {
   const [step, setStep] = useState(1);

@@ -61,7 +61,7 @@ export function BlogPostClient({ locale, post, translations }: BlogPostClientPro
       {/* Main Content Layout */}
       <section className="pb-32">
         <Container>
-          <div className="grid lg:grid-cols-[280px,1fr,300px] gap-16 items-start">
+          <div className="flex flex-col lg:grid lg:grid-cols-[280px,1fr,300px] gap-8 lg:gap-16 items-start">
             <TableOfContents toc={toc} activeSection={activeSection} t={postT} />
             <ArticleContent locale={locale} post={post} t={postT} />
             <SidebarActions locale={locale} tags={post.tags} t={postT} />

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { User, Mail, MessageSquare, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,10 +8,9 @@ import { FormError } from "@/components/ui/FormError";
 
 export function StepOne({ form, translations, onNext }: any) {
   const projectTypes = getProjectTypes(translations.projectTypes);
-  const MotionInput = motion(Input);
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 20 }}
@@ -21,14 +20,14 @@ export function StepOne({ form, translations, onNext }: any) {
         {/* Name */}
         <div className="space-y-3">
           <Label icon={User} text={translations.name} />
-          <MotionInput {...form.register("name")} placeholder='your name' className="h-16 rounded-2xl" />
+          <Input {...form.register("name")} placeholder='your name' className="h-16 rounded-2xl" />
            <FormError error={form.formState.errors.name} />
         </div>
 
         {/* Email */}
         <div className="space-y-3">
           <Label icon={Mail} text={translations.email} />
-          <MotionInput type="email" placeholder='www.example.com' {...form.register("email")} className="h-16 rounded-2xl" />
+          <Input type="email" placeholder='www.example.com' {...form.register("email")} className="h-16 rounded-2xl" />
            <FormError error={form.formState.errors.email} />
         </div>
       </div>
@@ -68,7 +67,7 @@ export function StepOne({ form, translations, onNext }: any) {
       >
         Assemble Scope <ChevronRight />
       </Button>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -76,7 +75,7 @@ function Label({ icon: Icon, text }: any) {
   return (
     <div className="flex items-center gap-2 text-xs font-mono uppercase text-muted-foreground">
       <Icon size={14} className="text-primary" />
-      <span>{text}</span>
+      <span>{text}test</span>
     </div>
   );
 }

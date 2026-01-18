@@ -13,7 +13,7 @@ function RecommendedSectionComponent({ locale, t }: RecommendedSectionProps) {
   return (
     <section className="py-24 bg-muted/20 border-t border-border/50">
       <Container>
-        <div className="flex items-center justify-between mb-16">
+        <div className="flex items-center justify-between mb-16 flex-wrap gap-4">
           <h2 className="text-4xl font-bold tracking-tighter">{t.recommended}</h2>
           <Link href={`/${locale}/blog`} className="text-primary font-bold hover:underline">{t.view_all} →</Link>
         </div>

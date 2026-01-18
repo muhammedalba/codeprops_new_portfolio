@@ -177,7 +177,7 @@ export function HeroStats({ translations, locale }: HeroStatsProps) {
 
       {/* Hero-level floating micro-effects */}
       <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent-secondary/5 rounded-full blur-[100px] animate-pulse transition-all duration-[4s]" />
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent-secondary/5 rounded-full blur-[100px] animate-pulse transition-all duration-4000" />
     </section>
   );
 }

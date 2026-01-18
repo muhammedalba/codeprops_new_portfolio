@@ -30,7 +30,6 @@ function HomeClientComponent({
   translations: t,
 }: HomeClientProps) {
   const latestPosts = useMemo(() => t.blog.posts.slice(0, 3), [t.blog.posts]);
-
   return (
     <main className="w-full bg-background">
       {/* 🚀 Hero Section */}

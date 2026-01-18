@@ -80,7 +80,7 @@ export function SmartNav({ sections }: SmartNavProps) {
     <div
       ref={stickyRef}
       className={cn(
-        "fixed top-[var(--header-height)] left-0 right-0 z-50 transition-all duration-300 border-b bg-background/70 backdrop-blur-md",
+        "fixed top-[var(--header-height)] left-0 right-0 z-30 transition-all duration-300 border-b bg-background/70 backdrop-blur-md",
         isSticky
           ? "translate-y-0 opacity-100"
           : "-translate-y-full opacity-0 pointer-events-none"
@@ -88,8 +88,8 @@ export function SmartNav({ sections }: SmartNavProps) {
     >
       <div className="py-2">
         <Container>
-          <div className="flex items-center justify-between text-sm font-bold uppercase tracking-[0.2em]">
-            <div className="flex gap-8 overflow-hidden no-scrollbar scroll-smooth">
+          <div className="flex  items-center justify-between text-sm font-bold uppercase tracking-[0.2em]">
+            <div className="flex flex-wrap  gap-8 overflow-hidden no-scrollbar scroll-smooth">
               {sections.map((s) => (
                 <button
                   key={s.id}

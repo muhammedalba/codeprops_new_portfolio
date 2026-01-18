@@ -35,6 +35,7 @@ export default async function HomePage({
   const typedLocale = locale as Locale;
   const t = await getPageMessages(typedLocale, "home");
 
+
   return<>
          <script
            type="application/ld+json"

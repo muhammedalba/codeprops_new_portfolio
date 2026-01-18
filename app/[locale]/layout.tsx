@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { Locale, getDirection, locales } from "@/lib/i18n";
 import { generatePageMetadata, generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
 import { getPageMessages } from "@/lib/translations";
-import { use } from "react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -86,7 +85,7 @@ export default async   function LocaleLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header locale={typedLocale} translations={messages} />
+          <Header locale={typedLocale} translations={messages.nav} />
           <main className="flex-1">{children}</main>
           <Footer locale={typedLocale} translations={messages} />
           <ClientSideEffects />
