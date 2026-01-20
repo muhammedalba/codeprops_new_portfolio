@@ -22,5 +22,24 @@
                   "terms": "Terms of Use",
                   "sitemap": "Infrastructure Map"
             }
+      },
+      "sideDrawer": {
+            "aboutUs": {
+                  "title": "About Us",
+                  "description": "We are a senior engineering collective dedicated to building elite digital experiences that redefine technical excellence."
+            },
+            "contact": {
+                  "title": "Get in Touch",
+                  "email": "Email",
+                  "phone": "Phone",
+                  "location": "Location",
+                  "locationValue": "Elite Tech Center, Istanbul, TR"
+            },
+            "language": "Language",
+            "appearance": {
+                  "title": "Appearance",
+                  "switchTheme": "Switch Theme"
+            },
+            "copyright": "© 2026 Codeprops. All rights reserved."
       }
 }

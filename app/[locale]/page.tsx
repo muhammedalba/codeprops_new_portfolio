@@ -4,12 +4,42 @@ import { generatePageMetadata, generateWebSiteSchema } from "@/lib/seo";
 import { Metadata } from "next";
 import { HeroSection } from "@/components/home/hero-section";
 import { MiniContact } from "@/components/contact/sections/mini-contact";
-import BlogSection from "@/components/home/BlogSection";
-import PricingSection from "@/components/home/Section/PricingSection";
 import { AboutSection } from "@/components/sections/about-section";
 import { ServicesSection } from "@/components/sections/services-section";
-import { MethodologySection } from "@/components/sections/methodology-section";
-import { TestimonialsCarousel } from "@/components/sections/testimonials-carousel";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+
+// Lazy load below-fold sections to reduce initial bundle
+const MethodologySection = dynamic(
+  () => import("@/components/sections/methodology-section").then(mod => ({ default: mod.MethodologySection })),
+  { 
+    ssr: true,
+    loading: () => import("@/components/skeletons/methodology-skeleton").then(mod => <mod.MethodologySkeleton />)
+  }
+);
+
+const PricingSection = dynamic(
+  () => import("@/components/home/Section/PricingSection"),
+  { 
+    ssr: true,
+    loading: () => import("@/components/skeletons/pricing-skeleton").then(mod => <mod.PricingSkeleton />)
+  }
+);
+
+const BlogSection = dynamic(
+  () => import("@/components/home/BlogSection"),
+  { 
+    ssr: true,
+    loading: () => import("@/components/skeletons/blog-skeleton").then(mod => <mod.BlogSkeleton />)
+  }
+);
+
+const TestimonialsCarousel = dynamic(
+  () => import("@/components/sections/testimonials-carousel").then(mod => ({ default: mod.TestimonialsCarousel })),
+  { 
+    loading: () => import("@/components/skeletons/testimonials-skeleton").then(mod => <mod.TestimonialsSkeleton />)
+  }
+);
 
 export const dynamicParams = false;
 
@@ -51,9 +81,10 @@ export default async function HomePage({
         }}
       />
       <main className="w-full bg-background">
-        {/* 🚀 Hero Section */}
+        {/* 🚀 Hero Section - Critical, loads immediately */}
         <HeroSection locale={typedLocale} translations={t} />
-        {/* about */}
+        
+        {/* About Section - Above fold on desktop, loads immediately */}
         <AboutSection
           id="about-section"
           badge={
@@ -63,7 +94,8 @@ export default async function HomePage({
           subtitle={t.about.subtitle}
           description={t.about.description}
         />
-        {/* Services Preview - Using Premium Cards ssr */}
+        
+        {/* Services Section - Important, loads immediately */}
         <ServicesSection
           id="services-section"
           badge={typedLocale === "ar" ? "خبراتنا" : "Core Expertise"}
@@ -72,37 +104,50 @@ export default async function HomePage({
           translations={t.services}
           locale={typedLocale}
         />
-        {/* Methodology Section ssr */}
-        <MethodologySection
-          id="methodology-section"
-          badge={typedLocale === "ar" ? "منهجيتنا" : "The Engineering Engine"}
-          title={
-            typedLocale === "ar"
-              ? "مسار مهيكل للتميز الرقمي"
-              : "A structured path to digital dominance."
-          }
-          steps={t.methodology.steps}
-        />
-        {/* Pricing Section ssr */}
-        <PricingSection locale={typedLocale} t={t.pricing} />
-        {/* blog Section */}
-        <BlogSection locale={typedLocale} t={t} />
-         {/* Testimonials client */}
-        <TestimonialsCarousel
-          testimonials={t.testimonials.items.map((item: any) => ({
-            quote: item.content,
-            name: item.name,
-            role: item.role,
-            company:
-              item.role.split(" at ")[1] ||
-              item.role.split(", ")[1] ||
-              "Company",
-          }))}
-          title={t.testimonials.title}
-          subtitle={t.testimonials.subtitle}
-          autoScrollSpeed={30}
-        />
-        {/* Final CTA */}
+        
+        {/* Methodology Section - Below fold, lazy loaded */}
+        <Suspense fallback={<div className="min-h-[400px]" />}>
+          <MethodologySection
+            id="methodology-section"
+            badge={typedLocale === "ar" ? "منهجيتنا" : "The Engineering Engine"}
+            title={
+              typedLocale === "ar"
+                ? "مسار مهيكل للتميز الرقمي"
+                : "A structured path to digital dominance."
+            }
+            steps={t.methodology.steps}
+          />
+        </Suspense>
+        
+        {/* Pricing Section - Below fold, lazy loaded */}
+        <Suspense fallback={<div className="min-h-[500px]" />}>
+          <PricingSection locale={typedLocale} t={t.pricing} />
+        </Suspense>
+        
+        {/* Blog Section - Below fold, lazy loaded */}
+        <Suspense fallback={<div className="min-h-[400px]" />}>
+          <BlogSection locale={typedLocale} t={t} />
+        </Suspense>
+        
+        {/* Testimonials - Below fold, lazy loaded (client component) */}
+        <Suspense fallback={<div className="min-h-[500px]" />}>
+          <TestimonialsCarousel
+            testimonials={t.testimonials.items.map((item: any) => ({
+              quote: item.content,
+              name: item.name,
+              role: item.role,
+              company:
+                item.role.split(" at ")[1] ||
+                item.role.split(", ")[1] ||
+                "Company",
+            }))}
+            title={t.testimonials.title}
+            subtitle={t.testimonials.subtitle}
+            autoScrollSpeed={30}
+          />
+        </Suspense>
+        
+        {/* Final CTA - Important, loads immediately */}
         <MiniContact translations={t.contact} />
       </main>
     </>

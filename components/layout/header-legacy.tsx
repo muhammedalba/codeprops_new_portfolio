@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Locale, locales, localeNames } from '@/lib/i18n';
+import { Locale, locales } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
-import { Menu, X, LayoutGrid } from 'lucide-react';
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { MenuIcon, XIcon, LayoutGridIcon } from '@/components/ui/inline-icons';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Container } from './container';
 import { ThemeToggle } from './theme-toggle';
 import dynamic from 'next/dynamic';
@@ -29,13 +29,16 @@ interface HeaderProps {
       blog: string;
       contact: string;
   };
+  sideDrawerTranslations?: any;
 }
 
-export function Header({ locale, translations }: HeaderProps) {
+export function HeaderLegacy({ locale, translations, sideDrawerTranslations }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const rafIdRef = useRef<number | null>(null);
+  const lastScrollYRef = useRef(0);
 
   // Optimization: Memoize navigation items to prevent recreation on every render
   const navigation = useMemo(() => [
@@ -47,15 +50,49 @@ export function Header({ locale, translations }: HeaderProps) {
     { name: translations.contact, href: `/${locale}/contact` },
   ], [locale, translations]);
 
-  // Optimization: useCallback for scroll handler
+  // Optimization: Memoize pathname normalization
+  const normalizedPathname = useMemo(() => pathname?.replace(/\/$/, ''), [pathname]);
+
+  // Optimization: RAF-based scroll handler to reduce re-renders
   const handleScroll = useCallback(() => {
-    // Debouncing could be added here if scroll performance is critical
-    setIsScrolled(window.scrollY > 20);
+    const currentScrollY = window.scrollY;
+    
+    // Skip if scroll position hasn't changed significantly
+    if (Math.abs(currentScrollY - lastScrollYRef.current) < 5) {
+      return;
+    }
+    
+    lastScrollYRef.current = currentScrollY;
+
+    // Cancel previous frame if it hasn't executed yet
+    if (rafIdRef.current !== null) {
+      cancelAnimationFrame(rafIdRef.current);
+    }
+
+    // Schedule update for next animation frame
+    rafIdRef.current = requestAnimationFrame(() => {
+      const shouldBeScrolled = currentScrollY > 20;
+      setIsScrolled(prev => prev !== shouldBeScrolled ? shouldBeScrolled : prev);
+      rafIdRef.current = null;
+    });
   }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Use AbortController for cleaner event listener cleanup
+    const controller = new AbortController();
+    
+    window.addEventListener('scroll', handleScroll, { 
+      passive: true,
+      signal: controller.signal 
+    });
+
+    return () => {
+      controller.abort();
+      // Cancel any pending animation frame
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
+    };
   }, [handleScroll]);
 
   return (
@@ -84,7 +121,7 @@ export function Header({ locale, translations }: HeaderProps) {
                     key={item.href}
                     href={item.href}
                     className={`text-sm mx-1 md:mx-3 lg:mx-4 md:text-base font-semibold tracking-wide transition-colors hover:text-primary ${
-                      pathname?.replace(/\/$/, '') === item.href
+                      normalizedPathname === item.href
                         ? 'text-primary border-b-2 border-primary'
                         : 'text-muted-foreground'
                     }`}
@@ -115,7 +152,7 @@ export function Header({ locale, translations }: HeaderProps) {
               <div className="flex items-center gap-2">
                 <ThemeToggle />
                 <Button variant="ghost" size="icon" className="md:flex hidden" onClick={() => setSideDrawerOpen(true)}>
-                  <LayoutGrid className="h-5 w-5" />
+                  <LayoutGridIcon className="h-5 w-5" />
                 </Button>
                 
                 <Button className="hidden md:flex h-10 px-6 rounded-full border border-primary" asChild>
@@ -129,9 +166,9 @@ export function Header({ locale, translations }: HeaderProps) {
                   aria-label="Toggle menu"
                 >
                   {mobileMenuOpen ? (
-                    <X className="h-6 w-6" />
+                    <XIcon className="h-6 w-6" />
                   ) : (
-                    <Menu className="h-6 w-6" />
+                    <MenuIcon className="h-6 w-6" />
                   )}
                 </button>
               </div>
@@ -156,7 +193,8 @@ export function Header({ locale, translations }: HeaderProps) {
         <SideDrawer 
           isOpen={sideDrawerOpen} 
           onClose={() => setSideDrawerOpen(false)} 
-          locale={locale} 
+          locale={locale}
+          translations={sideDrawerTranslations}
         />
       )}
     </>

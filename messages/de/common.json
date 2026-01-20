@@ -22,5 +22,24 @@
                   "terms": "Nutzungsbedingungen",
                   "sitemap": "Infrastruktur-Map"
             }
+      },
+      "sideDrawer": {
+            "aboutUs": {
+                  "title": "Über Uns",
+                  "description": "Wir sind ein erfahrenes Engineering-Kollektiv, das sich dem Aufbau erstklassiger digitaler Erlebnisse widmet, die technische Exzellenz neu definieren."
+            },
+            "contact": {
+                  "title": "Kontaktieren Sie uns",
+                  "email": "E-Mail",
+                  "phone": "Telefon",
+                  "location": "Standort",
+                  "locationValue": "Elite Tech Center, Istanbul, TR"
+            },
+            "language": "Sprache",
+            "appearance": {
+                  "title": "Erscheinungsbild",
+                  "switchTheme": "Design wechseln"
+            },
+            "copyright": "© 2026 Codeprops. Alle Rechte vorbehalten."
       }
 }

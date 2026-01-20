@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Locale, getDirection, locales } from "@/lib/i18n";
 import { generatePageMetadata, generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
 import { getPageMessages } from "@/lib/translations";
-import { Header } from "@/components/layout/header";
+import { HeaderServer } from "@/components/layout/header-server";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
@@ -59,7 +59,7 @@ export default async   function LocaleLayout({
   const typedLocale = locale as Locale;
   const direction = getDirection(typedLocale);
   const messages = await getPageMessages(typedLocale, "home");
-
+console.log(messages)
   return (
     <html lang={typedLocale} dir={direction} suppressHydrationWarning>
       <head>
@@ -85,7 +85,7 @@ export default async   function LocaleLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header locale={typedLocale} translations={messages.nav} />
+          <HeaderServer locale={typedLocale} translations={messages.nav} sideDrawerTranslations={messages.sideDrawer} />
           <main className="flex-1">{children}</main>
           <Footer locale={typedLocale} translations={messages} />
           <ClientSideEffects />

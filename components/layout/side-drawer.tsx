@@ -16,9 +16,10 @@ interface SideDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   locale: Locale;
+  translations?: any;
 }
 
-export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
+export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawerProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -59,24 +60,22 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
               <div className="space-y-8 flex-1">
                 <div>
                   <h3 className="text-sm font-mono uppercase tracking-[0.2em] text-primary mb-4">
-                    About Us
+                    {translations?.aboutUs?.title || "About Us"}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    We are a senior engineering collective dedicated to building
-                    elite digital experiences that redefine technical
-                    excellence.
+                    {translations?.aboutUs?.description || "We are a senior engineering collective dedicated to building elite digital experiences that redefine technical excellence."}
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-sm font-mono uppercase tracking-[0.2em] text-primary mb-4">
-                    Get in Touch
+                    {translations?.contact?.title || "Get in Touch"}
                   </h3>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Mail className="h-5 w-5 text-primary/60 mt-0.5" />
                       <div>
-                        <p className="text-xs text-muted-foreground">Email</p>
+                        <p className="text-xs text-muted-foreground">{translations?.contact?.email || "Email"}</p>
                         <a
                           href="mailto:info@codeprops.com"
                           className="font-medium hover:text-primary transition-colors"
@@ -88,7 +87,7 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                     <li className="flex items-start gap-3">
                       <Phone className="h-5 w-5 text-primary/60 mt-0.5" />
                       <div>
-                        <p className="text-xs text-muted-foreground">Phone</p>
+                        <p className="text-xs text-muted-foreground">{translations?.contact?.phone || "Phone"}</p>
                         <a
                           href="tel:+4917662025331"
                           className="font-medium hover:text-primary transition-colors"
@@ -101,10 +100,10 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                       <MapPin className="h-5 w-5 text-primary/60 mt-0.5" />
                       <div>
                         <p className="text-xs text-muted-foreground">
-                          Location
+                          {translations?.contact?.location || "Location"}
                         </p>
                         <p className="font-medium">
-                          Elite Tech Center, Istanbul, TR
+                          {translations?.contact?.locationValue || "Elite Tech Center, Istanbul, TR"}
                         </p>
                       </div>
                     </li>
@@ -113,7 +112,7 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
 
                 <div>
                   <h3 className="text-sm font-mono uppercase tracking-[0.2em] text-primary mb-4">
-                    Language
+                    {translations?.language || "Language"}
                   </h3>
                   <div className="grid grid-cols-3 gap-2">
                     {Object.entries(localeNames).map(([key, name]) => (
@@ -134,10 +133,10 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
 
                 <div>
                   <h3 className="text-sm font-mono uppercase tracking-[0.2em] text-primary mb-4">
-                    Appearance
+                    {translations?.appearance?.title || "Appearance"}
                   </h3>
                   <div className="flex items-center justify-between p-3 rounded-xl border border-border bg-muted/30">
-                    <span className="text-sm font-medium">Switch Theme</span>
+                    <span className="text-sm font-medium">{translations?.appearance?.switchTheme || "Switch Theme"}</span>
                     <ThemeToggle />
                   </div>
                 </div>
@@ -166,7 +165,7 @@ export function SideDrawer({ isOpen, onClose, locale }: SideDrawerProps) {
                   </a>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  © 2026 Codeprops. All rights reserved.
+                  {translations?.copyright || "© 2026 Codeprops. All rights reserved."}
                 </p>
               </div>
             </div>
