@@ -11,6 +11,10 @@ import { Icons } from "@/components/ui/icons";
 import Link from "next/link";
 import { Locale, localeNames } from "@/lib/i18n";
 import { ThemeToggle } from "./theme-toggle";
+import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
+
+import { SOCIAL_LINKS, CONTACT_INFO, SITE_CONFIG } from "@/lib/constants";
 
 interface SideDrawerProps {
   isOpen: boolean;
@@ -20,7 +24,21 @@ interface SideDrawerProps {
 }
 
 export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawerProps) {
-  return (
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -30,7 +48,7 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm"
           />
 
           {/* Drawer Content */}
@@ -38,8 +56,8 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-[70] h-full w-[300px] sm:w-[400px] bg-background border-l shadow-2xl overflow-y-auto"
+           transition={{ duration: 0.35, ease: "easeOut" }}
+            className="fixed top-0 right-0 z-[110] h-full w-[300px] sm:w-[400px] bg-background border-l shadow-2xl overflow-y-auto"
           >
             <div className="p-8 flex flex-col h-full">
               <div className="flex justify-between items-center mb-12">
@@ -77,10 +95,10 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
                       <div>
                         <p className="text-xs text-muted-foreground">{translations?.contact?.email || "Email"}</p>
                         <a
-                          href="mailto:info@codeprops.com"
+                          href={`mailto:${CONTACT_INFO.email}`}
                           className="font-medium hover:text-primary transition-colors"
                         >
-                          info@codeprops.com
+                          {CONTACT_INFO.email}
                         </a>
                       </div>
                     </li>
@@ -89,10 +107,10 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
                       <div>
                         <p className="text-xs text-muted-foreground">{translations?.contact?.phone || "Phone"}</p>
                         <a
-                          href="tel:+4917662025331"
+                          href={`tel:${CONTACT_INFO.phone.replace(/\D/g, '')}`}
                           className="font-medium hover:text-primary transition-colors"
                         >
-                          +49 (176) 62025331
+                          {CONTACT_INFO.phone}
                         </a>
                       </div>
                     </li>
@@ -103,7 +121,7 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
                           {translations?.contact?.location || "Location"}
                         </p>
                         <p className="font-medium">
-                          {translations?.contact?.locationValue || "Elite Tech Center, Istanbul, TR"}
+                          {CONTACT_INFO.address}
                         </p>
                       </div>
                     </li>
@@ -146,32 +164,41 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
               <div className="pt-8 border-t space-y-6">
                 <div className="flex gap-4">
                   <a
-                    href="#"
+                    href={SOCIAL_LINKS.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
                   >
                     <Icons.twitter className="h-5 w-5" />
                   </a>
                   <a
-                    href="#"
+                    href={SOCIAL_LINKS.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
                   >
                     <Icons.linkedin className="h-5 w-5" />
                   </a>
                   <a
-                    href="#"
+                    href={SOCIAL_LINKS.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 border rounded-full hover:border-primary hover:text-primary transition-all"
                   >
                     <Icons.github className="h-5 w-5" />
                   </a>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  {translations?.copyright || "© 2026 Codeprops. All rights reserved."}
+                  {translations?.copyright || `© ${new Date().getFullYear()} ${SITE_CONFIG.name}. All rights reserved.`}
                 </p>
               </div>
             </div>
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
+
+

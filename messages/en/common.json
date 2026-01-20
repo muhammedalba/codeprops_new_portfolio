@@ -32,8 +32,7 @@
                   "title": "Get in Touch",
                   "email": "Email",
                   "phone": "Phone",
-                  "location": "Location",
-                  "locationValue": "Elite Tech Center, Istanbul, TR"
+                  "location": "Location"
             },
             "language": "Language",
             "appearance": {

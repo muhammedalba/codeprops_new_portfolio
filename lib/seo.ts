@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Locale, getDirection, localeNames } from '@/lib/i18n';
+import { Locale } from '@/lib/i18n';
+import { SITE_CONFIG, SOCIAL_LINKS } from '@/lib/constants';
 
 interface GenerateMetadataProps {
   locale: Locale;
@@ -16,7 +17,7 @@ export function generatePageMetadata({
   path = '',
   image = '/og-image.jpg',
 }: GenerateMetadataProps): Metadata {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const baseUrl = SITE_CONFIG.url;
   const url = `${baseUrl}/${locale}${path}`;
 
   return {
@@ -35,7 +36,7 @@ export function generatePageMetadata({
       title,
       description,
       url,
-      siteName: 'Codeprops',
+      siteName: SITE_CONFIG.name,
       images: [
         {
           url: image,
@@ -61,21 +62,15 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Codeprops',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-    logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/logo.png`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    logo: `${SITE_CONFIG.url}/logo.png`,
     description: 'Leading software development company delivering cutting-edge solutions',
     address: {
       '@type': 'Organization',
-      '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/#organization`,
+      '@id': `${SITE_CONFIG.url}/#organization`,
     },
-    sameAs: [
-      'https://twitter.com/codeprops',
-      'https://linkedin.com/company/codeprops',
-      'https://github.com/codeprops',
-      'https://www.facebook.com/codeprops',
-      'https://www.instagram.com/codeprops',
-    ],
+    sameAs: Object.values(SOCIAL_LINKS),
   };
 }
 
@@ -83,13 +78,13 @@ export function generateWebSiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Codeprops',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/search?q={search_term_string}`,
+        urlTemplate: `${SITE_CONFIG.url}/search?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -123,3 +118,4 @@ export function generateBreadcrumbSchema(items: { name: string; item: string }[]
     })),
   };
 }
+

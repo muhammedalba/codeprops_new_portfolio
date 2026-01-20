@@ -32,8 +32,7 @@
                   "title": "Kontaktieren Sie uns",
                   "email": "E-Mail",
                   "phone": "Telefon",
-                  "location": "Standort",
-                  "locationValue": "Elite Tech Center, Istanbul, TR"
+                  "location": "Standort"
             },
             "language": "Sprache",
             "appearance": {

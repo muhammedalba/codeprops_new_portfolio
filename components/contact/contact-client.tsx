@@ -23,12 +23,10 @@ const fadeIn = {
 
 interface ContactClientProps {
   locale: string;
-  translations: any;
+  t: any;
 }
 
-export function ContactClient({ locale, translations }: ContactClientProps) {
-  const t = translations.contact;
-
+export function ContactClient({ locale, t }: ContactClientProps) {
   return (
     <LazyMotion features={domAnimation}>
       <main className="flex flex-col overflow-hidden bg-background">

@@ -40,6 +40,6 @@ export default async function ContactPage({
   }}
 />
 
-  <ContactClient locale={typedLocale} translations={t} />
+  <ContactClient locale={typedLocale} t={t.contact} />
   </> ;
 }

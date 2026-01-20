@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Locale } from '@/lib/i18n';
 import { Container } from './container';
 import { Icons } from '@/components/ui/icons';
+import { SOCIAL_LINKS, CONTACT_INFO, SITE_CONFIG } from '@/lib/constants';
 
 interface FooterProps {
   locale: Locale;
@@ -44,9 +45,9 @@ export function Footer({ locale, translations }: FooterProps) {
       { name: translations.footer.links.sitemap, href: '/sitemap.xml' },
     ],
     social: [
-      { name: 'Twitter', href: 'https://twitter.com/codeprops', icon: Icons.twitter },
-      { name: 'GitHub', href: 'https://github.com/codeprops', icon: Icons.github },
-      { name: 'LinkedIn', href: 'https://linkedin.com/company/codeprops', icon: Icons.linkedin },
+      { name: 'Twitter', href: SOCIAL_LINKS.twitter, icon: Icons.twitter },
+      { name: 'GitHub', href: SOCIAL_LINKS.github, icon: Icons.github },
+      { name: 'LinkedIn', href: SOCIAL_LINKS.linkedin, icon: Icons.linkedin },
     ],
   };
 
@@ -123,13 +124,13 @@ export function Footer({ locale, translations }: FooterProps) {
               <h3 className="font-semibold mb-4">{translations.nav.contact}</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="mailto:info@codeprops.com" className="hover:text-primary transition-colors">
-                    info@codeprops.com
+                  <Link href={`mailto:${CONTACT_INFO.email}`} className="hover:text-primary transition-colors">
+                    {CONTACT_INFO.email}
                   </Link>
                 </li>
                 <li >
-                  <Link dir='ltr' href="tel:+15551234567" className="hover:text-primary transition-colors">
-                    +49 (1766) 202-5331
+                  <Link dir='ltr' href={`tel:${CONTACT_INFO.phone.replace(/\D/g, '')}`} className="hover:text-primary transition-colors">
+                    {CONTACT_INFO.phone}
                   </Link>
                 </li>
               </ul>
@@ -139,7 +140,7 @@ export function Footer({ locale, translations }: FooterProps) {
           {/* Bottom Bar */}
           <div className="mt-12 pt-2 border-t">
             <p className="text-center text-sm text-muted-foreground">
-              © {currentYear} Codeprops. {translations.footer.copyright}
+              © {currentYear} {SITE_CONFIG.name}. {translations.footer.copyright}
             </p>
           </div>
         </div>
@@ -147,3 +148,4 @@ export function Footer({ locale, translations }: FooterProps) {
     </footer>
   );
 }
+

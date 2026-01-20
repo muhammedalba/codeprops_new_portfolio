@@ -1,14 +1,17 @@
-"use client";
-
 import { Code } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { SectionHeader } from "@/components/ui/section-header";
-import { GlassCard } from "@/components/ui/glass-card";
+import { cn } from "@/lib/utils";
 
 interface TechStackSectionProps {
   techStack: any;
 }
 
+/**
+ * TechStackSection Server Component
+ * Renders static tech stack information
+ * No JavaScript needed
+ */
 export function TechStackSection({ techStack }: TechStackSectionProps) {
   return (
     <section id="stack" className="py-8 md:py-32">
@@ -23,12 +26,18 @@ export function TechStackSection({ techStack }: TechStackSectionProps) {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="grid grid-cols-1 gap-6 mt-12 relative">
             {techStack.categories.map((cat: any, i: number) => (
-              <GlassCard key={i} className="p-6">
-                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[100px]" />
-                <h4 className="font-bold text-primary mb-3 text-sm uppercase tracking-wider">
+              <div 
+                key={i} 
+                className={cn(
+                  "group relative block rounded-[2.5rem] border border-border bg-background/40 p-6",
+                  "backdrop-blur-xl transition-all duration-300"
+                )}
+              >
+                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+                <h4 className="font-bold text-primary mb-3 text-sm uppercase tracking-wider relative z-10">
                   {cat.name}
                 </h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 relative z-10">
                   {cat.tech.map((tech: string) => (
                     <span
                       key={tech}
@@ -38,7 +47,7 @@ export function TechStackSection({ techStack }: TechStackSectionProps) {
                     </span>
                   ))}
                 </div>
-              </GlassCard>
+              </div>
             ))}
           </div>
 

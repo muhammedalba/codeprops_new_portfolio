@@ -6,6 +6,8 @@ import { Icons } from "@/components/ui/icons";
 import { GlassCard } from "@/components/ui/glass-card";
 
 
+import { SOCIAL_LINKS, CONTACT_INFO } from "@/lib/constants";
+
 interface ContactInfoProps {
   info: {
     email: string;
@@ -24,31 +26,32 @@ export function ContactInfo({ info }: ContactInfoProps) {
     {
       icon: Mail,
       label: "Signal Engineering",
-      value: info.email,
-      href: `mailto:${info.email}`,
+      value: CONTACT_INFO.solutionsEmail,
+      href: `mailto:${CONTACT_INFO.solutionsEmail}`,
       color: "blue"
     },
     {
       icon: Phone,
       label: "Direct Uplink",
-      value: info.phone,
-      href: `tel:${info.phone}`,
+      value: CONTACT_INFO.phone,
+      href: `tel:${CONTACT_INFO.phone.replace(/\D/g, '')}`,
       color: "green"
     },
     {
       icon: MapPin,
       label: "Physical Nexus",
-      value: info.address,
+      value: CONTACT_INFO.address,
       href: "#",
       color: "red"
     }
   ];
 
   const socialIcons = [
-    { icon: Icons.linkedin, label: info.social.linkedin, href: "#" ,color: "blue"},
-    { icon: Icons.github, label: info.social.github, href: "#" ,color: "green"},
-    { icon: Icons.twitter, label: info.social.twitter, href: "#" ,color: "red"}
+    { icon: Icons.linkedin, label: info.social.linkedin, href: SOCIAL_LINKS.linkedin, color: "blue" },
+    { icon: Icons.github, label: info.social.github, href: SOCIAL_LINKS.github, color: "green" },
+    { icon: Icons.twitter, label: info.social.twitter, href: SOCIAL_LINKS.twitter, color: "red" }
   ];
+
 
   return (
     <div className="space-y-12">

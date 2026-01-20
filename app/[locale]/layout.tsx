@@ -10,6 +10,8 @@ import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
 
+import { SITE_CONFIG } from "@/lib/constants";
+
 const fontHeading = Outfit({
   subsets: ["latin"],
   variable: "--font-heading",
@@ -36,7 +38,6 @@ export async function generateMetadata({
   const { locale } = await params;
   const typedLocale = locale as Locale;
   const messages = await getPageMessages(typedLocale, "home");
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   
   return {
     ...generatePageMetadata({
@@ -44,9 +45,10 @@ export async function generateMetadata({
       title: messages.seo.home.title,
       description: messages.seo.home.description,
     }),
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(SITE_CONFIG.url),
   };
 }
+
 
 export default async   function LocaleLayout({
   children,
@@ -59,7 +61,6 @@ export default async   function LocaleLayout({
   const typedLocale = locale as Locale;
   const direction = getDirection(typedLocale);
   const messages = await getPageMessages(typedLocale, "home");
-console.log(messages)
   return (
     <html lang={typedLocale} dir={direction} suppressHydrationWarning>
       <head>

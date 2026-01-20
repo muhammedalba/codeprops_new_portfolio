@@ -26,9 +26,6 @@
                   "error": "An engineering error occurred. Please try again."
             },
             "info": {
-                  "email": "solutions@codeprops.com",
-                  "phone": "+1 (800) CODE-PRO",
-                  "address": "Global Elite Tech Center, Silicon Valley / Istanbul",
                   "social": {
                         "linkedin": "LinkedIn",
                         "github": "GitHub",
