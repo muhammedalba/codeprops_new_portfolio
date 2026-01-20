@@ -13,10 +13,10 @@ import { ClientSideEffects } from "@/components/providers/client-side-effects";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const fontHeading = Outfit({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-heading",
   display: "swap",
-  weight: ["400", "700"],
+
 });
 
 const fontArabic = Amiri({
