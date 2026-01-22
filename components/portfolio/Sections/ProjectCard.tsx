@@ -114,7 +114,7 @@ function ProjectCardComponent({
             isOdd ? "md:order-1" : "md:order-2",
           )}
         >
-          <Image priority={true} fill={true}  src={imageSrc} alt={project.title} />
+          <Image   fill priority src={imageSrc} alt={project.title} />
           {/* Decorative background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent-secondary/5" />
           <div className="absolute inset-0 opacity-[0.05] select-none pointer-events-none font-black text-[12vw] flex items-center justify-center uppercase tracking-tighter rotate-12">

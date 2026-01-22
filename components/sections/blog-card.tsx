@@ -46,7 +46,8 @@ function BlogCardComponent({
         <Image
           src={imageUrl}
           alt={title}
-          fill
+            fill
+             priority
           className="object-cover"
         />
         <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest border border-border/50">
