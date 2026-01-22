@@ -22,55 +22,181 @@
                   "solution": "حلنا الهندسي",
                   "results": "النتائج التقنية والتجارية"
             },
-            "projects": [
-                  {
-                        "slug": "nexus-logistics",
-                        "title": "نيكسوس للخدمات اللوجستية: هجرة سحابية لسلاسل التوريد العالمية",
-                        "category": "مؤسسات",
-                        "description": "تحويل البنية التحتية القديمة والمشتتة إلى نظام لوجستي موحد يعتمد على السحابة.",
-                        "problem": "بنية تحتية قديمة ومشتتة تسبب اختناقات وفترات توقف متكررة.",
-                        "solution": "تم تنفيذ معمارية AWS سحابية مع خدمات مصغرة تعتمد على Go لتتبع الشحنات في الوقت الفعلي.",
-                        "result": "زيادة الإنتاجية بنسبة 300٪ وتوافر بنسبة 99.99٪.",
-                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
-                        "tech": [
-                              "Next.js",
-                              "Go",
-                              "AWS",
-                              "K8s"
-                        ]
-                  },
-                  {
-                        "slug": "aura-fashion",
-                        "title": "أورا للأزياء: إعادة هندسة التجارة الإلكترونية ذات الأحمال العالية",
-                        "category": "تجارة إلكترونية",
-                        "description": "توسيع علامة تجارية فاخرة للأزياء لتتحمل ذروة الزيارات دون توقف.",
-                        "problem": "تعطل الخوادم أثناء الأحداث الكبيرة مثل الجمعة السوداء، مما يؤدي إلى فقدان المبيعات.",
-                        "solution": "إعادة هندسة الموقع باستخدام Next.js و Redis للتعامل مع ارتفاع الزيارات المفاجئ بسلاسة.",
-                        "result": "زيادة التحويل بنسبة 65٪ وتأخير صفري في أوقات الذروة.",
-                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
-                        "tech": [
-                              "Next.js",
-                              "Shopify",
-                              "Redis",
-                              "Framer"
-                        ]
-                  },
-                  {
-                        "slug": "finnode-api",
-                        "title": "FinNode: منظومة آمنة لواجهات البرمجية للخدمات المصرفية المفتوحة",
-                        "category": "تكنولوجيا مالية",
-                        "description": "بناء بوابة مرنة ومتوافقة لتبادل البيانات المالية بشكل آمن.",
-                        "problem": "عدم وجود بيئة آمنة ومتوافقة لتبادل البيانات المالية مع مزودي الأطراف الثالثة.",
-                        "solution": "إنشاء نظام API قوي يعتمد على Laravel مع مصادقة متعددة العوامل وسجلات تدقيق كاملة.",
-                        "result": "أكثر من 10 ملايين معاملة شهرية مع الامتثال لـ PCI.",
-                       "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
-                        "tech": [
-                              "Laravel",
-                              "Docker",
-                              "MFA",
-                              "Audit Logs"
-                        ]
-                  }
-            ]
+            
+                  "projects": [
+                        {
+                              "slug": "custom-ecommerce-platform",
+                              "title": "منصة متجر إلكتروني مخصصة بمرونة عالية وتكاملات محلية",
+                              "category": "متاجر إلكترونية",
+                              "description": "تطوير متجر إلكتروني مخصص يلبي احتياجات السوق المحلي ويمنح العميل تحكمًا كاملًا في المبيعات والإدارة والتكاملات.",
+                              "problem": "اعتمد العميل على حلول جاهزة حدّت من قدرته على التوسع، وافتقرت إلى المرونة في لوحة التحكم، مع صعوبات في ربط خدمات التوصيل والدفع المحلية.",
+                              "solution": "قمنا ببناء متجر إلكتروني مخصص باستخدام Node.js وReact مع قاعدة بيانات MongoDB، يتضمن لوحة تحكم مرنة، نظام مصادقة JWT آمن، وتكاملًا سلسًا مع خدمات التوصيل ووسائل الدفع المناسبة لكل بلد.",
+                              "result": "امتلاك منصة مستقرة وقابلة للتوسع، تحسين تجربة المستخدم والإدارة، وتمكين العميل من التوسع في أسواق جديدة بثقة.",
+                              "image": "/images/skygalaxy.webp",
+                              "link": "https://skygalaxy.shop/",
+                              "tech": [
+                                    "React",
+                                    "Node.js",
+                                    "MongoDB",
+                                    "Mongoose",
+                                    "Bootstrap",
+                                    "JWT"
+                              ]
+                        },
+                        {
+                              "slug": "arabic-woocommerce-store",
+                              "title": "متجر إلكتروني عربي باستخدام ووردبريس مع تحسين SEO والأداء",
+                              "category": "متاجر إلكترونية",
+                              "description": "إنشاء متجر إلكتروني عربي احترافي يركز على السرعة وسهولة الإدارة والظهور في نتائج البحث.",
+                              "problem": "احتاج العميل إلى متجر عربي سهل الاستخدام، لكن الحلول المتاحة كانت بطيئة وضعيفة من ناحية الأداء وSEO.",
+                              "solution": "قمنا بتطوير متجر WooCommerce مع تعريب كامل ودعم RTL، تحسين السرعة وتجربة المستخدم، وتهيئة داخلية لمحركات البحث.",
+                              "result": "متجر سريع وسهل الإدارة، ظهور أفضل في محركات البحث، وتحسين معدل التفاعل والمبيعات.",
+                              "image": "/images/arabic-woocommerce-store.webp",
+                              "link": "https://tafesh.com/",
+                              "tech": [
+                                    "WordPress",
+                                    "WooCommerce",
+                                    "SEO Optimization",
+                                    "Performance Optimization",
+                                    "Arabic RTL"
+                              ]
+                        },
+                        {
+                              "slug": "canadian-painting-landing-page",
+                              "title": "صفحة هبوط عالية التحويل لشركة طلاء كندية",
+                              "category": "صفحات هبوط",
+                              "description": "صفحة هبوط مصممة لجذب العملاء وتحويلهم مع أداء وSEO عاليين.",
+                              "problem": "ضعف التحويل وبطء الصفحات السابقة وعدم وجود آلية واضحة لحجز المواعيد.",
+                              "solution": "قمنا بتصميم صفحة ووردبريس خفيفة وسريعة، محسنة لـ Core Web Vitals، مع نموذج تواصل وحجز مواعيد واضح.",
+                              "result": "تحسين الأداء بشكل كبير، زيادة الطلبات، وتحسين الظهور في البحث المحلي.",
+                              "image": "/images/mohapainting-landing.webp",
+                              "link": "https://mohapainting.com/",
+                              "tech": [
+                                    "WordPress",
+                                    "SEO Optimization",
+                                    "Performance Optimization",
+                                    "Booking System"
+                              ]
+                        },
+                        {
+                              "slug": "professional-painting-landing-page",
+                              "title": "صفحة هبوط احترافية لزيادة طلبات خدمات الطلاء",
+                              "category": "صفحات هبوط",
+                              "description": "صفحة هبوط خدمية تركز على التحويل وسهولة التواصل.",
+                              "problem": "الاعتماد على صفحات عامة لا توضح الخدمات ولا تشجع الزوار على التواصل.",
+                              "solution": "إنشاء صفحة هبوط مخصصة بأقسام واضحة، سرعة عالية، ونماذج تواصل فعالة.",
+                              "result": "زيادة الاستفسارات وتحسين ثقة العملاء بالخدمة.",
+                              "image": "/images/rosepainting-landing.webp",
+                              "link": "https://rosecolourpainting.com/",
+                              "tech": [
+                                    "WordPress",
+                                    "Landing Page Optimization",
+                                    "SEO Optimization"
+                              ]
+                        },
+                        {
+                              "slug": "dental-clinic-management-system",
+                              "title": "نظام إدارة عيادة أسنان شامل",
+                              "category": "أنظمة إدارية",
+                              "description": "نظام رقمي لإدارة جميع عمليات عيادة الأسنان بكفاءة.",
+                              "problem": "فوضى إدارية وصعوبة في تتبع المواعيد والدفعات والمصروفات.",
+                              "solution": "تطوير نظام باستخدام Laravel وReact مع صلاحيات متعددة، تقارير مالية، ولوحة تحكم واضحة.",
+                              "result": "تنظيم كامل للعمل، تقليل الأخطاء، وتحكم أفضل في الأداء المالي.",
+                              "image": "",
+                              "link": "#",
+                              "tech": [
+                                    "Laravel",
+                                    "React",
+                                    "MySQL",
+                                    "Role-Based Access Control"
+                              ]
+                        },
+                        {
+                              "slug": "construction-services-landing-page",
+                              "title": "صفحة هبوط لخدمات المنازل والإنشاءات",
+                              "category": "صفحات هبوط",
+                              "description": "صفحة خدمية واضحة تعرض جميع خدمات المنازل في مكان واحد.",
+                              "problem": "عدم وضوح الخدمات وضعف التواصل مع العملاء المحتملين.",
+                              "solution": "تصميم صفحة HTML/CSS سريعة مع أقسام خدمات واضحة ونموذج تواصل مباشر.",
+                              "result": "زيادة الاستفسارات وتحسين عرض الخدمات.",
+                              "image": "/images/ohayadekora.webp",
+                              "link": "https://ohayadekora.com/",
+                              "tech": [
+                                    "HTML",
+                                    "CSS",
+                                    "JavaScript",
+                                    "jQuery"
+                              ]
+                        },
+                        {
+                              "slug": "volunteer-management-system",
+                              "title": "نظام إدارة المتطوعين والتقييم",
+                              "category": "أنظمة إدارية",
+                              "description": "منصة لتنظيم العمل التطوعي وتقييم الأداء.",
+                              "problem": "غياب نظام موحد لمتابعة نشاط المتطوعين وتقييمهم.",
+                              "solution": "بناء نظام Laravel وReact يتيح التقييم المتبادل وتتبع النشاط والصلاحيات.",
+                              "result": "تحسين المشاركة والتنظيم ووضوح الأداء.",
+                              "image": "/images/volunteer-medical.webp",
+                              "link": "https://volunteer-medlife.onrender.com/",
+                              "tech": [
+                                    "Laravel",
+                                    "React",
+                                    "SQL",
+                                    "Role-Based Access Control"
+                              ]
+                        },
+                        {
+                              "slug": "volunteer-medical-clinic-system",
+                              "title": "نظام إدارة عيادة طبية تطوعية",
+                              "category": "أنظمة إدارية",
+                              "description": "منصة طبية تطوعية تربط المرضى بالأطباء والمتبرعين.",
+                              "problem": "صعوبة تنظيم الطلبات الطبية والتحقق من الأطباء.",
+                              "solution": "نظام Laravel وReact مع تحقق إداري كامل وصلاحيات دقيقة.",
+                              "result": "تقديم خدمات طبية تطوعية منظمة وآمنة.",
+                              "image": "/images/volunteer-medical.webp",
+                              "link": "https://volunteer-medlife.onrender.com/",
+                              "tech": [
+                                    "Laravel",
+                                    "React",
+                                    "Patient Management",
+                                    "Doctor Verification"
+                              ]
+                        },
+                        {
+                              "slug": "scalable-multilingual-ecommerce",
+                              "title": "متجر إلكتروني متعدد اللغات وقابل للتوسع",
+                              "category": "متاجر إلكترونية",
+                              "description": "منصة تجارة إلكترونية حديثة تستهدف أسواق متعددة.",
+                              "problem": "الحاجة إلى متجر آمن ومتعدد اللغات دون إعادة بناء مستقبلًا.",
+                              "solution": "تطوير Next.js + NestJS مع OAuth2 وبنية قابلة للتوسع.",
+                              "result": "جاهزية للتوسع الدولي مع أمان عالي.",
+                             "image": "/images/multilingual-ecommerce.webp",
+                              "link": "#",
+                              "tech": [
+                                    "Next.js",
+                                    "NestJS",
+                                    "MongoDB",
+                                    "OAuth2"
+                              ]
+                        },
+                        {
+                              "slug": "telegram-product-bot",
+                              "title": "بوت تلغرام لأتمتة جلب ونشر المنتجات",
+                              "category": "أتمتة",
+                              "description": "بوت ذكي لجلب المنتجات ونشرها تلقائيًا.",
+                              "problem": "إهدار الوقت في النشر اليدوي وعدم انتظام الإرسال.",
+                              "solution": "بوت Node.js يقوم بالسكرايبينغ والحفظ والجدولة تلقائيًا.",
+                              "result": "أتمتة كاملة وتوفير كبير في الوقت.",
+                              "image": "",
+                              "link": "#",
+                              "tech": [
+                                    "Node.js",
+                                    "Telegram Bot API",
+                                    "Web Scraping",
+                                    "Google Sheets API"
+                              ]
+                        }
+                  ]
+            
       }
 }

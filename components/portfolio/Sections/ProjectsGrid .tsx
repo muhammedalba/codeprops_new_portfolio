@@ -14,6 +14,7 @@ interface Project {
   image: string;
   problem: string;
   solution: string;
+  link: string;
   tech: string[];
 }
 interface ProjectsGridProps {

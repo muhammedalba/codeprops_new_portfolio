@@ -24,51 +24,175 @@
             },
             "projects": [
                   {
-                        "slug": "nexus-logistics",
-                        "title": "Nexus Logistics: Globale Supply-Chain Cloud-Migration",
-                        "category": "Enterprise",
-                        "description": "Transformation einer fragmentierten Legacy-Infrastruktur in einen cloud-nativen Logistik-Orchestrator.",
-                        "problem": "Fragmentierte Legacy-Infrastruktur verursachte Engpässe und häufige Ausfallzeiten.",
-                        "solution": "Einführung einer cloud-nativen AWS-Architektur mit Go-basierten Microservices für Echtzeit-Tracking.",
-                        "result": "300% mehr Durchsatz & 99,99% Uptime.",
-                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
-                        "tech": [
-                              "Next.js",
-                              "Go",
-                              "AWS",
-                              "K8s"
-                        ]
-                  },
-                  {
-                        "slug": "aura-fashion",
-                        "title": "Aura Fashion: High-Load E-Commerce Re-Engineering",
+                        "slug": "custom-ecommerce-platform",
+                        "title": "Individuelle E-Commerce-Plattform mit hoher Flexibilität und lokalen Integrationen",
                         "category": "E-Commerce",
-                        "description": "Skalierung einer Luxusmodemarke für Spitzenlasten ohne Ausfallzeiten.",
-                        "problem": "Serverabstürze bei hohem Besucheraufkommen wie am Black Friday führten zu Umsatzeinbußen.",
-                        "solution": "Neugestaltung mit Next.js und Redis-Caching, um 100-fache Verkehrsspitzen nahtlos zu bewältigen.",
-                        "result": "65% höhere Conversion & null Verzögerung.",
-                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
+                        "description": "Entwicklung einer maßgeschneiderten E-Commerce-Plattform für den lokalen Markt mit voller Kontrolle über Verkauf, Verwaltung und Integrationen.",
+                        "problem": "Der Kunde nutzte vorgefertigte Lösungen, die die Skalierbarkeit einschränkten, wenig Flexibilität boten und lokale Zahlungs- und Lieferdienste nur schwer integrierbar machten.",
+                        "solution": "Wir entwickelten eine individuelle Plattform mit Node.js und React auf Basis von MongoDB, inklusive flexiblem Admin-Dashboard, sicherer JWT-Authentifizierung und nahtloser Integration lokaler Dienste.",
+                        "result": "Eine stabile und skalierbare Plattform mit verbesserter Nutzer- und Verwaltungserfahrung und hoher Expansionsfähigkeit.",
+                        "image": "/images/skygalaxy.webp",
+                        "link": "https://skygalaxy.shop/",
                         "tech": [
-                              "Next.js",
-                              "Shopify",
-                              "Redis",
-                              "Framer"
+                              "React",
+                              "Node.js",
+                              "MongoDB",
+                              "Mongoose",
+                              "Bootstrap",
+                              "JWT"
                         ]
                   },
                   {
-                        "slug": "finnode-api",
-                        "title": "FinNode: Sicheres Open Banking API-Ökosystem",
-                        "category": "FinTech",
-                        "description": "Aufbau eines resilienten, konformen Gateways für den sicheren Austausch von Finanzdaten.",
-                        "problem": "Fehlen einer sicheren, konformen Umgebung für den Austausch von Finanzdaten mit Drittanbietern.",
-                        "solution": "Entwicklung eines robusten Laravel-basierten API-Ökosystems mit Multi-Faktor-Authentifizierung und vollständiger Protokollierung.",
-                        "result": "10M+ monatliche Transaktionen & PCI-Konformität.",
-                        "image": "https://rosecolourpainting.com/wp-content/uploads/2026/01/austin-distel-h1RW-NFtUyc-unsplash_1.webp",
+                        "slug": "arabic-woocommerce-store",
+                        "title": "Arabischer WooCommerce-Shop mit SEO- und Performance-Optimierung",
+                        "category": "E-Commerce",
+                        "description": "Erstellung eines professionellen arabischen Online-Shops mit Fokus auf Geschwindigkeit, einfache Verwaltung und Suchmaschinenoptimierung.",
+                        "problem": "Verfügbare Lösungen waren langsam und wiesen Schwächen bei Performance und SEO auf.",
+                        "solution": "Wir entwickelten einen vollständig RTL-unterstützten WooCommerce-Shop mit Performance-Optimierung und interner SEO.",
+                        "result": "Ein schneller, leicht verwaltbarer Shop mit besserer Sichtbarkeit und höheren Verkaufszahlen.",
+                        "image": "/images/arabic-woocommerce-store.webp",
+                        "link": "https://tafesh.com/",
+                        "tech": [
+                              "WordPress",
+                              "WooCommerce",
+                              "SEO Optimization",
+                              "Performance Optimization",
+                              "Arabic RTL"
+                        ]
+                  },
+                  {
+                        "slug": "canadian-painting-landing-page",
+                        "title": "Conversion-starke Landingpage für ein kanadisches Malerunternehmen",
+                        "category": "Landing Pages",
+                        "description": "Eine Landingpage zur Kundengewinnung mit hoher Performance und SEO-Optimierung.",
+                        "problem": "Geringe Conversion, langsame Ladezeiten und kein klares Buchungssystem.",
+                        "solution": "Entwicklung einer schnellen WordPress-Landingpage, optimiert für Core Web Vitals, mit klarer Kontakt- und Terminbuchung.",
+                        "result": "Deutlich bessere Performance, mehr Anfragen und bessere lokale Sichtbarkeit.",
+                        "image": "/images/rosepainting-landing.webp",
+                        "link": "https://rosecolourpainting.com/",
+                        "tech": [
+                              "WordPress",
+                              "SEO Optimization",
+                              "Performance Optimization",
+                              "Booking System"
+                        ]
+                  },
+                  {
+                        "slug": "professional-painting-landing-page",
+                        "title": "Professionelle Landingpage zur Steigerung von Serviceanfragen",
+                        "category": "Landing Pages",
+                        "description": "Eine serviceorientierte Landingpage mit Fokus auf Conversion und einfache Kommunikation.",
+                        "problem": "Unklare Darstellung der Leistungen und geringe Kontaktaufnahme.",
+                        "solution": "Maßgeschneiderte Landingpage mit klarer Struktur, schneller Ladezeit und effektiven Formularen.",
+                        "result": "Mehr Anfragen und gesteigertes Kundenvertrauen.",
+                        "image": "/images/mohapainting-landing.webp",
+                        "link": "https://mohapainting.com/",
+                        "tech": [
+                              "WordPress",
+                              "Landing Page Optimization",
+                              "SEO Optimization"
+                        ]
+                  },
+                  {
+                        "slug": "dental-clinic-management-system",
+                        "title": "Umfassendes Verwaltungssystem für Zahnarztpraxen",
+                        "category": "Managementsysteme",
+                        "description": "Ein digitales System zur effizienten Verwaltung aller Praxisabläufe.",
+                        "problem": "Unübersichtliche Verwaltung und Schwierigkeiten bei Termin-, Zahlungs- und Kostenkontrolle.",
+                        "solution": "Ein System auf Basis von Laravel und React mit Rollenverwaltung, Finanzberichten und übersichtlichem Dashboard.",
+                        "result": "Strukturierte Abläufe, weniger Fehler und bessere finanzielle Kontrolle.",
+                        "image": "",
+                        "link": "#",
                         "tech": [
                               "Laravel",
-                              "Docker",
-                              "MFA",
-                              "Audit Logs"
+                              "React",
+                              "MySQL",
+                              "Role-Based Access Control"
+                        ]
+                  },
+                  {
+                        "slug": "construction-services-landing-page",
+                        "title": "Landingpage für Haus- und Bauleistungen",
+                        "category": "Landing Pages",
+                        "description": "Eine übersichtliche Landingpage zur Präsentation aller Hausdienstleistungen.",
+                        "problem": "Unklare Service-Darstellung und schwache Kundenkommunikation.",
+                        "solution": "Schnelle HTML/CSS-Seite mit klaren Leistungsbereichen und direktem Kontaktformular.",
+                        "result": "Mehr Anfragen und bessere Präsentation der Leistungen.",
+                        "image": "/images/ohayadekora.webp",
+                        "link": "https://ohayadekora.com/",
+                        "tech": [
+                              "HTML",
+                              "CSS",
+                              "JavaScript",
+                              "jQuery"
+                        ]
+                  },
+                  {
+                        "slug": "volunteer-management-system",
+                        "title": "System zur Verwaltung und Bewertung von Freiwilligen",
+                        "category": "Managementsysteme",
+                        "description": "Plattform zur Organisation ehrenamtlicher Arbeit und Leistungsbewertung.",
+                        "problem": "Fehlendes zentrales System zur Nachverfolgung von Aktivitäten und Bewertungen.",
+                        "solution": "Laravel- und React-System mit Aktivitätsverfolgung, gegenseitiger Bewertung und Rollenverwaltung.",
+                        "result": "Bessere Organisation, Transparenz und Motivation.",
+                        "image": "/images/volunteer-medical.webp",
+                        "link": "https://volunteer-medlife.onrender.com/",
+                        "tech": [
+                              "Laravel",
+                              "React",
+                              "SQL",
+                              "Role-Based Access Control"
+                        ]
+                  },
+                  {
+                        "slug": "volunteer-medical-clinic-system",
+                        "title": "Verwaltungssystem für eine ehrenamtliche medizinische Klinik",
+                        "category": "Managementsysteme",
+                        "description": "Medizinische Plattform zur Vernetzung von Patienten, Ärzten und Spendern.",
+                        "problem": "Schwierigkeiten bei der Organisation medizinischer Anfragen und der Arztverifizierung.",
+                        "solution": "Laravel- und React-System mit administrativer Prüfung und klaren Berechtigungen.",
+                        "result": "Sichere und strukturierte medizinische Hilfe.",
+                        "image": "/images/volunteer-medical.webp",
+                        "link": "https://volunteer-medlife.onrender.com/",
+                        "tech": [
+                              "Laravel",
+                              "React",
+                              "Patient Management",
+                              "Doctor Verification"
+                        ]
+                  },
+                  {
+                        "slug": "scalable-multilingual-ecommerce",
+                        "title": "Skalierbare mehrsprachige E-Commerce-Plattform",
+                        "category": "E-Commerce",
+                        "description": "Moderne E-Commerce-Plattform für mehrere internationale Märkte.",
+                        "problem": "Bedarf an einem sicheren, mehrsprachigen Shop ohne spätere Neuentwicklung.",
+                        "solution": "Next.js- und NestJS-Architektur mit OAuth2 und skalierbarem Design.",
+                        "result": "International einsatzbereite Plattform mit hohem Sicherheitsniveau.",
+                        "image": "/images/multilingual-ecommerce.webp",
+                        "link": "#",
+                        "tech": [
+                              "Next.js",
+                              "NestJS",
+                              "MongoDB",
+                              "OAuth2"
+                        ]
+                  },
+                  {
+                        "slug": "telegram-product-bot",
+                        "title": "Telegram-Bot zur automatisierten Produktbeschaffung und Veröffentlichung",
+                        "category": "Automatisierung",
+                        "description": "Intelligenter Bot zur automatischen Erfassung und Veröffentlichung von Produkten.",
+                        "problem": "Zeitaufwändige manuelle Veröffentlichung und unregelmäßige Planung.",
+                        "solution": "Node.js-Bot mit Scraping, Speicherung und automatischer Zeitplanung.",
+                        "result": "Vollständige Automatisierung und erhebliche Zeitersparnis.",
+                        "image": "",
+                        "link": "#",
+                        "tech": [
+                              "Node.js",
+                              "Telegram Bot API",
+                              "Web Scraping",
+                              "Google Sheets API"
                         ]
                   }
             ]

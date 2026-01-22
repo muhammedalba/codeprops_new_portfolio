@@ -24,51 +24,175 @@
             },
             "projects": [
                   {
-                        "slug": "nexus-logistics",
-                        "title": "Nexus Logistics: Global Supply Chain Cloud Migration",
-                        "category": "Enterprise",
-                        "description": "Transforming fragmented legacy infrastructure into a unified, cloud-native logistics orchestrator.",
-                        "problem": "Fragmented legacy infrastructure causing bottlenecks and frequent downtime.",
-                        "solution": "Implemented a cloud-native AWS architecture with Go-based microservices for real-time tracking.",
-                        "result": "300% throughput increase & 99.99% uptime.",
-                        "image": "projects/nexus-logistics/preview.png",
+                        "slug": "custom-ecommerce-platform",
+                        "title": "Custom E-commerce Platform with High Flexibility and Local Integrations",
+                        "category": "E-commerce",
+                        "description": "Development of a custom e-commerce platform tailored to the local market, giving the client full control over sales, management, and integrations.",
+                        "problem": "The client relied on ready-made solutions that limited scalability, lacked dashboard flexibility, and made it difficult to integrate local delivery and payment services.",
+                        "solution": "We built a custom e-commerce platform using Node.js and React with MongoDB, featuring a flexible admin dashboard, secure JWT authentication, and seamless integration with local payment and delivery services.",
+                        "result": "A stable, scalable platform with improved user and admin experience, enabling confident expansion into new markets.",
+                        "image": "/images/skygalaxy.webp",
+                        "link": "https://skygalaxy.shop/",
                         "tech": [
-                              "Next.js",
-                              "Go",
-                              "AWS",
-                              "K8s"
+                              "React",
+                              "Node.js",
+                              "MongoDB",
+                              "Mongoose",
+                              "Bootstrap",
+                              "JWT"
                         ]
                   },
                   {
-                        "slug": "aura-fashion",
-                        "title": "Aura Fashion: High-Load E-Commerce Re-Engineering",
-                        "category": "E-Commerce",
-                        "description": "Scaling a luxury fashion brand for peak traffic without downtime.",
-                        "problem": "Server crashes during high-traffic events like Black Friday, leading to lost sales.",
-                        "solution": "Re-engineered with Next.js and Redis caching to handle 100x traffic spikes seamlessly.",
-                        "result": "65% higher conversion & zero peak-time lag.",
-                        "image": "projects/aura-fashion/preview.png",
+                        "slug": "arabic-woocommerce-store",
+                        "title": "Arabic WooCommerce Store with SEO and Performance Optimization",
+                        "category": "E-commerce",
+                        "description": "Building a professional Arabic e-commerce store focused on speed, easy management, and search engine visibility.",
+                        "problem": "The client needed an Arabic store, but available solutions were slow and weak in performance and SEO.",
+                        "solution": "We developed a fully RTL-supported WooCommerce store, optimized performance, and implemented on-page SEO best practices.",
+                        "result": "A fast, easy-to-manage store with improved search visibility and higher engagement and sales.",
+                        "image": "/images/arabic-woocommerce-store.webp",
+                        "link": "https://tafesh.com/",
                         "tech": [
-                              "Next.js",
-                              "Shopify",
-                              "Redis",
-                              "Framer"
+                              "WordPress",
+                              "WooCommerce",
+                              "SEO Optimization",
+                              "Performance Optimization",
+                              "Arabic RTL"
                         ]
                   },
                   {
-                        "slug": "finnode-api",
-                        "title": "FinNode: Secure Open Banking API Ecosystem",
-                        "category": "FinTech",
-                        "description": "Building a resilient, compliant gateway for secure financial data exchange.",
-                        "problem": "Lack of a secure, compliant environment for financial data exchange with third-party providers.",
-                        "solution": "Created a robust Laravel-based API ecosystem with multi-factor authentication and full audit logging.",
-                        "result": "10M+ monthly transactions & PCI-Compliance.",
-                        "image": "projects/finnode-api/preview.png",
+                        "slug": "canadian-painting-landing-page",
+                        "title": "High-Converting Landing Page for a Canadian Painting Company",
+                        "category": "Landing Pages",
+                        "description": "A landing page designed to attract customers and maximize conversions with high performance and SEO.",
+                        "problem": "Low conversion rates, slow page speed, and no clear booking flow.",
+                        "solution": "We created a lightweight, fast WordPress landing page optimized for Core Web Vitals with a clear contact and booking system.",
+                        "result": "Significant performance improvement, increased leads, and stronger local search presence.",
+                        "image": "/images/rosepainting-landing.webp",
+                        "link": "https://rosecolourpainting.com/",
+                        "tech": [
+                              "WordPress",
+                              "SEO Optimization",
+                              "Performance Optimization",
+                              "Booking System"
+                        ]
+                  },
+                  {
+                        "slug": "professional-painting-landing-page",
+                        "title": "Professional Landing Page to Increase Painting Service Requests",
+                        "category": "Landing Pages",
+                        "description": "A service-focused landing page designed to boost conversions and simplify communication.",
+                        "problem": "Generic pages that failed to clearly present services or encourage contact.",
+                        "solution": "A custom landing page with clear sections, fast loading, and effective contact forms.",
+                        "result": "Increased inquiries and improved customer trust.",
+                        "image": "/images/mohapainting-landing.webp",
+                        "link": "https://mohapainting.com/",
+                        "tech": [
+                              "WordPress",
+                              "Landing Page Optimization",
+                              "SEO Optimization"
+                        ]
+                  },
+                  {
+                        "slug": "dental-clinic-management-system",
+                        "title": "Comprehensive Dental Clinic Management System",
+                        "category": "Management Systems",
+                        "description": "A digital system to efficiently manage all dental clinic operations.",
+                        "problem": "Administrative chaos and difficulty tracking appointments, payments, and expenses.",
+                        "solution": "A Laravel and React-based system with role-based access, financial reports, and a clear dashboard.",
+                        "result": "Fully organized operations, fewer errors, and better financial control.",
+                        "image": "",
+                        "link": "#",
                         "tech": [
                               "Laravel",
-                              "Docker",
-                              "MFA",
-                              "Audit Logs"
+                              "React",
+                              "MySQL",
+                              "Role-Based Access Control"
+                        ]
+                  },
+                  {
+                        "slug": "construction-services-landing-page",
+                        "title": "Landing Page for Home and Construction Services",
+                        "category": "Landing Pages",
+                        "description": "A clear service landing page showcasing all home services in one place.",
+                        "problem": "Unclear service presentation and weak communication with potential customers.",
+                        "solution": "A fast HTML/CSS landing page with clear service sections and a direct contact form.",
+                        "result": "More inquiries and improved service visibility.",
+                        "image": "/images/ohayadekora.webp",
+                        "link": "https://ohayadekora.com/",
+                        "tech": [
+                              "HTML",
+                              "CSS",
+                              "JavaScript",
+                              "jQuery"
+                        ]
+                  },
+                  {
+                        "slug": "volunteer-management-system",
+                        "title": "Volunteer Management and Evaluation System",
+                        "category": "Management Systems",
+                        "description": "A platform to organize volunteer work and performance evaluation.",
+                        "problem": "Lack of a unified system to track volunteer activity and evaluations.",
+                        "solution": "A Laravel and React system enabling mutual evaluations, activity tracking, and role management.",
+                        "result": "Improved organization, engagement, and transparency.",
+                        "image": "/images/volunteer-medical.webp",
+                        "link": "https://volunteer-medlife.onrender.com/",
+                        "tech": [
+                              "Laravel",
+                              "React",
+                              "SQL",
+                              "Role-Based Access Control"
+                        ]
+                  },
+                  {
+                        "slug": "volunteer-medical-clinic-system",
+                        "title": "Volunteer Medical Clinic Management System",
+                        "category": "Management Systems",
+                        "description": "A volunteer medical platform connecting patients, doctors, and donors.",
+                        "problem": "Difficulty managing medical requests and verifying doctors.",
+                        "solution": "A Laravel and React system with full admin verification and strict permissions.",
+                        "result": "Secure and well-organized volunteer medical services.",
+                        "image": "/images/volunteer-medical.webp",
+                        "link": "https://volunteer-medlife.onrender.com/",
+                        "tech": [
+                              "Laravel",
+                              "React",
+                              "Patient Management",
+                              "Doctor Verification"
+                        ]
+                  },
+                  {
+                        "slug": "scalable-multilingual-ecommerce",
+                        "title": "Scalable Multilingual E-commerce Platform",
+                        "category": "E-commerce",
+                        "description": "A modern e-commerce platform targeting multiple markets.",
+                        "problem": "Need for a secure, multilingual store without future rebuilds.",
+                        "solution": "Next.js and NestJS architecture with OAuth2 and scalable design.",
+                        "result": "International-ready platform with high security.",
+                        "image": "/images/multilingual-ecommerce.webp",
+                        "link": "#",
+                        "tech": [
+                              "Next.js",
+                              "NestJS",
+                              "MongoDB",
+                              "OAuth2"
+                        ]
+                  },
+                  {
+                        "slug": "telegram-product-bot",
+                        "title": "Telegram Bot for Automated Product Fetching and Posting",
+                        "category": "Automation",
+                        "description": "A smart bot to automatically fetch and publish products.",
+                        "problem": "Time wasted on manual posting and inconsistent scheduling.",
+                        "solution": "A Node.js bot that scrapes data, stores it, and schedules posting automatically.",
+                        "result": "Full automation and significant time savings.",
+                        "image": "",
+                        "link": "#",
+                        "tech": [
+                              "Node.js",
+                              "Telegram Bot API",
+                              "Web Scraping",
+                              "Google Sheets API"
                         ]
                   }
             ]

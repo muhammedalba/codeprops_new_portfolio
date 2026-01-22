@@ -15,6 +15,7 @@ interface Project {
   image: string;
   problem: string;
   solution: string;
+  link: string;
   tech: string[];
 }
 interface Translations {
@@ -33,6 +34,8 @@ function ProjectCardComponent({
   translations: Translations;
 }) {
   const isOdd = index % 2 === 1;
+  const baseUrl =process.env.NEXT_PUBLIC_SITE_URL||"http://localhost:3000";
+  const imageSrc =project.image==''? `${baseUrl}/images/default.webp`:project.image;
   return (
     <motion.div
       layout
@@ -111,7 +114,7 @@ function ProjectCardComponent({
             isOdd ? "md:order-1" : "md:order-2",
           )}
         >
-          <Image priority={true} fill={true}  src={project.image} alt="" />
+          <Image priority={true} fill={true}  src={imageSrc} alt={project.title} />
           {/* Decorative background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent-secondary/5" />
           <div className="absolute inset-0 opacity-[0.05] select-none pointer-events-none font-black text-[12vw] flex items-center justify-center uppercase tracking-tighter rotate-12">
@@ -126,7 +129,8 @@ function ProjectCardComponent({
           />
 
           {/* Center Preview */}
-          <div className="absolute inset-12 rounded-[2.5rem] bg-background/40 backdrop-blur-md border border-white/10 shadow-inner flex items-center justify-center">
+          <div className="absolute inset-12 rounded-[2.5rem] bg-background/40 backdrop-blur-md border border-white/10 shadow-inner flex items-center justify-center opacity-100 transition-opacity duration-500 hover:opacity-0">
+          
             <div className="text-center p-8">
               <div className="text-primary/20 mb-4 flex justify-center">
                 <ArrowUpRight size={80} strokeWidth={0.5} />
@@ -138,11 +142,11 @@ function ProjectCardComponent({
           </div>
 
           {/* Hover Overlay */}
-          <div className="absolute inset-0 translate-y-full group-hover/img:translate-y-0 bg-primary/50 transition-transform duration-700 flex items-center justify-center p-20 text-center">
+          <Link target="_blank" hrefLang={locale} href={project.link} className="absolute inset-0 translate-y-full group-hover/img:translate-y-0 bg-primary/50 transition-transform duration-700 flex items-center justify-center p-20 text-center">
             <p className="text-primary-foreground text-2xl font-bold italic leading-tight">
               "Innovating the core of {project.category} systems."
             </p>
-          </div>
+          </Link>
         </div>
       </div>
     </motion.div> 

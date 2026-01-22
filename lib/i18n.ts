@@ -3,7 +3,7 @@ export const locales = ['en', 'de', 'ar'] as const;
 export type Locale = typeof locales[number];
 
 // Default locale
-export const defaultLocale: Locale = 'ar';
+export const defaultLocale: Locale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Locale || 'ar';
 
 // RTL languages
 export const rtlLocales: Locale[] = ['ar'];
