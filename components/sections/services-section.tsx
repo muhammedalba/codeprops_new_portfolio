@@ -27,7 +27,7 @@ function ServicesSectionComponent({
     { key: "web", icon: Globe2 },
     { key: "custom", icon: Code2 },
     { key: "ecommerce", icon: Smartphone },
-    { key: "cloud", icon: Cpu },
+    // { key: "cloud", icon: Cpu },
     { key: "performance", icon: Check },
   ];
 

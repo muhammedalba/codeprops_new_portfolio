@@ -43,6 +43,7 @@ export default function BlogSection({
                 date={post.date}
                 readMoreText={t.blog.readMore}
                 title={post.title}
+                image={post.image}
                 href={`/${typedLocale}/blog/${post.slug}`}
               />
             ))}

@@ -108,6 +108,7 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
                         <p className="text-xs text-muted-foreground">{translations?.contact?.phone || "Phone"}</p>
                         <a
                           href={`tel:${CONTACT_INFO.phone.replace(/\D/g, '')}`}
+                          dir="ltr"
                           className="font-medium hover:text-primary transition-colors"
                         >
                           {CONTACT_INFO.phone}

@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { GlowEffect } from "@/components/ui/glow-effect";
+import Image from "next/image";
 
 interface BlogCardProps {
   category: string;
@@ -11,6 +12,7 @@ interface BlogCardProps {
   readMoreText: string;
   href?: string;
   className?: string;
+  image?: string;
 }
 
 function BlogCardComponent({
@@ -20,7 +22,10 @@ function BlogCardComponent({
   readMoreText,
   href = "#",
   className,
+  image,
 }: BlogCardProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const imageUrl =image ?`${baseUrl}${image}`: `${baseUrl}/images/blog/Default-1.webp`;
   return (
     <div
       className={cn(
@@ -38,6 +43,12 @@ function BlogCardComponent({
       {/* Image / Placeholder Area */}
       <div className="aspect-[16/10] bg-muted overflow-hidden relative">
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <Image
+          src={imageUrl}
+          alt={title}
+          fill
+          className="object-cover"
+        />
         <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest border border-border/50">
           {category}
         </div>

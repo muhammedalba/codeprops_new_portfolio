@@ -38,6 +38,8 @@ function PricingCardComponent({
     plan.price === "اتصل بنا" || 
     plan.price === "Kontaktieren Sie uns";
 
+
+
   return (
     <GlassCard
       className={cn(
@@ -106,7 +108,7 @@ function PricingCardComponent({
             : "bg-foreground text-background hover:bg-foreground/90"
         )}
       >
-        <Link href={`/${locale}/contact`}>{ctaText}</Link>
+        <Link href={`/${locale}/contact`}>{isContactUs ? "Contact Us" : ctaText}</Link>
       </Button>
     </GlassCard>
   );
