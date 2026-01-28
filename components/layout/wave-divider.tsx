@@ -1,17 +1,15 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from "framer-motion";
 
-export function WaveDivider({ flip = false }: { flip?: boolean }) {
+export function WaveDivider({ position = "bottom" }: { position?: "top" | "bottom" }) {
   return (
-    <div className={`w-full overflow-hidden leading-[0] ${flip ? 'rotate-180' : ''}`}>
+        <div className={`w-full overflow-hidden leading-[0] ${position === "bottom" ? 'rotate-180' : ''}`}>
       <svg
-        viewBox="0 0 1200 120"
+        className="relative block w-[calc(100%+1.3px)] h-[60px] md:h-[120px]"
         preserveAspectRatio="none"
-        className="relative block w-full h-[60px] md:h-[100px]"
-        style={{ fill: 'hsl(var(--muted)/0.5)' }}
       >
-        <motion.path
+        <m.path
           d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58.33,76.5,133.27,97.16,204,95.8,252.38,94.88,290.41,62.17,321.39,56.44Z"
           initial={{ d: "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58.33,76.5,133.27,97.16,204,95.8,252.38,94.88,290.41,62.17,321.39,56.44Z" }}
           animate={{
@@ -20,7 +18,13 @@ export function WaveDivider({ flip = false }: { flip?: boolean }) {
               "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58.33,76.5,133.27,97.16,204,95.8,252.38,94.88,290.41,62.17,321.39,56.44Z"
             ]
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            repeatType: "mirror"
+          }}
+          style={{ fill: 'hsl(var(--muted)/0.5)' }}
         />
       </svg>
     </div>

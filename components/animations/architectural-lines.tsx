@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 function ArchitecturalLinesComponent() {
   // Stable random-like values for dots to prevent hydration mismatch
@@ -17,7 +17,7 @@ function ArchitecturalLinesComponent() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Moving Vertical Lines */}
       {[...Array(5)].map((_, i) => (
-        <motion.div
+        <m.div
           key={`v-${i}`}
           className="absolute top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent"
           style={{ left: `${20 * i + 10}%` }}
@@ -35,7 +35,7 @@ function ArchitecturalLinesComponent() {
 
       {/* Moving Horizontal Lines */}
       {[...Array(5)].map((_, i) => (
-        <motion.div
+        <m.div
           key={`h-${i}`}
           className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
           style={{ top: `${20 * i + 15}%` }}
@@ -52,7 +52,7 @@ function ArchitecturalLinesComponent() {
       ))}
 
       {/* Blueprint Square */}
-      <motion.div
+      <m.div
         className="absolute right-[10%] top-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/10 hidden lg:block"
         initial={{ opacity: 0, rotate: 45 }}
         animate={{ opacity: 1, rotate: 10 }}
@@ -66,11 +66,11 @@ function ArchitecturalLinesComponent() {
         {/* Internal Cross */}
         <div className="absolute top-1/2 left-0 w-full h-px bg-primary/10" />
         <div className="absolute left-1/2 top-0 w-px h-full bg-primary/10" />
-      </motion.div>
+      </m.div>
 
       {/* Floating Tech Dots - Optimized with stable values */}
       {dots.map((dot) => (
-        <motion.div
+        <m.div
           key={dot.id}
           className="absolute w-1 h-1 bg-primary/30 rounded-full"
           style={{

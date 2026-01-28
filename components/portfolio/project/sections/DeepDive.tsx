@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ShieldCheck, AlertCircle, Zap, CheckCircle2 } from "lucide-react";
 
 interface DeepDiveProps {
@@ -12,7 +12,7 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
   return (
     <div className="space-y-32">
       {/* Visual Showcase Placeholder */}
-      <motion.div 
+      <m.div 
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -26,11 +26,11 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
            <div className="px-6 py-2 rounded-full bg-background/80 backdrop-blur-md border border-border/50 text-[10px] font-bold uppercase tracking-widest">{t.details.performance_matrix}</div>
            <div className="px-6 py-2 rounded-full bg-background/80 backdrop-blur-md border border-border/50 text-[10px] font-bold uppercase tracking-widest">{t.details.security_pass}</div>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Narrative Sections */}
       <div className="space-y-16 max-w-4xl">
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -45,9 +45,9 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
           <p className="ps-2 text-md md:text-lg text-muted-foreground leading-relaxed font-light">
             {project.problem}
           </p>
-        </motion.section>
+        </m.section>
 
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -62,9 +62,9 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
           <p className="text-md md:text-lg text-muted-foreground leading-relaxed font-light">
             {project.solution}
           </p>
-        </motion.section>
+        </m.section>
 
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -79,7 +79,7 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
           <p className="text-md md:text-lg text-muted-foreground leading-relaxed font-light">
             {project.result}
           </p>
-        </motion.section>
+        </m.section>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { m, LazyMotion, domAnimation } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { ContactHero } from "./sections/contact-hero";
 import { ContactInfo } from "./sections/contact-info";
@@ -28,7 +28,6 @@ interface ContactClientProps {
 
 export function ContactClient({ locale, t }: ContactClientProps) {
   return (
-    <LazyMotion features={domAnimation}>
       <main className="flex flex-col overflow-hidden bg-background">
         {/* 1. Hero/Intro Section */}
         <ContactHero 
@@ -82,6 +81,5 @@ export function ContactClient({ locale, t }: ContactClientProps) {
         <ContactMap />
 
       </main>
-    </LazyMotion>
   );
 }

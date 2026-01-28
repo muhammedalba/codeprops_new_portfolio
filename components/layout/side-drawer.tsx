@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import {
   X,
   Mail,
@@ -43,7 +43,7 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -52,7 +52,7 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
           />
 
           {/* Drawer Content */}
-          <motion.div
+          <m.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -194,7 +194,7 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
                 </p>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </>
       )}
     </AnimatePresence>,

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { HeroBackground } from "@/components/layout/hero-background";
 import { SectionBadge } from "@/components/ui/section-badge";
@@ -45,7 +45,7 @@ export default function HeroSection({ locale, project, t }: HeroSectionProps) {
         </Link>
 
         <div className="grid lg:grid-cols-[1fr,350px] gap-16 items-end">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             className="space-y-8"
@@ -64,9 +64,9 @@ export default function HeroSection({ locale, project, t }: HeroSectionProps) {
             <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl">
               {project.description}
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="hidden lg:block"
@@ -79,7 +79,7 @@ export default function HeroSection({ locale, project, t }: HeroSectionProps) {
                 <div className="text-4xl font-black text-foreground">99.9%</div>
                 <div className="text-xs text-muted-foreground uppercase tracking-widest font-mono">{t.details.uptime}</div>
              </GlassCard>
-          </motion.div>
+          </m.div>
         </div>
       </Container>
     </section>

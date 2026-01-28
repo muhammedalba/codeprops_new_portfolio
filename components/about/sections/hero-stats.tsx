@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useMemo } from "react";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -121,7 +121,7 @@ export function HeroStats({ translations, locale }: HeroStatsProps) {
         />
 
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto mb-20 lg:mb-32">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -129,18 +129,18 @@ export function HeroStats({ translations, locale }: HeroStatsProps) {
             <SectionBadge variant="primary" className="mb-8">
               {t.badge}
             </SectionBadge>
-          </motion.div>
+          </m.div>
 
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className="text-5xl md:text-8xl font-heading font-bold mb-8 tracking-tighter leading-[0.95] text-balance"
           >
             {t.title}
-          </motion.h1>
+          </m.h1>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
@@ -150,7 +150,7 @@ export function HeroStats({ translations, locale }: HeroStatsProps) {
               {t.subtitle}
             </p>
             <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent" />
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Stats Grid */}

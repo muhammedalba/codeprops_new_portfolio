@@ -1,7 +1,7 @@
 'use client';
 
 import { memo, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
 const CinematicMesh = dynamic(() => import('@/components/animations/cinematic-mesh').then(m => m.CinematicMesh), { ssr: false });
@@ -34,10 +34,10 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
           <>
             <CinematicMesh />
             {showHeavy && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
+              <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <InteractiveParticles />
                 <TechSculpture />
-              </motion.div>
+              </m.div>
             )}
           </>
         );
@@ -46,9 +46,9 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
           <>
             <AnimatedGradientMesh />
             {showHeavy && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
+              <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <GeometricFocal />
-              </motion.div>
+              </m.div>
             )}
           </>
         );
@@ -57,9 +57,9 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
           <>
             <CinematicMesh />
             {showHeavy && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
+              <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <ArchitecturalLines />
-              </motion.div>
+              </m.div>
             )}
           </>
         );
@@ -68,9 +68,9 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
           <>
             <CinematicMesh />
             {showHeavy && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
+              <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <ConnectivityOrb />
-              </motion.div>
+              </m.div>
             )}
           </>
         );
@@ -79,9 +79,9 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
           <>
             <CinematicMesh />
             {showHeavy && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
+              <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                 <ArchitecturalLines />
-              </motion.div>
+              </m.div>
             )}
           </>
         );

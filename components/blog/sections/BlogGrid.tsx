@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Tag, Calendar, User, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -25,7 +25,7 @@ interface BlogGridProps {
 }
 
 const BlogCard = React.memo(({ post, index, locale, t }: { post: BlogPost; index: number; locale: string; t: any }) => (
-  <motion.article
+  <m.article
     layout
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ const BlogCard = React.memo(({ post, index, locale, t }: { post: BlogPost; index
         </div>
       </div>
     </GlassCard>
-  </motion.article>
+  </m.article>
 ));
 
 BlogCard.displayName = "BlogCard";

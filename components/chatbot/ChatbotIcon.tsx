@@ -1,5 +1,5 @@
 import { BotMessageSquareIcon, X } from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useState, useEffect, useCallback, memo } from "react";
 
@@ -69,7 +69,7 @@ export const ChatbotIcon = memo(function ChatbotIcon({
     <div className="fixed bottom-6 left-6 z-[9999] flex flex-col items-start gap-3">
       <AnimatePresence>
         {showWelcome && !isOpen && (
-          <motion.div
+          <m.div
             variants={welcomeVariants}
             initial="initial"
             animate="animate"
@@ -89,14 +89,14 @@ export const ChatbotIcon = memo(function ChatbotIcon({
             </p>
             {/* Simple arrow */}
             <div className="absolute -bottom-1.5 left-6 w-3 h-3 bg-background border-b border-r border-border rotate-45" />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       <div className="relative ms-auto">
         {/* Pulsing effect background */}
         {!isOpen && !prefersReducedMotion && (
-          <motion.div
+          <m.div
             animate={pulseAnimation}
             transition={pulseTransition}
             className="absolute inset-0 bg-primary rounded-full blur-sm"
@@ -115,13 +115,13 @@ export const ChatbotIcon = memo(function ChatbotIcon({
           )}
           style={{ willChange: 'transform' }}
         >
-          <motion.div
+          <m.div
             animate={{ rotate: isOpen ? 90 : 0, scale: isOpen ? 1.2 : 1 }}
             transition={iconTransition}
             style={{ willChange: 'transform' }}
           >
             {isOpen ? <X size={24} /> : <BotMessageSquareIcon size={24} className="group-hover:rotate-12 transition-transform" />}
-          </motion.div>
+          </m.div>
         </button>
       </div>
     </div>

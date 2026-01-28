@@ -1,7 +1,7 @@
 "use client";
 
 import React, { memo, ReactNode } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 interface SectionRevealProps {
   children: ReactNode;
@@ -11,7 +11,7 @@ interface SectionRevealProps {
 
 function SectionRevealComponent({ children, className, delay = 0 }: SectionRevealProps) {
   return (
-    <motion.div
+    <m.div
      style={{ willChange: 'transform, opacity' }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -24,7 +24,7 @@ function SectionRevealComponent({ children, className, delay = 0 }: SectionRevea
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Send, Loader2, Bot, Info } from "lucide-react";
 import { ChatMessage } from "./ChatMessage";
 import { Message } from "@/hooks/use-chatbot";
@@ -50,7 +50,7 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend, translation
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.9, y: 20, x: -20 }}
           animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20, x: -20 }}
@@ -120,7 +120,7 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend, translation
               <Info size={8} /> {t.disclaimer}
             </p>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
 export function ConnectivityOrb() {
@@ -19,7 +19,7 @@ export function ConnectivityOrb() {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div
+      <m.div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
         animate={{
           x: mousePos.x,
@@ -32,7 +32,7 @@ export function ConnectivityOrb() {
         
         {/* Connection Points */}
         {[...Array(20)].map((_, i) => (
-          <motion.div
+          <m.div
             key={i}
             className="absolute w-1 h-1 bg-primary/40 rounded-full"
             style={{
@@ -52,17 +52,17 @@ export function ConnectivityOrb() {
         ))}
 
         {/* Ring */}
-        <motion.div
+        <m.div
           className="absolute inset-0 border border-primary/10 rounded-full"
           animate={{ rotate: 360 }}
           transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
         />
-        <motion.div
+        <m.div
           className="absolute inset-[10%] border border-primary/5 rounded-full"
           animate={{ rotate: -360 }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
         />
-      </motion.div>
+      </m.div>
 
       {/* Background Grid */}
       <div 

@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -26,7 +26,7 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
               locale={locale}
             />
           </div>
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto space-y-8"
@@ -38,7 +38,7 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
             <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto">
               {t.subtitle}
             </p>
-          </motion.div>
+          </m.div>
         </Container>
       </section>
     );

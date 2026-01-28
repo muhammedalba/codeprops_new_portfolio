@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { ServiceSlug, serviceIcons } from "@/lib/services";
 import Link from "next/link";
@@ -43,7 +43,7 @@ export function RelatedServices({ currentSlug, locale, services }: RelatedServic
             const Icon = serviceIcons[service.slug as ServiceSlug] || serviceIcons.web;
             
             return (
-              <motion.div
+              <m.div
                 key={service.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export function RelatedServices({ currentSlug, locale, services }: RelatedServic
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

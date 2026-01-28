@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import dynamic from "next/dynamic";
 import { Container } from "@/components/layout/container";
 import { SectionBadge } from "@/components/ui/section-badge";
@@ -81,7 +81,7 @@ const allServices = useMemo(() => [
           </Link>
 
           <div className="max-w-4xl space-y-8">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="flex items-center gap-4"
@@ -90,27 +90,27 @@ const allServices = useMemo(() => [
                 <ServiceIcon size={28} />
               </div>
               <SectionBadge className="mb-0">{serviceData.title}</SectionBadge>
-            </motion.div>
+            </m.div>
 
-            <motion.h1 
+            <m.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-6xl md:text-8xl font-heading font-bold tracking-tighter leading-[0.9]"
             >
               {serviceData.title}
-            </motion.h1>
+            </m.h1>
             
-            <motion.p 
+            <m.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl leading-relaxed"
             >
               {serviceData.description}
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -122,7 +122,7 @@ const allServices = useMemo(() => [
                   <Rocket size={18} />
                 </button>
               </Link>
-            </motion.div>
+            </m.div>
           </div>
         </Container>
       </section>
@@ -131,7 +131,7 @@ const allServices = useMemo(() => [
       <section className="py-24 relative">
         <Container>
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: isRtl ? 30 : -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -154,9 +154,9 @@ const allServices = useMemo(() => [
                     </div>
                   ))}
                </div>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -167,7 +167,7 @@ const allServices = useMemo(() => [
                   <ServiceIcon size={180} className="text-primary/10 animate-pulse" />
                   
                   {/* Internal floating cards for premium feel */}
-                  <motion.div 
+                  <m.div 
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute top-10 right-10 p-4 glass rounded-2xl border-white/10 shadow-2xl"
@@ -175,9 +175,9 @@ const allServices = useMemo(() => [
                     <Zap size={20} className="text-primary mb-2" />
                     <div className="text-[10px] uppercase font-bold tracking-widest opacity-60">Latency</div>
                     <div className="font-mono text-xs">Sub-50ms</div>
-                  </motion.div>
+                  </m.div>
 
-                  <motion.div 
+                  <m.div 
                     animate={{ y: [0, 10, 0] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute bottom-10 left-10 p-4 glass rounded-2xl border-white/10 shadow-2xl"
@@ -185,9 +185,9 @@ const allServices = useMemo(() => [
                     <ShieldCheck size={20} className="text-accent-secondary mb-2" />
                     <div className="text-[10px] uppercase font-bold tracking-widest opacity-60">Security</div>
                     <div className="font-mono text-xs">A+ Rating</div>
-                  </motion.div>
+                  </m.div>
                </GlassCard>
-            </motion.div>
+            </m.div>
           </div>
         </Container>
       </section>

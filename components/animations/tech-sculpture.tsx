@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 export function TechSculpture() {
   return (
@@ -8,7 +8,7 @@ export function TechSculpture() {
       <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] flex items-center justify-center opacity-50  transition-opacity duration-1000">
         {/* Layered Technical Rings - Representing Stack Layers */}
         {[...Array(4)].map((_, i) => (
-          <motion.div
+          <m.div
             key={i}
             className="absolute rounded-[20%] border border-primary/20"
             style={{
@@ -35,7 +35,7 @@ export function TechSculpture() {
         ))}
 
         {/* Central Core Unit */}
-        <motion.div
+        <m.div
           className="relative z-20 w-24 h-24 md:w-32 md:h-32 rounded-2xl border border-primary/20 bg-background/40 flex items-center justify-center overflow-hidden"
           style={{
             backdropFilter: 'blur(12px)',
@@ -46,7 +46,7 @@ export function TechSculpture() {
           transition={{ duration: 1.2, delay: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Internal Pulse */}
-          <motion.div 
+          <m.div 
             className="absolute inset-0 bg-primary/5"
             animate={{ opacity: [0.1, 0.3, 0.1] }}
             transition={{ duration: 4, repeat: Infinity }}
@@ -57,14 +57,14 @@ export function TechSculpture() {
             STATUS: OK<br/>
             UPTIME: 99.9%
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Dynamic Data Streams */}
         {[...Array(8)].map((_, i) => {
           const angle = (i * 45 * Math.PI) / 180;
           const dist = 140 + (i % 2) * 50;
           return (
-            <motion.div
+            <m.div
               key={`stream-${i}`}
               className="absolute w-1.5 h-1.5 rounded-full bg-primary"
               style={{
@@ -88,7 +88,7 @@ export function TechSculpture() {
               
               {/* Connection Orbitals */}
               <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none overflow-visible">
-                <motion.circle
+                <m.circle
                   cx="0" cy="0"
                   r={dist}
                   fill="none"
@@ -100,7 +100,7 @@ export function TechSculpture() {
                   transition={{ duration: 2, delay: 2 }}
                 />
               </svg>
-            </motion.div>
+            </m.div>
           );
         })}
       </div>

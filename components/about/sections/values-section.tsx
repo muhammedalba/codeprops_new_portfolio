@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Shield, Zap, Target, Users } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
@@ -32,7 +32,7 @@ export function ValuesSection({ values, intro }: ValuesSectionProps) {
             const Icon = icons[i];
 
             return (
-              <motion.div
+              <m.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export function ValuesSection({ values, intro }: ValuesSectionProps) {
                     {item.description}
                   </p>
                 </GlassCard>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

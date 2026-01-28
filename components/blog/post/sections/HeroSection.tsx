@@ -2,7 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
@@ -41,7 +41,7 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
         </Link>
 
         <div className="grid lg:grid-cols-[1fr,400px] gap-12 items-end">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             className="space-y-8"
@@ -59,9 +59,9 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
             <h1 className="text-5xl md:text-8xl font-heading font-bold tracking-tighter leading-[0.9]">
               {post.title}
             </h1>
-          </motion.div>
+          </m.div>
 
-          <motion.div 
+          <m.div 
              initial={{ opacity: 0, x: 30 }}
              animate={{ opacity: 1, x: 0 }}
              className="flex items-center gap-6 p-6 rounded-[2.5rem] bg-muted/30 border border-border/50 backdrop-blur-sm"
@@ -77,7 +77,7 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
                    <Icons.twitter size={14} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
                 </div>
              </div>
-          </motion.div>
+          </m.div>
         </div>
       </Container>
     </section>

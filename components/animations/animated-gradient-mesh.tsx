@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { m, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 export function AnimatedGradientMesh() {
@@ -15,12 +15,12 @@ export function AnimatedGradientMesh() {
   return (
     <div ref={containerRef} className="absolute inset-0 overflow-hidden">
       {/* Background Gradient Mesh */}
-      <motion.div
+      <m.div
         style={{ opacity }}
         className="absolute inset-0"
       >
         {/* Primary Gradient Orb */}
-        <motion.div
+        <m.div
           className="absolute w-[800px] h-[800px] rounded-full blur-3xl opacity-30"
           style={{
             background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)',
@@ -40,7 +40,7 @@ export function AnimatedGradientMesh() {
         />
 
         {/* Secondary Gradient Orb */}
-        <motion.div
+        <m.div
           className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-25"
           style={{
             background: 'radial-gradient(circle, hsl(var(--accent-secondary)) 0%, transparent 70%)',
@@ -61,7 +61,7 @@ export function AnimatedGradientMesh() {
         />
 
         {/* Tertiary Gradient Orb */}
-        <motion.div
+        <m.div
           className="absolute w-[500px] h-[500px] rounded-full blur-3xl opacity-20"
           style={{
             background: 'radial-gradient(circle, hsl(var(--primary-400)) 0%, transparent 70%)',
@@ -80,7 +80,7 @@ export function AnimatedGradientMesh() {
             delay: 2,
           }}
         />
-      </motion.div>
+      </m.div>
 
       {/* Grid Overlay for Tech Feel */}
       <div 

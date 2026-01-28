@@ -25,7 +25,7 @@ export function ProcessLoop({ title, subtitle, steps }: ProcessLoopProps) {
   return (
     <section id="process" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background Decorative Element */}
-      <div className="absolute md:top-1/4 top-1 md:left-1 left-1/4  md:w-[1000px] w-1/2 md:h-[400px] h-full bg-primary/10 blur-2xl rounded-full -z-0 " />
+      <div className="absolute w-1/5 h-full bg-primary/10 blur-2xl rounded-full -z-0 top-1 md:top-1/2 left-1/2 -translate-x-1/2  md:left-1 md:transform-none md:w-full  md:h-[175px]  " />
       
       <Container className="relative z-10">
         <SectionHeader
@@ -37,7 +37,7 @@ export function ProcessLoop({ title, subtitle, steps }: ProcessLoopProps) {
 
         <div className="grid md:grid-cols-4 gap-8 relative">
           {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-[2.75rem] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-border to-transparent -z-10" />
+          <div className="hidden md:block absolute top-[2rem] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-border to-transparent -z-10" />
 
           {steps.map((step, i) => {
             const Icon = icons[i].icon;

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { memo, useRef } from 'react';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { m, useInView, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 function MethodologyVisualComponent() {
@@ -28,7 +28,7 @@ function MethodologyVisualComponent() {
 
             <div className="w-full h-3 rounded-full bg-muted/50 overflow-hidden p-0.5 border border-border">
               {inView && (
-                <motion.div
+                <m.div
                   className="h-full bg-primary rounded-full"
                   animate={{ width: ['0%', '100%'] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -40,7 +40,7 @@ function MethodologyVisualComponent() {
           {/* Grid */}
           <div className="grid grid-cols-2 gap-6">
             {[1, 2, 3, 4].map((i) => (
-              <motion.div
+              <m.div
                 key={i}
                 initial={{ opacity: 0.3 }}
                 animate={inView ? { opacity: [0.3, 0.6, 0.3] } : undefined}

@@ -1,12 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 export function GeometricFocal() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
       {/* Main Geometric Shape - Abstract 3D Cube */}
-      <motion.div
+      <m.div
         className="absolute right-[5%] top-1/2 -translate-y-1/2"
         initial={{ opacity: 0, scale: 0.8, rotateY: -20 }}
         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
@@ -14,7 +14,7 @@ export function GeometricFocal() {
       >
         <div className="relative w-[450px] h-[450px]" style={{ perspective: '1000px' }}>
           {/* Rotating Container */}
-          <motion.div
+          <m.div
             className="absolute inset-0"
             animate={{ rotateY: 360 }}
             transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
@@ -55,21 +55,21 @@ export function GeometricFocal() {
                 transform: 'rotateY(-90deg) translateZ(100px)',
               }}
             />
-          </motion.div>
+          </m.div>
 
           {/* Accent Lines */}
-          <motion.div
+          <m.div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full"
             animate={{ rotate: 360 }}
             transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
           >
             <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
             <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-          </motion.div>
+          </m.div>
 
           {/* Floating Particles */}
           {[...Array(8)].map((_, i) => (
-            <motion.div
+            <m.div
               key={i}
               className="absolute w-1 h-1 bg-primary/40 rounded-full"
               style={{
@@ -89,36 +89,36 @@ export function GeometricFocal() {
             />
           ))}
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Code-Inspired Elements */}
-      <motion.div
+      <m.div
         className="absolute left-[10%] top-[20%] font-mono text-xs text-primary/20 select-none"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 1 }}
       >
-        <motion.div
+        <m.div
           animate={{ opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           {'<code>'}
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         className="absolute left-[12%] bottom-[25%] font-mono text-xs text-primary/20 select-none"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 1.2 }}
       >
-        <motion.div
+        <m.div
           animate={{ opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
         >
           {'</code>'}
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </div>
   );
 }

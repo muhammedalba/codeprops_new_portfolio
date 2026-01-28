@@ -9,10 +9,12 @@ import { HeaderServer } from "@/components/layout/header-server";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
-import { Chatbot } from "@/components/chatbot/Chatbot";
+import { FramerMotionProvider } from "@/components/providers/framer-motion-provider";
+
 
 
 import { SITE_CONFIG } from "@/lib/constants";
+import { Chatbot } from "@/components/chatbot/Chatbot";
 
 const fontHeading = Outfit({
   subsets: ["latin", "latin-ext"],
@@ -86,11 +88,13 @@ export default async   function LocaleLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <HeaderServer locale={typedLocale} translations={messages.nav} sideDrawerTranslations={messages.sideDrawer} />
-          <main className="flex-1">{children}</main>
-          <Footer locale={typedLocale} translations={messages} />
-          <ClientSideEffects />
-          <Chatbot direction={direction} translations={messages.chatbot} />
+          <FramerMotionProvider>
+            <HeaderServer locale={typedLocale} translations={messages.nav} sideDrawerTranslations={messages.sideDrawer} />
+            <main className="flex-1">{children}</main>
+            <Footer locale={typedLocale} translations={messages} />
+            <ClientSideEffects />
+            <Chatbot direction={direction} translations={messages.chatbot} />
+          </FramerMotionProvider>
         </ThemeProvider>
       </body>
     </html>

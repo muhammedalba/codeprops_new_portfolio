@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useCallback, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { SectionBadge } from "@/components/ui/section-badge";
@@ -46,7 +46,7 @@ export const FAQItem = memo(function FAQItem({ question, answer }: FAQItemProps)
 
       <AnimatePresence initial={false}>
         {isOpen && (
-          <motion.div
+          <m.div
             key="content"
             layout
             initial={{ opacity: 0, height: 0 }}
@@ -58,7 +58,7 @@ export const FAQItem = memo(function FAQItem({ question, answer }: FAQItemProps)
             <p className="pb-8 text-lg text-muted-foreground leading-relaxed max-w-3xl">
               {answer}
             </p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

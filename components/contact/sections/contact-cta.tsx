@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
@@ -25,7 +25,7 @@ export function ContactCTA
   return (
     <section className="py-28 relative">
       <Container>
-        <motion.div
+        <m.div
           initial={reduceMotion ? false : { opacity: 0, y: 40 }}
           whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -49,7 +49,7 @@ export function ContactCTA
           />
 
           <div className="relative z-10 px-10 py-20 md:px-24 text-center">
-            <motion.h2
+            <m.h2
               initial={reduceMotion ? false : { opacity: 0, scale: 0.96 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -57,9 +57,9 @@ export function ContactCTA
               className="text-4xl md:text-7xl font-heading font-bold tracking-tight leading-[1.05]"
             >
               {title}
-            </motion.h2>
+            </m.h2>
 
-            <motion.p
+            <m.p
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -67,9 +67,9 @@ export function ContactCTA
               className="mt-6 text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto"
             >
               {description}
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -89,9 +89,9 @@ export function ContactCTA
                 </span>
                 </Link>
               </Button>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       </Container>
     </section>
   );

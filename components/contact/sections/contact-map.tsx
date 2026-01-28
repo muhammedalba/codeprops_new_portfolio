@@ -1,13 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 
 export function ContactMap() {
   return (
     <section className="pb-24">
       <Container>
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -24,7 +24,7 @@ export function ContactMap() {
             title="Global Office Location"
           ></iframe>
           <div className="absolute inset-0 pointer-events-none border-[12px] border-background/20" />
-        </motion.div>
+        </m.div>
       </Container>
     </section>
   );

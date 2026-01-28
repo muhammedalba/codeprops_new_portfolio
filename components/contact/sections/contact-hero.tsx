@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { SectionBadge } from "@/components/ui/section-badge";
 // dinamic import 
@@ -27,7 +27,7 @@ export function ContactHero({ title, description, badge, locale }: ContactHeroPr
           locale={locale}
           className="mb-8 justify-center"
         />
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -44,7 +44,7 @@ export function ContactHero({ title, description, badge, locale }: ContactHeroPr
           <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto text-balance">
             {description}
           </p>
-        </motion.div>
+        </m.div>
       </Container>
     </section>
   );

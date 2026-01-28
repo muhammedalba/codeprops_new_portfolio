@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -25,7 +25,7 @@ export function TimelineSection({ timeline }: TimelineSectionProps) {
 
           <div className="my-3 md:space-y-24">
             {timeline.items.map((item: any, i: number) => (
-              <motion.div
+              <m.div
                 key={i}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -39,7 +39,7 @@ export function TimelineSection({ timeline }: TimelineSectionProps) {
                 <div className="flex-1 w-full md:text-end md:px-16">
                   {i % 2 === 0 && (
                     <div className="relative my-3 p-8 border border-border rounded-[2.5rem] md:p-0 md:border-0">
-                       <div className="absolute w-24 h-24 top-1 right-0 bg-primary/20 rounded-full blur-[40px]" />
+                       <div className="absolute w-24 h-24 top-1 left-0 bg-primary/20 rounded-full blur-[40px]" />
                       <span className="text-4xl font-mono font-bold text-primary/20">
                         {item.year}
                       </span>
@@ -62,7 +62,7 @@ export function TimelineSection({ timeline }: TimelineSectionProps) {
                 <div className="flex-1 w-full text-start md:px-16">
                   {i % 2 !== 0 && (
                     <div className="relative my-3 p-8 border border-border rounded-[2.5rem] md:p-0 md:border-0">
-                        <div className="absolute w-24 h-24 top-1 left-0 bg-primary/20 rounded-full blur-[40px]" />
+                        <div className="absolute w-24 h-24 top-1 right-0 bg-primary/20 rounded-full blur-[40px]" />
                       <span className="text-4xl font-mono font-bold text-primary/20">
                         {item.year}
                       </span>
@@ -75,7 +75,7 @@ export function TimelineSection({ timeline }: TimelineSectionProps) {
                     </div>
                   )}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

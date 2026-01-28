@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import {
-  motion,
+  m,
   AnimatePresence,
   useScroll,
   useSpring,
@@ -37,7 +37,7 @@ export function ScrollToTop() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.8 }}
@@ -60,7 +60,7 @@ export function ScrollToTop() {
                 strokeWidth="2"
                 className="text-muted/20"
               />
-              <motion.circle
+              <m.circle
                 cx="28"
                 cy="28"
                 r="25"
@@ -78,15 +78,15 @@ export function ScrollToTop() {
           </button>
 
           {/* Hover Label */}
-          <motion.span
+          <m.span
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 10 }}
             className="absolute right-full mr-1 top-1/4 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-foreground text-background text-xs font-bold whitespace-nowrap hidden md:block pointer-events-none"
           >
             Back to Top
-          </motion.span>
-        </motion.div>
+          </m.span>
+        </m.div>
       )}
     </AnimatePresence>
   );

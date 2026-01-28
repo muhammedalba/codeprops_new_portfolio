@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Mail, Phone, MapPin, ExternalLink, Clock, Globe } from "lucide-react";
 import { Icons } from "@/components/ui/icons";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -80,7 +80,7 @@ export function ContactInfo({ info }: ContactInfoProps) {
         {contactData.map((item, i) => {
           const Icon = item.icon;
           return (
-            <motion.a
+            <m.a
               key={i}
               href={item.href}
               initial={{ opacity: 0, x: 20 }}
@@ -101,7 +101,7 @@ export function ContactInfo({ info }: ContactInfoProps) {
                 </div>
                 <ExternalLink size={20} color={item.color} className="text-muted-foreground/30 group-hover:text-primary transition-colors translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 duration-500" />
               </GlassCard>
-            </motion.a>
+            </m.a>
           );
         })}
       </div>
@@ -112,7 +112,7 @@ export function ContactInfo({ info }: ContactInfoProps) {
           {socialIcons.map((social, i) => {
             const Icon = social.icon;
             return (
-              <motion.a
+              <m.a
                 key={i}
                 href={social.href}
                 whileHover={{ y: -5 }}
@@ -120,7 +120,7 @@ export function ContactInfo({ info }: ContactInfoProps) {
               >
                 <Icon color={social.color} size={28} className="group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">{social.label}</span>
-              </motion.a>
+              </m.a>
             );
           })}
         </div>

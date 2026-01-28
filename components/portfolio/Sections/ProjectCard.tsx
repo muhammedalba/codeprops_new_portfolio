@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,7 +36,7 @@ function ProjectCardComponent({
   const isOdd = index % 2 === 1;
   const imageSrc = project.image == "" ? "/images/default.webp" : project.image;
   return (
-    <motion.div
+    <m.div
       layout
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -116,6 +116,7 @@ function ProjectCardComponent({
           <Image
             width={650}
             height={550}
+            priority={index === 0}
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 693px"
             src={imageSrc}
@@ -128,7 +129,7 @@ function ProjectCardComponent({
           </div>
 
           {/* Animated Glow */}
-          <motion.div
+          <m.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
             transition={{ duration: 8, repeat: Infinity }}
             className="absolute -top-1/4 -right-1/4 w-full h-full bg-primary rounded-full blur-[120px] pointer-events-none will-change-transform"
@@ -159,7 +160,7 @@ function ProjectCardComponent({
           </Link>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 // Memoized Project Card
