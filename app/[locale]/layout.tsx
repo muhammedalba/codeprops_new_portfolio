@@ -40,7 +40,6 @@ export async function generateMetadata({
   const { locale } = await params;
   const typedLocale = locale as Locale;
   const messages = await getPageMessages(typedLocale, "home");
-  
   return {
     ...generatePageMetadata({
       locale: typedLocale,
@@ -91,7 +90,7 @@ export default async   function LocaleLayout({
           <main className="flex-1">{children}</main>
           <Footer locale={typedLocale} translations={messages} />
           <ClientSideEffects />
-          <Chatbot />
+          <Chatbot direction={direction} translations={messages.chatbot} />
         </ThemeProvider>
       </body>
     </html>

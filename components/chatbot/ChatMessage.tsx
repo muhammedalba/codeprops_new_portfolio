@@ -5,16 +5,18 @@ import { User, Bot } from "lucide-react";
 
 interface ChatMessageProps {
   message: Message;
+  direction?: string;
 }
 
-export function ChatMessage({ message }: ChatMessageProps) {
+export function ChatMessage({ message, direction }: ChatMessageProps) {
   const isBot = message.sender === "bot";
 
   return (
     <div
       className={cn(
         "flex w-full gap-3 mb-4 animate-in fade-in slide-in-from-bottom-2 duration-300",
-        isBot ? "justify-start" : "justify-end"
+        isBot ? "justify-start" : "justify-end",
+        direction === "rtl" ? "flex-row-reverse" : "flex-row"
       )}
     >
       {isBot && (
@@ -25,7 +27,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
       
       <div
         className={cn(
-          "max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed shadow-sm",
+          "max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed shadow-sm mt-5",
           isBot
             ? "bg-muted/50 text-foreground rounded-tl-none border border-border/50"
             : "bg-primary text-primary-foreground rounded-tr-none"

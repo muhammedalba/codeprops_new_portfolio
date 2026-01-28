@@ -8,17 +8,23 @@ const ChatbotWindow = dynamic(() => import("./ChatbotWindow").then(mod => mod.Ch
   ssr: false,
 });
 
-export function Chatbot() {
+export function Chatbot({ translations, direction }: { translations?: any, direction?: string }) {
   const { messages, isLoading, isOpen, toggleChat, sendMessage } = useChatbot();
 
   return (
     <>
-      <ChatbotIcon isOpen={isOpen} onClick={toggleChat} />
+      <ChatbotIcon 
+        isOpen={isOpen} 
+        onClick={toggleChat} 
+        translations={translations} 
+      />
       <ChatbotWindow 
         isOpen={isOpen} 
         messages={messages} 
         isLoading={isLoading} 
         onSend={sendMessage} 
+        translations={translations}
+        direction={direction}       
       />
     </>
   );

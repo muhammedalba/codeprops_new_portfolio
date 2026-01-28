@@ -9,7 +9,7 @@
       },
       "cta": {
             "title": "Bereit, Ihre digitale Präsenz neu zu gestalten?",
-            "description": "Partnern Sie mit einem Unternehmen, das Skalierbarkeit, Sicherheit und Performance versteht.",
+            "description": "Partnern Sie with einem Unternehmen, das Skalierbarkeit, Sicherheit und Performance versteht.",
             "button": "Unsere Strategen kontaktieren"
       },
       "footer": {
@@ -40,5 +40,19 @@
                   "switchTheme": "Design wechseln"
             },
             "copyright": "© 2026 Codeprops. Alle Rechte vorbehalten."
+      },
+      "chatbot": {
+            "welcome": {
+                  "title": "Brauchen Sie Hilfe?",
+                  "message": "Ich bin hier, um Ihnen bei Fragen zu unseren Ingenieursdienstleistungen zu helfen!"
+            },
+            "tooltip": "Chatten Sie with unserem Assistenten",
+            "window": {
+                  "title": "KI-Assistent",
+                  "status": "Online",
+                  "placeholder": "Frag mich etwas...",
+                  "emptyMessage": "Hallo! Wie kann ich Ihnen heute helfen? Fragen Sie gerne nach unseren Leistungen oder Projekten.",
+                  "disclaimer": "Von KI generierte Antworten können ungenau sein"
+            }
       }
 }

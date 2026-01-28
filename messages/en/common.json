@@ -40,5 +40,19 @@
                   "switchTheme": "Switch Theme"
             },
             "copyright": "© 2026 Codeprops. All rights reserved."
+      },
+      "chatbot": {
+            "welcome": {
+                  "title": "Need help?",
+                  "message": "I'm here to assist you with any questions about our engineering services!"
+            },
+            "tooltip": "Chat with our assistant",
+            "window": {
+                  "title": "AI Assistant",
+                  "status": "Online",
+                  "placeholder": "Ask me anything...",
+                  "emptyMessage": "Hello! How can I help you today? Feel free to ask about our services or projects.",
+                  "disclaimer": "AI generated responses may be inaccurate"
+            }
       }
 }

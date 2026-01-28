@@ -15,9 +15,17 @@ interface ChatbotWindowProps {
   onSend: (text: string) => void;
 }
 
-export function ChatbotWindow({ isOpen, messages, isLoading, onSend }: ChatbotWindowProps) {
+export function ChatbotWindow({ isOpen, messages, isLoading, onSend, translations, direction }: ChatbotWindowProps & { translations?: any, direction?: string }) {
   const [inputText, setInputText] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const t = translations?.window || {
+    title: "AI Assistant",
+    status: "Online",
+    placeholder: "Ask me anything...",
+    emptyMessage: "Hello! How can I help you today? Feel free to ask about our services or projects.",
+    disclaimer: "AI generated responses may be inaccurate"
+  };
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -55,10 +63,10 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend }: ChatbotWi
                 <Bot size={20} className="text-white" />
               </div>
               <div>
-                <h3 className="font-bold tracking-tight">AI Assistant</h3>
+                <h3 className="font-bold tracking-tight">{t.title}</h3>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-[10px] font-medium opacity-80 uppercase tracking-widest">Online</span>
+                  <span className="text-[10px] font-medium opacity-80 uppercase tracking-widest">{t.status}</span>
                 </div>
               </div>
             </div>
@@ -67,17 +75,17 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend }: ChatbotWi
           {/* Messages Area */}
           <div 
             ref={scrollRef}
-            className="flex-1 overflow-y-auto p-6 space-y-2 scrollbar-hide scroll-smooth"
+            className="flex-1 overflow-y-auto p-6 space-y-2 scroll-smooth custom-scrollbar"
           >
             {messages.length === 0 && (
                <div className="h-full flex flex-col items-center justify-center text-center p-8 opacity-40">
                   <Bot size={48} className="mb-4" />
-                  <p className="text-sm font-medium">Hello! How can I help you today? Feel free to ask about our services or projects.</p>
+                  <p className="text-sm font-medium">{t.emptyMessage}</p>
                </div>
             )}
             
             {messages.map((m) => (
-              <ChatMessage key={m.id} message={m} />
+              <ChatMessage key={m.id} message={m} direction={direction} />
             ))}
             
             {isLoading && (
@@ -96,7 +104,7 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend }: ChatbotWi
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ask me anything..."
+                placeholder={t.placeholder}
                 className="h-14 pr-14 rounded-2xl bg-muted/40 border-none ring-0 focus-visible:ring-primary/20 placeholder:text-muted-foreground/50 transition-all text-sm"
               />
               <Button
@@ -109,7 +117,7 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend }: ChatbotWi
             </div>
             
             <p className="mt-4 text-[9px] text-center text-muted-foreground/40 font-medium uppercase tracking-[0.2em] flex items-center justify-center gap-1">
-              <Info size={8} /> AI generated responses may be inaccurate
+              <Info size={8} /> {t.disclaimer}
             </p>
           </div>
         </motion.div>
