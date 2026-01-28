@@ -28,8 +28,8 @@ export function StepTwo({ form, translations, onBack, status }: any) {
         <Button variant="outline" onClick={onBack} className="h-20 w-24">
           <ChevronLeft />
         </Button>
-        <Button type="submit" className="flex-1 h-20 text-xl">
-          {status === "loading" ? <Loader2 className="animate-spin" /> : <>Initialize <Send /></>}
+        <Button type="submit" className="flex-1 h-20 text-xl border border-input">
+          {status === "loading" ? <Loader2 className="animate-spin" /> : <> {translations.send} <Send /></>}
         </Button>
       </div>
     </m.div>

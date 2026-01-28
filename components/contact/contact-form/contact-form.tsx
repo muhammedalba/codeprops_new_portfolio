@@ -20,6 +20,7 @@ const StepTwo = dynamic(() => import("./StepTwo").then(mod => mod.StepTwo), {
 });
 
 const SuccessScreen = dynamic(() => import("./SuccessScreen").then(mod => mod.SuccessScreen));
+const ErrorScreen = dynamic(() => import("./ErrorScreen").then(mod => mod.ErrorScreen));
 
 export function ContactForm({ translations }: any) {
   const [step, setStep] = useState(1);
@@ -71,6 +72,16 @@ export function ContactForm({ translations }: any) {
     return <SuccessScreen translations={translations} onReset={() => { setStatus("idle"); setStep(1); }} />;
   }
 
+  if (status === "error") {
+    return (
+      <ErrorScreen 
+        error={errorMessage} 
+        translations={translations} 
+        onRetry={() => setStatus("idle")} 
+      />
+    );
+  }
+
   return (
     <>
       <Script
@@ -100,12 +111,6 @@ export function ContactForm({ translations }: any) {
           )}
         </AnimatePresence>
       </form>
-
-      {status === "error" && (
-        <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded text-sm">
-          {errorMessage}
-        </div>
-      )}
     </>
   );
 }

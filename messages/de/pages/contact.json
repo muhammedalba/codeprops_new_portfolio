@@ -20,6 +20,7 @@
                         "other": "Sonstiges"
                   },
                   "message": "Technische Herausforderungen / Projektumfang",
+                  "next": "Weiter",
                   "send": "Beratung anfordern",
                   "success_title": "Beratung eingeleitet",
                   "success_message": "Unser Engineering-Team wird Ihre Anfrage prüfen und sich innerhalb von 24 Stunden bei Ihnen melden.",

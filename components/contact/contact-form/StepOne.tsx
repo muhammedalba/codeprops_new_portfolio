@@ -63,9 +63,11 @@ export function StepOne({ form, translations, onNext }: any) {
 </div>
       <Button
         onClick={onNext}
-        className="w-full h-20 rounded-2xl text-xl font-bold"
+        disabled={form.formState.isSubmitting}
+        className="w-full h-20 rounded-2xl text-xl font-bold border border-input"
       >
-        Assemble Scope <ChevronRight />
+        {translations.next}
+        <ChevronRight />
       </Button>
     </m.div>
   );
@@ -75,7 +77,7 @@ function Label({ icon: Icon, text }: any) {
   return (
     <div className="flex items-center gap-2 text-xs font-mono uppercase text-muted-foreground">
       <Icon size={14} className="text-primary" />
-      <span>{text}test</span>
+      <span>{text}</span>
     </div>
   );
 }

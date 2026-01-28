@@ -21,6 +21,7 @@
                   },
                   "message": "Technical Challenges / Project Scope",
                   "send": "Request Consultation",
+                  "next": "Next",
                   "success_title": "Consultation Initialized",
                   "success_message": "Our engineering team will review your scope and reach out within 24 hours.",
                   "error": "An engineering error occurred. Please try again."
