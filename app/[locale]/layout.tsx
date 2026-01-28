@@ -9,6 +9,7 @@ import { HeaderServer } from "@/components/layout/header-server";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
+import { Chatbot } from "@/components/chatbot/Chatbot";
 
 
 import { SITE_CONFIG } from "@/lib/constants";
@@ -90,6 +91,7 @@ export default async   function LocaleLayout({
           <main className="flex-1">{children}</main>
           <Footer locale={typedLocale} translations={messages} />
           <ClientSideEffects />
+          <Chatbot />
         </ThemeProvider>
       </body>
     </html>
