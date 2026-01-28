@@ -24,13 +24,14 @@ function BlogCardComponent({
   className,
   image,
 }: BlogCardProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const imageUrl =image ?`${baseUrl}${image}`: `${baseUrl}/images/blog/Default-1.webp`;
+  const imageUrl = image
+    ? image
+    : '/images/blog/default-blog-image.webp';
   return (
     <div
       className={cn(
         "group relative cursor-pointer border border-border/50 rounded-3xl overflow-hidden bg-background/50 backdrop-blur-sm shadow-lg hover:shadow-2xl hover:border-primary/20 transition-all duration-500 z-10",
-        className
+        className,
       )}
     >
       {/* Dynamic Glow Effect */}
@@ -46,9 +47,10 @@ function BlogCardComponent({
         <Image
           src={imageUrl}
           alt={title}
-            fill
-             priority
+          width={693}
+          height={433}
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, 693px"
         />
         <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest border border-border/50">
           {category}
@@ -56,14 +58,12 @@ function BlogCardComponent({
       </div>
 
       <div className="p-6">
-        <p className="text-sm font-mono text-primary mb-3">
-          {date}
-        </p>
+        <p className="text-sm font-mono text-primary mb-3">{date}</p>
         <h3 className="text-2xl font-bold mb-6 group-hover:text-primary transition-colors leading-tight line-clamp-2">
           {title}
         </h3>
-        
-        <Link 
+
+        <Link
           href={href}
           className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider group/link"
         >

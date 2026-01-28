@@ -10,6 +10,7 @@ import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
 
+
 import { SITE_CONFIG } from "@/lib/constants";
 
 const fontHeading = Outfit({
@@ -70,7 +71,6 @@ export default async   function LocaleLayout({
             __html: JSON.stringify(generateOrganizationSchema()),
           }}
         />
-
       </head>
       <body
         className={cn(
