@@ -34,6 +34,8 @@ export async function generateMetadata({
   const t = await getPageMessages(locale as Locale, "portfolio");
   const project = t.portfolio.projects.find((p: any) => p.slug === slug);
 
+  
+
   if (!project) return {};
 
   return generatePageMetadata({
@@ -53,6 +55,7 @@ export default async function ProjectDetailPage({
   const typedLocale = locale as Locale;
   const t = await getPageMessages(typedLocale, "portfolio");
   const project = t.portfolio.projects.find((p: any) => p.slug === slug);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://codeprops.com';
 
   if (!project) notFound();
 
@@ -65,7 +68,7 @@ export default async function ProjectDetailPage({
       "@type": "CreativeWork",
       "name": project.title,
       "description": project.description,
-      "url": `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/portfolio/${project.slug}`,
+      "url": `${baseUrl}/${locale}/portfolio/${project.slug}`,
     }),
   }}
 />
@@ -76,9 +79,9 @@ export default async function ProjectDetailPage({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}` },
-        { "@type": "ListItem", position: 2, name: "Portfolio", item: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/portfolio` },
-        { "@type": "ListItem", position: 3, name: project.title, item: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/portfolio/${project.slug}` },
+        { "@type": "ListItem", position: 1, name: "Home", item: `${baseUrl}/${locale}` },
+        { "@type": "ListItem", position: 2, name: "Portfolio", item: `${baseUrl}/${locale}/portfolio` },
+        { "@type": "ListItem", position: 3, name: project.title, item: `${baseUrl}/${locale}/portfolio/${project.slug}` },
       ],
     }),
   }}

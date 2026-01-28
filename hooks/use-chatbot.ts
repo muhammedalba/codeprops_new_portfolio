@@ -29,7 +29,7 @@ export function useChatbot() {
 
   const fetchHistory = async (id: string) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chat/history?session_id=${id}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/history?session_id=${id}`);
       if (response.ok) {
         const data = await response.json();
         if (data.success && Array.isArray(data.data)) {
@@ -74,8 +74,8 @@ export function useChatbot() {
     setIsLoading(true);
 
     try {
-      console.log("Sending chat message to:", `${process.env.NEXT_PUBLIC_API_URL}/api/chat`);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chat`, {
+      console.log("Sending chat message to:", `${process.env.NEXT_PUBLIC_API_URL}/chat`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

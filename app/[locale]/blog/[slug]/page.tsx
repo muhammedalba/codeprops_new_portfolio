@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://codeprops.com';
 
 
   return generatePageMetadata({
@@ -55,7 +55,7 @@ export default async function BlogPostPage({
   const post = t.blog.posts.find((p: any) => p.slug === slug);
   if (!post) notFound();
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://codeprops.com';
   const postUrl = `${baseUrl}/${locale}/blog/${slug}`;
 
   return (
