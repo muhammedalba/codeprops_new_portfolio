@@ -7,7 +7,13 @@ import Link from "next/link";
 interface SidebarActionsProps {
   locale: string;
   tags: string[];
-  t: any;
+  t: {
+    share: string;
+    audit_title: string;
+    audit_desc: string;
+    audit_button: string;
+    technical_clusters: string;
+  };
 }
 
 export function SidebarActions({ locale, tags, t }: SidebarActionsProps) {

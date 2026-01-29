@@ -1,20 +1,24 @@
-"use client";
-
-import { m } from "framer-motion";
 import { Sparkles, Layers, ChevronLeft, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { FormError } from "@/components/ui/FormError";
+import { ContactTranslations } from "./contact-form";
+import { ContactFormData } from "./schema";
+import { UseFormReturn } from "react-hook-form";
 
-export function StepTwo({ form, translations, onBack, status }: any) {
+interface StepTwoProps {
+  form: UseFormReturn<ContactFormData>;
+  translations: ContactTranslations;
+  onBack: () => void;
+  status: "idle" | "loading" | "success" | "error";
+}
+
+export function StepTwo({ form, translations, onBack, status }: StepTwoProps) {
 
   return (
-    <m.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
-      className="space-y-8"
+    <div
+      className="space-y-8 animate-[fade-in_0.4s_ease-out_forwards]"
     >
       <Section icon={Sparkles} title={translations.subject}>
         <Input placeholder='your subject' {...form.register("subject")} className="h-16 rounded-2xl" />
@@ -34,11 +38,11 @@ export function StepTwo({ form, translations, onBack, status }: any) {
           {status === "loading" ? <Loader2 className="animate-spin" /> : <> {translations.send} <Send /></>}
         </Button>
       </div>
-    </m.div>
+    </div>
   );
 }
 
-function Section({ icon: Icon, title, children }: any) {
+function Section({ icon: Icon, title, children }: { icon: React.ElementType; title: string; children: React.ReactNode }) {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2 text-xs font-mono uppercase text-muted-foreground">

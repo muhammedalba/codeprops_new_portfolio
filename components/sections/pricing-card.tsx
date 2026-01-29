@@ -6,7 +6,7 @@ import { GlowEffect } from "@/components/ui/glow-effect";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-interface PricingPlan {
+export interface PricingPlan {
   name: string;
   price: string;
   description: string;

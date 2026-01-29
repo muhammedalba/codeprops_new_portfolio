@@ -5,6 +5,18 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/container";
 
+interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  tags: string[];
+}
+
 
 // Server Components
 import { HeroSection } from "@/components/blog/post/sections/HeroSection";
@@ -19,12 +31,12 @@ import { RecommendedSection } from "@/components/blog/post/sections/RecommendedS
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const paths: any[] = [];
+  const paths: { locale: string; slug: string }[] = [];
   
   for (const locale of locales) {
     const t = await getPageMessages(locale as Locale, "blog");
     if (t.blog && t.blog.posts) {
-      t.blog.posts.forEach((post: any) => {
+      t.blog.posts.forEach((post: BlogPost) => {
         paths.push({ locale, slug: post.slug });
       });
     }
@@ -39,7 +51,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = await getPageMessages(locale as Locale, "blog");
-  const post = t.blog.posts.find((p: any) => p.slug === slug);
+  const post = t.blog.posts.find((p: BlogPost) => p.slug === slug);
 
   if (!post) return {};
 
@@ -60,7 +72,7 @@ export default async function BlogPostPage({
   const typedLocale = locale as Locale;
   const t = await getPageMessages(typedLocale, "blog");
   
-  const post = t.blog.posts.find((p: any) => p.slug === slug);
+  const post = t.blog.posts.find((p: BlogPost) => p.slug === slug);
   if (!post) notFound();
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://codeprops.com';
@@ -122,7 +134,7 @@ export default async function BlogPostPage({
           <Container>
             <div className="flex flex-col lg:grid lg:grid-cols-[280px,1fr,300px] gap-8 lg:gap-16 items-start">
               <TOCIsland toc={toc} t={postT} />
-              <ArticleContent locale={typedLocale} post={post} t={postT} />
+              <ArticleContent post={post} t={postT} />
               <SidebarActions locale={typedLocale} tags={post.tags} t={postT} />
             </div>
           </Container>

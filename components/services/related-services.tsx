@@ -1,7 +1,7 @@
 'use client';
 
-import { m, LazyMotion, domAnimation } from "framer-motion";
 import { Container } from "@/components/layout/container";
+import { cn } from "@/lib/utils";
 import { ServiceSlug, serviceIcons } from "@/lib/services";
 import Link from "next/link";
 import { Icons } from "@/components/ui/icons";
@@ -38,18 +38,14 @@ export function RelatedServices({ currentSlug, locale, services }: RelatedServic
           </p>
         </div>
 
-        <LazyMotion features={domAnimation}>
           <div className="grid md:grid-cols-3 gap-8">
             {relatedServices.map((service, index) => {
               const Icon = serviceIcons[service.slug as ServiceSlug] || serviceIcons.web;
               
               return (
-                <m.div
+                <div
                   key={service.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  className={cn("reveal reveal--up", `stagger-${index + 1}`)}
                 >
                   <Link href={`/${locale}/services/${service.slug}`}>
                     <div className="group h-full p-8 rounded-[2rem] bg-background border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 cursor-pointer">
@@ -71,11 +67,10 @@ export function RelatedServices({ currentSlug, locale, services }: RelatedServic
                       </div>
                     </div>
                   </Link>
-                </m.div>
+                </div>
               );
             })}
           </div>
-        </LazyMotion>
       </Container>
     </section>
   );

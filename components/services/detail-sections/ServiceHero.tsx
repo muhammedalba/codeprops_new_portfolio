@@ -5,11 +5,16 @@ import { SectionBadge } from "@/components/ui/section-badge";
 import { Icons } from "@/components/ui/icons";
 import { ServiceSlug, serviceIcons } from "@/lib/services";
 import Link from "next/link";
+import { TranslationValue } from "@/lib/translations";
 
 interface ServiceHeroProps {
   locale: string;
   isRtl: boolean;
-  serviceData: any;
+  serviceData: {
+    title: string;
+    description: string;
+    [key: string]: TranslationValue;
+  };
   slug: ServiceSlug;
 }
 
@@ -36,7 +41,7 @@ export function ServiceHero({ locale, isRtl, serviceData, slug }: ServiceHeroPro
           {isRtl ? "العودة لخدماتنا" : "Back to Services"}
         </Link>
 
-        <div className="max-w-4xl space-y-8 animate-[fade-up_0.8s_ease-out_forwards] opacity-0">
+        <div className="max-w-4xl space-y-8">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shadow-xl shadow-primary/5">
               <ServiceIcon size={28} />

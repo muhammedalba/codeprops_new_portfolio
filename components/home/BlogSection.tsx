@@ -5,7 +5,21 @@ import { BlogCard } from "../sections/blog-card";
 
 interface BlogSectionProps {
   locale: string;
-  t: any;
+  t: {
+    blog: {
+      title: string;
+      subtitle: string;
+      viewAll: string;
+      category: string;
+      readMore: string;
+      posts: {
+        slug: string;
+        date: string;
+        title: string;
+        image: string;
+      }[];
+    };
+  };
 }
 
 export default function BlogSection({
@@ -35,7 +49,7 @@ export default function BlogSection({
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {latestPosts.map((post: any) => (
+          {latestPosts.map((post: { slug: string; date: string; title: string; image: string }) => (
             <BlogCard
               key={post.slug}
               category={t.blog.category}

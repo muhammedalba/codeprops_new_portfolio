@@ -15,7 +15,6 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: [
       'lucide-react',
-      'framer-motion',
       '@radix-ui/react-slot',
       '@radix-ui/react-dropdown-menu',
       'clsx',
@@ -56,13 +55,6 @@ const nextConfig = {
       config.optimization.splitChunks = {
         chunks: 'all',
         cacheGroups: {
-          // Separate framer-motion
-          framerMotion: {
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-            name: 'framer-motion',
-            chunks: 'all',
-            priority: 30,
-          },
           // Separate our custom animations (JS only)
           animations: {
             test: /[\\/]components[\\/]animations[\\/].*\.(js|jsx|ts|tsx)$/,
@@ -104,16 +96,7 @@ const nextConfig = {
     return config;
   },
 
-  async headers() {
-  return [
-    {
-      source: '/_next/static/:path*',
-      headers: [
-        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-      ],
-    },
-  ]
-}
+
 
 };
 

@@ -1,37 +1,29 @@
 "use client";
 
 import React from "react";
-import { m, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Tag, Calendar, User, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
-
-interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  author: string;
-  tags: string[];
-}
+import { Reveal } from "@/hooks/use-reveal";
+import { BlogPost } from "../blog-client";
 
 interface BlogGridProps {
   locale: string;
   posts: BlogPost[];
   searchQuery: string;
   activeTag: string;
-  t: any;
+  t: {
+    category: string;
+  };
 }
 
-const BlogCard = React.memo(({ post, index, locale, t }: { post: BlogPost; index: number; locale: string; t: any }) => (
-  <m.article
-    layout
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, scale: 0.95 }}
-    viewport={{ once: true }}
+const BlogCard = React.memo(({ post, index, locale, t }: { post: BlogPost; index: number; locale: string; t: { category: string } }) => (
+  <Reveal
+    animation="up"
+    delay={(index % 4) * 0.1}
     className="group"
+    as="article"
   >
     <GlassCard className="p-8 md:p-12 border-border/40 hover:border-primary/50 transition-all duration-500 overflow-hidden relative">
       {/* Decorative Tag Indicator */}
@@ -47,7 +39,7 @@ const BlogCard = React.memo(({ post, index, locale, t }: { post: BlogPost; index
               <Calendar size={14} /> {post.date}
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <User size={14} /> {post.author}
+              <User size={14} /> {typeof post.author === 'string' ? post.author : post.author?.name}
             </div>
           </div>
 
@@ -89,14 +81,14 @@ const BlogCard = React.memo(({ post, index, locale, t }: { post: BlogPost; index
         </div>
       </div>
     </GlassCard>
-  </m.article>
+  </Reveal>
 ));
 
 BlogCard.displayName = "BlogCard";
 
 export default function BlogGrid({ locale, posts, searchQuery, activeTag, t }: BlogGridProps) {
   const filteredPosts = React.useMemo(() => {
-    return posts.filter((post: any) => {
+    return posts.filter((post) => {
       const matchesSearch = 
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
@@ -109,11 +101,9 @@ export default function BlogGrid({ locale, posts, searchQuery, activeTag, t }: B
     <section className="py-24">
       <Container>
         <div className="grid gap-12">
-          <AnimatePresence mode="popLayout">
-            {filteredPosts.map((post, i) => (
-              <BlogCard key={post.slug} post={post} index={i} locale={locale} t={t} />
-            ))}
-          </AnimatePresence>
+          {filteredPosts.map((post, i) => (
+            <BlogCard key={post.slug} post={post} index={i} locale={locale} t={t} />
+          ))}
 
           {filteredPosts.length === 0 && (
             <div className="py-20 text-center">

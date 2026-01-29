@@ -1,16 +1,22 @@
 import { Container } from "@/components/layout/container";
 import { Plus } from "lucide-react";
-import { ServiceSlug, serviceIcons } from "@/lib/services";
+import { ServiceSlug } from "@/lib/services";
 import { NarrativeIsland } from "./NarrativeIsland";
+import { TranslationValue } from "@/lib/translations";
 
 interface ServiceNarrativeProps {
   isRtl: boolean;
-  serviceData: any;
+  serviceData: {
+    description: string;
+    details?: string;
+    features?: string[];
+    capabilities?: { title: string; description: string }[];
+    [key: string]: TranslationValue;
+  };
   slug: ServiceSlug;
 }
 
 export function ServiceNarrative({ isRtl, serviceData, slug }: ServiceNarrativeProps) {
-  const ServiceIcon = serviceIcons[slug] || Plus;
   return (
     <section className="py-24 relative">
       <Container>

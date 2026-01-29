@@ -1,9 +1,10 @@
 "use client";
 
-import { m, LazyMotion, domAnimation } from "framer-motion";
 import { Mail, Phone, MapPin, ExternalLink, Clock, Globe } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Icons } from "@/components/ui/icons";
 import { GlassCard } from "@/components/ui/glass-card";
+import { Reveal } from "@/hooks/use-reveal";
 
 
 import { SOCIAL_LINKS, CONTACT_INFO } from "@/lib/constants";
@@ -76,18 +77,16 @@ export function ContactInfo({ info }: ContactInfoProps) {
         </div>
       </GlassCard>
 
-      <LazyMotion features={domAnimation}>
         <div className="space-y-6">
           {contactData.map((item, i) => {
             const Icon = item.icon;
             return (
-              <m.a
+              <Reveal
                 key={i}
+                animation="right"
+                delay={i * 0.1}
+                as="a"
                 href={item.href}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="block group"
               >
                 <GlassCard className="p-6 md:p-8 flex items-center justify-between border-border/40 hover:border-primary/50 transition-all duration-300">
@@ -102,7 +101,7 @@ export function ContactInfo({ info }: ContactInfoProps) {
                   </div>
                   <ExternalLink size={20} color={item.color} className="text-muted-foreground/30 group-hover:text-primary transition-colors translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 duration-500" />
                 </GlassCard>
-              </m.a>
+              </Reveal>
             );
           })}
         </div>
@@ -113,20 +112,23 @@ export function ContactInfo({ info }: ContactInfoProps) {
             {socialIcons.map((social, i) => {
               const Icon = social.icon;
               return (
-                <m.a
+                <Reveal
                   key={i}
+                  animation="scale"
+                  delay={i * 0.1}
+                  as="a"
                   href={social.href}
-                  whileHover={{ y: -5 }}
-                  className="p-8 rounded-[2rem] bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-3 hover:bg-primary hover:text-primary-foreground group transition-all duration-500"
+                  className={cn(
+                    "p-8 rounded-[2rem] bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-3 hover:bg-primary hover:text-primary-foreground group transition-all duration-500 hover:-translate-y-1.5"
+                  )}
                 >
                   <Icon color={social.color} size={28} className="group-hover:scale-110 transition-transform" />
                   <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">{social.label}</span>
-                </m.a>
+                </Reveal>
               );
             })}
           </div>
         </div>
-      </LazyMotion>
     </div>
   );
 }

@@ -10,8 +10,20 @@ import { HeroBackgroundIsland } from "@/components/layout/hero-background-island
 
 interface HeroSectionProps {
   locale: string;
-  post: any;
-  translations: any;
+  post: {
+    title: string;
+    date: string;
+    author: string;
+  };
+  translations: {
+    breadcrumb: string;
+    category?: string;
+    post: {
+      back: string;
+      read_time: string;
+      principal_architect: string;
+    };
+  };
 }
 
 export function HeroSection({ locale, post, translations }: HeroSectionProps) {
@@ -36,7 +48,7 @@ export function HeroSection({ locale, post, translations }: HeroSectionProps) {
         </Link>
 
         <div className="grid lg:grid-cols-[1fr,400px] gap-12 items-end">
-          <div className="space-y-8 opacity-0 animate-[fade-up_0.8s_ease-out_forwards]">
+          <div className="space-y-8">
             <div className="flex flex-wrap items-center gap-4 text-xs font-mono font-bold uppercase tracking-widest text-primary">
               <span className="px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">{translations.category || "Insight"}</span>
               <div className="flex items-center gap-2 text-muted-foreground">

@@ -1,10 +1,10 @@
 "use client";
 
-import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { ContactHero } from "./sections/contact-hero";
 import { ContactInfo } from "./sections/contact-info";
 import dynamic from "next/dynamic";
+import { Reveal } from "@/hooks/use-reveal";
 
 // Dynamic imports for performance optimized rendering below the fold
 const ContactForm = dynamic(() => import("./contact-form/contact-form").then(mod => mod.ContactForm), { 
@@ -14,16 +14,31 @@ const ContactFAQ = dynamic(() => import("./sections/contact-faq").then(mod => mo
 const ContactMap = dynamic(() => import("./sections/contact-map").then(mod => mod.ContactMap), { ssr: false });
 
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 }
-};
+
+import { ContactTranslations } from "./contact-form/contact-form";
+
+interface ContactInfoData {
+  email: string;
+  phone: string;
+  address: string;
+  social: {
+    linkedin: string;
+    github: string;
+    twitter: string;
+  };
+}
 
 interface ContactClientProps {
   locale: string;
-  t: any;
+  t: {
+    badge: string;
+    hero: { title: string; description: string };
+    title: string;
+    subtitle: string;
+    form: ContactTranslations;
+    info: ContactInfoData;
+    faq: { title: string; subtitle: string; questions: { q: string; a: string }[] };
+  };
 }
 
 export function ContactClient({ locale, t }: ContactClientProps) {
@@ -45,8 +60,8 @@ export function ContactClient({ locale, t }: ContactClientProps) {
           <Container>
             <div className="grid lg:grid-cols-[1.2fr,1fr] gap-8 lg:gap-18 items-start relative">
               {/* Form Section */}
-              <m.div
-                {...fadeIn}
+              <Reveal
+                animation="up"
                 className="relative p-8 md:p-16 rounded-[4rem] bg-background/40 border border-white/5 backdrop-blur-3xl shadow-2xl shadow-black/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent-secondary/5 rounded-[4rem] pointer-events-none" />
@@ -63,7 +78,7 @@ export function ContactClient({ locale, t }: ContactClientProps) {
                 <div className="relative z-10">
                   <ContactForm translations={t.form} />
                 </div>
-              </m.div>
+              </Reveal>
 
               {/* Info Section */}
               <div className="lg:sticky lg:top-32">

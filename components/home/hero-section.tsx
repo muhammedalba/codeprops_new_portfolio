@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { HeroBackgroundIsland } from "../layout/hero-background-island";
 import { Icons } from "@/components/ui/icons";
+import { fontHeading, fontArabic } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 
 
 interface HeroSectionProps {
@@ -26,6 +28,14 @@ function HeroSectionComponent({ locale, translations }: HeroSectionProps) {
     <section className="relative min-h-screen flex items-start md:items-center overflow-hidden bg-background md:pt-16">
       <HeroBackgroundIsland type="home"  />
 
+      {/**
+       * 🚀 Performance Engineering: Critical Path Analysis
+       * LCP Element: Primary <h1> (CodeProps / hero.title)
+       * Font: Outfit (EN/DE) or Amiri (AR) - Preloaded & Weight Optimized
+       * Strategy: 
+       * 1. Eliminated 'opacity-0' and 'fade-up' animations on Headlines to prevent 800ms LCP delay.
+       * 2. Localized font classes injected in layout.tsx to reduce critical CSS/Font size.
+       */}
       <div className="container relative mt-16 z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-4xl">
           {/* Static HTML for Brand Tag - Zero JS blocking */}
@@ -37,13 +47,23 @@ function HeroSectionComponent({ locale, translations }: HeroSectionProps) {
           </div>
 
           <div className="mb-6">
-            {/* Pure CSS Fade/Up for Headlines */}
-            <h1 className="text-base md:text-lg font-mono font-medium text-foreground/60 mb-3 tracking-wide uppercase ">
-              <span className="block text-foreground relative opacity-0 animate-[fade-up_0.8s_ease-out_0.3s_forwards]">
+            {/* ⚡ Performance Engineering: LCP Element (Immediate Visibility) */}
+            <h1 
+              className={cn(
+                "text-base md:text-lg font-mono font-medium text-foreground/60 mb-3 tracking-wide uppercase",
+                locale === 'ar' ? fontArabic.className : fontHeading.className
+              )}
+            >
+              <span className="block text-foreground relative">
                 {hero.title}
               </span>
             </h1>
-            <h1 className="text-3xl md:text-7xl lg:text-8xl font-heading font-bold leading-[1] tracking-tighter opacity-0 animate-[fade-up_0.8s_ease-out_0.4s_forwards]">
+            <h1 
+              className={cn(
+                "text-3xl md:text-7xl lg:text-8xl font-bold leading-[1] tracking-tighter",
+                locale === 'ar' ? fontArabic.className : fontHeading.className
+              )}
+            >
               <span className="block text-[#555b6c] relative">
                 Code<span className="text-primary">Props</span>
                 <span className="absolute start-3 top-1 text-xl font-mono text-primary/30 opacity-0 animate-[fade-in_1s_ease-out_1.5s_forwards]">

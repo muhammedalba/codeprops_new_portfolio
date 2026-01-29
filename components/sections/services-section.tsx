@@ -8,8 +8,9 @@ interface ServicesSectionProps {
   badge: string;
   title: string;
   description: string;
-  translations: any; // The 't.services' object
+  translations: Record<string, { title: string; description: string }>;
   locale: string;
+  noReveal?: boolean;
 }
 
 export function ServicesSection({
@@ -19,6 +20,7 @@ export function ServicesSection({
   description,
   translations,
   locale,
+  noReveal = false
 }: ServicesSectionProps) {
   // Define icons mapping internally
   const servicesConfig = [
@@ -37,6 +39,7 @@ export function ServicesSection({
           badge={badge}
           title={title}
           description={description}
+          noReveal={noReveal}
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

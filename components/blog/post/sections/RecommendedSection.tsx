@@ -6,7 +6,15 @@ import Link from "next/link";
 
 interface RecommendedSectionProps {
   locale: string;
-  t: any;
+  t: {
+    recommended: string;
+    view_all: string;
+    category: string;
+    read_time: string;
+    demo: {
+      recommended_post_title: string;
+    };
+  };
 }
 
 export function RecommendedSection({ locale, t }: RecommendedSectionProps) {

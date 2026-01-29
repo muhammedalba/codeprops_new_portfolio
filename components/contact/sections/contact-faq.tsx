@@ -1,10 +1,8 @@
 "use client";
 
 import { memo, useCallback, useState } from "react";
-import { m, AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { Icons } from "@/components/ui/icons";
 import { Container } from "@/components/layout/container";
-import { SectionBadge } from "@/components/ui/section-badge";
 import { cn } from "@/lib/utils";
 import { SectionHeader } from "@/components/ui/section-header";
 
@@ -44,25 +42,18 @@ export const FAQItem = memo(function FAQItem({ question, answer }: FAQItemProps)
         </div>
       </button>
 
-      <LazyMotion features={domAnimation}>
-        <AnimatePresence initial={false}>
-          {isOpen && (
-            <m.div
-              key="content"
-              layout
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="overflow-hidden"
-            >
-              <p className="pb-8 text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                {answer}
-              </p>
-            </m.div>
-          )}
-        </AnimatePresence>
-      </LazyMotion>
+      <div
+        className={cn(
+          "grid transition-all duration-300 ease-in-out overflow-hidden shadow-none",
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        )}
+      >
+        <div className="min-h-0">
+          <p className="pb-8 text-lg text-muted-foreground leading-relaxed max-w-3xl">
+            {answer}
+          </p>
+        </div>
+      </div>
     </div>
   );
 });
@@ -84,7 +75,7 @@ export function ContactFAQ({ title, subtitle, questions }: ContactFAQProps) {
                   />
 
           <div className="space-y-2">
-            {questions.map((faq, i) => (
+            {questions.map((faq) => (
               <FAQItem
                 key={faq.q}
                 question={faq.q}

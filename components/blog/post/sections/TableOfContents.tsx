@@ -10,7 +10,12 @@ interface TOCItem {
 interface TableOfContentsProps {
   toc: TOCItem[];
   activeSection: string;
-  t: any;
+  t: {
+    content_maps: string;
+    join_discussion: string;
+    discussion_desc: string;
+    view_community: string;
+  };
 }
 
 function TableOfContentsComponent({ toc, activeSection, t }: TableOfContentsProps) {

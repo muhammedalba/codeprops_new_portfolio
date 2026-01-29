@@ -1,34 +1,23 @@
-"use client";
 import { cn } from "@/lib/utils";
-import { m } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Reveal } from "@/hooks/use-reveal";
 
-interface Project {
-  slug: string;
-  title: string;
-  description: string;
-  category: string;
-  result: string;
-  image: string;
-  problem: string;
-  solution: string;
-  link: string;
-  tech: string[];
-}
+import { PortfolioProject } from "../portfolio-project-client";
+
 interface Translations {
   viewProject: string;
 }
 
-function ProjectCardComponent({
+export function ProjectCard({
   project,
   index,
   locale,
   translations,
 }: {
-  project: Project;
+  project: PortfolioProject;
   index: number;
   locale: string;
   translations: Translations;
@@ -36,14 +25,9 @@ function ProjectCardComponent({
   const isOdd = index % 2 === 1;
   const imageSrc = project.image == "" ? "/images/default.webp" : project.image;
   return (
-    <m.div
-      layout
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="group"
+    <Reveal
+      animation="up"
+      delay={(index % 4) * 0.1}
     >
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         {/* Text Content */}
@@ -130,11 +114,10 @@ function ProjectCardComponent({
             {project.slug.split("-")[0]}
           </div>
 
-          {/* Animated Glow */}
-          <m.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-            transition={{ duration: 8, repeat: Infinity }}
-            className="absolute -top-1/4 -right-1/4 w-full h-full bg-primary rounded-full blur-[120px] pointer-events-none will-change-transform"
+          {/* Animated Glow - Pure CSS */}
+          <div
+            className="absolute -top-1/4 -right-1/4 w-full h-full bg-primary rounded-full blur-[120px] pointer-events-none will-change-transform opacity-10 animate-pulse"
+            style={{ animationDuration: '8s' }}
           />
 
           {/* Center Preview */}
@@ -157,13 +140,11 @@ function ProjectCardComponent({
             className="absolute inset-0 translate-y-full group-hover/img:translate-y-0 bg-primary/50 transition-transform duration-700 flex items-center justify-center p-20 text-center"
           >
             <p className="text-primary-foreground text-2xl font-bold italic leading-tight">
-              "Innovating the core of {project.category} systems."
+              &quot;Innovating the core of {project.category} systems.&quot;
             </p>
           </Link>
         </div>
       </div>
-    </m.div>
+    </Reveal>
   );
 }
-// Memoized Project Card
-export const ProjectCard = React.memo(ProjectCardComponent);

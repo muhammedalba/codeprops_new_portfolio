@@ -4,15 +4,11 @@ import { Container } from "@/components/layout/container";
 import { Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface Project {
-  id: string;
-  category: string;
-  [key: string]: any;
-}
+import { PortfolioProject } from "../portfolio-project-client";
 
 interface FilterSectionProps {
   t: { filter: string; all: string };
-  projects: Project[];
+  projects: PortfolioProject[];
   activeCategory: string;
   setActiveCategory: (category: string) => void;
 }
@@ -42,6 +38,7 @@ const CategoryButton = React.memo(
     </button>
   )
 );
+CategoryButton.displayName = "CategoryButton";
 
 export default function FilterSection({
   t,

@@ -1,16 +1,14 @@
 "use client";
 
-import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
+import { Reveal } from "@/hooks/use-reveal";
 
 export function ContactMap() {
   return (
     <section className="pb-24">
       <Container>
-        <m.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+        <Reveal
+          animation="scale"
           className="relative w-full h-[450px] rounded-[3.5rem] overflow-hidden border border-border shadow-2xl"
         >
           <iframe
@@ -24,7 +22,7 @@ export function ContactMap() {
             title="Global Office Location"
           ></iframe>
           <div className="absolute inset-0 pointer-events-none border-[12px] border-background/20" />
-        </m.div>
+        </Reveal>
       </Container>
     </section>
   );

@@ -2,13 +2,16 @@ import { Locale } from './i18n';
 
 export type PageKey = "home" | "about" | "services" | "blog" | "portfolio" | "contact" | "privacy" | "terms";
 
+export type TranslationValue = string | number | boolean | null | undefined | { [key: string]: TranslationValue } | TranslationValue[];
+export type TranslationMessages = Record<string, TranslationValue>;
+
 /**
  * Loads common, seo, and page-specific translations dynamically.
  * This ensures only required translations are included in the bundle/memory.
  */
 export async function getPageMessages(locale: Locale, page: PageKey) {
   try {
-    const promises: Promise<any>[] = [
+    const promises: Promise<{ default: TranslationMessages }>[] = [
       import(`@/messages/${locale}/common.json`),
       import(`@/messages/${locale}/seo.json`),
       import(`@/messages/${locale}/pages/${page}.json`)
@@ -30,7 +33,7 @@ export async function getPageMessages(locale: Locale, page: PageKey) {
     const imports = await Promise.all(promises);
     const [common, seo, pageData, ...deps] = imports;
 
-    const result: any = {
+    const result: TranslationMessages = {
       ...common.default,
       seo: seo.default,
       ...pageData.default,
@@ -63,7 +66,7 @@ const fbPage = await import(`@/messages/en/pages/${safePage}.json`);
       };
     } catch (fallbackError) {
       console.error("Critical: Fallback translation failed", fallbackError);
-      return {} as any;
+      return {} as TranslationMessages;
     }
   }
 }
@@ -72,7 +75,7 @@ const fbPage = await import(`@/messages/en/pages/${safePage}.json`);
  * Legacy support for getMessages.
  * @deprecated Use getPageMessages(locale, page) for selective loading and performance.
  */
-export async function getMessages(locale: Locale): Promise<any> {
+export async function getMessages(locale: Locale): Promise<TranslationMessages> {
   const common = await import(`@/messages/${locale}/common.json`);
   const seo = await import(`@/messages/${locale}/seo.json`);
   
@@ -88,7 +91,7 @@ export async function getMessages(locale: Locale): Promise<any> {
 }
 
 // Temporary Type for backward compatibility - will be refined during Phase 3
-export type Messages = any;
+export type Messages = TranslationMessages;
 
 /**
  * Type-safe translation helper (Legacy)
@@ -98,7 +101,7 @@ export async function getTranslation(
   locale: Locale,
   page: PageKey,
   key: string
-): Promise<any> {
+): Promise<TranslationValue> {
   const msgs = await getPageMessages(locale, page);
   return msgs[key];
 }

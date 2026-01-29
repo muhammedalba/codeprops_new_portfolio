@@ -26,7 +26,7 @@ function GlassCardComponent({
 
   useEffect(() => {
     if (typeof navigator === 'undefined') return;
-    const memory = (navigator as any).deviceMemory || 8;
+    const memory = (navigator as unknown as { deviceMemory?: number }).deviceMemory || 8;
     const concurrency = navigator.hardwareConcurrency || 8;
     if (memory <= 4 || concurrency <= 4) {
       setIsLowEnd(true);

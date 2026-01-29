@@ -95,11 +95,6 @@
     direction: rtl;
   }
 
-  [lang="ar"] {
-    --font-heading: var(--font-arabic) !important;
-    font-family: var(--font-arabic), serif !important;
-  }
-
   [dir="ltr"] {
     direction: ltr;
   }
@@ -127,10 +122,6 @@
       scroll-behavior: auto !important;
     }
 
-    [data-framer-component-type] {
-      animation: none !important;
-      transition: none !important;
-    }
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -253,12 +244,66 @@
 
     0%,
     100% {
-      transform: translate(0, 0);
+      transform: translate3d(0, 0, 0);
     }
 
     50% {
-      transform: translate(-40px, -30px);
+      transform: translate3d(-40px, -30px, 0);
     }
+  }
+
+  /* Professional Reveal System - GPU Accelerated */
+  .reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Specificity boost to ensure reveal--active always wins */
+  .reveal.reveal--active {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) !important;
+  }
+
+  .reveal--up {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  .reveal--down {
+    transform: translate3d(0, -40px, 0);
+  }
+
+  .reveal--left {
+    transform: translate3d(40px, 0, 0);
+  }
+
+  .reveal--right {
+    transform: translate3d(-40px, 0, 0);
+  }
+
+  .reveal--scale {
+    transform: scale3d(0.9, 0.9, 1);
+  }
+
+  .stagger-1 {
+    transition-delay: 0.1s;
+  }
+
+  .stagger-2 {
+    transition-delay: 0.2s;
+  }
+
+  .stagger-3 {
+    transition-delay: 0.3s;
+  }
+
+  .stagger-4 {
+    transition-delay: 0.4s;
+  }
+
+  .stagger-5 {
+    transition-delay: 0.5s;
   }
 
   /* Mask to fade edges smoothly */

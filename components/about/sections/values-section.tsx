@@ -1,14 +1,19 @@
-"use client";
-
-import { m, LazyMotion, domAnimation } from "framer-motion";
 import { Icons } from "@/components/ui/icons";
-
 import { Container } from "@/components/layout/container";
 import { SectionHeader } from "@/components/ui/section-header";
 import { GlassCard } from "@/components/ui/glass-card";
+import { Reveal } from "@/hooks/use-reveal";
+
+interface ValueItem {
+  title: string;
+  description: string;
+}
 
 interface ValuesSectionProps {
-  values: any;
+  values: {
+    title: string;
+    items: ValueItem[];
+  };
   intro: string;
 }
 
@@ -27,18 +32,15 @@ export function ValuesSection({ values, intro }: ValuesSectionProps) {
           className="mb-20"
         />
 
-        <LazyMotion features={domAnimation}>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.items.map((item: any, i: number) => {
+            {values.items.map((item, i) => {
               const Icon = icons[i] || Icons.check;
 
               return (
-                <m.div
+                <Reveal
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  animation="up"
+                  delay={(i % 4) * 0.1}
                 >
                   <GlassCard className="h-full p-8 group hover:border-primary/50 transition-all duration-300">
                   <div className="absolute w-24 h-24 top-2 right-2 bg-primary/20 rounded-full blur-[40px]" />
@@ -53,11 +55,10 @@ export function ValuesSection({ values, intro }: ValuesSectionProps) {
                       {item.description}
                     </p>
                   </GlassCard>
-                </m.div>
+                </Reveal>
               );
             })}
           </div>
-        </LazyMotion>
       </Container>
     </section>
   );

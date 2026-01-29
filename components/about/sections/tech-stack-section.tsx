@@ -3,8 +3,17 @@ import { Container } from "@/components/layout/container";
 import { SectionHeader } from "@/components/ui/section-header";
 import { cn } from "@/lib/utils";
 
+interface TechCategory {
+  name: string;
+  tech: string[];
+}
+
 interface TechStackSectionProps {
-  techStack: any;
+  techStack: {
+    title: string;
+    subtitle: string;
+    categories: TechCategory[];
+  };
 }
 
 /**
@@ -25,7 +34,7 @@ export function TechStackSection({ techStack }: TechStackSectionProps) {
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="grid grid-cols-1 gap-6 mt-12 relative">
-            {techStack.categories.map((cat: any, i: number) => (
+            {techStack.categories.map((cat, i) => (
               <div 
                 key={i} 
                 className={cn(

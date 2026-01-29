@@ -1,5 +1,6 @@
-import React, { memo } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/hooks/use-reveal";
 
 interface SectionHeaderProps {
   id?: string;
@@ -9,9 +10,10 @@ interface SectionHeaderProps {
   align?: "left" | "center" | "right";
   className?: string;
   titleClassName?: string;
+  noReveal?: boolean;
 }
 
-function SectionHeaderComponent({
+export function SectionHeader({
   id,
   badge,
   title,
@@ -19,6 +21,7 @@ function SectionHeaderComponent({
   align = "center",
   className,
   titleClassName,
+  noReveal = false
 }: SectionHeaderProps) {
   
   const alignmentClasses = {
@@ -27,33 +30,58 @@ function SectionHeaderComponent({
     right: "text-right items-end",
   };
 
+  if (noReveal) {
+    return (
+      <div className={cn("flex flex-col mb-16", alignmentClasses[align], className)} id={id}>
+        {badge && (
+          <span className="text-sm font-mono font-bold tracking-[0.4em] uppercase text-primary mb-4">
+            {badge}
+          </span>
+        )}
+        <h2 className={cn("text-4xl md:text-6xl font-heading font-bold mb-6 leading-[1.1]", titleClassName)}>
+          {title}
+        </h2>
+        {description && (
+          <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
+            {description}
+          </p>
+        )}
+      </div>
+    );
+  }
+
   return (
-    <div id={id} className={cn(" flex flex-col mb-16", alignmentClasses[align], className)}>
-     
+    <Reveal
+      animation="up"
+      id={id}
+      className={cn("flex flex-col mb-16", alignmentClasses[align], className)}
+    >
       {badge && (
         <span className="text-sm font-mono font-bold tracking-[0.4em] uppercase text-primary mb-4">
           {badge}
         </span>
       )}
-      <h2
+      <Reveal
+        animation="scale"
+        delay={0.1}
+        as="h2"
         className={cn(
-          " text-4xl md:text-6xl font-heading font-bold mb-6 leading-[1.1]",
+          "text-4xl md:text-6xl font-heading font-bold mb-6 leading-[1.1]",
           titleClassName
         )}
       >
-      
         {title}
-      </h2>
+      </Reveal>
       {description && (
-        <>
-        <p className=" text-xl text-muted-foreground max-w-3xl leading-relaxed">
+        <Reveal
+          animation="up"
+          delay={0.2}
+          as="p"
+          className="text-xl text-muted-foreground max-w-3xl leading-relaxed"
+        >
           {description}
-        </p>
-
-        </>
+        </Reveal>
       )}
-    </div>
+    </Reveal>
   );
 }
-
-export const SectionHeader = memo(SectionHeaderComponent);

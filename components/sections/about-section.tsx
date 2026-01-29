@@ -8,9 +8,10 @@ interface AboutSectionProps {
   subtitle: string;
   description: string;
   badge?: string;
+  noReveal?: boolean;
 }
 
-export function AboutSection({ id, title, subtitle, description, badge = "Our Essence" }: AboutSectionProps) {
+export function AboutSection({ id, title, subtitle, description, badge = "Our Essence", noReveal }: AboutSectionProps) {
   return ( 
   <>
     <WaveDivider position="top" />
@@ -27,6 +28,7 @@ export function AboutSection({ id, title, subtitle, description, badge = "Our Es
             title={title}
             align="left"
             className="mb-0"
+            noReveal={noReveal}
           />
           <div className="space-y-6 pt-4">
             <p className="text-2xl md:text-3xl font-medium text-foreground/80 leading-snug">

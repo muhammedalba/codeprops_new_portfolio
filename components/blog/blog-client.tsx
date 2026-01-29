@@ -6,9 +6,39 @@ import BlogFilter from "./sections/BlogFilter";
 import BlogGrid from "./sections/BlogGrid";
 import NewsletterSection from "./sections/NewsletterSection";
 
+export interface BlogPost {
+  slug: string;
+  date: string;
+  title: string;
+  image: string;
+  tags: string[];
+  excerpt: string;
+  author: string | {
+    name: string;
+    avatar: string;
+  };
+}
+
+export interface BlogTranslations {
+  title: string;
+  subtitle: string;
+  viewAll: string;
+  category: string;
+  readMore: string;
+  posts: BlogPost[];
+  newsletter: {
+    title: string;
+    description: string;
+    placeholder: string;
+    button: string;
+  };
+}
+
 interface BlogClientProps {
   locale: string;
-  translations: any;
+  translations: {
+    blog: BlogTranslations;
+  };
 }
 
 export function BlogClient({ locale, translations }: BlogClientProps) {

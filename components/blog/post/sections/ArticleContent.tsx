@@ -6,11 +6,30 @@ import Link from "next/link";
 
 interface ArticleContentProps {
   locale: string;
-  post: any;
-  t: any;
+  post: {
+    excerpt: string;
+  };
+  t: {
+    demo: {
+      intro_p1: string;
+      intro_p2: string;
+      challenges_p1: string;
+      insight_text: string;
+      conclusion_p1: string;
+      prev_post_title: string;
+      next_post_title: string;
+    };
+    headings: {
+      challenges: string;
+      insight: string;
+      conclusion: string;
+    };
+    prev_insight: string;
+    next_insight: string;
+  };
 }
 
-export function ArticleContent({ locale, post, t }: ArticleContentProps) {
+export function ArticleContent({ post, t }: Omit<ArticleContentProps, 'locale'>) {
   return (
     <article className="prose prose-invert prose-primary max-w-none w-full min-w-0 break-words">
       <div id="intro" className="scroll-mt-40">

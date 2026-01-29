@@ -12,6 +12,14 @@ import { RelatedServices } from '@/components/services/related-services';
 import { ServiceHero } from '@/components/services/detail-sections/ServiceHero';
 import { ServiceNarrative } from '@/components/services/detail-sections/ServiceNarrative';
 
+import { TranslationValue } from '@/lib/translations';
+
+interface ServiceData {
+  title: string;
+  description: string;
+  [key: string]: TranslationValue;
+}
+
 // Client Islands
 import { ContactFAQ, ContactCTA } from '@/components/contact/sections/contact-islands';
 
@@ -39,7 +47,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = await getPageMessages(locale as Locale, "services");
-  const service = (t.services as any)[slug];
+  const service = (t.services as Record<string, ServiceData>)[slug];
 
   if (!service) return {};
 
@@ -61,7 +69,7 @@ export default async function ServiceDetailPage({
   const { locale, slug } = await params;
   const typedLocale = locale as Locale;
   const t = await getPageMessages(typedLocale, "services");
-  const serviceData = (t.services as any)[slug];
+  const serviceData = (t.services as Record<string, ServiceData>)[slug];
   const isRtl = typedLocale === 'ar';
   
   const serviceTypeMap: Record<string, string> = {
@@ -146,7 +154,7 @@ export default async function ServiceDetailPage({
                align="left"
             />
             <div className="grid md:grid-cols-4 gap-8 pt-16">
-              {t.services.process.steps.map((step: any, i: number) => (
+              {t.services.process.steps.map((step: { title: string; description: string }, i: number) => (
                   <ServiceCard
                     key={i}
                     index={i}

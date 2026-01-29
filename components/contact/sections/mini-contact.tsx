@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import dynamic from 'next/dynamic';
 import { Container } from '@/components/layout/container';
 import { SectionHeader } from '@/components/ui/section-header';
 import { GlassCard } from '@/components/ui/glass-card';

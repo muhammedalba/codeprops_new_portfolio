@@ -5,7 +5,14 @@ import { Mail } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 
 interface NewsletterSectionProps {
-  t: any;
+  t: {
+    newsletter: {
+      title: string;
+      description: string;
+      placeholder: string;
+      button: string;
+    };
+  };
 }
 
 export default function NewsletterSection({ t }: NewsletterSectionProps) {

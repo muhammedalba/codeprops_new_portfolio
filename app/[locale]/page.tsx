@@ -93,6 +93,7 @@ export default async function HomePage({
           title={t.about.title}
           subtitle={t.about.subtitle}
           description={t.about.description}
+          noReveal={true}
         />
         
         {/* Services Section - Important, loads immediately */}
@@ -103,6 +104,7 @@ export default async function HomePage({
           description={t.services.subtitle}
           translations={t.services}
           locale={typedLocale}
+          noReveal={true}
         />
         
         {/* Methodology Section - Below fold, lazy loaded */}
@@ -132,7 +134,7 @@ export default async function HomePage({
         {/* Testimonials - Below fold, lazy loaded (client component) */}
         <Suspense fallback={<div className="min-h-[500px]" />}>
           <TestimonialsCarousel
-            testimonials={t.testimonials.items.map((item: any) => ({
+            testimonials={t.testimonials.items.map((item: { content: string; name: string; role: string }) => ({
               quote: item.content,
               name: item.name,
               role: item.role,

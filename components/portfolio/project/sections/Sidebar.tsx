@@ -1,14 +1,12 @@
-"use client";
-
-import { m } from "framer-motion";
 import { CheckCircle2, ExternalLink, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
+import { PortfolioProject, PortfolioTranslations } from "../../portfolio-project-client";
 
 interface SidebarProps {
-  project: any;
+  project: PortfolioProject;
   locale: string;
-  t: any;
+  t: PortfolioTranslations;
 }
 
 export default function Sidebar({ project, locale, t }: SidebarProps) {
@@ -59,13 +57,12 @@ export default function Sidebar({ project, locale, t }: SidebarProps) {
       <div className="space-y-6">
         <h4 className="text-sm font-bold uppercase tracking-[0.3em] text-muted-foreground ml-2">{t.details.next_case}</h4>
         <Link href={`/${locale}/portfolio`}>
-          <m.div 
-            whileHover={{ x: 10 }}
-            className="p-6 rounded-3xl bg-muted/30 border border-border/50 flex items-center justify-between group cursor-pointer"
+          <div 
+            className="p-6 rounded-3xl bg-muted/30 border border-border/50 flex items-center justify-between group cursor-pointer hover:bg-muted/50 transition-all duration-300 hover:translate-x-2"
           >
             <span className="font-bold">{t.details.explore_all}</span>
             <ChevronRight className="text-primary group-hover:translate-x-1 transition-transform" />
-          </m.div>
+          </div>
         </Link>
       </div>
     </aside>

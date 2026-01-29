@@ -1,9 +1,16 @@
-import { PricingCard } from "@/components/sections/pricing-card";
+import { PricingCard, PricingPlan } from "@/components/sections/pricing-card";
 import { SectionHeader } from "@/components/ui/section-header";
 
 interface PricingSectionProps {
   locale: string;
-  t: any;
+  t: {
+    title: string;
+    subtitle: string;
+    badge: string;
+    priceSuffix: string;
+    cta: string;
+    plans: PricingPlan[];
+  };
 }
 
 export default function PricingSection({ locale, t }: PricingSectionProps) {
@@ -17,7 +24,7 @@ export default function PricingSection({ locale, t }: PricingSectionProps) {
         />
 
         <div className="grid md:grid-cols-3 gap-8 items-stretch pt-12">
-          {t.plans.map((plan: any, i: number) => (
+          {t.plans.map((plan, i: number) => (
             <PricingCard
               locale={locale}
               key={i}

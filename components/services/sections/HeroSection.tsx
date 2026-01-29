@@ -3,10 +3,15 @@ import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import Link from "next/link";
 import { HeroBackgroundIsland } from "@/components/layout/hero-background-island";
+import { TranslationValue } from "@/lib/translations";
 
 interface HeroSectionProps {
   locale: string;
-  t: any;
+  t: {
+    hero_title: string;
+    hero_description: string;
+    [key: string]: TranslationValue;
+  };
 }
 
 export function HeroSection({ locale, t }: HeroSectionProps) {
@@ -24,7 +29,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
                     />
                   </div>
                   <div className="max-w-4xl mx-auto text-center">
-                    <div className="space-y-10 opacity-0 animate-[fade-up_0.8s_ease-out_forwards]">
+                    <div className="space-y-10">
                       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-bold uppercase tracking-widest">
                         <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                         Elite Software Engineering

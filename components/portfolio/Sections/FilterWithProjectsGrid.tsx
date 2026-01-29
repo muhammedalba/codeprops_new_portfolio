@@ -2,9 +2,11 @@
 import { useState } from "react";
 import FilterSection from "./FilterSection";
 import ProjectsGrid from "./ProjectsGrid ";
+import { PortfolioTranslations } from "../portfolio-project-client";
+
 interface PortfolioClientProps {
   locale: string;
-  t: any;
+  t: PortfolioTranslations;
 }
 export function FilterWithProjectsGrid({
   locale,
@@ -15,7 +17,7 @@ const [activeCategory, setActiveCategory] = useState("all");
   
         {/* Filter Section */}
       <FilterSection 
-        t={t} 
+        t={{ filter: t.filter, all: t.all }} 
         projects={t.projects} 
         activeCategory={activeCategory} 
         setActiveCategory={setActiveCategory} 
@@ -24,7 +26,7 @@ const [activeCategory, setActiveCategory] = useState("all");
       {/* Projects Grid */}
      <ProjectsGrid 
         locale={locale} 
-        translations={t} 
+        translations={{ viewProject: t.viewProject }} 
         projects={t.projects} 
         activeCategory={activeCategory} 
       />

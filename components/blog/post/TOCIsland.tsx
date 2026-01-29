@@ -5,7 +5,12 @@ import TableOfContents from "./sections/TableOfContents";
 
 interface TOCIslandProps {
   toc: { id: string; label: string }[];
-  t: any;
+  t: {
+    content_maps: string;
+    join_discussion: string;
+    discussion_desc: string;
+    view_community: string;
+  };
 }
 
 export function TOCIsland({ toc, t }: TOCIslandProps) {

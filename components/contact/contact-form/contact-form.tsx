@@ -1,15 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import dynamic from "next/dynamic";
-
 import { contactSchema, ContactFormData } from "./schema";
 import { StepIndicator } from "./StepIndicator";
 import Script from "next/script";
 import { useRecaptcha } from "@/hooks/use-recaptcha";
+import dynamic from "next/dynamic";
 
 // Dynamic imports for steps
 const StepOne = dynamic(() => import("./StepOne").then(mod => mod.StepOne), {
@@ -24,7 +22,35 @@ const StepTwo = dynamic(() => import("./StepTwo").then(mod => mod.StepTwo), {
 const SuccessScreen = dynamic(() => import("./SuccessScreen").then(mod => mod.SuccessScreen), { ssr: false });
 const ErrorScreen = dynamic(() => import("./ErrorScreen").then(mod => mod.ErrorScreen), { ssr: false });
 
-export function ContactForm({ translations }: any) {
+export { type ContactFormData } from "./schema";
+import { TranslationValue } from "@/lib/translations";
+
+// Define a basic type for translations.
+export interface ContactTranslations {
+  name: string;
+  email: string;
+  projectType: string;
+  projectTypes: {
+    web: string;
+    mobile: string;
+    cloud: string;
+    consulting: string;
+    other: string;
+  };
+  subject: string;
+  message: string;
+  send: string;
+  next?: string;
+  success_title: string;
+  success_message: string;
+  error_title?: string;
+  error_message?: string;
+  retry_action?: string;
+  [key: string]: TranslationValue;
+}
+
+// Fixed props type and improved maintainability
+export function ContactForm({ translations }: { translations: ContactTranslations }) {
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -41,7 +67,7 @@ export function ContactForm({ translations }: any) {
     
     try {
       // 1. Get reCAPTCHA token using hook
-      const token = await executeRecaptcha("contact_form");
+      const token: string = await executeRecaptcha("contact_form");
 
       // 2. Send data to backend
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact`, {
@@ -63,10 +89,11 @@ export function ContactForm({ translations }: any) {
 
       setStatus("success");
       form.reset();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Submission error:", error);
       setStatus("error");
-      setErrorMessage(error.message || "Something went wrong. Please try again.");
+      const message = error instanceof Error ? error.message : "Something went wrong. Please try again.";
+      setErrorMessage(message);
     }
   };
 
@@ -92,7 +119,7 @@ export function ContactForm({ translations }: any) {
       />
       <StepIndicator step={step} />
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <AnimatePresence mode="wait">
+        <div className="relative">
           {step === 1 && (
             <StepOne
               form={form}
@@ -111,7 +138,7 @@ export function ContactForm({ translations }: any) {
               onBack={() => setStep(1)}
             />
           )}
-        </AnimatePresence>
+        </div>
       </form>
     </>
   );

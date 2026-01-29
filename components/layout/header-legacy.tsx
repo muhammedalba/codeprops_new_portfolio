@@ -9,6 +9,7 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Container } from './container';
 import { ThemeToggle } from './theme-toggle';
 import dynamic from 'next/dynamic';
+import { TranslationMessages } from '@/lib/translations';
 
 // Dynamic imports for heavy interactive components that are initially hidden
 const SideDrawer = dynamic(() => import('./side-drawer').then(mod => mod.SideDrawer), {
@@ -29,7 +30,7 @@ interface HeaderProps {
       blog: string;
       contact: string;
   };
-  sideDrawerTranslations?: any;
+  sideDrawerTranslations?: TranslationMessages;
 }
 
 export function HeaderLegacy({ locale, translations, sideDrawerTranslations }: HeaderProps) {

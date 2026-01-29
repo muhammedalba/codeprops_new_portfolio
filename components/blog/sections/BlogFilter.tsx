@@ -4,10 +4,11 @@ import React, { useMemo, useCallback } from "react";
 import { Container } from "@/components/layout/container";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BlogPost } from "../blog-client";
 
 interface BlogFilterProps {
   locale: string;
-  posts: any[];
+  posts: BlogPost[];
   activeTag: string;
   setActiveTag: (tag: string) => void;
   searchQuery: string;
@@ -24,7 +25,7 @@ function BlogFilterComponent({
 }: BlogFilterProps) {
   // Memoize tags to avoid unnecessary re-renders
   const tags = useMemo(() => {
-    const allTags = posts.flatMap((post: any) => post.tags);
+    const allTags = posts.flatMap((post: BlogPost) => post.tags);
     return ["All", ...Array.from(new Set<string>(allTags))];
   }, [posts]);
 

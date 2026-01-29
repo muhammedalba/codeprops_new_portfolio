@@ -1,86 +1,60 @@
 'use client';
 
-import { m, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 export function AnimatedGradientMesh() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
+  const [isVisible, setIsVisible] = useState(true);
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting);
+    }, { threshold: 0 });
+
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div ref={containerRef} className="absolute inset-0 overflow-hidden">
       {/* Background Gradient Mesh */}
-      <m.div
-        style={{ opacity }}
-        className="absolute inset-0"
+      <div
+        className={cn(
+          "absolute inset-0 transition-opacity duration-1000",
+          isVisible ? "opacity-100" : "opacity-0"
+        )}
       >
         {/* Primary Gradient Orb */}
-        <m.div
-          className="absolute w-[800px] h-[800px] rounded-full blur-3xl opacity-30"
+        <div
+          className="absolute w-[800px] h-[800px] rounded-full blur-3xl opacity-30 animate-[float_20s_ease-in-out_infinite]"
           style={{
             background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)',
             top: '-20%',
             left: '10%',
           }}
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
         />
 
         {/* Secondary Gradient Orb */}
-        <m.div
-          className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-25"
+        <div
+          className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-25 animate-[float_18s_ease-in-out_infinite] [animation-delay:-5s]"
           style={{
             background: 'radial-gradient(circle, hsl(var(--accent-secondary)) 0%, transparent 70%)',
             bottom: '-10%',
             right: '15%',
           }}
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 80, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
-          }}
         />
 
         {/* Tertiary Gradient Orb */}
-        <m.div
-          className="absolute w-[500px] h-[500px] rounded-full blur-3xl opacity-20"
+        <div
+          className="absolute w-[500px] h-[500px] rounded-full blur-3xl opacity-20 animate-[float_22s_ease-in-out_infinite] [animation-delay:-10s]"
           style={{
             background: 'radial-gradient(circle, hsl(var(--primary-400)) 0%, transparent 70%)',
             top: '40%',
             right: '20%',
           }}
-          animate={{
-            x: [0, 60, 0],
-            y: [0, -60, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
         />
-      </m.div>
+      </div>
 
       {/* Grid Overlay for Tech Feel */}
       <div 

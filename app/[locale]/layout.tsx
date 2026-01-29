@@ -1,10 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Outfit, Amiri } from "next/font/google";
 import "../globals.css";
 import { cn } from "@/lib/utils";
 import { Locale, getDirection, locales } from "@/lib/i18n";
-import { generatePageMetadata, generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
+import { generatePageMetadata, generateOrganizationSchema } from "@/lib/seo";
 import { getPageMessages } from "@/lib/translations";
 import { HeaderServer } from "@/components/layout/header-server";
 import { Footer } from "@/components/layout/footer";
@@ -12,24 +11,10 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
 import { SITE_CONFIG } from "@/lib/constants";
 import { ChatbotIsland } from "@/components/chatbot/ChatbotIsland";
-import { FramerMotionProvider } from "@/components/providers/framer-motion-provider";
 import { IconsSpriteSheet } from "@/components/ui/icons";
 
 
-const fontHeading = Outfit({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-heading",
-  display: "swap",
-  preload: true,
-});
-
-const fontArabic = Amiri({
-  subsets: ["arabic"],
-  variable: "--font-arabic",
-  display: "swap",
-  weight: ["400", "700"],
-  preload: true,
-});
+import { fontHeading, fontArabic } from "@/lib/fonts";
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -53,10 +38,7 @@ export async function generateMetadata({
   };
 }
 
-
-
-
-export default async   function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
@@ -67,11 +49,10 @@ export default async   function LocaleLayout({
   const typedLocale = locale as Locale;
   const direction = getDirection(typedLocale);
   const messages = await getPageMessages(typedLocale, "home");
+  
   return (
     <html lang={typedLocale} dir={direction} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -81,10 +62,10 @@ export default async   function LocaleLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased flex flex-col",
-          fontHeading.variable,
-          fontArabic.variable,
-          typedLocale === 'ar' && "font-arabic"
+          "min-h-screen bg-background antialiased flex flex-col transition-colors duration-300",
+          typedLocale === "ar" 
+            ? `${fontArabic.variable} ${fontArabic.className}` 
+            : `${fontHeading.variable} ${fontHeading.className}`
         )}
       >
         <ThemeProvider
@@ -93,14 +74,12 @@ export default async   function LocaleLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <FramerMotionProvider>
-            <HeaderServer locale={typedLocale} translations={messages.nav} sideDrawerTranslations={messages.sideDrawer} />
-            <main className="flex-1">{children}</main>
-            <Footer locale={typedLocale} translations={messages} />
-            <ClientSideEffects />
-            <ChatbotIsland direction={direction} translations={messages.chatbot} />
-            <IconsSpriteSheet />
-          </FramerMotionProvider>
+          <HeaderServer locale={typedLocale} translations={messages.nav} sideDrawerTranslations={messages.sideDrawer} />
+          <main className="flex-1">{children}</main>
+          <Footer locale={typedLocale} translations={messages} />
+          <ClientSideEffects />
+          <ChatbotIsland direction={direction} translations={messages.chatbot} />
+          <IconsSpriteSheet />
         </ThemeProvider>
       </body>
     </html>

@@ -42,7 +42,7 @@ export default async function PrivacyPage({
           align="left"
         />
         <div className="mt-12 max-w-4xl space-y-12">
-          {Object.entries(t.privacy.content).map(([key, section]: [string, any]) => (
+          {(Object.entries(t.privacy.content) as [string, { title: string; text: string }][]).map(([key, section]) => (
             <div key={key} className="space-y-4">
               <h2 className="text-2xl font-bold font-heading">{section.title}</h2>
               <p className="text-muted-foreground leading-relaxed text-lg">

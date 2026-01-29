@@ -3,9 +3,25 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { Monitor, Cpu, ShoppingCart, Cloud, Zap } from "lucide-react";
 import { ServiceCard } from "../service-card";
 import Link from "next/link";
+import { TranslationValue } from "@/lib/translations";
 
 interface ServicesGridSectionProps {
-    t: any;
+    t: {
+        title: string;
+        subtitle: string;
+        capabilities_grid: {
+            badge: string;
+            custom_card_title: string;
+            custom_card_description: string;
+            custom_card_button: string;
+        };
+        web: { title: string; description: string; [key: string]: TranslationValue };
+        custom: { title: string; description: string; [key: string]: TranslationValue };
+        ecommerce: { title: string; description: string; [key: string]: TranslationValue };
+        cloud: { title: string; description: string; [key: string]: TranslationValue };
+        performance: { title: string; description: string; [key: string]: TranslationValue };
+        [key: string]: TranslationValue;
+    };
     locale: string;
 }
 

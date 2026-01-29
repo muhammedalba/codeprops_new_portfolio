@@ -5,6 +5,12 @@ import { generatePageMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import { PortfolioProjectClient } from '@/components/portfolio/portfolio-project-client';
 
+interface PortfolioProject {
+  slug: string;
+  title: string;
+  description: string;
+}
+
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -13,7 +19,7 @@ export async function generateStaticParams() {
   for (const locale of locales) {
     const t = await getPageMessages(locale as Locale, "portfolio");
     if (t.portfolio && t.portfolio.projects) {
-      t.portfolio.projects.forEach((project: any) => {
+      t.portfolio.projects.forEach((project: PortfolioProject) => {
         paths.push({
           locale,
           slug: project.slug,
@@ -32,7 +38,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = await getPageMessages(locale as Locale, "portfolio");
-  const project = t.portfolio.projects.find((p: any) => p.slug === slug);
+  const project = t.portfolio.projects.find((p: PortfolioProject) => p.slug === slug);
 
   
 
@@ -54,7 +60,7 @@ export default async function ProjectDetailPage({
   const { locale, slug } = await params;
   const typedLocale = locale as Locale;
   const t = await getPageMessages(typedLocale, "portfolio");
-  const project = t.portfolio.projects.find((p: any) => p.slug === slug);
+  const project = t.portfolio.projects.find((p: PortfolioProject) => p.slug === slug);
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://codeprops.com';
 
   if (!project) notFound();

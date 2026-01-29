@@ -1,22 +1,19 @@
 "use client";
 
-import { m } from "framer-motion";
 import { RefreshCw, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ContactTranslations } from "./contact-form";
 
 interface ErrorScreenProps {
     error: string;
     onRetry: () => void;
-    translations?: any;
+    translations?: ContactTranslations;
 }
 
 export function ErrorScreen({ error, onRetry, translations }: ErrorScreenProps) {
     return (
-        <m.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="py-20 text-center space-y-8 flex flex-col items-center justify-center min-h-[400px]"
+        <div
+            className="py-20 text-center space-y-8 flex flex-col items-center justify-center min-h-[400px] animate-[fade-in_0.6s_ease-out_forwards]"
         >
             <div className="relative">
                 {/* Pulsing Background */}
@@ -51,6 +48,6 @@ export function ErrorScreen({ error, onRetry, translations }: ErrorScreenProps) 
                     {translations?.retry_action || "Retry Transmission"}
                 </Button>
             </div>
-        </m.div>
+        </div>
     );
 }

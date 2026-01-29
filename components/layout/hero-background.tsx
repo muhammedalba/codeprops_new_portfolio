@@ -1,7 +1,6 @@
 'use client';
 
-import { memo, useEffect, useState, lazy, Suspense, useTransition } from 'react';
-import { m, LazyMotion, domAnimation } from 'framer-motion';
+import { memo, useEffect, useState, lazy, Suspense } from 'react';
 
 export type AnimationType = 'home' | 'about' | 'services' | 'contact' | 'portfolio';
 
@@ -48,7 +47,6 @@ const animationComponents = {
 function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackgroundProps) {
   const [showHeavy, setShowHeavy] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [startTransition, isPending] = useTransition();
 
   useEffect(() => {
     // 1. Immediate mount state
@@ -91,9 +89,9 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
         }}
       />
 
-      {/* Defer Framer Motion initialization until after mount */}
+      {/* Defer animation mounting until after mount */}
       {isMounted && (
-        <LazyMotion features={domAnimation}>
+        <>
           {/* Primary animation - loads after mount */}
           <Suspense fallback={null}>
             <PrimaryAnimation />
@@ -101,19 +99,15 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
 
           {/* Secondary animations - load after delay / idle */}
           {showHeavy && (
-            <m.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              transition={{ duration: 2 }}
-            >
+            <div className="absolute inset-0 transition-opacity duration-1000 ease-in-out" style={{ opacity: showHeavy ? 1 : 0 }}>
               {SecondaryAnimations.map((SecondaryAnimation, index) => (
                 <Suspense key={index} fallback={null}>
                   <SecondaryAnimation />
                 </Suspense>
               ))}
-            </m.div>
+            </div>
           )}
-        </LazyMotion>
+        </>
       )}
 
       {/* Gradient overlay - Always present for visual consistency */}
@@ -123,3 +117,4 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
 }
 
 export const HeroBackground = memo(HeroBackgroundComponent);
+HeroBackground.displayName = 'HeroBackground';

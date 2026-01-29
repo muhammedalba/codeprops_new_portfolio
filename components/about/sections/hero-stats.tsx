@@ -1,15 +1,31 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useMemo } from "react";
-import { m, useInView, LazyMotion, domAnimation } from "framer-motion";
+import { useEffect, useRef, useMemo, useState } from "react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { Reveal } from "@/hooks/use-reveal";
 const HeroBackground = dynamic(() => import("../../layout/hero-background").then((mod) => mod.HeroBackground), { ssr: false });
 
 interface HeroStatsProps {
-  translations: any;
+  translations: {
+    about: {
+      stats: {
+        projects: string;
+        projects_count: string;
+        clients: string;
+        clients_count: string;
+        years: string;
+        years_count: string;
+        team: string;
+        team_count: string;
+      };
+      badge: string;
+      title: string;
+      subtitle: string;
+    };
+  };
   locale: string;
 }
 interface StatItemProps {
@@ -66,9 +82,24 @@ function useAnimatedCounterZeroRender(
 }
 
 
-function StatItem({ label, value, index, locale }: StatItemProps & { locale: string }) {
-  const refContainer = useRef(null);
-  const isInView = useInView(refContainer, { once: true, margin: "-100px" });
+function StatItem({ label, value, locale }: Omit<StatItemProps, 'index'> & { locale: string }) {
+  const refContainer = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = refContainer.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsInView(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const numericValue = useMemo(() => {
     // تحويل أي أرقام عربية في value إلى أرقام إنجليزية
@@ -120,46 +151,30 @@ export function HeroStats({ translations, locale }: HeroStatsProps) {
           className="mb-8 justify-center"
         />
 
-        <LazyMotion features={domAnimation}>
-          <div className="flex flex-col items-center text-center max-w-5xl mx-auto mb-20 lg:mb-32">
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <SectionBadge variant="primary" className="mb-8">
-                {t.badge}
-              </SectionBadge>
-            </m.div>
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto mb-20 lg:mb-32">
+          <Reveal animation="up">
+            <SectionBadge variant="primary" className="mb-8">
+              {t.badge}
+            </SectionBadge>
+          </Reveal>
 
-            <m.h1
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="text-5xl md:text-8xl font-heading font-bold mb-8 tracking-tighter leading-[0.95] text-balance"
-            >
-              {t.title}
-            </m.h1>
+          <Reveal animation="scale" as="h1" className="text-5xl md:text-8xl font-heading font-bold mb-8 tracking-tighter leading-[0.95] text-balance">
+            {t.title}
+          </Reveal>
 
-            <m.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-              className="flex flex-col items-center gap-8 max-w-3xl"
-            >
-              <p className="text-xl md:text-3xl text-muted-foreground leading-relaxed font-light text-balance">
-                {t.subtitle}
-              </p>
-              <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent" />
-            </m.div>
-          </div>
-        </LazyMotion>
+          <Reveal animation="up" delay={0.2} className="flex flex-col items-center gap-8 max-w-3xl">
+            <p className="text-xl md:text-3xl text-muted-foreground leading-relaxed font-light text-balance">
+              {t.subtitle}
+            </p>
+            <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent" />
+          </Reveal>
+        </div>
 
         {/* Stats Grid */}
         <div className="w-full pt-12 border-t border-border/40">
           <div id="stats" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-0">
             {stats.map((stat, i) => (
-              <StatItem locale={locale} key={i} index={i} label={stat.label} value={stat.value} />
+              <StatItem locale={locale} key={i} label={stat.label} value={stat.value} />
             ))}
           </div>
         </div>

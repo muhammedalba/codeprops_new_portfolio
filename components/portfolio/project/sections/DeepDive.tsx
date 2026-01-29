@@ -1,21 +1,21 @@
 "use client";
 
-import { m } from "framer-motion";
 import { ShieldCheck, AlertCircle, Zap, CheckCircle2 } from "lucide-react";
+import { Reveal } from "@/hooks/use-reveal";
+
+import { PortfolioProject, PortfolioTranslations } from "../../portfolio-project-client";
 
 interface DeepDiveProps {
-  project: any;
-  t: any;
+  project: PortfolioProject;
+  t: PortfolioTranslations;
 }
 
 export default function DeepDive({ project, t }: DeepDiveProps) {
   return (
     <div className="space-y-32">
       {/* Visual Showcase Placeholder */}
-      <m.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+      <Reveal
+        animation="scale"
         className="aspect-video w-full rounded-[4rem] bg-muted/30 border border-border/50 relative overflow-hidden group shadow-2xl shadow-black/20"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent-secondary/5 group-hover:bg-primary/10 transition-colors duration-700" />
@@ -26,14 +26,13 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
            <div className="px-6 py-2 rounded-full bg-background/80 backdrop-blur-md border border-border/50 text-[10px] font-bold uppercase tracking-widest">{t.details.performance_matrix}</div>
            <div className="px-6 py-2 rounded-full bg-background/80 backdrop-blur-md border border-border/50 text-[10px] font-bold uppercase tracking-widest">{t.details.security_pass}</div>
         </div>
-      </m.div>
+      </Reveal>
 
       {/* Narrative Sections */}
       <div className="space-y-16 max-w-4xl">
-        <m.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <Reveal
+          animation="up"
+          as="section"
           className="group"
         >
           <div className="flex items-center gap-3 mb-8">
@@ -45,12 +44,12 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
           <p className="ps-2 text-md md:text-lg text-muted-foreground leading-relaxed font-light">
             {project.problem}
           </p>
-        </m.section>
+        </Reveal>
 
-        <m.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <Reveal
+          animation="up"
+          delay={0.1}
+          as="section"
           className="group"
         >
           <div className="flex items-center gap-3 mb-8">
@@ -62,12 +61,12 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
           <p className="text-md md:text-lg text-muted-foreground leading-relaxed font-light">
             {project.solution}
           </p>
-        </m.section>
+        </Reveal>
 
-        <m.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <Reveal
+          animation="up"
+          delay={0.2}
+          as="section"
           className="group"
         >
           <div className="flex items-center gap-3 mb-8">
@@ -79,7 +78,7 @@ export default function DeepDive({ project, t }: DeepDiveProps) {
           <p className="text-md md:text-lg text-muted-foreground leading-relaxed font-light">
             {project.result}
           </p>
-        </m.section>
+        </Reveal>
       </div>
     </div>
   );

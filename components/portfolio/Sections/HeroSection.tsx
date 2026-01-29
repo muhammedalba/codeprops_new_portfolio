@@ -1,9 +1,10 @@
 "use client";
-import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import dynamic from "next/dynamic";
+import { Reveal } from "@/hooks/use-reveal";
+import { PortfolioTranslations } from "../portfolio-project-client";
 
 
 // dynamic import
@@ -15,7 +16,7 @@ const HeroBackground = dynamic(
 // define props interface
 interface HeroSectionProps {
     locale: string;
-    t: any;
+    t: PortfolioTranslations;
 }
 
 export default function HeroSection({ locale, t }: HeroSectionProps) {
@@ -29,9 +30,8 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
               locale={locale}
             />
           </div>
-          <m.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+          <Reveal
+            animation="up"
             className="max-w-4xl mx-auto space-y-8"
           >
             <SectionBadge>{locale === 'ar' ? "معرض الأعمال" : "Engineering Portfolio"}</SectionBadge>
@@ -41,7 +41,7 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
             <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto">
               {t.subtitle}
             </p>
-          </m.div>
+          </Reveal>
         </Container>
       </section>
     );

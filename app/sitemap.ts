@@ -52,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Portfolio projects
     const tp = await getPageMessages(locale as Locale, "portfolio");
     if (tp.portfolio && tp.portfolio.projects) {
-      tp.portfolio.projects.forEach((project: any) => {
+      tp.portfolio.projects.forEach((project: { slug: string }) => {
         const path = `/portfolio/${project.slug}`;
         sitemap.push({
           url: `${baseUrl}/${locale}${path}`,
@@ -74,7 +74,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Blog posts
     const tb = await getPageMessages(locale as Locale, "blog");
     if (tb.blog && tb.blog.posts) {
-      tb.blog.posts.forEach((post: any) => {
+      tb.blog.posts.forEach((post: { slug: string; dateModified?: string }) => {
         const path = `/blog/${post.slug}`;
         sitemap.push({
           url: `${baseUrl}/${locale}${path}`,

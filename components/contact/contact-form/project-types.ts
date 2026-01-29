@@ -1,6 +1,13 @@
-import { Monitor, Layers, Cloud, Zap, Sparkles } from "lucide-react";
+import { Monitor, Layers, Cloud, Zap, Sparkles, LucideIcon } from "lucide-react";
 
-export const getProjectTypes = (t: any) => [
+export interface ProjectType {
+  id: string;
+  icon: LucideIcon;
+  label: string;
+  color: string;
+}
+
+export const getProjectTypes = (t: { web: string; mobile: string; cloud: string; consulting: string; other: string }): ProjectType[] => [
   { id: "web", icon: Monitor, label: t.web, color: "red" },
   { id: "mobile", icon: Layers, label: t.mobile, color: "green" },
   { id: "cloud", icon: Cloud, label: t.cloud, color: "blue" },

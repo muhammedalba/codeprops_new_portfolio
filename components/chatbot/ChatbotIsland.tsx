@@ -6,6 +6,8 @@ const Chatbot = dynamic(() => import("./Chatbot").then(mod => mod.Chatbot), {
   ssr: false,
 });
 
-export function ChatbotIsland({ translations, direction }: { translations?: any, direction?: string }) {
+import { ChatbotTranslations } from "./Chatbot";
+
+export function ChatbotIsland({ translations, direction }: { translations?: ChatbotTranslations, direction?: string }) {
   return <Chatbot translations={translations} direction={direction} />;
 }

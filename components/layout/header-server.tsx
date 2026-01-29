@@ -10,6 +10,7 @@ import { MobileMenuButton } from './mobile-menu-button';
 import { SideDrawerButton } from './side-drawer-button';
 import { ThemeToggle } from './theme-toggle';
 import { Button } from '@/components/ui/button';
+import { TranslationMessages } from '@/lib/translations';
 
 interface HeaderServerProps {
   locale: Locale;
@@ -21,7 +22,7 @@ interface HeaderServerProps {
     blog: string;
     contact: string;
   };
-  sideDrawerTranslations?: any;
+  sideDrawerTranslations?: TranslationMessages;
 }
 
 /**

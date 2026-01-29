@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { LayoutGridIcon } from '@/components/ui/inline-icons';
 import dynamic from 'next/dynamic';
 import type { Locale } from '@/lib/i18n';
+import { TranslationMessages } from '@/lib/translations';
 
 const SideDrawer = dynamic(() => import('./side-drawer').then(mod => mod.SideDrawer), {
   ssr: false,
@@ -12,7 +13,7 @@ const SideDrawer = dynamic(() => import('./side-drawer').then(mod => mod.SideDra
 
 interface SideDrawerButtonProps {
   locale: Locale;
-  translations?: any;
+  translations?: TranslationMessages;
 }
 
 /**

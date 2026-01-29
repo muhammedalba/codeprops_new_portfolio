@@ -4,17 +4,35 @@ import React from "react";
 import { useChatbot } from "@/hooks/use-chatbot";
 import { ChatbotIcon } from "./ChatbotIcon";
 import dynamic from "next/dynamic";
-import { LazyMotion, domAnimation } from "framer-motion";
-
 const ChatbotWindow = dynamic(() => import("./ChatbotWindow").then(mod => mod.ChatbotWindow), {
   ssr: false,
 });
 
-export function Chatbot({ translations, direction }: { translations?: any, direction?: string }) {
+import { TranslationValue } from "@/lib/translations";
+
+export interface ChatbotTranslations {
+  welcome: {
+    title: string;
+    message: string;
+  };
+  window: {
+    title: string;
+    status: string;
+    placeholder: string;
+    emptyMessage: string;
+    disclaimer: string;
+  };
+  tooltip: string;
+  placeholder: string;
+  send: string;
+  [key: string]: TranslationValue;
+}
+
+export function Chatbot({ translations, direction }: { translations?: ChatbotTranslations, direction?: string }) {
   const { messages, isLoading, isOpen, toggleChat, sendMessage } = useChatbot();
 
   return (
-    <LazyMotion features={domAnimation}>
+    <>
       <ChatbotIcon 
         isOpen={isOpen} 
         onClick={toggleChat} 
@@ -29,6 +47,6 @@ export function Chatbot({ translations, direction }: { translations?: any, direc
         translations={translations}
         direction={direction}       
       />
-    </LazyMotion>
+    </>
   );
 }

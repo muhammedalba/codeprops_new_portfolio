@@ -43,7 +43,7 @@ export default async function TermsPage({
           align="left"
         />
         <div className="mt-12 max-w-4xl space-y-12">
-          {Object.entries(t.terms.content).map(([key, section]: [string, any]) => (
+          {(Object.entries(t.terms.content) as [string, { title: string; text: string }][]).map(([key, section]) => (
             <div key={key} className="space-y-4">
               <h2 className="text-2xl font-bold font-heading">{section.title}</h2>
               <p className="text-muted-foreground leading-relaxed text-lg">

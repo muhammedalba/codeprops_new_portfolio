@@ -40,7 +40,7 @@ export function TestimonialCard({ testimonial, className = '' }: TestimonialCard
         {/* Quote */}
         <blockquote className="relative z-10 mb-8 min-h-[120px]">
           <p className="text-lg md:text-xl text-foreground/90 font-medium leading-relaxed line-clamp-4">
-            "{testimonial.quote}"
+            &quot;{testimonial.quote}&quot;
           </p>
         </blockquote>
 
