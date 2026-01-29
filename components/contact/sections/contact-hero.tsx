@@ -6,8 +6,11 @@ import { SectionBadge } from "@/components/ui/section-badge";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import dynamic from "next/dynamic";
 
-// dinamic import 
-const HeroBackground = dynamic(() => import("@/components/layout/hero-background").then((mod) => mod.HeroBackground));
+// dynamic import 
+const HeroBackground = dynamic(
+  () => import("@/components/layout/hero-background").then((mod) => mod.HeroBackground),
+  { ssr: false }
+);
 
 interface ContactHeroProps {
   title: string;

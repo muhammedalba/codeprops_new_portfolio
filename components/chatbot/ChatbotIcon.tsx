@@ -84,6 +84,9 @@ export const ChatbotIcon = memo(function ChatbotIcon({
             >
               <button 
                 onClick={handleDismissWelcome}
+                aria-label="Close welcome message"
+                title="Close welcome message"
+                name="close-welcome-message"
                 className="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors"
               >
                 <XIcon className="w-3.5 h-3.5" />

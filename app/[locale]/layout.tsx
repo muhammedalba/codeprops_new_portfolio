@@ -13,13 +13,14 @@ import { ClientSideEffects } from "@/components/providers/client-side-effects";
 import { SITE_CONFIG } from "@/lib/constants";
 import { ChatbotIsland } from "@/components/chatbot/ChatbotIsland";
 import { FramerMotionProvider } from "@/components/providers/framer-motion-provider";
+import { IconsSpriteSheet } from "@/components/ui/icons";
 
 
 const fontHeading = Outfit({
   subsets: ["latin", "latin-ext"],
   variable: "--font-heading",
   display: "swap",
-
+  preload: true,
 });
 
 const fontArabic = Amiri({
@@ -27,6 +28,7 @@ const fontArabic = Amiri({
   variable: "--font-arabic",
   display: "swap",
   weight: ["400", "700"],
+  preload: true,
 });
 
 export async function generateStaticParams() {
@@ -68,6 +70,8 @@ export default async   function LocaleLayout({
   return (
     <html lang={typedLocale} dir={direction} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -95,6 +99,7 @@ export default async   function LocaleLayout({
             <Footer locale={typedLocale} translations={messages} />
             <ClientSideEffects />
             <ChatbotIsland direction={direction} translations={messages.chatbot} />
+            <IconsSpriteSheet />
           </FramerMotionProvider>
         </ThemeProvider>
       </body>

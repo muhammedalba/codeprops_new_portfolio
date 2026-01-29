@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { HeroBackground } from "../layout/hero-background";
+import { HeroBackgroundIsland } from "../layout/hero-background-island";
 import { Icons } from "@/components/ui/icons";
 
 
@@ -24,7 +24,7 @@ function HeroSectionComponent({ locale, translations }: HeroSectionProps) {
 
   return (
     <section className="relative min-h-screen flex items-start md:items-center overflow-hidden bg-background md:pt-16">
-      <HeroBackground type="home"  />
+      <HeroBackgroundIsland type="home"  />
 
       <div className="container relative mt-16 z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-4xl">

@@ -2,8 +2,13 @@
 
 import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
-import { HeroBackground } from "@/components/layout/hero-background";
+import dynamic from "next/dynamic";
 import { SectionBadge } from "@/components/ui/section-badge";
+
+const HeroBackground = dynamic(
+  () => import("@/components/layout/hero-background").then((mod) => mod.HeroBackground),
+  { ssr: false }
+);
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { GlassCard } from "@/components/ui/glass-card";
 import { ArrowLeft, Gauge, Globe, Smartphone, Cpu, Layout } from "lucide-react";

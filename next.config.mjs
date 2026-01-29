@@ -4,8 +4,24 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 const nextConfig = {
   // CRITICAL: Static export only - no SSR, ISR, or server features
   output: 'export',
+  // 
+  compiler: {
+    // Disable legacy JS transforms if targeting modern browsers
+    styledComponents: true,
+  },
+  // swcMinify is true by default in Next.js 13+
   
-  // Disable image optimization for static export
+  // OPTIMIZATION: Ensure only used components/icons are bundled
+  experimental: {
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      '@radix-ui/react-slot',
+      '@radix-ui/react-dropdown-menu',
+      'clsx',
+      'tailwind-merge'
+    ],
+  },
   images: {
     unoptimized: true,
   },
@@ -40,60 +56,65 @@ const nextConfig = {
       config.optimization.splitChunks = {
         chunks: 'all',
         cacheGroups: {
-          // Separate framer-motion (heavy animation library)
+          // Separate framer-motion
           framerMotion: {
             test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
             name: 'framer-motion',
+            chunks: 'all',
             priority: 30,
-            reuseExistingChunk: true,
           },
-          // Separate our custom animations
+          // Separate our custom animations (JS only)
           animations: {
-            test: /[\\/]components[\\/]animations[\\/]/,
+            test: /[\\/]components[\\/]animations[\\/].*\.(js|jsx|ts|tsx)$/,
             name: 'animations',
+            chunks: 'all',
             priority: 25,
-            reuseExistingChunk: true,
           },
           // Separate lucide-react icons
           lucideReact: {
             test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
             name: 'lucide-icons',
+            chunks: 'all',
             priority: 20,
-            reuseExistingChunk: true,
           },
           // Separate radix-ui components
           radixUI: {
             test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
             name: 'radix-ui',
+            chunks: 'all',
             priority: 15,
-            reuseExistingChunk: true,
           },
-          // Separate forms and validation (zod, react-hook-form)
-          forms: {
-            test: /[\\/]node_modules[\\/](react-hook-form|zod|@hookform)[\\/]/,
-            name: 'forms-bundle',
-            priority: 14,
-            reuseExistingChunk: true,
-          },
-          // Separate React core (always needed together)
+          // Separate React core (High priority, JS only)
           reactCore: {
-            test: /[\\/]node_modules[\\/](react|react-dom|next)[\\/]/,
+            test: /[\\/]node_modules[\\/](react|react-dom|next|scheduler)[\\/].*\.(js|jsx|ts|tsx)$/,
             name: 'react-core',
+            chunks: 'all',
             priority: 12,
-            reuseExistingChunk: true,
           },
-          // Vendor chunk for remaining node_modules
+          // Vendor chunk for remaining node_modules (JS only)
           vendor: {
-            test: /[\\/]node_modules[\\/]/,
+            test: /[\\/]node_modules[\\/].*\.(js|jsx|ts|tsx)$/,
             name: 'vendor',
+            chunks: 'all',
             priority: 10,
-            reuseExistingChunk: true,
           },
         },
       };
     }
     return config;
   },
+
+  async headers() {
+  return [
+    {
+      source: '/_next/static/:path*',
+      headers: [
+        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+      ],
+    },
+  ]
+}
+
 };
 
 const bundleAnalyzer = withBundleAnalyzer({

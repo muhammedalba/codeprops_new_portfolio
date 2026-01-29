@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useEffect, useState, lazy, Suspense } from 'react';
+import { memo, useEffect, useState, lazy, Suspense, useTransition } from 'react';
 import { m, LazyMotion, domAnimation } from 'framer-motion';
 
 export type AnimationType = 'home' | 'about' | 'services' | 'contact' | 'portfolio';
@@ -47,10 +47,26 @@ const animationComponents = {
 
 function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackgroundProps) {
   const [showHeavy, setShowHeavy] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [startTransition, isPending] = useTransition();
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowHeavy(true), showHeavyDelay);
-    return () => clearTimeout(timer);
+    // 1. Immediate mount state
+    setIsMounted(true);
+
+    // 2. Defer heavy animations until after first paint and idle
+    const loadHeavy = () => {
+      const timer = setTimeout(() => {
+        setShowHeavy(true);
+      }, showHeavyDelay);
+      return () => clearTimeout(timer);
+    };
+
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      window.requestIdleCallback(() => loadHeavy());
+    } else {
+      loadHeavy();
+    }
   }, [showHeavyDelay]);
 
   // Get animations for current page type
@@ -59,28 +75,50 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
   const SecondaryAnimations = animations.secondary;
 
   return (
-    <LazyMotion features={domAnimation}>
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Primary animation - loads immediately */}
-        <Suspense fallback={null}>
-          <PrimaryAnimation />
-        </Suspense>
+    <div 
+      className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none"
+      aria-hidden="true"
+    >
+      {/* 
+        LIGHTWEIGHT FALLBACK: 
+        Immediate CSS-only background to prevent LCP issues.
+        This renders while heavy JS-based animations are loading.
+      */}
+      <div 
+        className="absolute inset-0 bg-background transition-opacity duration-1000"
+        style={{
+          background: 'radial-gradient(circle at 50% -20%, hsl(var(--primary)/0.15) 0%, transparent 70%)',
+        }}
+      />
 
-        {/* Secondary animations - load after delay */}
-        {showHeavy && (
-          <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
-            {SecondaryAnimations.map((SecondaryAnimation, index) => (
-              <Suspense key={index} fallback={null}>
-                <SecondaryAnimation />
-              </Suspense>
-            ))}
-          </m.div>
-        )}
+      {/* Defer Framer Motion initialization until after mount */}
+      {isMounted && (
+        <LazyMotion features={domAnimation}>
+          {/* Primary animation - loads after mount */}
+          <Suspense fallback={null}>
+            <PrimaryAnimation />
+          </Suspense>
 
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
-      </div>
-    </LazyMotion>
+          {/* Secondary animations - load after delay / idle */}
+          {showHeavy && (
+            <m.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              transition={{ duration: 2 }}
+            >
+              {SecondaryAnimations.map((SecondaryAnimation, index) => (
+                <Suspense key={index} fallback={null}>
+                  <SecondaryAnimation />
+                </Suspense>
+              ))}
+            </m.div>
+          )}
+        </LazyMotion>
+      )}
+
+      {/* Gradient overlay - Always present for visual consistency */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
+    </div>
   );
 }
 
