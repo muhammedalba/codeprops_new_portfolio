@@ -108,12 +108,21 @@ export function Footer({ locale, translations }: FooterProps) {
               <ul className="space-y-2">
                 {navigation.legal.map((item) => (
                   <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {item.name}
-                    </Link>
+                    {item.href.startsWith('http') || item.href.endsWith('.xml') ? (
+                      <a
+                        href={item.href}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
