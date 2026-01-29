@@ -54,7 +54,7 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend, translation
           initial={{ opacity: 0, scale: 0.9, y: 20, x: -20 }}
           animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20, x: -20 }}
-          className="fixed bottom-24 left-6 z-[9998] w-[380px] h-[600px] max-h-[80vh] flex flex-col bg-background/80 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden"
+          className="fixed bottom-24 left-6 z-[9998] max-w-[90%] h-[600px] max-h-[80vh] flex flex-col bg-background/80 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden"
         >
           {/* Header */}
           <div className="p-6 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground">
