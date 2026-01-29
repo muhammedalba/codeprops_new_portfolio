@@ -12,7 +12,7 @@ const AnimatedGradientMesh = dynamic(() => import('@/components/animations/anima
 const ArchitecturalLines = dynamic(() => import('@/components/animations/architectural-lines').then(m => m.ArchitecturalLines), { ssr: false });
 const ConnectivityOrb = dynamic(() => import('@/components/animations/connectivity-orb').then(m => m.ConnectivityOrb), { ssr: false });
 
-type AnimationType = 'home' | 'about' | 'services' | 'contact' | 'portfolio';
+export type AnimationType = 'home' | 'about' | 'services' | 'contact' | 'portfolio';
 
 interface HeroBackgroundProps {
   type: AnimationType;

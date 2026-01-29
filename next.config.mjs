@@ -1,3 +1,5 @@
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // CRITICAL: Static export only - no SSR, ISR, or server features
@@ -31,6 +33,38 @@ const nextConfig = {
     'http://localhost:3000',
     'http://172.20.10.5:3000'
   ],
+
+  // Advanced Webpack configuration for code splitting
+  webpack: (config, { isServer, dev }) => {
+    if (!isServer && !dev && config.optimization?.splitChunks) {
+      config.optimization.splitChunks.cacheGroups = {
+        ...config.optimization.splitChunks.cacheGroups,
+        framework: {
+          name: 'framework',
+          test: /[\\/]node_modules[\\/](react|react-dom|next)[\\/]/,
+          priority: 40,
+          chunks: 'all',
+        },
+        framer: {
+          name: 'framer-motion',
+          test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+          priority: 30,
+          chunks: 'all',
+        },
+        lucide: {
+          name: 'lucide-react',
+          test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+          priority: 25,
+          chunks: 'all',
+        },
+      };
+    }
+    return config;
+  },
 };
 
-export default nextConfig;
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+export default bundleAnalyzer(nextConfig);

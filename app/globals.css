@@ -196,12 +196,12 @@
   @keyframes fade-up {
     from {
       opacity: 0;
-      transform: translateY(15px);
+      transform: translate3d(0, 15px, 0);
     }
 
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -217,11 +217,23 @@
 
   @keyframes reveal-up {
     from {
-      transform: translateY(100%);
+      transform: translate3d(0, 100%, 0);
     }
 
     to {
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+      transform: translate3d(0, -10px, 0);
     }
   }
 
@@ -286,4 +298,3 @@
     background: rgba(255, 255, 255, 0.1);
   }
 }
-

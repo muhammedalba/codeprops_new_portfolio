@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,14 +13,16 @@ import { useRecaptcha } from "@/hooks/use-recaptcha";
 
 // Dynamic imports for steps
 const StepOne = dynamic(() => import("./StepOne").then(mod => mod.StepOne), {
+  ssr: false,
   loading: () => <div className="h-[400px] animate-pulse bg-muted/20 rounded-2xl" />
 });
 const StepTwo = dynamic(() => import("./StepTwo").then(mod => mod.StepTwo), {
+  ssr: false,
   loading: () => <div className="h-[400px] animate-pulse bg-muted/20 rounded-2xl" />
 });
 
-const SuccessScreen = dynamic(() => import("./SuccessScreen").then(mod => mod.SuccessScreen));
-const ErrorScreen = dynamic(() => import("./ErrorScreen").then(mod => mod.ErrorScreen));
+const SuccessScreen = dynamic(() => import("./SuccessScreen").then(mod => mod.SuccessScreen), { ssr: false });
+const ErrorScreen = dynamic(() => import("./ErrorScreen").then(mod => mod.ErrorScreen), { ssr: false });
 
 export function ContactForm({ translations }: any) {
   const [step, setStep] = useState(1);

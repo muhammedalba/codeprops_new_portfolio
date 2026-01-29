@@ -3,13 +3,14 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+
 interface ArticleContentProps {
   locale: string;
   post: any;
   t: any;
 }
 
-function ArticleContentComponent({ locale, post, t }: ArticleContentProps) {
+export function ArticleContent({ locale, post, t }: ArticleContentProps) {
   return (
     <article className="prose prose-invert prose-primary max-w-none w-full min-w-0 break-words">
       <div id="intro" className="scroll-mt-40">
@@ -92,5 +93,3 @@ async function syncGlobalNode(data, edgeId) {
     </article>
   );
 }
-
-export default React.memo(ArticleContentComponent);

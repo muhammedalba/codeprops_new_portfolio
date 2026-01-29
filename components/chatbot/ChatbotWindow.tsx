@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { Send, Loader2, Bot, Info } from "lucide-react";
 import { ChatMessage } from "./ChatMessage";

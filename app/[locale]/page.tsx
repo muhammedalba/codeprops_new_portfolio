@@ -3,11 +3,12 @@ import { getPageMessages } from "@/lib/translations";
 import { generatePageMetadata, generateWebSiteSchema } from "@/lib/seo";
 import { Metadata } from "next";
 import { HeroSection } from "@/components/home/hero-section";
-import { MiniContact } from "@/components/contact/sections/mini-contact";
+// import { MiniContact } from "@/components/contact/sections/mini-contact";
 import { AboutSection } from "@/components/sections/about-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
+import { ContactCTA } from "@/components/contact/sections/contact-cta";
 
 // Lazy load below-fold sections to reduce initial bundle
 const MethodologySection = dynamic(
@@ -146,9 +147,15 @@ export default async function HomePage({
             autoScrollSpeed={30}
           />
         </Suspense>
-        
-        {/* Final CTA - Important, loads immediately */}
-        <MiniContact translations={t.contact} />
+           {/* Final CTA - Important, loads immediately */}
+        <Suspense fallback={<div className="min-h-[300px]" />}>
+                <ContactCTA
+                  locale={typedLocale}
+                  title={t.contact?.cta?.title || ""}
+                  description={t.contact?.cta?.description || ""}
+                  button={t.contact?.cta?.button || ""}
+                />
+              </Suspense>
       </main>
     </>
   );

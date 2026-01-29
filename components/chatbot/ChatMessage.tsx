@@ -1,4 +1,6 @@
+"use client";
 
+import React from "react";
 import { Message } from "@/hooks/use-chatbot";
 import { cn } from "@/lib/utils";
 import { User, Bot } from "lucide-react";

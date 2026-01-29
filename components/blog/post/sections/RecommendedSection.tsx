@@ -9,7 +9,7 @@ interface RecommendedSectionProps {
   t: any;
 }
 
-function RecommendedSectionComponent({ locale, t }: RecommendedSectionProps) {
+export function RecommendedSection({ locale, t }: RecommendedSectionProps) {
   return (
     <section className="py-24 bg-muted/20 border-t border-border/50">
       <Container>
@@ -32,5 +32,3 @@ function RecommendedSectionComponent({ locale, t }: RecommendedSectionProps) {
     </section>
   );
 }
-
-export default React.memo(RecommendedSectionComponent);

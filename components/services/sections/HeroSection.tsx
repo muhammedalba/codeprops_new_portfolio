@@ -1,12 +1,8 @@
 
-"use client";
-import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-//  dinamic import
-const HeroBackground = dynamic(() => import("@/components/layout/hero-background").then((mod) => mod.HeroBackground), { ssr: false });
+import { HeroBackgroundIsland } from "@/components/layout/hero-background-island";
 
 interface HeroSectionProps {
   locale: string;
@@ -17,7 +13,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
     return (<>
               {/* Hero Section */}
               <section id="hero" className="relative min-h-[90vh] flex items-center pt-32 pb-24 overflow-hidden">
-                <HeroBackground type="services" />
+                <HeroBackgroundIsland type="services" />
                 
                 <Container className="relative z-10">
                   <div className="flex justify-center mb-10">
@@ -28,12 +24,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
                     />
                   </div>
                   <div className="max-w-4xl mx-auto text-center">
-                    <m.div
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8 }}
-                      className="space-y-10"
-                    >
+                    <div className="space-y-10 opacity-0 animate-[fade-up_0.8s_ease-out_forwards]">
                       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-bold uppercase tracking-widest">
                         <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                         Elite Software Engineering
@@ -60,7 +51,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
                           Consult an Architect
                         </Link>
                       </div>
-                    </m.div>
+                    </div>
                   </div>
                 </Container>
         
@@ -68,5 +59,5 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
                 <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 blur-[100px] pointer-events-none" />
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-secondary/10 blur-[120px] pointer-events-none" />
               </section>
-   </> );
+    </> );
 }

@@ -1,28 +1,23 @@
-"use client";
-
 import React from "react";
-import dynamic from "next/dynamic";
-import { m } from "framer-motion";
+
 import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { Icons } from "@/components/ui/icons";
 import Link from "next/link";
 
-const HeroBackground = dynamic(() => import("@/components/layout/hero-background").then((mod) => mod.HeroBackground), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-  ssr: false
-});
+import { HeroBackgroundIsland } from "@/components/layout/hero-background-island";
+
 interface HeroSectionProps {
   locale: string;
   post: any;
   translations: any;
 }
 
-function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) {
+export function HeroSection({ locale, post, translations }: HeroSectionProps) {
   return (
     <section className="relative pt-40 pb-20 overflow-hidden">
-      <HeroBackground type="about" />
+      <HeroBackgroundIsland type="about" />
       <Container className="relative z-10">
         <Breadcrumbs 
           items={[
@@ -41,13 +36,9 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
         </Link>
 
         <div className="grid lg:grid-cols-[1fr,400px] gap-12 items-end">
-          <m.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8 opacity-0 animate-[fade-up_0.8s_ease-out_forwards]">
             <div className="flex flex-wrap items-center gap-4 text-xs font-mono font-bold uppercase tracking-widest text-primary">
-              <span className="px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">{translations.category}</span>
+              <span className="px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">{translations.category || "Insight"}</span>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Calendar size={14} /> {post.date}
               </div>
@@ -59,13 +50,9 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
             <h1 className="text-5xl md:text-8xl font-heading font-bold tracking-tighter leading-[0.9]">
               {post.title}
             </h1>
-          </m.div>
+          </div>
 
-          <m.div 
-             initial={{ opacity: 0, x: 30 }}
-             animate={{ opacity: 1, x: 0 }}
-             className="flex items-center gap-6 p-6 rounded-[2.5rem] bg-muted/30 border border-border/50 backdrop-blur-sm"
-          >
+          <div className="flex items-center gap-6 p-6 rounded-[2.5rem] bg-muted/30 border border-border/50 backdrop-blur-sm opacity-0 animate-[fade-up_0.8s_ease-out_0.2s_forwards]">
              <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center font-bold text-3xl text-primary overflow-hidden border border-primary/30">
                 {post.author[0]}
              </div>
@@ -77,11 +64,9 @@ function HeroSectionComponent({ locale, post, translations }: HeroSectionProps) 
                    <Icons.twitter size={14} className="text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
                 </div>
              </div>
-          </m.div>
+          </div>
         </div>
       </Container>
     </section>
   );
 }
-
-export default React.memo(HeroSectionComponent);

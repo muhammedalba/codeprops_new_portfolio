@@ -1,7 +1,9 @@
+"use client";
+
+import React, { useState, useEffect, useCallback, memo } from "react";
 import { BotMessageSquareIcon, X } from "lucide-react";
 import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { useState, useEffect, useCallback, memo } from "react";
 
 interface ChatbotIconProps {
   isOpen: boolean;

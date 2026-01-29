@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Outfit, Amiri } from "next/font/google";
 import "../globals.css";
@@ -10,11 +11,9 @@ import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
 import { FramerMotionProvider } from "@/components/providers/framer-motion-provider";
-
-
-
 import { SITE_CONFIG } from "@/lib/constants";
-import { Chatbot } from "@/components/chatbot/Chatbot";
+
+
 
 const fontHeading = Outfit({
   subsets: ["latin", "latin-ext"],
@@ -52,6 +51,8 @@ export async function generateMetadata({
   };
 }
 
+
+import { Chatbot } from "@/components/chatbot/Chatbot";
 
 export default async   function LocaleLayout({
   children,

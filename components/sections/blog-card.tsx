@@ -51,6 +51,8 @@ function BlogCardComponent({
           height={433}
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 693px"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest border border-border/50">
           {category}

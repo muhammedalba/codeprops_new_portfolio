@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useChatbot } from "@/hooks/use-chatbot";
 import { ChatbotIcon } from "./ChatbotIcon";
 import dynamic from "next/dynamic";

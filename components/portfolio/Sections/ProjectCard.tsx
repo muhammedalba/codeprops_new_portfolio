@@ -117,6 +117,8 @@ function ProjectCardComponent({
             width={650}
             height={550}
             priority={index === 0}
+            loading={index === 0 ? undefined : "lazy"}
+            decoding="async"
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 693px"
             src={imageSrc}

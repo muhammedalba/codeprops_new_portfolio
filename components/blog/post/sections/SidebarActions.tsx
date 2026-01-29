@@ -10,7 +10,7 @@ interface SidebarActionsProps {
   t: any;
 }
 
-function SidebarActionsComponent({ locale, tags, t }: SidebarActionsProps) {
+export function SidebarActions({ locale, tags, t }: SidebarActionsProps) {
   return (
     <aside className="space-y-12 sticky top-32">
       <div className="space-y-6">
@@ -50,5 +50,3 @@ function SidebarActionsComponent({ locale, tags, t }: SidebarActionsProps) {
     </aside>
   );
 }
-
-export default React.memo(SidebarActionsComponent);

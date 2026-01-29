@@ -1,11 +1,6 @@
-"use client";
-
-import { m } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { SectionHeader } from "@/components/ui/section-header";
-
-import {  Box, Cpu, Rocket, ShieldCheck } from "lucide-react";
-
+import { Box, Cpu, Rocket, ShieldCheck } from "lucide-react";
 
 interface ProcessLoopProps {
   title: string;
@@ -14,13 +9,12 @@ interface ProcessLoopProps {
 }
 
 export function ProcessLoop({ title, subtitle, steps }: ProcessLoopProps) {
-  // const icons = [Cpu, Box, Rocket, ShieldCheck];
   const icons = [
-  { icon: Cpu, color: "red" },
-  { icon: Box, color: "blue" },
-  { icon: Rocket, color: "green" },
-  { icon: ShieldCheck, color: "yellow" }
-];
+    { icon: Cpu, color: "red" },
+    { icon: Box, color: "blue" },
+    { icon: Rocket, color: "green" },
+    { icon: ShieldCheck, color: "yellow" }
+  ];
 
   return (
     <section id="process" className="relative py-24 md:py-32 overflow-hidden">
@@ -43,13 +37,10 @@ export function ProcessLoop({ title, subtitle, steps }: ProcessLoopProps) {
             const Icon = icons[i].icon;
             const color = icons[i].color;
             return (
-              <m.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative group flex flex-col items-center text-center"
+                className="relative group flex flex-col items-center text-center opacity-0 animate-[fade-up_0.6s_ease-out_forwards]"
+                style={{ animationDelay: `${i * 0.15}s` }}
               >
                 <div className="w-16 h-16 rounded-2xl bg-background border border-border flex items-center justify-center mb-8 group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.2)] transition-all duration-500 z-10">
                   <Icon color={color} className="group-hover:scale-110 transition-transform" size={28} />
@@ -69,7 +60,7 @@ export function ProcessLoop({ title, subtitle, steps }: ProcessLoopProps) {
                 {i < steps.length - 1 && (
                   <div className="md:hidden w-px h-8 bg-border my-4" />
                 )}
-              </m.div>
+              </div>
             );
           })}
         </div>
