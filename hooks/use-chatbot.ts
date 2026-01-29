@@ -14,18 +14,26 @@ export function useChatbot() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
   
   // Ref for caching to avoid redundant API calls if needed
   const cacheRef = useRef<Record<string, string>>({});
 
-  // Initialize session and history
+  // Initialize session ID only (don't fetch history yet)
   useEffect(() => {
     const storedSessionId = localStorage.getItem("chatbot_session_id");
     if (storedSessionId) {
       setSessionId(storedSessionId);
-      fetchHistory(storedSessionId);
     }
   }, []);
+
+  // Fetch history only when chatbot is opened for the first time
+  useEffect(() => {
+    if (isOpen && !historyLoaded && sessionId) {
+      fetchHistory(sessionId);
+      setHistoryLoaded(true);
+    }
+  }, [isOpen, historyLoaded, sessionId]);
 
   const fetchHistory = async (id: string) => {
     try {

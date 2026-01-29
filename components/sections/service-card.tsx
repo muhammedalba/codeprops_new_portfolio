@@ -1,5 +1,3 @@
-import React, { memo } from "react";
-// import { LucideIcon, ArrowUpRight } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlowEffect } from "@/components/ui/glow-effect";
 import { cn } from "@/lib/utils";
@@ -14,7 +12,7 @@ interface ServiceCardProps {
   className?: string;
 }
 
-function ServiceCardComponent({
+export function ServiceCard({
   title,
   description,
   icon: Icon,
@@ -79,5 +77,3 @@ function ServiceCardComponent({
     </GlassCard>
   );
 }
-
-export const ServiceCard = memo(ServiceCardComponent);

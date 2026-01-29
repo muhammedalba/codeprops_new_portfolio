@@ -1,4 +1,3 @@
-import React, { memo } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -15,7 +14,7 @@ interface BlogCardProps {
   image?: string;
 }
 
-function BlogCardComponent({
+export function BlogCard({
   category,
   date,
   title,
@@ -79,5 +78,3 @@ function BlogCardComponent({
     </div>
   );
 }
-
-export const BlogCard = memo(BlogCardComponent);

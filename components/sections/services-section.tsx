@@ -1,9 +1,6 @@
-import React, { memo } from "react";
-// import { Globe2, Code2, Smartphone, Cpu, Check } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ServiceCard } from "@/components/sections/service-card";
 import { Container } from "@/components/layout/container";
-import { SectionReveal } from "../animations/section-reveal";
 import { Icons } from "@/components/ui/icons";
 
 interface ServicesSectionProps {
@@ -15,7 +12,7 @@ interface ServicesSectionProps {
   locale: string;
 }
 
-function ServicesSectionComponent({
+export function ServicesSection({
   id,
   badge,
   title,
@@ -33,7 +30,6 @@ function ServicesSectionComponent({
   ];
 
   return (
-    <SectionReveal>
     <section id={id} className="py-24 relative" aria-labelledby={`${id}-title`}>
       <Container>
         <SectionHeader 
@@ -62,8 +58,5 @@ function ServicesSectionComponent({
         </div>
       </Container>
     </section>
-    </SectionReveal>
   );
 }
-
-export const ServicesSection = memo(ServicesSectionComponent);

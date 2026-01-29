@@ -12,8 +12,8 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
 import { SITE_CONFIG } from "@/lib/constants";
 import { ChatbotIsland } from "@/components/chatbot/ChatbotIsland";
-
 import { FramerMotionProvider } from "@/components/providers/framer-motion-provider";
+
 
 const fontHeading = Outfit({
   subsets: ["latin", "latin-ext"],
