@@ -10,10 +10,10 @@ import { HeaderServer } from "@/components/layout/header-server";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClientSideEffects } from "@/components/providers/client-side-effects";
-import { FramerMotionProvider } from "@/components/providers/framer-motion-provider";
 import { SITE_CONFIG } from "@/lib/constants";
+import { ChatbotIsland } from "@/components/chatbot/ChatbotIsland";
 
-
+import { FramerMotionProvider } from "@/components/providers/framer-motion-provider";
 
 const fontHeading = Outfit({
   subsets: ["latin", "latin-ext"],
@@ -52,7 +52,7 @@ export async function generateMetadata({
 }
 
 
-import { Chatbot } from "@/components/chatbot/Chatbot";
+
 
 export default async   function LocaleLayout({
   children,
@@ -94,7 +94,7 @@ export default async   function LocaleLayout({
             <main className="flex-1">{children}</main>
             <Footer locale={typedLocale} translations={messages} />
             <ClientSideEffects />
-            <Chatbot direction={direction} translations={messages.chatbot} />
+            <ChatbotIsland direction={direction} translations={messages.chatbot} />
           </FramerMotionProvider>
         </ThemeProvider>
       </body>

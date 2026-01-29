@@ -1,7 +1,7 @@
 'use client';
 
 import { memo, useEffect, useState } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
 const CinematicMesh = dynamic(() => import('@/components/animations/cinematic-mesh').then(m => m.CinematicMesh), { ssr: false });
@@ -91,10 +91,12 @@ function HeroBackgroundComponent({ type, showHeavyDelay = 1500 }: HeroBackground
   };
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      {renderAnimation()}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
-    </div>
+    <LazyMotion features={domAnimation}>
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {renderAnimation()}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
+      </div>
+    </LazyMotion>
   );
 }
 export const HeroBackground = memo(HeroBackgroundComponent);

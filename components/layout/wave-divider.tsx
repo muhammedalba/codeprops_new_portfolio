@@ -7,6 +7,7 @@ export function WaveDivider({ position = "bottom" }: { position?: "top" | "botto
         <div className={`w-full overflow-hidden leading-[0] ${position === "bottom" ? 'rotate-180' : ''}`}>
       <svg
         className="relative block w-[calc(100%+1.3px)] h-[60px] md:h-[120px]"
+        viewBox="0 0 1200 120"
         preserveAspectRatio="none"
       >
         <m.path

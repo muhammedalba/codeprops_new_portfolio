@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { LazyMotion, domAnimation } from "framer-motion";
 import type { AnimationType } from "@/components/layout/hero-background";
 
 const DynamicBackground = dynamic(
@@ -12,5 +13,9 @@ const DynamicBackground = dynamic(
 );
 
 export function HeroBackgroundIsland({ type = "about" }: { type?: AnimationType }) {
-  return <DynamicBackground type={type} />;
+  return (
+    <LazyMotion features={domAnimation}>
+      <DynamicBackground type={type} />
+    </LazyMotion>
+  );
 }

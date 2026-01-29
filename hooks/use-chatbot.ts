@@ -74,7 +74,6 @@ export function useChatbot() {
     setIsLoading(true);
 
     try {
-      console.log("Sending chat message to:", `${process.env.NEXT_PUBLIC_API_URL}/chat`);
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -91,7 +90,6 @@ export function useChatbot() {
       }
 
       const data = await response.json();
-      console.log("API Success:", data);
       
       if (data.success) {
         // Update session ID if new

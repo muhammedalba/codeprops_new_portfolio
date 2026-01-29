@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 export function FramerMotionProvider({ children }: { children: ReactNode }) {
   return (
-    <LazyMotion features={domAnimation} strict>
+    <LazyMotion features={domAnimation}>
       {children}
     </LazyMotion>
   );

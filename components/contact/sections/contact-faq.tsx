@@ -1,8 +1,8 @@
 "use client";
 
 import { memo, useCallback, useState } from "react";
-import { m, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { m, AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
+import { Icons } from "@/components/ui/icons";
 import { Container } from "@/components/layout/container";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { cn } from "@/lib/utils";
@@ -40,27 +40,29 @@ export const FAQItem = memo(function FAQItem({ question, answer }: FAQItemProps)
               : "border-border group-hover:border-primary group-hover:text-primary"
           )}
         >
-          {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+          {isOpen ? <Icons.minus size={18} /> : <Icons.plus size={18} />}
         </div>
       </button>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <m.div
-            key="content"
-            layout
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="overflow-hidden"
-          >
-            <p className="pb-8 text-lg text-muted-foreground leading-relaxed max-w-3xl">
-              {answer}
-            </p>
-          </m.div>
-        )}
-      </AnimatePresence>
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence initial={false}>
+          {isOpen && (
+            <m.div
+              key="content"
+              layout
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="overflow-hidden"
+            >
+              <p className="pb-8 text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                {answer}
+              </p>
+            </m.div>
+          )}
+        </AnimatePresence>
+      </LazyMotion>
     </div>
   );
 });

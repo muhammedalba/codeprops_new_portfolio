@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, memo } from "react";
-import { BotMessageSquareIcon, X } from "lucide-react";
-import { m, AnimatePresence, useReducedMotion } from "framer-motion";
+import { BotIcon, XIcon } from "@/components/ui/inline-icons";
+import { m, AnimatePresence, useReducedMotion, LazyMotion, domAnimation } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface ChatbotIconProps {
   isOpen: boolean;
   onClick: () => void;
   translations?: any;
+  direction?: string;
 }
 
 const welcomeVariants = {
@@ -37,7 +38,8 @@ const iconTransition = {
 export const ChatbotIcon = memo(function ChatbotIcon({ 
   isOpen, 
   onClick, 
-  translations 
+  translations,
+  direction
 }: ChatbotIconProps) {
   const [showWelcome, setShowWelcome] = useState(false);
   const prefersReducedMotion = useReducedMotion();
@@ -68,64 +70,66 @@ export const ChatbotIcon = memo(function ChatbotIcon({
   const tooltip = translations?.tooltip || "Chat with us";
 
   return (
-    <div className="fixed bottom-6 left-6 z-[9999] flex flex-col items-start gap-3">
-      <AnimatePresence>
-        {showWelcome && !isOpen && (
-          <m.div
-            variants={welcomeVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="bg-background border border-border p-4 rounded-2xl shadow-2xl max-w-[200px] relative mb-1"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <button 
-              onClick={handleDismissWelcome}
-              className="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors"
+    <LazyMotion features={domAnimation}>
+      <div className="fixed bottom-6 left-6 z-[9999] flex flex-col items-start gap-3">
+        <AnimatePresence>
+          {showWelcome && !isOpen && (
+            <m.div
+              variants={welcomeVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="bg-background border border-border p-4 rounded-2xl shadow-2xl max-w-[200px] relative mb-1"
+              style={{ willChange: 'transform, opacity' }}
             >
-              <X size={14} />
-            </button>
-            <h4 className="text-sm font-bold text-primary mb-1 pe-4">{welcomeTitle}</h4>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              {welcomeMessage}
-            </p>
-            {/* Simple arrow */}
-            <div className="absolute -bottom-1.5 left-6 w-3 h-3 bg-background border-b border-r border-border rotate-45" />
-          </m.div>
-        )}
-      </AnimatePresence>
-
-      <div className="relative ms-auto">
-        {/* Pulsing effect background */}
-        {!isOpen && !prefersReducedMotion && (
-          <m.div
-            animate={pulseAnimation}
-            transition={pulseTransition}
-            className="absolute inset-0 bg-primary rounded-full blur-sm"
-            style={{ willChange: 'transform, opacity' }}
-          />
-        )}
-
-        <button
-          onClick={handleClick}
-          title={tooltip}
-          className={cn(
-             "relative w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group",
-            isOpen 
-              ? "bg-background border border-border text-foreground overflow-hidden" 
-              : "bg-primary text-primary-foreground bg-gradient-to-br from-primary to-primary/80"
+              <button 
+                onClick={handleDismissWelcome}
+                className="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <XIcon className="w-3.5 h-3.5" />
+              </button>
+              <h4 className="text-sm font-bold text-primary mb-1 pe-4">{welcomeTitle}</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {welcomeMessage}
+              </p>
+              {/* Simple arrow */}
+              <div className="absolute -bottom-1.5 left-6 w-3 h-3 bg-background border-b border-r border-border rotate-45" />
+            </m.div>
           )}
-          style={{ willChange: 'transform' }}
-        >
-          <m.div
-            animate={{ rotate: isOpen ? 90 : 0, scale: isOpen ? 1.2 : 1 }}
-            transition={iconTransition}
+        </AnimatePresence>
+
+        <div className={`relative ${direction === 'rtl' ? 'ms-auto' : 'me-auto'}`}>
+          {/* Pulsing effect background */}
+          {!isOpen && !prefersReducedMotion && (
+            <m.div
+              animate={pulseAnimation}
+              transition={pulseTransition}
+              className="absolute inset-0 bg-primary rounded-full blur-sm"
+              style={{ willChange: 'transform, opacity' }}
+            />
+          )}
+
+          <button
+            onClick={handleClick}
+            title={tooltip}
+            className={cn(
+               "relative w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group",
+              isOpen 
+                ? "bg-background border border-border text-foreground overflow-hidden" 
+                : "bg-primary text-primary-foreground bg-gradient-to-br from-primary to-primary/80"
+            )}
             style={{ willChange: 'transform' }}
           >
-            {isOpen ? <X size={24} /> : <BotMessageSquareIcon size={24} className="group-hover:rotate-12 transition-transform" />}
-          </m.div>
-        </button>
+            <m.div
+              animate={{ rotate: isOpen ? 90 : 0, scale: isOpen ? 1.2 : 1 }}
+              transition={iconTransition}
+              style={{ willChange: 'transform' }}
+            >
+              {isOpen ? <XIcon className="w-6 h-6" /> : <BotIcon className="w-6 h-6 group-hover:rotate-12 transition-transform" />}
+            </m.div>
+          </button>
+        </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 });

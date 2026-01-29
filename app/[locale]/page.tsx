@@ -55,7 +55,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getPageMessages(locale as Locale, "home");
-
   return generatePageMetadata({
     locale: locale as Locale,
     title: t.seo.home.title,

@@ -2,7 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { HeroBackgroundIsland } from "@/components/layout/hero-background-island";
 import { SectionBadge } from "@/components/ui/section-badge";
-import { ArrowLeft, Rocket } from "lucide-react";
+import { Icons } from "@/components/ui/icons";
 import { ServiceSlug, serviceIcons } from "@/lib/services";
 import Link from "next/link";
 
@@ -14,7 +14,7 @@ interface ServiceHeroProps {
 }
 
 export function ServiceHero({ locale, isRtl, serviceData, slug }: ServiceHeroProps) {
-  const ServiceIcon = serviceIcons[slug] || Rocket;
+  const ServiceIcon = serviceIcons[slug] || Icons.rocket;
   return (
     <section className="relative pt-40 pb-20 overflow-hidden">
       <HeroBackgroundIsland type="services" />
@@ -32,7 +32,7 @@ export function ServiceHero({ locale, isRtl, serviceData, slug }: ServiceHeroPro
           href={`/${locale}/services`}
           className="inline-flex items-center gap-2 text-sm font-black text-primary mb-12 hover:gap-4 transition-all group uppercase tracking-widest"
         >
-          <ArrowLeft size={16} className={isRtl ? "rotate-180" : ""} />
+          <Icons.arrowLeft size={16} className={isRtl ? "rotate-180" : ""} />
           {isRtl ? "العودة لخدماتنا" : "Back to Services"}
         </Link>
 
@@ -56,7 +56,7 @@ export function ServiceHero({ locale, isRtl, serviceData, slug }: ServiceHeroPro
             <Link href={`/${locale}/contact`}>
               <button className="px-10 py-5 rounded-2xl bg-primary text-primary-foreground font-bold text-sm hover:scale-105 transition-all shadow-2xl shadow-primary/20 flex items-center gap-3">
                 {isRtl ? "ابدأ مشروعك الآن" : "Start Your Project"}
-                <Rocket size={18} />
+                <Icons.rocket size={18} />
               </button>
             </Link>
           </div>

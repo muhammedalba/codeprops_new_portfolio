@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo, memo } from "react";
 import { TestimonialCard, type Testimonial } from "./testimonial-card";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Icons } from "@/components/ui/icons";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SectionReveal } from "../animations/section-reveal";
 
@@ -207,14 +207,14 @@ function TestimonialsCarouselComponent({
             className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 flex items-center justify-center rounded-full bg-background/90 backdrop-blur-md border border-border/50 text-foreground shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group-hover:opacity-100 md:opacity-0"
             aria-label="Previous"
           >
-            <ChevronLeft className="w-8 h-8" />
+            <Icons.chevronLeft className="w-8 h-8" />
           </button>
           <button
             onClick={isRTL.current ? movePrev : moveNext}
             className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 flex items-center justify-center rounded-full bg-background/90 backdrop-blur-md border border-border/50 text-foreground shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group-hover:opacity-100 md:opacity-0"
             aria-label="Next"
           >
-            <ChevronRight className="w-8 h-8" />
+            <Icons.chevronRight className="w-8 h-8" />
           </button>
         </div>
       </section>

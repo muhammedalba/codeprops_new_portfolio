@@ -15,10 +15,7 @@ import { ServiceNarrative } from '@/components/services/detail-sections/ServiceN
 // Client Islands
 import { ContactFAQ, ContactCTA } from '@/components/contact/sections/contact-islands';
 
-import { 
-  Monitor,
-  Check
-} from "lucide-react";
+import { Icons } from "@/components/ui/icons";
 
 export async function generateStaticParams() {
   const paths: { locale: string; slug: string }[] = [];
@@ -155,7 +152,7 @@ export default async function ServiceDetailPage({
                     index={i}
                     title={step.title}
                     description={step.description}
-                    icon={serviceIcons[allServices[i]?.slug as ServiceSlug] || Monitor}          
+                    icon={serviceIcons[allServices[i]?.slug as ServiceSlug] || Icons.monitor}          
                   />
               ))}
             </div>

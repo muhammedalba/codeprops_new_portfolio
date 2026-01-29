@@ -1,13 +1,13 @@
 "use client";
 
-import { m, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import {
-  X,
   Mail,
   Phone,
   MapPin,
 } from "lucide-react";
 import { Icons } from "@/components/ui/icons";
+import { XIcon } from "@/components/ui/inline-icons";
 import Link from "next/link";
 import { Locale, localeNames } from "@/lib/i18n";
 import { ThemeToggle } from "./theme-toggle";
@@ -39,40 +39,41 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
   if (!mounted) return null;
 
   return createPortal(
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm"
-          />
+    <LazyMotion features={domAnimation}>
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <m.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+              className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm"
+            />
 
-          {/* Drawer Content */}
-          <m.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-           transition={{ duration: 0.35, ease: "easeOut" }}
-            className="fixed top-0 right-0 z-[110] h-full w-[300px] sm:w-[400px] bg-background border-l shadow-2xl overflow-y-auto"
-          >
-            <div className="p-8 flex flex-col h-full">
-              <div className="flex justify-between items-center mb-12">
-                <span className="text-xl font-heading font-bold bg-clip-text ">
-                  Code<span className="text-primary">Props</span>
-                </span>
-                <button
-                name="close button"
-                  title="close button"
-                  onClick={onClose}
-                  className="p-2 hover:bg-muted rounded-full transition-colors"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
+            {/* Drawer Content */}
+            <m.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+             transition={{ duration: 0.35, ease: "easeOut" }}
+              className="fixed top-0 right-0 z-[110] h-full w-[300px] sm:w-[400px] bg-background border-l shadow-2xl overflow-y-auto"
+            >
+              <div className="p-8 flex flex-col h-full">
+                <div className="flex justify-between items-center mb-12">
+                  <span className="text-xl font-heading font-bold bg-clip-text ">
+                    Code<span className="text-primary">Props</span>
+                  </span>
+                  <button
+                  name="close button"
+                    title="close button"
+                    onClick={onClose}
+                    className="p-2 hover:bg-muted rounded-full transition-colors"
+                  >
+                    <XIcon className="h-6 w-6" />
+                  </button>
+                </div>
 
               {/* Company Info */}
               <div className="space-y-8 flex-1">
@@ -197,7 +198,8 @@ export function SideDrawer({ isOpen, onClose, locale, translations }: SideDrawer
           </m.div>
         </>
       )}
-    </AnimatePresence>,
+    </AnimatePresence>
+  </LazyMotion>,
     document.body
   );
 }

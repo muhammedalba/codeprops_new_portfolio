@@ -1,9 +1,10 @@
 import React, { memo } from "react";
-import { Globe2, Code2, Smartphone, Cpu, Check } from "lucide-react";
+// import { Globe2, Code2, Smartphone, Cpu, Check } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ServiceCard } from "@/components/sections/service-card";
 import { Container } from "@/components/layout/container";
 import { SectionReveal } from "../animations/section-reveal";
+import { Icons } from "@/components/ui/icons";
 
 interface ServicesSectionProps {
   id?: string;
@@ -24,11 +25,11 @@ function ServicesSectionComponent({
 }: ServicesSectionProps) {
   // Define icons mapping internally
   const servicesConfig = [
-    { key: "web", icon: Globe2 },
-    { key: "custom", icon: Code2 },
-    { key: "ecommerce", icon: Smartphone },
-    // { key: "cloud", icon: Cpu },
-    { key: "performance", icon: Check },
+    { key: "web", icon: Icons.globe },
+    { key: "custom", icon: Icons.code },
+    { key: "ecommerce", icon: Icons.smartphone },
+    // { key: "cloud", icon: Icons.cpu },
+    { key: "performance", icon: Icons.check },
   ];
 
   return (

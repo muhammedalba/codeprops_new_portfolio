@@ -1,13 +1,14 @@
 import React, { memo } from "react";
-import { LucideIcon, ArrowUpRight } from "lucide-react";
+// import { LucideIcon, ArrowUpRight } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlowEffect } from "@/components/ui/glow-effect";
 import { cn } from "@/lib/utils";
+import { Icons } from "@/components/ui/icons";
 
 interface ServiceCardProps {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<{ className?: string }>;
   href: string;
   index: number;
   className?: string;
@@ -68,7 +69,7 @@ function ServiceCardComponent({
                 : "Explore Service"}
                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover/link:w-full transition-all duration-300" />
             </span>
-        <ArrowUpRight className="w-4 h-4 translate-y-px group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" />
+        <Icons.arrowUpRight className="w-4 h-4 translate-y-px group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" />
       </div>
 
       {/* Numerical Badge / Decoration */}

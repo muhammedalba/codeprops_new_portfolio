@@ -1,11 +1,4 @@
-import { 
-  Globe2, 
-  Code2, 
-  Smartphone, 
-  Cpu, 
-  Check, 
-  LucideIcon 
-} from "lucide-react";
+import { Icons } from "@/components/ui/icons";
 
 export const serviceSlugs = [
   'web',
@@ -17,12 +10,12 @@ export const serviceSlugs = [
 
 export type ServiceSlug = (typeof serviceSlugs)[number];
 
-export const serviceIcons: Record<ServiceSlug, LucideIcon> = {
-  web: Globe2,
-  custom: Code2,
-  ecommerce: Smartphone,
-  cloud: Cpu,
-  performance: Check,
+export const serviceIcons = {
+  web: Icons.globe,
+  custom: Icons.code,
+  ecommerce: Icons.smartphone,
+  cloud: Icons.cpu,
+  performance: Icons.check,
 };
 
 export const isValidServiceSlug = (slug: string): slug is ServiceSlug => {

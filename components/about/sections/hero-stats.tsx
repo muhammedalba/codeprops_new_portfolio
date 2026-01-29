@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useMemo } from "react";
-import { m, useInView } from "framer-motion";
+import { m, useInView, LazyMotion, domAnimation } from "framer-motion";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { Container } from "@/components/layout/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -120,38 +120,40 @@ export function HeroStats({ translations, locale }: HeroStatsProps) {
           className="mb-8 justify-center"
         />
 
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto mb-20 lg:mb-32">
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <SectionBadge variant="primary" className="mb-8">
-              {t.badge}
-            </SectionBadge>
-          </m.div>
+        <LazyMotion features={domAnimation}>
+          <div className="flex flex-col items-center text-center max-w-5xl mx-auto mb-20 lg:mb-32">
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <SectionBadge variant="primary" className="mb-8">
+                {t.badge}
+              </SectionBadge>
+            </m.div>
 
-          <m.h1
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="text-5xl md:text-8xl font-heading font-bold mb-8 tracking-tighter leading-[0.95] text-balance"
-          >
-            {t.title}
-          </m.h1>
+            <m.h1
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="text-5xl md:text-8xl font-heading font-bold mb-8 tracking-tighter leading-[0.95] text-balance"
+            >
+              {t.title}
+            </m.h1>
 
-          <m.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-            className="flex flex-col items-center gap-8 max-w-3xl"
-          >
-            <p className="text-xl md:text-3xl text-muted-foreground leading-relaxed font-light text-balance">
-              {t.subtitle}
-            </p>
-            <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent" />
-          </m.div>
-        </div>
+            <m.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+              className="flex flex-col items-center gap-8 max-w-3xl"
+            >
+              <p className="text-xl md:text-3xl text-muted-foreground leading-relaxed font-light text-balance">
+                {t.subtitle}
+              </p>
+              <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent" />
+            </m.div>
+          </div>
+        </LazyMotion>
 
         {/* Stats Grid */}
         <div className="w-full pt-12 border-t border-border/40">

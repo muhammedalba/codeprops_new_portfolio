@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { HeroBackground } from "../layout/hero-background";
+import { Icons } from "@/components/ui/icons";
 
 
 interface HeroSectionProps {
@@ -75,7 +75,7 @@ function HeroSectionComponent({ locale, translations }: HeroSectionProps) {
               >
                 <span className="relative z-10 flex items-center gap-3">
                   {hero.cta}
-                  <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500" />
+                  <Icons.arrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500" />
                 </span>
               </Button>
             </Link>
