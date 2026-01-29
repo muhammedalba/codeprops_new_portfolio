@@ -32,6 +32,8 @@ const BlogCard = React.memo(({ post, index, locale, t }: { post: BlogPost; index
       </div>
 
       <div className="grid lg:grid-cols-12 gap-12 items-start relative z-10">
+        {/* Decorative Circle */}
+         <div className="absolute w-24 h-24 top-1  end-0  bg-primary/30 rounded-full blur-[50px]" />
         <div className="lg:col-span-8 space-y-6">
           <div className="flex flex-wrap items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em]">
             <span className="text-primary bg-primary/10 px-3 py-1 rounded-full">{t.category}</span>

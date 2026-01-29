@@ -342,4 +342,51 @@
   .dark .custom-scrollbar:hover::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
   }
+
+  /* Infinite Marquee Animation - CPU/GPU Optimized */
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(calc(-50% - var(--gap, 0px)/2), 0, 0);
+    }
+  }
+
+  @keyframes marquee-rtl {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(calc(50% + var(--gap, 0px)/2), 0, 0);
+    }
+  }
+
+  .scroller {
+    max-width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .scroller__inner {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--gap, 1.5rem);
+    width: max-content;
+    animation: marquee var(--speed, 40s) linear infinite;
+  }
+
+  [dir="rtl"] .scroller__inner {
+    animation-name: marquee-rtl;
+  }
+
+  .scroller[data-animated="true"] .scroller__inner {
+    /* Ready for JS toggle if needed, but animation is default */
+  }
+
+  .scroller:hover .scroller__inner {
+    animation-play-state: paused;
+  }
 }

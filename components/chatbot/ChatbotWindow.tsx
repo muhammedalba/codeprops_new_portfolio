@@ -22,7 +22,8 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend, translation
     placeholder: string;
     emptyMessage: string;
     disclaimer: string;
-  }
+  };
+  send?: string;
 }, direction?: string }) {
   const [inputText, setInputText] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -38,7 +39,12 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend, translation
   // Auto-scroll to bottom
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      // Use requestAnimationFrame to batch DOM reads/writes and prevent immediate forced layout
+      requestAnimationFrame(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+      });
     }
   }, [messages, isLoading]);
 
@@ -119,6 +125,7 @@ export function ChatbotWindow({ isOpen, messages, isLoading, onSend, translation
             onClick={handleSend}
             disabled={!inputText.trim() || isLoading}
             className="absolute right-1 w-12 h-12 rounded-xl p-0 hover:scale-105 active:scale-95 transition-transform"
+            aria-label={translations?.send || "Send message"}
           >
             <Send size={18} />
           </Button>

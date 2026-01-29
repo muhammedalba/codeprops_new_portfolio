@@ -76,9 +76,7 @@ export const ChatbotIcon = memo(function ChatbotIcon({
         <div className={`relative ${direction === 'rtl' ? 'ms-auto' : 'me-auto'}`}>
         {/* Pulsing effect background */}
         {!isOpen && (
-          <div
-            className="absolute inset-0 bg-primary rounded-full blur-sm animate-pulse opacity-40"
-          />
+           <div className="absolute inset-0 rounded-full border border-primary/40 animate-ping" />
         )}
 
         <button

@@ -145,7 +145,7 @@ export default async function HomePage({
             }))}
             title={t.testimonials.title}
             subtitle={t.testimonials.subtitle}
-            autoScrollSpeed={30}
+            autoScrollSpeed={100}
           />
         </Suspense>
            {/* Final CTA - Important, loads immediately */}

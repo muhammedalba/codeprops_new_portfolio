@@ -22,7 +22,7 @@ export function TestimonialCard({ testimonial, className = '' }: TestimonialCard
       aria-label={`Testimonial from ${testimonial.name}`}
     >
       {/* Hover Accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/20 blur-[50px] rounded-full pointer-events-none" />
       <GlassCard className="h-full group">
         {/* Decorative Quote Icon */}
         <Quote 
@@ -45,7 +45,7 @@ export function TestimonialCard({ testimonial, className = '' }: TestimonialCard
         </blockquote>
 
         {/* Author Info */}
-        <figcaption className="flex items-center gap-4 pt-4 border-t border-border/30">
+        <figcaption className="flex items-center gap-4 pt-4 border-t border-border">
           {/* Avatar */}
           <div 
             className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/20 flex items-center justify-center flex-shrink-0"
