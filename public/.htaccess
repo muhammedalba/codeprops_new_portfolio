@@ -91,3 +91,6 @@ RewriteRule ^(.*)$ $1/ [L,R=301]
 # 5. Miscellaneous Performance
 Header set Connection keep-alive
 FileETag None
+
+# 6. Error Documents
+ErrorDocument 404 /404.html
