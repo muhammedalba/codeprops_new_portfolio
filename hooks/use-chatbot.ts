@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useTawkLiveChat } from "./use-tawk-live-chat";
 
 export interface Message {
   id: string;
@@ -16,6 +17,9 @@ export function useChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [historyLoaded, setHistoryLoaded] = useState(false);
   
+  // Custom hook for Tawk Live Chat
+  const { openLiveChat } = useTawkLiveChat();
+
   // Ref for caching to avoid redundant API calls if needed
   const cacheRef = useRef<Record<string, string>>({});
 
@@ -112,8 +116,15 @@ export function useChatbot() {
           sender: "bot",
           timestamp: Date.now(),
         };
+        // check if message not matched -> open live chat
+        if (data.data.open_live_chat) {
+          // Close custom chatbot and open Tawk
+          setIsOpen(false);
+          openLiveChat();
+        } else {
+          setMessages((prev) => [...prev, botMessage]);
+        }
 
-        setMessages((prev) => [...prev, botMessage]);
       }
     } catch (error) {
       console.error("Chatbot error:", error);
