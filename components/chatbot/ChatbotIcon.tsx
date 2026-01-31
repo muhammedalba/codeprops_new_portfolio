@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, memo } from "react";
+import React, { useState, useEffect, useCallback, memo, useMemo, useRef } from "react";
 import { BotIcon, XIcon } from "@/components/ui/inline-icons";
 import { cn } from "@/lib/utils";
 import { ChatbotTranslations } from "./Chatbot";
@@ -13,25 +13,28 @@ interface ChatbotIconProps {
 }
 
 
-export const ChatbotIcon = memo(function ChatbotIcon({ 
+function ChatbotIconComponent({ 
   isOpen, 
   onClick, 
   translations,
   direction
 }: ChatbotIconProps) {
+
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [showWelcome, setShowWelcome] = useState(false);
 
-  useEffect(() => {
-    // Show welcome message after 5 seconds delay if the chat is not already open
-    if (!isOpen) {
-      const timer = setTimeout(() => {
-        setShowWelcome(true);
-      }, 5000);
-      return () => clearTimeout(timer);
-    } else {
-      setShowWelcome(false);
-    }
-  }, [isOpen]);
+
+useEffect(() => {
+  if (!isOpen) {
+    timerRef.current = setTimeout(() => setShowWelcome(true), 5000);
+  } else {
+    setShowWelcome(false);
+  }
+
+  return () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+  };
+}, [isOpen]);
 
   const handleDismissWelcome = useCallback(() => {
     setShowWelcome(false);
@@ -42,18 +45,21 @@ export const ChatbotIcon = memo(function ChatbotIcon({
     setShowWelcome(false);
   }, [onClick]);
 
-  const welcomeTitle = translations?.welcome?.title || "Need help?";
-  const welcomeMessage = translations?.welcome?.message || "I'm here to assist you!";
-  const tooltip = translations?.tooltip || "Chat with us";
+const { welcomeTitle, welcomeMessage, tooltip } = useMemo(() => ({
+  welcomeTitle: translations?.welcome?.title || "Need help?",
+  welcomeMessage: translations?.welcome?.message || "I'm here to assist you!",
+  tooltip: translations?.tooltip || "Chat with us"
+}), [translations]);
+
 
   return (
     <div className="fixed bottom-6 left-6 z-[9999] flex flex-col items-start gap-3">
-      <div
+     {showWelcome && !isOpen && <div
         className={cn(
-          "bg-background border border-border p-4 rounded-2xl shadow-2xl max-w-[200px] relative mb-1 transition-all duration-500",
-          showWelcome && !isOpen 
-            ? "opacity-100 translate-y-0 scale-100" 
-            : "opacity-0 translate-y-10 scale-90 pointer-events-none"
+          "bg-background border border-border p-4 rounded-2xl shadow-2xl max-w-[200px] relative mb-1 transition-all duration-500 opacity-100 translate-y-0 scale-100",
+          // showWelcome && !isOpen 
+          //   ? "opacity-100 translate-y-0 scale-100 visible" 
+          //   : "opacity-0 hidden translate-y-10 scale-90 pointer-events-none"
         )}
       >
         <button 
@@ -71,7 +77,7 @@ export const ChatbotIcon = memo(function ChatbotIcon({
         </p>
         {/* Simple arrow */}
         <div className="absolute -bottom-1.5 left-6 w-3 h-3 bg-background border-b border-r border-border rotate-45" />
-      </div>
+      </div>}
 
         <div className={`relative ${direction === 'rtl' ? 'ms-auto' : 'me-auto'}`}>
         {/* Pulsing effect background */}
@@ -98,4 +104,5 @@ export const ChatbotIcon = memo(function ChatbotIcon({
         </div>
     </div>
   );
-});
+};
+export const ChatbotIcon = memo( ChatbotIconComponent, (prev, next) => prev.isOpen === next.isOpen && prev.direction === next.direction && prev.translations === next.translations );

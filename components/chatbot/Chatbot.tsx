@@ -1,14 +1,11 @@
-"use client";
 
-import React from "react";
 import { useChatbot } from "@/hooks/use-chatbot";
-import { ChatbotIcon } from "./ChatbotIcon";
 import dynamic from "next/dynamic";
 const ChatbotWindow = dynamic(() => import("./ChatbotWindow").then(mod => mod.ChatbotWindow), {
-  ssr: false,
 });
 
 import { TranslationValue } from "@/lib/translations";
+import { ChatbotIconWrapper } from "./ChatbotIconWrapper";
 
 export interface ChatbotTranslations {
   welcome: {
@@ -33,8 +30,8 @@ export function Chatbot({ translations, direction }: { translations?: ChatbotTra
 
   return (
     <>
-      <ChatbotIcon 
-        isOpen={isOpen} 
+    <ChatbotIconWrapper
+      isOpen={isOpen} 
         onClick={toggleChat} 
         translations={translations} 
         direction={direction}

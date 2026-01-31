@@ -1,4 +1,3 @@
-"use client";
 
 import { Container } from "@/components/layout/container";
 import { ContactHero } from "./sections/contact-hero";
@@ -10,8 +9,8 @@ import { Reveal } from "@/hooks/use-reveal";
 const ContactForm = dynamic(() => import("./contact-form/contact-form").then(mod => mod.ContactForm), { 
   loading: () => <div className="w-full h-[600px] rounded-[4rem] bg-background/40 animate-pulse border border-white/5" />
 });
-const ContactFAQ = dynamic(() => import("./sections/contact-faq").then(mod => mod.ContactFAQ), { ssr: false });
-const ContactMap = dynamic(() => import("./sections/contact-map").then(mod => mod.ContactMap), { ssr: false });
+const ContactFAQ = dynamic(() => import("./sections/contact-faq").then(mod => mod.ContactFAQ));
+const ContactMap = dynamic(() => import("./sections/contact-map").then(mod => mod.ContactMap));
 
 
 

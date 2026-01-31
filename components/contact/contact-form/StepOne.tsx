@@ -34,7 +34,7 @@ export function StepOne({ form, translations, onNext }: StepOneProps) {
         {/* Email */}
         <div className="space-y-3">
           <Label icon={Mail} text={translations.email} />
-          <Input type="email" placeholder='www.example.com' {...form.register("email")} className="h-16 rounded-2xl" />
+          <Input type="email" placeholder='example@gmail.com' {...form.register("email")} className="h-16 rounded-2xl" />
            <FormError error={form.formState.errors.email} />
         </div>
       </div>

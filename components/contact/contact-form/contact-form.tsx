@@ -70,7 +70,7 @@ export function ContactForm({ translations }: { translations: ContactTranslation
       const token: string = await executeRecaptcha("contact_form");
 
       // 2. Send data to backend
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_CONTACT_ENDPOINT}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -5,7 +5,7 @@
 
 export const SITE_CONFIG = {
   url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-  name: 'CodeProps',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'CodeProps',
 };
 
 export const SOCIAL_LINKS = {
@@ -20,5 +20,5 @@ export const CONTACT_INFO = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@codeprops.com',
   solutionsEmail: process.env.NEXT_PUBLIC_SOLUTIONS_EMAIL || 'solutions@codeprops.com',
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+49 (176) 62025331',
-  address: process.env.NEXT_PUBLIC_CONTACT_ADDRESS || 'Global Elite Tech Center, Silicon Valley / Istanbul',
+  address: process.env.NEXT_PUBLIC_CONTACT_ADDRESS || 'turkey / Istanbul',
 };

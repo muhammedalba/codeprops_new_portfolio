@@ -20,6 +20,11 @@ export function useChatbot() {
   // Custom hook for Tawk Live Chat
   const { openLiveChat } = useTawkLiveChat();
 
+
+
+
+
+
   // Ref for caching to avoid redundant API calls if needed
   const cacheRef = useRef<Record<string, string>>({});
 
@@ -41,7 +46,7 @@ export function useChatbot() {
 
   const fetchHistory = async (id: string) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/history?session_id=${id}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_CHAT_HISTORY_ENDPOINT}?session_id=${id}`);
       if (response.ok) {
         const data = await response.json();
         if (data.success && Array.isArray(data.data)) {
@@ -86,7 +91,7 @@ export function useChatbot() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_CHAT_ENDPOINT}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -121,6 +126,7 @@ export function useChatbot() {
           // Close custom chatbot and open Tawk
           setIsOpen(false);
           openLiveChat();
+          
         } else {
           setMessages((prev) => [...prev, botMessage]);
         }
